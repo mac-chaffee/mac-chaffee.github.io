@@ -6,7 +6,7 @@ My personal website
 
 ### Front-End
 
-TBD
+Vanilla JS and Sass
 
 ### Back-End
 
