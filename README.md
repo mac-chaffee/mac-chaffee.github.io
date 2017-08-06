@@ -17,6 +17,7 @@ This is a static website, so it can be hosted directly from an AWS S3 bucket and
 ```
 sudo apt install ruby ruby-dev
 sudo gem install sass
+sudo npm install --global sw-precache
 ```
 
 **Serving the website:**
