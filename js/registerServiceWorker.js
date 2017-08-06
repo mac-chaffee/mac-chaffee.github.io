@@ -8,9 +8,9 @@
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
 
-if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+    const swUrl = 'js/serviceWorker.js';
     navigator.serviceWorker
       .register(swUrl)
       .then(registration => {
