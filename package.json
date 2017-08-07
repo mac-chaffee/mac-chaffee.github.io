@@ -1,0 +1,25 @@
+{
+  "name": "macchaffee.com",
+  "version": "1.0.0",
+  "description": "My personal website",
+  "scripts": {
+    "css": "sass -t compressed --watch sass/all.sass:css/styles.css",
+    "server": "python -m SimpleHTTPServer 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mac-chaffee/personal-site.git"
+  },
+  "author": "Mac Chaffee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mac-chaffee/personal-site/issues"
+  },
+  "homepage": "https://github.com/mac-chaffee/personal-site#readme",
+  "devDependencies": {
+    "eslint": "^4.4.0",
+    "htmlhint": "^0.9.13",
+    "sasslint": "0.0.10",
+    "sw-precache": "^5.2.0"
+  }
+}
