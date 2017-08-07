@@ -4,7 +4,8 @@
   "description": "My personal website",
   "scripts": {
     "css": "sass -t compressed --watch sass/all.sass:css/styles.css",
-    "server": "python -m SimpleHTTPServer 8000"
+    "server": "python -m SimpleHTTPServer 8000",
+    "sync": "aws s3 sync . s3://macchaffee --exclude '*' --include '*.css' --include '*.js' --include '*.html' --exclude 'node_modules/*'"
   },
   "repository": {
     "type": "git",
