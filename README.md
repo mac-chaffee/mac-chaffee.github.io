@@ -25,7 +25,7 @@ npm install
 You can just open the index.html file, but then Chrome won't allow the service worker registration.
 To avoid this, run `python -m SimpleHTTPServer 8000` and access the site at `localhost:8000`.
 
-`npm run server` will do this.
+`npm run server` will do this for you.
 
 
 **Re-compiling the stylesheets:**
@@ -34,4 +34,15 @@ To avoid this, run `python -m SimpleHTTPServer 8000` and access the site at `loc
 sass -t compressed --watch sass/all.sass:css/styles.css
 ```
 
-or just `npm run css`
+## Deployment
+
+```
+# Compile sass files, then Ctrl+C since we don't need to watch for changes.
+npm run css
+
+# Make sure the service worker is caching all files
+npm run cache
+
+# Upload everything to S3
+npm run sync
+```
