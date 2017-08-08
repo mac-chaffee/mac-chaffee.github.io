@@ -1,2 +1,2 @@
-body{background-color:#ECEBF3;color:#303633}object{max-width:100vw}
+body{background-color:#ECEBF3;color:#303633;display:flex;justify-content:center;align-content:center;height:100vh;margin:0;padding:0 0 0 30px}object{width:100vw;max-width:1200px}
 /*# sourceMappingURL=styles.css.map */
