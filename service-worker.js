@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["css/styles.css","ba0ae8c25af18b928f49da05e92627ee"],["img/favicon.png","476afcf650723c5cd42ae88a1e79ed7d"],["img/github.svg","725b7b9850adc51a14fba0b5dbf5b738"],["img/gitlab.svg","41fbe24063d0a52dc1b7b0cd5643fcc8"],["img/link-tree.svg","3c45844bd829f5fc1a324738297ac9f5"],["img/linkedin.svg","3f54985a7252c1b28cc40d015fa8129e"],["img/resume.svg","5e3ea8e8458762b5c440d88a5c0d295c"],["index.html","d2bcf6a062d245aa974b4eafea2db116"],["js/registerServiceWorker.js","eae9a3b2d21571c05328316bcff9e697"]];
+var precacheConfig = [["css/styles.css","1a667deb792ff975ee632042f9f740bd"],["img/favicon.png","476afcf650723c5cd42ae88a1e79ed7d"],["img/github.svg","725b7b9850adc51a14fba0b5dbf5b738"],["img/gitlab.svg","41fbe24063d0a52dc1b7b0cd5643fcc8"],["img/link-tree.svg","17a358a37b6c78a61d0bed1bde9bbe3e"],["img/linkedin.svg","3f54985a7252c1b28cc40d015fa8129e"],["img/resume.svg","5e3ea8e8458762b5c440d88a5c0d295c"],["index.html","d493ea81769104ed55d6af9d0c473806"],["js/registerServiceWorker.js","eae9a3b2d21571c05328316bcff9e697"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
