@@ -3,17 +3,26 @@ body
   background-color: $flash-white
   color: $jet
   display: flex
+  flex-direction: column
   justify-content: center
-  align-content: center
+  align-items: center
   height: 100vh
   margin: 0
   user-select: none
+  font-family: monospace
 
 svg,
 img
   width: 100vw
   max-width: 1200px
 
+.all-traversals
+  display: flex
+  flex-direction: column
+  width: 550px
+
+  h3
+    text-align: center
 
 #traversal
   stroke-dasharray: 700px

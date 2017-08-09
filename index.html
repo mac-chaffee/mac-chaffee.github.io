@@ -9,6 +9,12 @@
   </head>
   <body>
     <img src="img/link-tree.svg" alt="A binary tree of external links to github, gitlab, linkedin, and my resume"/>
+    <div class="all-traversals">
+      <h3>Traversals</h3>
+      <p>Pre-order: <span id="pre-order"></span></p>
+      <p>In-order: <span id="in-order"></span></p>
+      <p>Post-order: <span id="post-order"></span></p>
+    </div>
   </body>
   <!-- Code to replace the image with the contents of link-tree.svg -->
   <!-- This allows me to style and animate the svg elements -->
@@ -20,19 +26,50 @@
     }, function () {
       // Get all the links
       var links = document.querySelectorAll("a");
-      // Get the traversal line once
+      // Query for the needed elements once
       var traversal = document.getElementById("traversal");
+      var preOrder = document.getElementById("pre-order");
+      var inOrder = document.getElementById("in-order");
+      var postOrder = document.getElementById("post-order");
 
       // Add event listeners to each link that animate the traversal
       links.forEach(function(link) {
         link.addEventListener("mouseenter", function (e) {
           traversal.setAttribute("class","animate-" + e.target.id);
+          // Write the pre/in/post order traversals depending on the ID
+          switch (e.target.id) {
+            case "github":
+              preOrder.innerHTML = "Links, Code, GitHub";
+              inOrder.innerHTML = "GitHub";
+              postOrder.innerHTML = "GitHub";
+              break;
+            case "gitlab":
+              preOrder.innerHTML = "Links, Code, GitHub, GitLab";
+              inOrder.innerHTML = "GitHub, Code, GitLab";
+              postOrder.innerHTML = "GitHub, GitLab";
+              break;
+            case "linkedin":
+              preOrder.innerHTML = "Links, Code, GitHub, GitLab, Non-Code, LinkedIn";
+              inOrder.innerHTML = "GitHub, Code, GitLab, Links, LinkedIn";
+              postOrder.innerHTML = "GitHub, GitLab, Code, LinkedIn";
+              break;
+            case "resume":
+              preOrder.innerHTML = "Links, Code, GitHub, GitLab, Non-Code, LinkedIn, Resume";
+              inOrder.innerHTML = "GitHub, Code, GitLab, Links, LinkedIn, Non-Code, Resume";
+              postOrder.innerHTML = "GitHub, GitLab, Code, LinkedIn, Resume";
+              break;
+            default:
+              console.error("Invalid id recieved: " + e.target.id);
+          }
         });
       });
 
-      // Hide the traversal line when you leave the SVG entirely
+      // Hide the traversal line and text when you leave the SVG entirely
       document.querySelector("svg").addEventListener("mouseleave", function (e) {
         traversal.setAttribute("class","");
+        preOrder.innerHTML = "";
+        inOrder.innerHTML = "";
+        postOrder.innerHTML = "";
       });
     });
   </script>
