@@ -8,6 +8,21 @@ body
   height: 100vh
   margin: 0
 
-object
+svg,
+img
   width: 100vw
   max-width: 1200px
+
+
+#traversal
+  stroke-dasharray: 700px
+  stroke-dashoffset: 700px
+  transition: 1s ease-out
+
+  // Hovering over each link will set a unique class
+  // The class determines how long the line should be
+  $map: (animate-github: 565, animate-gitlab: 467, animate-linkedin: 292, animate-resume: 197)
+
+  @each $key, $val in $map
+    &.#{$key}
+      stroke-dashoffset: #{$val}

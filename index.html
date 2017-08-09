@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Mac Chaffee</title>
-  <meta name="description" content="The personal website of Mac Chaffee"/>
-  <link rel="shortcut icon" href="img/favicon.png" type="image/png">
-  <link href="css/styles.css" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="utf-8">
+    <title>Mac Chaffee</title>
+    <meta name="description" content="The personal website of Mac Chaffee"/>
+    <link rel="shortcut icon" href="img/favicon.svg" type="image/svg">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
   <body>
-    <object data="img/link-tree.svg" alt="A binary tree of external links to github, gitlab, linkedin, and my resume"></object>
+    <img src="img/link-tree.svg" alt="A binary tree of external links to github, gitlab, linkedin, and my resume"/>
   </body>
-<script src="js/registerServiceWorker.js"></script>
+  <!-- Code to replace the image with the contents of link-tree.svg -->
+  <!-- This allows me to style and animate the svg elements -->
+  <script src="js/inlineSVG.min.js"></script>
+  <script>
+    /** Replace the <img> tag with an <svg> tag, and on success, call a function*/
+    inlineSVG.init({
+      svgSelector: 'img'
+    }, function () {
+      // Get all the links
+      var links = document.querySelectorAll("a");
+      // Get the traversal line once
+      var traversal = document.getElementById("traversal");
+
+      // Add event listeners to each link that animate the traversal
+      links.forEach(function(link) {
+        link.addEventListener("mouseenter", function (e) {
+          traversal.setAttribute("class","animate-" + e.target.id);
+        });
+      });
+
+      // Hide the traversal line when you leave the SVG entirely
+      document.querySelector("svg").addEventListener("mouseleave", function (e) {
+        traversal.setAttribute("class","");
+      });
+    });
+  </script>
+
+  <!-- Cache all the content with a service worker -->
+  <script src="js/registerServiceWorker.js"></script>
 </html>

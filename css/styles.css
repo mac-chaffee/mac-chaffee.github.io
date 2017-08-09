@@ -1,2 +1,2 @@
-body{background-color:#ECEBF3;color:#303633;display:flex;justify-content:center;align-content:center;height:100vh;margin:0}object{width:100vw;max-width:1200px}
+body{background-color:#ECEBF3;color:#303633;display:flex;justify-content:center;align-content:center;height:100vh;margin:0}svg,img{width:100vw;max-width:1200px}#traversal{stroke-dasharray:700px;stroke-dashoffset:700px;transition:1s ease-out}#traversal.animate-github{stroke-dashoffset:565}#traversal.animate-gitlab{stroke-dashoffset:467}#traversal.animate-linkedin{stroke-dashoffset:292}#traversal.animate-resume{stroke-dashoffset:197}
 /*# sourceMappingURL=styles.css.map */
