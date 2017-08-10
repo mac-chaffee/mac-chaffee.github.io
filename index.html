@@ -10,74 +10,88 @@
   <body>
     <img src="img/link-tree.svg" alt="A binary tree of external links to github, gitlab, linkedin, and my resume"/>
     <div class="all-traversals">
-      <h3>Traversals</h3>
-      <p>
-        <span class="traversal-label">Pre-order: </span><span id="pre-order"></span>
-      </p>
-      <p>
-        <span class="traversal-label">In-order: </span><span id="in-order"></span>
-      </p>
-      <p>
-        <span class="traversal-label">Post-order: </span><span id="post-order"></span>
-      </p>
+      <h2>Traversals</h2>
+      <p class="traversal-label">Pre-order: </p>
+      <span id="pre-order" class="muted">[]</span>
+      <p class="traversal-label">In-order: </p>
+      <span id="in-order" class="muted">[]</span>
+      <p class="traversal-label">Post-order: </p>
+      <span id="post-order" class="muted">[]</span>
     </div>
   </body>
   <!-- Code to replace the image with the contents of link-tree.svg -->
   <!-- This allows me to style and animate the svg elements -->
   <script src="js/inlineSVG.min.js"></script>
   <script>
-    /** Replace the <img> tag with an <svg> tag, and on success, call a function*/
+    // Query for everything outside the SVG here for efficiency
+    var preOrder = document.getElementById("pre-order");
+    var inOrder = document.getElementById("in-order");
+    var postOrder = document.getElementById("post-order");
+
+    /**
+     * Replace the <img> tag with an <svg> tag, and on success,
+     * call a function to regster event listeners for animations
+     */
     inlineSVG.init({
       svgSelector: 'img'
     }, function () {
-      // Get all the links
+      // Get all the links and the traversal (now that they've been inlined)
       var links = document.querySelectorAll("a");
-      // Query for the needed elements once
       var traversal = document.getElementById("traversal");
-      var preOrder = document.getElementById("pre-order");
-      var inOrder = document.getElementById("in-order");
-      var postOrder = document.getElementById("post-order");
 
-      // Add event listeners to each link that animate the traversal
+      // Animate the traversal and text when you focus/hover over any link
       links.forEach(function(link) {
-        link.addEventListener("mouseenter", function (e) {
-          traversal.setAttribute("class","animate-" + e.target.id);
-          // Write the pre/in/post order traversals depending on the ID
-          switch (e.target.id) {
-            case "github":
-              preOrder.innerHTML = "Links, Code, GitHub";
-              inOrder.innerHTML = "GitHub";
-              postOrder.innerHTML = "GitHub";
-              break;
-            case "gitlab":
-              preOrder.innerHTML = "Links, Code, GitHub, GitLab";
-              inOrder.innerHTML = "GitHub, Code, GitLab";
-              postOrder.innerHTML = "GitHub, GitLab";
-              break;
-            case "linkedin":
-              preOrder.innerHTML = "Links, Code, GitHub, GitLab, Non-Code, LinkedIn";
-              inOrder.innerHTML = "GitHub, Code, GitLab, Links, LinkedIn";
-              postOrder.innerHTML = "GitHub, GitLab, Code, LinkedIn";
-              break;
-            case "resume":
-              preOrder.innerHTML = "Links, Code, GitHub, GitLab, Non-Code, LinkedIn, Resume";
-              inOrder.innerHTML = "GitHub, Code, GitLab, Links, LinkedIn, Non-Code, Resume";
-              postOrder.innerHTML = "GitHub, GitLab, Code, LinkedIn, Resume";
-              break;
-            default:
-              console.error("Invalid id recieved: " + e.target.id);
-          }
-        });
+        link.addEventListener("mouseenter", updateTraversal);
+        // Also register 'active' so it works on mobile
+        link.addEventListener("focus", updateTraversal);
       });
 
-      // Hide the traversal line and text when you leave the SVG entirely
+      // Go back to defaults when you leave the SVG entirely
       document.querySelector("svg").addEventListener("mouseleave", function (e) {
+        // Hide the traversal line
         traversal.setAttribute("class","");
-        preOrder.innerHTML = "";
-        inOrder.innerHTML = "";
-        postOrder.innerHTML = "";
+        // Clear out and mute the traversal text
+        [preOrder, postOrder, inOrder].forEach(function(elem) {
+          elem.innerHTML = "[]";
+          elem.setAttribute("class", "muted");
+        })
       });
     });
+    /** Function that draws the traversal line and updates the traversal text */
+    function updateTraversal(e) {
+      // Animate the line
+      traversal.setAttribute("class","animate-" + e.target.id);
+      // Un-mute the text
+      [preOrder, postOrder, inOrder].forEach(function(elem) {
+        elem.setAttribute("class", "");
+      })
+      // Write the pre/in/post order traversals depending on the ID
+      // Pre-calculated for... efficiency ;)
+      switch (e.target.id) {
+        case "github":
+          preOrder.innerHTML = "[Links, Code, GitHub]";
+          inOrder.innerHTML = "[GitHub]";
+          postOrder.innerHTML = "[GitHub]";
+          break;
+        case "gitlab":
+          preOrder.innerHTML = "[Links, Code, GitHub, GitLab]";
+          inOrder.innerHTML = "[GitHub, Code, GitLab]";
+          postOrder.innerHTML = "[GitHub, GitLab]";
+          break;
+        case "linkedin":
+          preOrder.innerHTML = "[Links, Code, GitHub, GitLab, Non-Code, LinkedIn]";
+          inOrder.innerHTML = "[GitHub, Code, GitLab, Links, LinkedIn]";
+          postOrder.innerHTML = "GitHub, GitLab, Code, LinkedIn]";
+          break;
+        case "resume":
+          preOrder.innerHTML = "[Links, Code, GitHub, GitLab, Non-Code, LinkedIn, Resume]";
+          inOrder.innerHTML = "[GitHub, Code, GitLab, Links, LinkedIn, Non-Code, Resume]";
+          postOrder.innerHTML = "[GitHub, GitLab, Code, LinkedIn, Resume]";
+          break;
+        default:
+          console.error("Invalid id recieved: " + e.target.id);
+      }
+    }
   </script>
 
   <!-- Cache all the content with a service worker -->

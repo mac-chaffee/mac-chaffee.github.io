@@ -10,22 +10,28 @@ body
   margin: 0
   user-select: none
   font-family: monospace
+  font-size: 14px
 
 svg,
 img
-  width: 100vw
-  max-width: 1200px
+  max-width: 1000px
 
 .all-traversals
   display: flex
   flex-direction: column
-  width: 550px
+  align-items: flex-start
+  width: 100vw
+  max-width: 490px
 
-  h3
+  h2
     text-align: center
+    align-self: center
 
 .traversal-label
   font-weight: bold
+
+.muted
+  color: lighten($jet, 30%)
 
 #traversal
   stroke-dasharray: 850px
