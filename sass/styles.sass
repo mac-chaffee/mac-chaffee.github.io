@@ -12,6 +12,10 @@ body
   font-family: monospace
   font-size: 14px
 
+  @media (max-width: 550px), (max-height: 440px)
+    font-size: 11px
+
+
 svg,
 img
   max-width: 1000px
@@ -20,18 +24,23 @@ img
   display: flex
   flex-direction: column
   align-items: flex-start
-  width: 100vw
-  max-width: 490px
+  width: 95vw
+  max-width: 500px
 
   h2
     text-align: center
     align-self: center
+    margin: 10px 0 0
 
 .traversal-label
   font-weight: bold
 
 .muted
   color: lighten($jet, 30%)
+
+.help
+  margin: 0
+  align-self: center
 
 #traversal
   stroke-dasharray: 850px
