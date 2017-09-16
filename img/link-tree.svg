@@ -30,7 +30,7 @@
       <path style="fill:none;stroke:#000000;stroke-width:0.531;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.941" d="M 136,115 C 117,96.2 117,96.2 117,96.2" id="path4660-54" inkscape:connector-curvature="0" />
     </g>
     <path id="traversal" style="fill:none;stroke:#c20114;stroke-width:0.794;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1" d="m 88.1,82.8 c -4.6,3.1 -5,9.5 -2.9,11.6 L 65,112 c -17.8,-11 -31.1,6 -25.6,15 l -19.6,19 c -18.62,3 -17.16,29 0.6,30 13.5,0 25,-17 7.8,-29 L 44,132 c 3.7,4 14.3,4 18.5,1 l 14.2,16 c -14.3,13 -1.6,27 8.6,27 16.7,-1 21.7,-24 3,-30 L 69.4,127 c 1.3,-2 2,-6 0.3,-10 L 89.8,98.5 c 6.8,3.5 17.2,4.5 24.2,0 l 14,14.5 c -8,6 -7,13 1,18 l -13,15 c -17.1,4 -16.2,29 3,30 14,1 22,-20 7,-28 l 12,-14 c 6,1 13,2 19,0 l 16,15 c -10,7 -8,27 9,27 19,-1 20,-28 2,-30 l -16,-17 c 16,-16 -17,-24 -33,-19 L 119,94 c 2,-4.8 0,-8.9 -4,-11.3" inkscape:connector-curvature="0" sodipodi:nodetypes="ccccccccccsccccccccccccccccccc" inkscape:label="#path205" />
-    <a id="github" xlink:href="https://github.com/mac-chaffee" target="_blank" inkscape:label="#a4892" transform="translate(1.05961,0)">
+    <a id="github" xlink:href="https://github.com/mac-chaffee" inkscape:label="#a4892" transform="translate(1.05961,0)">
       <g id="g4883">
         <g id="g4692" transform="matrix(0.7693887,0,0,0.7693887,3.7732981,34.146683)">
           <rect ry="0" y="155" x="14.9" height="12.7" width="12.8" id="rect4668" style="fill:#ecebf3;fill-opacity:1;stroke:#ecebf3;stroke-width:0.69499999;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:37.77399826;stroke-opacity:1;paint-order:markers stroke fill" />
@@ -41,7 +41,7 @@
         <text id="text4560-3" y="170.66086" x="13.001919" style="font-style:normal;font-weight:normal;font-size:10.58300018px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.56;stroke-miterlimit:4;stroke-dasharray:none" xml:space="preserve"><tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.97353745px;font-family:monospace;-inkscape-font-specification:monospace;text-decoration: underline;text-decoration-line: underline;fill:#808080;stroke-width:0.56" y="170.66086" x="13.001919" id="tspan4558-6" text-decoration="underline" sodipodi:role="line">GitHub</tspan></text>
       </g>
     </a>
-    <a id="gitlab" xlink:href="https://gitlab.com/mac-chaffee" target="_blank" inkscape:label="#a4933">
+    <a id="gitlab" xlink:href="https://gitlab.com/mac-chaffee" inkscape:label="#a4933">
       <g inkscape:label="#g4902" id="g4902">
         <g sketch:type="MSPage" id="g5436" transform="matrix(0.03348332,0,0,0.03348332,73.790124,146.44292)" style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1;filter:url(#filter4879)">
           <g sketch:type="MSArtboardGroup" id="logo-extra-whitespace">
@@ -92,7 +92,7 @@
         <text id="text4560-3-9" y="170.66086" x="77.72731" style="font-style:normal;font-weight:normal;font-size:10.58300018px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.56;stroke-miterlimit:4;stroke-dasharray:none" xml:space="preserve"><tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.97353745px;font-family:monospace;-inkscape-font-specification:monospace;text-decoration: underline;text-decoration-line: underline;fill:#808080;stroke-width:0.56" y="170.66086" x="77.72731" id="tspan4558-6-1" text-decoration="underline" sodipodi:role="line">GitLab</tspan></text>
       </g>
     </a>
-    <a id="resume" xlink:href="/img/resume.pdf" target="_blank" inkscape:label="#a5005">
+    <a id="resume" xlink:href="/img/resume.pdf" inkscape:label="#a5005">
       <g inkscape:label="#g4992" id="g4992">
         <g transform="matrix(0.76098444,0,0,0.76098444,43.076493,35.312618)" id="g4715">
           <rect rx="0" ry="2.72" y="152" x="175" height="18.6" width="14.1" id="rect4702" style="fill:#ecebf3;fill-opacity:1;stroke:#ecebf3;stroke-width:0.71799999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:37.77399826;stroke-opacity:1;paint-order:markers stroke fill" />
@@ -109,7 +109,7 @@
         <text id="text4560-3-92" y="170.59973" x="174.70245" style="font-style:normal;font-weight:normal;font-size:10.58300018px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.56;stroke-miterlimit:4;stroke-dasharray:none" xml:space="preserve"><tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.97353745px;font-family:monospace;-inkscape-font-specification:monospace;text-decoration: underline;text-decoration-line: underline;fill:#808080;stroke-width:0.56" y="170.59973" x="174.70245" id="tspan4558-6-5" text-decoration="underline" sodipodi:role="line">Resume</tspan></text>
       </g>
     </a>
-    <a id="blog" xlink:href="/blog" target="_blank" inkscape:label="#a4974">
+    <a id="blog" xlink:href="/blog" inkscape:label="#a4974">
       <g inkscape:label="#g4965" id="g4965">
         <rect style="fill:#ecebf3;fill-opacity:1" id="rect5019" width="15.846846" height="16.083366" x="111.22081" y="150.17323" ry="0.54831636" />
         <text id="text4560-3-5" y="170.27281" x="114.01948" style="font-style:normal;font-weight:normal;font-size:10.58300018px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.56;stroke-miterlimit:4;stroke-dasharray:none" xml:space="preserve"><tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.97353745px;font-family:monospace;-inkscape-font-specification:monospace;text-decoration: underline;text-decoration-line: underline;fill:#808080;stroke-width:0.56" y="170.27281" x="114.01948" id="tspan4558-6-4" text-decoration="underline" sodipodi:role="line">Blog</tspan></text>
