@@ -8,6 +8,7 @@ categories: technical
 Code example
 
 {% highlight python %}
+# Sample function
 def dict_to_tuple_list(input_dict)
     """Converts a dict to a list of 2-tuples"""
     return [(key, val) for key, val in input_dict.items()]
