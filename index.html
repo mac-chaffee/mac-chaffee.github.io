@@ -10,7 +10,7 @@
     <link href="css/styles.css" rel="stylesheet">
   </head>
   <body>
-    <img src="img/link-tree.svg" alt="A binary tree of external links to github, gitlab, linkedin, and my resume"/>
+    <img src="img/link-tree.svg" alt="A binary tree of external links to github, gitlab, blog, and my resume"/>
     <div class="all-traversals">
       <h2>Traversals</h2>
       <p class="help muted">(Hover over or tap and hold any leaf node)</p>
@@ -81,15 +81,15 @@
           inOrder.innerHTML = "[GitHub, Code, GitLab]";
           postOrder.innerHTML = "[GitHub, GitLab]";
           break;
-        case "linkedin":
-          preOrder.innerHTML = "[Links, Code, GitHub, GitLab, Non-Code, LinkedIn]";
-          inOrder.innerHTML = "[GitHub, Code, GitLab, Links, LinkedIn]";
-          postOrder.innerHTML = "[GitHub, GitLab, Code, LinkedIn]";
+        case "blog":
+          preOrder.innerHTML = "[Links, Code, GitHub, GitLab, Non-Code, Blog]";
+          inOrder.innerHTML = "[GitHub, Code, GitLab, Links, Blog]";
+          postOrder.innerHTML = "[GitHub, GitLab, Code, Blog]";
           break;
         case "resume":
-          preOrder.innerHTML = "[Links, Code, GitHub, GitLab, Non-Code, LinkedIn, Resume]";
-          inOrder.innerHTML = "[GitHub, Code, GitLab, Links, LinkedIn, Non-Code, Resume]";
-          postOrder.innerHTML = "[GitHub, GitLab, Code, LinkedIn, Resume]";
+          preOrder.innerHTML = "[Links, Code, GitHub, GitLab, Non-Code, Blog, Resume]";
+          inOrder.innerHTML = "[GitHub, Code, GitLab, Links, Blog, Non-Code, Resume]";
+          postOrder.innerHTML = "[GitHub, GitLab, Code, Blog, Resume]";
           break;
         default:
           console.error("Invalid id recieved: " + e.target.id);
