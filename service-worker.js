@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["css/styles.css","c08712bb46032c9a4c6d1592aca302d9"],["img/favicon.svg","70d14965c37327cb3303327e03bcc877"],["img/link-tree.svg","efa6dbdba89c60c3b2cd27f00406033a"],["img/resume.pdf","e61a696033a7d31138e43ebe60de5410"],["index.html","c6b24800c32b4922fe44186db6d32767"],["js/inlineSVG.min.js","e44e83c592c4621343e9a308a290896f"],["js/registerServiceWorker.js","eae9a3b2d21571c05328316bcff9e697"]];
+var precacheConfig = [["css/styles.css","c08712bb46032c9a4c6d1592aca302d9"],["img/favicon.svg","70d14965c37327cb3303327e03bcc877"],["img/link-tree.svg","48463d0624339cacd7714716efa29f50"],["img/resume.pdf","e61a696033a7d31138e43ebe60de5410"],["index.html","c6b24800c32b4922fe44186db6d32767"],["js/inlineSVG.min.js","e44e83c592c4621343e9a308a290896f"],["js/registerServiceWorker.js","eae9a3b2d21571c05328316bcff9e697"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
