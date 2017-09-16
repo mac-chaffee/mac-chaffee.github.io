@@ -19,7 +19,10 @@
         <ul class="social-media-list">
           {% if site.github_username %}
           <li>
-            {% include icon-github.html username=site.github_username %}
+            <a href="https://github.com/{{ include.username }}">
+              <span class="icon icon--github">{% include icon-github.svg %}</span>
+              <span class="username">Find me on GitHub</span>
+            </a>
           </li>
           {% endif %}
 
