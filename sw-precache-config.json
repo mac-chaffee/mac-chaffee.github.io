@@ -3,6 +3,7 @@
     "css/**.css",
     "**.html",
     "img/**.*",
-    "js/**.js"
+    "js/**.js",
+    "blog/*"
   ]
 }
