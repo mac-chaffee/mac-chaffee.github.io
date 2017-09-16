@@ -16,9 +16,14 @@ This is a static website, so it can be hosted directly from an AWS S3 bucket and
 **Dependencies:**
 ```
 sudo apt install ruby ruby-dev
-sudo gem install sass
+export GEM_HOME=$HOME/.gems
+gem install sass jekyll bundle
 npm install
 ```
+
+**Auto-recompile**
+
+Run `npm run dev` to watch for css changes, blog changes, and start the server.
 
 **Serving the website:**
 
@@ -32,17 +37,13 @@ To avoid this, run `python -m SimpleHTTPServer 8000` and access the site at `loc
 
 ```
 sass -t compressed --watch sass/all.sass:css/styles.css
+# or just this:
+npm run css
 ```
 
 ## Deployment
 
 ```
-# Compile sass files, then Ctrl+C since we don't need to watch for changes.
-npm run css
-
-# Make sure the service worker is caching all files
-npm run cache
-
-# Upload everything to S3
+# Re-generate css, re-cache, and upload everything to S3
 npm run sync
 ```

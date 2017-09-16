@@ -5,8 +5,10 @@
   "scripts": {
     "css": "sass -t compressed --watch sass/all.sass:css/styles.css",
     "server": "python -m SimpleHTTPServer 8000",
-    "sync": "aws s3 sync . s3://macchaffee --exclude '*' --include 'css/*' --include '*.js' --include '*.html' --include 'img/*' --exclude 'node_modules/*'",
-    "cache": "sw-precache --config=sw-precache-config.json"
+    "sync": "npm run css; npm run cache; aws s3 sync . s3://macchaffee --exclude '*' --include 'css/*' --include 'blog/*' --include '*.js' --include '*.html' --include 'img/*' --exclude 'node_modules/*'",
+    "cache": "sw-precache --config=sw-precache-config.json",
+    "blog": "cd blog_jekyll; jekyll build -d ../blog --watch",
+    "dev": "npm run css & npm run blog & npm run server"
   },
   "repository": {
     "type": "git",
