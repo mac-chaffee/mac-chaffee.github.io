@@ -2,6 +2,7 @@
 layout: post
 title:  "The design decisions behind my personal website"
 date:   2017-09-15 19:56:08 -0400
+image:  ../img/favicon.png
 ---
 
 I believe there are three things that make a good personal site:
