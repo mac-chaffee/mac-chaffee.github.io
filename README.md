@@ -5,11 +5,11 @@ My personal website
 ## Tech Stack
 **Front-End**
 
-Vanilla JS and Sass
+Vanilla JS, Sass, and Jekyll
 
 **Back-End**
 
-This is a static website, so it can be hosted directly from an AWS S3 bucket and cached easily by an AWS CloudFront CDN.
+This is a static website, so it can be hosted directly from an S3 bucket and cached by CloudFront.
 
 ## Development Environment
 
@@ -18,6 +18,11 @@ This is a static website, so it can be hosted directly from an AWS S3 bucket and
 sudo apt install ruby ruby-dev
 export GEM_HOME=$HOME/.gems
 gem install sass jekyll bundle
+
+cd blog_jekyll
+bundle install
+
+cd ..
 npm install
 ```
 
