@@ -23,9 +23,9 @@
   },
   "homepage": "https://github.com/mac-chaffee/personal-site#readme",
   "devDependencies": {
-    "eslint": "^4.4.0",
+    "eslint": "^4.19.1",
     "htmlhint": "^0.9.13",
     "sasslint": "0.0.10",
-    "sw-precache": "^5.2.0"
+    "sw-precache": "^5.2.1"
   }
 }
