@@ -9,7 +9,7 @@ Vanilla JS, Sass, and Jekyll
 
 **Back-End**
 
-This is a static website, so it can be hosted directly from an S3 bucket and cached by CloudFront.
+This is a static website, so it can be hosted directly from an S3 bucket + CloudFront.
 
 ## Development Environment
 

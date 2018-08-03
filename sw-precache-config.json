@@ -2,7 +2,7 @@
   "staticFileGlobs": [
     "css/**.css",
     "**.html",
-    "img/**.*",
+    "static/**.*",
     "js/**.js",
     "blog/**"
   ]
