@@ -32,7 +32,7 @@ Run `npm run dev` to watch for css changes, blog changes, and start the server.
 
 **Serving the website:**
 
-You can just open the index.html file, but then Chrome won't allow the service worker registration.
+You can just open the index.html file, but then Chrome won't allow inlineSVG to work.
 To avoid this, run `python -m SimpleHTTPServer 8000` and access the site at `localhost:8000`.
 
 `npm run server` will do this for you.
@@ -49,6 +49,6 @@ npm run css
 ## Deployment
 
 ```
-# Re-generate css, re-cache, and upload everything to S3
+# Re-generate the css, the blog, and upload everything to S3
 npm run sync
 ```
