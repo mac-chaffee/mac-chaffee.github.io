@@ -61,6 +61,9 @@ and the site is available offline. At the time of writing, the total cache size 
   alt="Page speed for macchaffee.com"
   caption="The service worker itself is cached for 30 seconds using http headers" %}
 
+*Updated Aug 11, 2018: I've gotten rid of sw-precache since seeing new content required a page*
+*refresh and the additional complexity wasn't worth the pennies I saved on S3 requests.*
+
 ## Development
 
 This is an area that could use some improvements. I need a better build manager than just
