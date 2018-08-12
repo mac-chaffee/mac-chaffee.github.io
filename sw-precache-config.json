@@ -1,9 +1,0 @@
-{
-  "staticFileGlobs": [
-    "css/**.css",
-    "**.html",
-    "static/**.*",
-    "js/**.js",
-    "blog/**"
-  ]
-}
