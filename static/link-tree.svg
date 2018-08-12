@@ -426,7 +426,7 @@
     <a
        id="blog"
        style="cursor:pointer"
-       xlink:href="/blog"
+       xlink:href="/blog/"
        inkscape:label="#a4974">
       <g
          inkscape:label="#g4965"
