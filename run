@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+function sync() {
+    compile_css
+    compile_blog
+    aws s3 sync . s3://macchaffee --exclude '*' \
+        --include 'index.html' \
+        --include 'css/*' \
+        --include 'js/*' \
+        --include 'static/*' \
+        --include 'blog/*' \
+        --cache-control 'max-age=86400'
+}
+
+function css() {
+    sass -t compressed --watch sass/all.sass:css/styles.css
+}
+
+function compile_css() {
+    sass -t compressed sass/all.sass:css/styles.css
+}
+
+function server() {
+    python3 -m http.server 8000
+}
+
+function blog() {
+    cd blog_jekyll
+    jekyll build -d ../blog --watch
+}
+
+function compile_blog() {
+    cd blog_jekyll
+    jekyll build -d ../blog cd -
+}
+
+function dev() {
+    css & blog & server
+}
+
+"$@"

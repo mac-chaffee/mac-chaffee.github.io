@@ -21,21 +21,18 @@ gem install sass jekyll bundle
 
 cd blog_jekyll
 bundle install
-
-cd ..
-npm install
 ```
 
 **Auto-recompile**
 
-Run `npm run dev` to watch for css changes, blog changes, and start the server.
+Run `./run dev` to watch for css changes, blog changes, and start the server.
 
 **Serving the website:**
 
 You can just open the index.html file, but then Chrome won't allow inlineSVG to work.
-To avoid this, run `python -m SimpleHTTPServer 8000` and access the site at `localhost:8000`.
+To avoid this, run `python3 -m http.server 8000` and access the site at `localhost:8000`.
 
-`npm run server` will do this for you.
+`./run server` will do this for you.
 
 
 **Re-compiling the stylesheets:**
@@ -43,12 +40,12 @@ To avoid this, run `python -m SimpleHTTPServer 8000` and access the site at `loc
 ```
 sass -t compressed --watch sass/all.sass:css/styles.css
 # or just this:
-npm run css
+./run css
 ```
 
 ## Deployment
 
 ```
 # Re-generate the css, the blog, and upload everything to S3
-npm run sync
+./run sync
 ```
