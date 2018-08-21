@@ -10,90 +10,9 @@
     <link href="css/styles.css" rel="stylesheet">
   </head>
   <body>
-    <img src="static/link-tree.svg" alt="A binary tree of external links to github, gitlab, my blog, and my resume"/>
-    <div class="all-traversals">
-      <h2>Traversals</h2>
-      <p class="help muted">(Hover over or tap and hold any leaf node)</p>
-      <p class="traversal-label">Pre-order: </p>
-      <span id="pre-order" class="muted">[]</span>
-      <p class="traversal-label">In-order: </p>
-      <span id="in-order" class="muted">[]</span>
-      <p class="traversal-label">Post-order: </p>
-      <span id="post-order" class="muted">[]</span>
-    </div>
+    <a href="https://github.com/mac-chaffee"><img src="static/github.svg" alt="github"/></a>
+    <a href="https://gitlab.com/users/mac-chaffee/projects"><img src="static/gitlab.svg" alt="gitlab" /></a>
+    <a href="/blog"><img src="static/blog.svg" alt="blog" /></a>
+    <a href="/static/resume.pdf"><img src="static/resume.svg" alt="resume" /></a>
   </body>
-  <!-- Code to replace the image with the contents of link-tree.svg -->
-  <!-- This allows me to style and animate the svg elements -->
-  <script src="js/inlineSVG.min.js"></script>
-  <script>
-    // Query for everything outside the SVG here for efficiency
-    var preOrder = document.getElementById("pre-order");
-    var inOrder = document.getElementById("in-order");
-    var postOrder = document.getElementById("post-order");
-
-    /**
-     * Replace the <img> tag with an <svg> tag, and on success,
-     * call a function to regster event listeners for animations
-     */
-    inlineSVG.init({
-      svgSelector: 'img'
-    }, function () {
-      // Get all the links and the traversal (now that they've been inlined)
-      var links = document.querySelectorAll("a");
-      var traversal = document.getElementById("traversal");
-
-      // Animate the traversal and text when you focus/hover over any link
-      links.forEach(function(link) {
-        link.addEventListener("mouseenter", updateTraversal);
-        // Also register 'active' so it works on mobile
-        link.addEventListener("focus", updateTraversal);
-      });
-
-      // Go back to defaults when you leave the SVG entirely
-      document.querySelector("svg").addEventListener("mouseleave", function (e) {
-        // Hide the traversal line
-        traversal.setAttribute("class","");
-        // Clear out and mute the traversal text
-        [preOrder, postOrder, inOrder].forEach(function(elem) {
-          elem.innerHTML = "[]";
-          elem.setAttribute("class", "muted");
-        })
-      });
-    });
-    /** Function that draws the traversal line and updates the traversal text */
-    function updateTraversal(e) {
-      // Animate the line
-      traversal.setAttribute("class","animate-" + e.target.id);
-      // Un-mute the text
-      [preOrder, postOrder, inOrder].forEach(function(elem) {
-        elem.setAttribute("class", "");
-      })
-      // Write the pre/in/post order traversals depending on the ID
-      // Pre-calculated for... efficiency ;)
-      switch (e.target.id) {
-        case "github":
-          preOrder.innerHTML = "[Links, Code, GitHub]";
-          inOrder.innerHTML = "[GitHub]";
-          postOrder.innerHTML = "[GitHub]";
-          break;
-        case "gitlab":
-          preOrder.innerHTML = "[Links, Code, GitHub, GitLab]";
-          inOrder.innerHTML = "[GitHub, Code, GitLab]";
-          postOrder.innerHTML = "[GitHub, GitLab]";
-          break;
-        case "blog":
-          preOrder.innerHTML = "[Links, Code, GitHub, GitLab, Non-Code, Blog]";
-          inOrder.innerHTML = "[GitHub, Code, GitLab, Links, Blog]";
-          postOrder.innerHTML = "[GitHub, GitLab, Code, Blog]";
-          break;
-        case "resume":
-          preOrder.innerHTML = "[Links, Code, GitHub, GitLab, Non-Code, Blog, Resume]";
-          inOrder.innerHTML = "[GitHub, Code, GitLab, Links, Blog, Non-Code, Resume]";
-          postOrder.innerHTML = "[GitHub, GitLab, Code, Blog, Resume]";
-          break;
-        default:
-          console.error("Invalid id recieved: " + e.target.id);
-      }
-    }
-  </script>
 </html>
