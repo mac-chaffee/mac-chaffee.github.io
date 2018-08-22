@@ -8,6 +8,7 @@ function sync() {
         --include 'js/*' \
         --include 'static/*' \
         --include 'blog/*' \
+        --delete \
         --cache-control 'max-age=86400'
 }
 
@@ -30,7 +31,8 @@ function blog() {
 
 function compile_blog() {
     cd blog_jekyll
-    jekyll build -d ../blog cd -
+    jekyll build -d ../blog
+    cd -
 }
 
 function dev() {
