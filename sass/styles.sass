@@ -1,56 +1,31 @@
 /* Basic styles that should apply everywhere */
 body
   background-color: $flash-white
-  color: $jet
+  height: 100vh
   display: flex
   flex-direction: column
+  align-items: center
+  justify-content: center
+
+h1
+  font-family: monospace
+  color: $nickel
+  margin-bottom: 30px
+  text-align: center
+  @media(max-width: 550px)
+    font-size: 1.5em
+
+
+main
+  display: flex
+  flex-direction: row
   justify-content: center
   align-items: center
-  height: 100vh
-  margin: 0
-  user-select: none
-  font-family: monospace
-  font-size: 14px
 
-  @media (max-width: 550px), (max-height: 440px)
-    font-size: 11px
-
-
-svg,
 img
-  max-width: 1000px
-
-.all-traversals
-  display: flex
-  flex-direction: column
-  align-items: flex-start
-  width: 95vw
+  width: 100%
   max-width: 500px
+  transition: box-shadow .2s
 
-  h2
-    text-align: center
-    align-self: center
-    margin: 15px 0 0
-
-.traversal-label
-  font-weight: bold
-
-.muted
-  color: lighten($jet, 30%)
-
-.help
-  margin: 0
-  align-self: center
-
-#traversal
-  stroke-dasharray: 850px
-  stroke-dashoffset: 850px
-  transition: 1s ease-out
-
-  // Hovering over each link will set a unique class
-  // The class determines how long the line should be
-  $map: (animate-github: 673, animate-gitlab: 533, animate-blog: 292, animate-resume: 155)
-
-  @each $key, $val in $map
-    &.#{$key}
-      stroke-dashoffset: #{$val}
+img:hover
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12)
