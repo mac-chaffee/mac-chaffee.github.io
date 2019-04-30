@@ -8,6 +8,7 @@ function sync() {
         --include 'js/*' \
         --include 'static/*' \
         --include 'blog/*' \
+        --include 'abgd/*' \
         --delete \
         --cache-control 'max-age=86400'
 }
