@@ -34,10 +34,10 @@ not for Amazon waiving that cost for the first year.
 ## Frontend
 
 I wanted to keep everything simple.
-I opted for [Sass][5] to simplify my css and [jekyll][6] since it's only real option for static blogs.
+I opted for [Sass][5] to simplify my css and [jekyll][6] since it's a battle-tested option for static blogs.
 Sass allows me to do stuff like this:
 {% highlight sass %}
-// Draws the red traversal line at macchaffee.com
+// Draws a line of a specific length
 $map: (github: 673, gitlab: 533, blog: 292, resume: 155)
 
 @each $key, $val in $map
@@ -68,10 +68,10 @@ and the site is available offline. At the time of writing, the total cache size 
 
 This is an area that could use some improvements. I need a better build manager than just
 putting stuff under "scripts" in my package.json file. But now that I have some clever
-commands in there, I can simply say `npm run dev` to start the jekyll transpiler, the sass
+commands in there, I can simply say `./run dev` to start the jekyll transpiler, the sass
 transpiler, and a web server.
 
-I use [Atom][10] (hence the color scheme of this blog) and it has good support for linters.
+I use [VS Code][10] with the Atom theme (hence the color scheme of this blog) and it has good support for linters.
 I use [eslint][11], [htmlhint][12], and [sass-lint][13] to catch errors early. These linters run in the background
 automatically whenever I save a file.
 
@@ -88,7 +88,7 @@ site will be easier to maintain in the future.
 [7]: https://github.com/jonnyhaynes/inline-svg
 [8]: https://github.com/GoogleChrome/sw-precache
 [9]: https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
-[10]: https://atom.io/
+[10]: https://code.visualstudio.com/
 [11]: https://github.com/eslint/eslint
 [12]: https://github.com/yaniswang/HTMLHint
 [13]: https://www.npmjs.com/package/sass-lint
