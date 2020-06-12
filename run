@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -Eeuo pipefail
 function sync() {
     compile_blog
     aws s3 sync . s3://macchaffee --exclude '*' \
@@ -16,19 +17,28 @@ function server() {
     python3 -m http.server 8000
 }
 
+function dockerCMD() {
+    docker run --rm \
+        --volume="/tmp/rubycache:/usr/local/bundle" \
+        --volume="$PWD/blog_jekyll:/srv/jekyll" \
+        --volume="$PWD/blog:/srv/blog" \
+        -it jekyll/jekyll:3.8.6 \
+        $*
+}
+
 function blog() {
-    cd blog_jekyll
-    jekyll build -d ../blog --watch
+    dockerCMD "jekyll build -d /srv/blog --watch"
 }
 
 function compile_blog() {
-    cd blog_jekyll
-    jekyll build -d ../blog
-    cd -
+    dockerCMD "jekyll build -d /srv/blog"
+}
+function update() {
+    dockerCMD "bundle update"
 }
 
 function dev() {
-    blog & server
+    server & blog
 }
 
 "$@"

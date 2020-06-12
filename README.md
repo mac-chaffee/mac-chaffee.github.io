@@ -14,28 +14,23 @@ This is a static website, so it can be hosted directly from an S3 bucket + Cloud
 ## Development Environment
 
 **Dependencies**
+Install docker: https://docs.docker.com/engine/install/ubuntu/
+Then install awscli:
 ```
-sudo apt install ruby ruby-dev
-export GEM_HOME=$HOME/.gems
-gem install jekyll bundle
-
-cd blog_jekyll
-bundle install
 pip install --user awscli
 aws configure
 ```
 
 **Updating Dependencies**
 ```
-cd blog_jekyll
-bundle update
+./run update
 ```
 If updating a dependency pinned in the `Gemfile`, you'll need to
 manually update the value after running `bundle update`.
 
 **Auto-recompile**
 
-Run `./run dev` to watch for css changes, blog changes, and start the server.
+Run `./run dev` to watch for blog changes and start the server.
 
 ## Deployment
 
