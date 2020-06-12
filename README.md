@@ -5,7 +5,7 @@ My personal website
 ## Tech Stack
 **Front-End**
 
-Vanilla JS, Sass, and Jekyll
+Vanilla JS, CSS, and Jekyll
 
 **Back-End**
 
@@ -17,7 +17,7 @@ This is a static website, so it can be hosted directly from an S3 bucket + Cloud
 ```
 sudo apt install ruby ruby-dev
 export GEM_HOME=$HOME/.gems
-gem install sass jekyll bundle
+gem install jekyll bundle
 
 cd blog_jekyll
 bundle install
@@ -39,7 +39,7 @@ Run `./run dev` to watch for css changes, blog changes, and start the server.
 
 ## Deployment
 
-This command will recompile the css and the blog, then upload everything to S3:
+This command will recompile the blog then upload everything to S3:
 ```
 ./run sync
 ```

@@ -1,0 +1,47 @@
+body {
+  background-color: #ECEBF3;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-family: monospace;
+  color: #6D7275;
+  margin-bottom: 30px;
+  text-align: center;
+}
+@media(max-width: 550px) {
+  h1 {
+    font-size: 1.5em;
+  }
+}
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  text-align: center;
+  font-family: monospace;
+  color: #6D7275;
+  margin-top: 30px;
+}
+
+a {
+  color: #6D7275;
+}
+
+img {
+  width: 100%;
+  max-width: 500px;
+  transition: box-shadow .2s;
+}
+
+img:hover {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}

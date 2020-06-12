@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 function sync() {
-    compile_css
     compile_blog
     aws s3 sync . s3://macchaffee --exclude '*' \
         --include 'index.html' \
@@ -11,14 +10,6 @@ function sync() {
         --include 'abgd/*' \
         --delete \
         --cache-control 'max-age=86400'
-}
-
-function css() {
-    sass -t compressed --watch sass/all.sass:css/styles.css
-}
-
-function compile_css() {
-    sass -t compressed sass/all.sass:css/styles.css
 }
 
 function server() {
@@ -37,7 +28,7 @@ function compile_blog() {
 }
 
 function dev() {
-    css & blog & server
+    blog & server
 }
 
 "$@"
