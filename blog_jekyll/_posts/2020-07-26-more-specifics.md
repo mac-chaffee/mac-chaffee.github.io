@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Please make your advice more specific"
-date:   2020-07-26 10:03:08 -0400
+date:   2020-07-26 18:03:08 -0400
 image:  /assets/2020-07-26-cargo_cult.jpg
 ---
 
@@ -14,7 +14,7 @@ But I've noticed a pattern with software engineering advice that leads to over-e
 It's too often overlooked that there isn't just one type of "software", thus it is rare for advice to be applicable to every situation. For example, advice for testing a small B2B web app might not work for embedded device firmware. But it might work for a large B2C web app. And since readers will rarely have experience in all of those situations, I think we should start being more explicit about the applicability of our advice.
 
 Being more specific might help address two big time sinks in the industry:
-1. [Cargo-culting](https://en.wiktionary.org/wiki/cargo_culting), like when people read how great Kubernetes works for Netflix, but then they decide use it for a little Django app (that was me a few years ago).
+1. [Cargo-culting](https://en.wiktionary.org/wiki/cargo_culting), like when people read how great Kubernetes works for Netflix, but then they decide to use it for a little Django app (that was me a few years ago).
 2. [Bikeshedding](https://en.wiktionary.org/wiki/bikeshedding), like when people argue incessantly that a language is useless because it can't be used in some niche.
 
 A good start might be answering questions like the following:
