@@ -11,13 +11,13 @@ But I've noticed a pattern with software engineering advice that leads to over-e
 
 <p align="center"><em>Please make your advice more specific</em></p>
 
-It's too often overlooked that there isn't just one type of "software", thus it is rare for advice to be applicable to every situation. For example, advice for testing a small B2B web app might not work for embedded device firmware. But it might work for a large B2C web app. And since your readers won't have experience in all of those situations, could we all start being more explicit about the applicability of our advice?
+It's too often overlooked that there isn't just one type of "software", thus it is rare for advice to be applicable to every situation. For example, advice for testing a small B2B web app might not work for embedded device firmware. But it might work for a large B2C web app. And since readers will rarely have experience in all of those situations, I think we should start being more explicit about the applicability of our advice.
 
 Being more specific might help address two big time sinks in the industry:
 1. [Cargo-culting](https://en.wiktionary.org/wiki/cargo_culting), like when people read how great Kubernetes works for Netflix, but then they decide use it for a little Django app (that was me a few years ago).
 2. [Bikeshedding](https://en.wiktionary.org/wiki/bikeshedding), like when people argue incessantly that a language is useless because it can't be used in some niche.
 
-A good start might be answering questions like the following for users:
+A good start might be answering questions like the following:
 * Does your advice apply to my scale? (local restaurant website vs. Youtube.com)
 * Does your advice apply to my type of product? (library, web app, CLI tool, firmware, on/off-premise, etc.)
 * Does your advice apply to my type of users? (developers, enterprises, regular people, etc.)
