@@ -1,0 +1,4 @@
+[submodule "blog_zola/themes/oceanic-zen"]
+	path = blog_zola/themes/oceanic-zen
+	url = git@github.com:barlog-m/oceanic-zen.git
+	branch = main

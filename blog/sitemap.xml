@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://mac-chaffee.github.io/personal-site/blog/</loc>
+        <loc>https://www.macchaffee.com/blog/</loc>
     </url>
     <url>
-        <loc>https://mac-chaffee.github.io/personal-site/blog/2020/</loc>
+        <loc>https://www.macchaffee.com/blog/2020/</loc>
     </url>
     <url>
-        <loc>https://mac-chaffee.github.io/personal-site/blog/2020/more-specifics/</loc>
+        <loc>https://www.macchaffee.com/blog/2020/more-specifics/</loc>
         <lastmod>2020-07-26</lastmod>
     </url>
 </urlset>

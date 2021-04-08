@@ -1,40 +1,32 @@
 # macchaffee.com
 
-My personal website
+My personal website.
 
 ## Tech Stack
 **Front-End**
 
-Vanilla JS, CSS, and Jekyll
+Vanilla JS, CSS, and [Zola](https://www.getzola.org/).
 
 **Back-End**
 
-This is a static website, so it can be hosted directly from an S3 bucket + CloudFront.
+Github Pages.
 
 ## Development Environment
 
-**Dependencies**
-Install docker: https://docs.docker.com/engine/install/ubuntu/
-Then install awscli:
+Install Zola: <https://www.getzola.org/documentation/getting-started/installation/>
+
 ```
-pip install --user awscli
-aws configure
+brew install zola
 ```
 
-**Updating Dependencies**
-```
-./run update
-```
-If updating a dependency pinned in the `Gemfile`, you'll need to
-manually update the value after running `bundle update`.
+Make sure the oceanic-zen submodule is cloned into the `blog_zola/themes` directory.
 
-**Auto-recompile**
-
-Run `./run dev` to watch for blog changes and start the server.
+You can run `cd blog_zola && zola serve -O` to view the site live.
 
 ## Deployment
 
-This command will recompile the blog then upload everything to S3:
 ```
-./run sync
+cd blog_zola && zola build -o ../blog
+git commit
+git push
 ```
