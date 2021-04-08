@@ -1,44 +1,8 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
-function sync() {
-    compile_blog
-    aws s3 sync . s3://macchaffee --exclude '*' \
-        --include 'index.html' \
-        --include 'css/*' \
-        --include 'js/*' \
-        --include 'static/*' \
-        --include 'blog/*' \
-        --include 'abgd/*' \
-        --delete \
-        --cache-control 'max-age=86400'
-}
 
 function server() {
     python3 -m http.server 8000
-}
-
-function dockerCMD() {
-    docker run --rm \
-        --volume="/tmp/rubycache:/usr/local/bundle" \
-        --volume="$PWD/blog_jekyll:/srv/jekyll" \
-        --volume="$PWD/blog:/srv/blog" \
-        -it jekyll/jekyll:4.2.0 \
-        $*
-}
-
-function blog() {
-    dockerCMD "jekyll build -d /srv/blog --watch"
-}
-
-function compile_blog() {
-    dockerCMD "jekyll build -d /srv/blog"
-}
-function update() {
-    dockerCMD "bundle update"
-}
-
-function dev() {
-    server & blog
 }
 
 "$@"
