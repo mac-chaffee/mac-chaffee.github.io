@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.macchaffee.com/sitemap.xml
+Sitemap: https://mac-chaffee.github.io/personal-site/blog/sitemap.xml
