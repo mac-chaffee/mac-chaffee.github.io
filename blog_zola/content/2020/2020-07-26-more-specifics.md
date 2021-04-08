@@ -1,9 +1,7 @@
----
-layout: post
-title:  "Please make your advice more specific"
-date:   2020-07-26 18:03:08 -0400
-image:  /assets/2020-07-26-cargo_cult.jpg
----
++++
+title = "Please make your advice more specific"
+date = 2020-07-26
++++
 
 To those of you who give advice on which languages, methodologies, architectures, or whatever else to use, I want to start by saying thank you. Your advice is vital to the growth of millions of people like me who are early in their careers.
 

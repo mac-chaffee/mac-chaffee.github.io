@@ -1,0 +1,29 @@
+{% extends "oceanic-zen/templates/index.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ get_url(path="theme.css", trailing_slash=false) | safe }}">
+<style>
+body {
+    font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1 {
+    font-size: 47px;
+}
+ul {
+    list-style-type: disc;
+}
+code {
+    font-family: monospace;
+    padding: 1px 5px;
+    font-size: 18px;
+    background-color: #101a20;
+}
+</style>
+{% endblock css %}
+{% block footer %}
+    <div class="border"></div>
+    <div class="footer">
+        <small class="footer-left">
+            Copyright &copy; {{ config.extra.author }}
+        </small>
+    </div>
+{% endblock footer %}
