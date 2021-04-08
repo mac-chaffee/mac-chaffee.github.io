@@ -22,7 +22,7 @@ function dockerCMD() {
         --volume="/tmp/rubycache:/usr/local/bundle" \
         --volume="$PWD/blog_jekyll:/srv/jekyll" \
         --volume="$PWD/blog:/srv/blog" \
-        -it jekyll/jekyll:3.8.6 \
+        -it jekyll/jekyll:4.2.0 \
         $*
 }
 
