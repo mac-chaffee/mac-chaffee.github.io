@@ -1,5 +1,9 @@
 {% extends "oceanic-zen/templates/index.html" %}
 {% block css %}
+{% if config.build_search_index %}
+<script defer type="text/javascript" src="{{ get_url(path=" elasticlunr.min.js") }}"></script>
+<script defer type="text/javascript" src="{{ get_url(path=" search_index.en.js") }}"></script>
+{% endif %}
 <link rel="stylesheet" href="{{ get_url(path="theme.css", trailing_slash=false) | safe }}">
 <style>
 body {
@@ -17,13 +21,26 @@ code {
     font-size: 18px;
     background-color: #101a20;
 }
+.search-box {
+    background-color: #101a20;
+    border: 2px solid #36596c;
+    font-size: 20px;
+    line-height: 2;
+    color: #c0c5ce;
+    margin-top: 10px;
+}
 </style>
 {% endblock css %}
 {% block footer %}
     <div class="border"></div>
     <div class="footer">
-        <small class="footer-left">
-            Copyright &copy; {{ config.extra.author }}
-        </small>
+        {% if config.build_search_index %}
+        <div>
+            <input class="search-box" type="text" placeholder="Search"></input>
+        </div>
+        {% endif %}
+        <div>
+            <a href="/">Home</a>
+        </div>
     </div>
 {% endblock footer %}
