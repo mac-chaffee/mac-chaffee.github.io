@@ -4,6 +4,12 @@
 <script defer type="text/javascript" src="{{ get_url(path=" elasticlunr.min.js") }}"></script>
 <script defer type="text/javascript" src="{{ get_url(path=" search_index.en.js") }}"></script>
 {% endif %}
+<meta name="image" content="https://www.macchaffee.com/static/favicon.png">
+<meta name="theme-color" content="#ECEBF3">
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+{% if page.title %}
+<meta property="og:title" content="{{ page.title }}">
+{% endif %}
 <link rel="stylesheet" href="{{ get_url(path="theme.css", trailing_slash=false) | safe }}">
 <style>
 body {

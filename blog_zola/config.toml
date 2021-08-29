@@ -1,6 +1,7 @@
 # The URL the site will be built for
 base_url = "/blog"
 title = "Mac Chaffee"
+description = "Mac Chaffee's tech blog"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
