@@ -25,6 +25,7 @@
 <style>
 body {
     font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #dbe0ea;
 }
 h1 {
     font-size: 47px;
@@ -45,6 +46,22 @@ code {
     line-height: 2;
     color: #c0c5ce;
     margin-top: 10px;
+}
+/* Overrides */
+p {
+  text-align: left;
+}
+p > code {
+  font-weight: normal;
+  color: #a7adba;
+}
+h2 {
+    font-size: 24px;
+    border-bottom:1px solid #99c794;
+}
+blockquote {
+    color: #a7adba;
+    font-style: italic;
 }
 </style>
 
@@ -146,7 +163,7 @@ code {
 <p>You can replace your encryption key from the above method with a <a href="https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/">Key Management Service from your favorite cloud provider</a>.</p>
 <p>While this is listed as the &quot;Strongest&quot; method, it's basically just as insecure according to our threat model. An attacker who can access the node can just mimic what etcd does and decrypt the secrets before exfiltrating them. At least this mitigates physical access to the disk, if and only if the KMS client is authenticating to your cloud provider with an auto-rotating, multi-factor token.</p>
 <p>Using this option requires a hard dependency on your cloud provider, a lot of complexity, and a BIG blast radius if it ever breaks. If you're forced to encrypt secrets at rest for compliance, this is unfortunately your best option despite it not tangibly benefitting your security posture.</p>
-<h3 id="bitnami-sealed-secrets">Bitnami Sealed Secrets</h3>
+<h4 id="bitnami-sealed-secrets">Bitnami Sealed Secrets</h4>
 <p><a href="https://github.com/bitnami-labs/sealed-secrets">Sealed Secrets</a> really aren't an alternative to secrets, but I've seen people think they are. Sealed Secrets allow you to store encrypted secrets in version control. When you <code>kubectl apply</code> a SealedSecret to your cluster, it gets automatically unencrypted and converted into plain Kubernetes Secrets by the Sealed Secrets.</p>
 <p>Since SealedSecrets turn into plain Secrets, no attacks in our threat model are mitigated. If you have no other safe place to store Secrets, SealedSecrets is a good option, but our threat model considers out-of-cluster storage of secrets to be out of scope.</p>
 <h4 id="vault-sidecar-injector">Vault Sidecar Injector</h4>
