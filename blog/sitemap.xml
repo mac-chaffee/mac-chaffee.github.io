@@ -17,4 +17,11 @@
         <loc>/blog/2021/maintenance/</loc>
         <lastmod>2021-08-14</lastmod>
     </url>
+    <url>
+        <loc>/blog/2022/</loc>
+    </url>
+    <url>
+        <loc>/blog/2022/k8s-secrets/</loc>
+        <lastmod>2022-04-30</lastmod>
+    </url>
 </urlset>
