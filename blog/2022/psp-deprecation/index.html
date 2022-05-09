@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="description" content="Mac Chaffee&#x27;s tech blog">
+        
+
+        <title>Mac Chaffee</title>
+
+        
+
+<meta name="image" content="https://www.macchaffee.com/static/favicon.png">
+<meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
+<meta name="theme-color" content="#ECEBF3">
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+
+<meta property="og:title" content="The Fumbled Deprecation of PodSecurityPolicies">
+
+<meta property="og:description" content="Mac Chaffee&#x27;s tech blog">
+
+<link rel="stylesheet" href="/blog/theme.css">
+<style>
+body {
+    font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #dbe0ea;
+}
+h1 {
+    font-size: 47px;
+}
+ul {
+    list-style-type: disc;
+}
+code {
+    font-family: monospace;
+    font-size: 18px;
+}
+.search-box {
+    background-color: #101a20;
+    border: 2px solid #36596c;
+    font-size: 20px;
+    line-height: 2;
+    color: #c0c5ce;
+    margin-top: 10px;
+}
+/* Overrides */
+p {
+  text-align: left;
+}
+p > code {
+  font-weight: normal;
+  padding: 1px 5px;
+  color: #a7adba;
+  background-color: #101a20;
+}
+h2 {
+    font-size: 24px;
+    border-bottom:1px solid #99c794;
+}
+blockquote {
+    color: #a7adba;
+    font-style: italic;
+}
+</style>
+
+        
+    </head>
+    <body>
+        <div class="content">
+        
+        
+            <header>
+                <div class="header-left">
+                    <a href="&#x2F;blog" class="logo">Mac Chaffee</a>
+                </div>
+                <div class="header-right">
+                    <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                        
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2022/">
+                                    <span itemprop="name">2022</span>
+                                </a>
+                            </li>
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2021/">
+                                    <span itemprop="name">2021</span>
+                                </a>
+                            </li>
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2020/">
+                                    <span itemprop="name">2020</span>
+                                </a>
+                            </li>
+                        
+                        
+                        <li class="nav">
+                            <a itemprop="url" href="https://github.com/mac-chaffee">
+                                <img class="icon" src="&#x2F;blog/icons/github.svg" alt="Github">
+                            </a>
+                        </li>
+                        
+                        
+                    </nav>
+                </div>
+            </header>
+        
+        
+        <main>
+            
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <div itemprop="headline">
+        <h1>The Fumbled Deprecation of PodSecurityPolicies</h1>
+        <div class="border"></div>
+        <time datetime="2022-05-08" class="date" itemprop="datePublished">
+            08 May 2022
+        </time>
+    </div>
+    <div itemprop="articleBody">
+        <p>In <a href="https://github.com/kubernetes/kubernetes/pull/7893">2016</a>, Kubernetes v1.3 was released which included a new API type: PodSecurityPolicies (PSPs). The original <a href="https://github.com/kubernetes/design-proposals-archive/blob/main/auth/pod-security-policy.md">design proposal</a> had the lofty goal of allowing cluster admins to restrict various Linux privileges to some Pods while still allowing other Pods to use them. PSPs filled an important security hole where having the ability to run pods could let you bypass every other security control in the cluster.</p>
+<p>But in 2021, after 5 years of PSPs still being considered &quot;beta&quot;, they were <a href="https://kubernetes.io/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/">deprecated</a>. The maintainers had their <a href="https://youtu.be/SFtHRmPuhEw?t=963">reasons</a>, but in the year since this deprecation, I believe it was mismanaged for a number of reasons.</p>
+<h2 id="what-are-podsecuritypolicies-psps">What are PodSecurityPolicies (PSPs)?</h2>
+<details>
+<summary>Click to expand if you don't know what they are already</summary>
+<p>The Official docs are <a href="https://kubernetes.io/docs/concepts/security/pod-security-policy/">here</a>, but PSPs are essentially yaml files that restrict <a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/">some special permissions</a> that Pods can have such as allowed UIDs/GIDs, <code>allowPrivilegeEscalation</code>, hostPath mounts, Linux Capabilities, etc. These permissions are extremely important to control since most any one of them could be used to break out of the container sandbox in some way.</p>
+<p>Here's an example PSP that implements the CIS Benchmarks for Kubernetes:</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">apiVersion</span><span>: </span><span style="color:#a3be8c;">policy/v1beta1
+</span><span style="color:#bf616a;">kind</span><span>: </span><span style="color:#a3be8c;">PodSecurityPolicy
+</span><span style="color:#bf616a;">metadata</span><span>:
+</span><span>  </span><span style="color:#bf616a;">annotations</span><span>:
+</span><span>    </span><span style="color:#65737e;"># https://docs.docker.com/engine/security/seccomp/
+</span><span>    </span><span style="color:#bf616a;">seccomp.security.alpha.kubernetes.io/allowedProfileNames</span><span>: </span><span style="color:#a3be8c;">docker/default,runtime/default
+</span><span>    </span><span style="color:#bf616a;">seccomp.security.alpha.kubernetes.io/defaultProfileName</span><span>: </span><span style="color:#a3be8c;">runtime/default
+</span><span>  </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">restricted
+</span><span style="color:#bf616a;">spec</span><span>:
+</span><span>  </span><span style="color:#65737e;"># CIS 5.2.1
+</span><span>  </span><span style="color:#bf616a;">privileged</span><span>: </span><span style="color:#d08770;">false
+</span><span>  </span><span style="color:#65737e;"># CIS 5.2.2
+</span><span>  </span><span style="color:#bf616a;">hostPID</span><span>: </span><span style="color:#d08770;">false
+</span><span>  </span><span style="color:#65737e;"># CIS 5.2.3
+</span><span>  </span><span style="color:#bf616a;">hostIPC</span><span>: </span><span style="color:#d08770;">false
+</span><span>  </span><span style="color:#65737e;"># CIS 5.2.4
+</span><span>  </span><span style="color:#bf616a;">hostNetwork</span><span>: </span><span style="color:#d08770;">false
+</span><span>  </span><span style="color:#65737e;"># CIS 5.2.5
+</span><span>  </span><span style="color:#bf616a;">allowPrivilegeEscalation</span><span>: </span><span style="color:#d08770;">false
+</span><span>  </span><span style="color:#65737e;"># CIS 5.2.6
+</span><span>  </span><span style="color:#bf616a;">runAsUser</span><span>:
+</span><span>    </span><span style="color:#bf616a;">rule</span><span>: </span><span style="color:#a3be8c;">MustRunAsNonRoot
+</span><span>  </span><span style="color:#65737e;"># CIS 5.2.7/8/9
+</span><span>  </span><span style="color:#bf616a;">requiredDropCapabilities</span><span>:
+</span><span>  - </span><span style="color:#a3be8c;">ALL
+</span><span>  </span><span style="color:#65737e;"># Needed to stop hostPath mounts, surprisingly not mentioned in CIS Benchmarks
+</span><span>  </span><span style="color:#bf616a;">volumes</span><span>:
+</span><span>  - </span><span style="color:#a3be8c;">configMap
+</span><span>  - </span><span style="color:#a3be8c;">emptyDir
+</span><span>  - </span><span style="color:#a3be8c;">projected
+</span><span>  - </span><span style="color:#a3be8c;">secret
+</span><span>  - </span><span style="color:#a3be8c;">downwardAPI
+</span><span>  - </span><span style="color:#a3be8c;">persistentVolumeClaim
+</span><span>  - </span><span style="color:#a3be8c;">ephemeral
+</span></code></pre>
+<p>As far as I know, any Pod that is bound by that PSP will not be able to escape the container sandbox (except via a new zero-day, of course).</p>
+<p>Once PSPs are enabled and you have deployed some policies (<a href="https://github.com/kubernetes-sigs/kubespray/blob/323a1113629b7cea77d18a80196e4a2544f747bc/roles/kubernetes-apps/cluster_roles/tasks/main.yml#L43">here's</a> how Kubespray does it), every new Pod will be checked against your PSPs. There are some complex rules about which policy is eventually applied to your pod (Pod SA, user's SA, prefer non-mutating, then alphabetical), but essentially your Pod will either be allowed, mutated-then-allowed, or blocked. To help debug, Pods will be given a <code>kubernetes.io/psp</code> annotation which tells you which policy was applied.</p>
+<p>Applications can ship their own PodSecurityPolicies if they need special permissions, such as <a href="https://github.com/kubernetes/ingress-nginx/blob/helm-chart-4.1.0/charts/ingress-nginx/templates/controller-psp.yaml">this one</a> that ships with ingress-nginx.</p>
+</details>
+<h2 id="reason-1-psps-really-weren-t-that-bad">Reason 1: PSPs really weren't that bad</h2>
+<p>While it's true there are usability/complexity concerns with PodSecurityPolicies, I believe this just reflects the fact that container security is a complex subject. Even after a year of dealing with this stuff, I'm still learning new and troubling ways that attackers can break out of containers.</p>
+<p>That necessarily means there are a lot of knobs to tweak. In the video where sig-auth announces plans to deprecate PSPs, <a href="https://youtu.be/SFtHRmPuhEw?t=1921">they say</a> &quot;&gt;90% of users care about 2-3 policies&quot;. I agree, but any policy mechanism should care a LOT about that last 10% since that's where the true, unavoidable complexity lies. This barrier to entry will always be present no matter what implementation we choose.</p>
+<p>Additionally, three problems were explicitly mentioned in the sig-auth video: 1) flawed authentication model, 2) difficult to roll out, and 3) inconsistent/unbounded API. These problems don't come across to me as insurmountable technical obstacles. They just seem like regular constraints/tradeoffs that any complex software needs to handle. And indeed they acknowledge that one possible option is to fix these issues rather than deprecating PSPs all together.</p>
+<p>So in summary, PodSecurityPolicies are definitely imperfect, but not so deeply flawed as to warrant deprecation. Yes, we'd have to break backwards compatibility to fix some imperfections (like enabling PSPs by default), but that should be expected from a &quot;beta&quot; API.</p>
+<h2 id="reason-2-replacements-for-psps-weren-t-ready-yet">Reason 2: Replacements for PSPs weren't ready yet</h2>
+<p>PSPs were officially deprecated with the release of Kubernetes v1.21, which happened on April 8th, 2021. While PSPs will not be <em>removed</em> until v1.25, deprecation means that new clusters probably shouldn't use PSPs. But what should you use instead? That question did not have an official answer until more than a month later when the <a href="https://github.com/kubernetes/enhancements/pull/2582">PSP Replacement KEP</a> was officially merged. But that was just a proposal. The implementation (<a href="https://kubernetes.io/docs/concepts/security/pod-security-admission/">Pod Security Admission controller</a>, PSA) wouldn't enter &quot;beta&quot; status until v1.23, <em>8 months</em> after PSPs were deprecated.</p>
+<p>While that Pod Security Admission controller was the official, in-tree replacement, the deprecation announcement <a href="https://kubernetes.io/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/">blog post</a> pointed to <a href="https://github.com/open-policy-agent/gatekeeper">Gatekeeper</a> as an unofficial replacement. But Gatekeeper was missing an important feature that was present in PSPs: the ability to mutate pods. Coincidentally, Gatekeeper <a href="https://github.com/open-policy-agent/gatekeeper/releases/tag/v3.4.0">released</a> &quot;alpha&quot; support for mutation on the same day PSPs were deprecated, which didn't become &quot;beta&quot; for <a href="https://github.com/open-policy-agent/gatekeeper/releases/tag/v3.7.0">another 7 months</a> where it remains to this day.</p>
+<p>So anyone deploying new clusters between April and November 2021 had to choose between deprecated software (PSPs) and alpha software (PSA or Gatekeeper) to fix this important security issue. I was one of those people, hence this rant :)</p>
+<h2 id="reason-3-a-de-facto-standard-is-not-a-standard">Reason 3: A de-facto standard is not a standard</h2>
+<p>This is not the first time Kubernetes has left an important niche to third-party software. The Container Runtime Interface (CRI), Container Networking Interface (CNI), Container Storage Interface (CSI), Cloud Controller Manager (CCM), and the Ingress Controller interfaces have all been successful as far as I can tell. These interfaces allow for multiple vendors to supply compatible plugins that users can (more or less) switch between easily. But no such standard interface was created for PodSecurityPolicies, and so the ecosystem is now fragmented.</p>
+<p>While Gatekeeper is officially &quot;graduated&quot; according to the CNCF (Kubernetes' parent organization), a startup named Nirmata develops <a href="https://github.com/kyverno/kyverno">Kyverno</a>, which is almost equally popular and fills the same niche as Gatekeeper as a PSP replacement. Gatekeeper and Kyverno have wildly incompatible policy languages, which means application vendors can no longer ship PSP-related rule exceptions along side their applications like they can with e.g. Ingresses, NetworkPolicies, etc.</p>
+<p>So if you want to install e.g. a log collector, you can't just <code>helm install</code> it anymore like you could if the helm chart included PSPs. You have to go tweak your Gatekeeper/Kyverno policies over and over until the pods finally run. And now you are locked-in to either Gatekeeper or Kyverno's policy language.</p>
+<h2 id="reason-4-this-has-already-caused-a-zero-day">Reason 4: This has already caused a zero-day</h2>
+<p>In Kubernetes v1.23, <a href="https://kubernetes.io/docs/concepts/workloads/pods/ephemeral-containers/">ephemeral containers</a> were enabled by default. This presents a challenge to Gatekeeper/Kyverno since its one extra field in a Pod that they need to validate.</p>
+<p>Unfortunately, at the time of writing Gatekeeper's PSP replacement policies <a href="https://github.com/open-policy-agent/gatekeeper-library/issues/188">still do not validate ephemeral containers</a>! Any v1.23 cluster which migrated from PSPs to Gatekeeper now has no protection against privileged pods! That's a 5+ month lag time! <a href="https://xenitab.github.io/blog/2022/04/12/ephemeral-container-security/">Another user</a> found that Kyverno also had a <a href="https://github.com/kyverno/kyverno/releases/tag/v1.5.3">1 month lag time</a>.</p>
+<p>In contrast, both PSPs and PSA were updated to check ephemeral containers before v1.23 was released (PSPs: <a href="https://github.com/kubernetes/kubernetes/pull/59416/files#diff-40853a2fe474b6bde454934dc4e0742a3d9bbf98c31336d8d74520ebe8a2e300R48"><code>util.go</code></a>. PSA: <a href="https://github.com/kubernetes/kubernetes/blob/v1.22.0/staging/src/k8s.io/pod-security-admission/policy/visitor.go#L34"><code>visitor.go</code></a>). This is the benefit of being &quot;in-tree&quot; that Gatekeeper/Kyverno can't have. If there was at least a standard interface like CSI/CRI/CNI, that may have helped prevent this.</p>
+<h2 id="takeaways">Takeaways</h2>
+<p>I want to clarify that I don't think less highly of the various parties involved in the PSP deprecation process. PSPs did require <em>some</em> kind of change, and sig-auth's reasoning at the time was solid. I'm only able to make my argument with the clarity of hindsight.</p>
+<p>Since it's too late to stop the PSP deprecation anyway (<a href="https://github.com/kubernetes/kubernetes/pull/109798">merged 4 days ago</a>), I intend this post to just be a post-mortem, with the following lessons-learned:</p>
+<ol>
+<li>Don't be afraid to make backwards-incompatible changes to beta APIs, especially if it's in the name of security.</li>
+<li>Deeply consider how the whole ecosystem will react to a given change since it moves so slowly.</li>
+<li>Learn from the success of the &quot;Container * Interfaces&quot;. They can prevent ecosystem fragmentation and compatibility issues.</li>
+</ol>
+
+    </div>
+</article>
+
+        </main>
+        
+        <footer>
+            
+    <div class="border"></div>
+    <div class="footer">
+        
+        <div>
+            <a href="/">Home</a>
+        </div>
+    </div>
+
+        </footer>
+    
+        </div>
+    </body>
+</html>

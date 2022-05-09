@@ -24,4 +24,8 @@
         <loc>/blog/2022/k8s-secrets/</loc>
         <lastmod>2022-04-30</lastmod>
     </url>
+    <url>
+        <loc>/blog/2022/psp-deprecation/</loc>
+        <lastmod>2022-05-08</lastmod>
+    </url>
 </urlset>
