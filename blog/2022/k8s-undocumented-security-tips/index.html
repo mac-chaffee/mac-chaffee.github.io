@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="description" content="Mac Chaffee&#x27;s tech blog">
+        
+
+        <title>Mac Chaffee</title>
+
+        
+
+<meta name="image" content="https://www.macchaffee.com/static/favicon.png">
+<meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
+<meta name="theme-color" content="#ECEBF3">
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+
+<meta property="og:title" content="Undocumented Kubernetes Security Tips">
+
+<meta property="og:description" content="Mac Chaffee&#x27;s tech blog">
+
+<link rel="stylesheet" href="/blog/theme.css">
+<style>
+body {
+    font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #dbe0ea;
+}
+h1 {
+    font-size: 47px;
+}
+ul {
+    list-style-type: disc;
+}
+code {
+    font-family: monospace;
+    font-size: 18px;
+}
+.search-box {
+    background-color: #101a20;
+    border: 2px solid #36596c;
+    font-size: 20px;
+    line-height: 2;
+    color: #c0c5ce;
+    margin-top: 10px;
+}
+/* Overrides */
+p {
+  text-align: left;
+}
+p > code {
+  font-weight: normal;
+  padding: 1px 5px;
+  color: #a7adba;
+  background-color: #101a20;
+}
+h2 {
+    font-size: 24px;
+    border-bottom:1px solid #99c794;
+}
+blockquote {
+    color: #a7adba;
+    font-style: italic;
+}
+</style>
+
+        
+    </head>
+    <body>
+        <div class="content">
+        
+        
+            <header>
+                <div class="header-left">
+                    <a href="&#x2F;blog" class="logo">Mac Chaffee</a>
+                </div>
+                <div class="header-right">
+                    <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                        
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2022/">
+                                    <span itemprop="name">2022</span>
+                                </a>
+                            </li>
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2021/">
+                                    <span itemprop="name">2021</span>
+                                </a>
+                            </li>
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2020/">
+                                    <span itemprop="name">2020</span>
+                                </a>
+                            </li>
+                        
+                        
+                        <li class="nav">
+                            <a itemprop="url" href="https://github.com/mac-chaffee">
+                                <img class="icon" src="&#x2F;blog/icons/github.svg" alt="Github">
+                            </a>
+                        </li>
+                        
+                        
+                    </nav>
+                </div>
+            </header>
+        
+        
+        <main>
+            
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <div itemprop="headline">
+        <h1>Undocumented Kubernetes Security Tips</h1>
+        <div class="border"></div>
+        <time datetime="2022-09-18" class="date" itemprop="datePublished">
+            18 Sep 2022
+        </time>
+    </div>
+    <div itemprop="articleBody">
+        <p>Securing Kubernetes is complex, so there are quite a few guides out there:</p>
+<ul>
+<li><a href="https://workbench.cisecurity.org/benchmarks/6083">CIS Benchmarks for Kubernetes</a> (free account login required)</li>
+<li><a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/2716980/nsa-cisa-release-kubernetes-hardening-guidance/">NSA/CISA Kubernetes Hardening Guidance</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/">Kubernetes Pod Security Standards</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Kubernetes_Security_Cheat_Sheet.html">Various</a> <a href="https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/">other</a> <a href="https://www.aquasec.com/cloud-native-academy/kubernetes-in-production/kubernetes-security-best-practices-10-steps-to-securing-k8s/">sources</a></li>
+</ul>
+<p>I hate to break it to you, but following all those guides and patching every CVE still might not be enough. There are some security practices which kinda don't fit into these guides, don't get reported as CVEs, and just exist in the minds of expensive consultants.</p>
+<p>The fast proliferation of Kubernetes has meant that many more organizations are running Kubernetes without the personnel or the money to secure it properly. And yes, that includes you, &quot;person who is primarily a developer, but deployed an GKE cluster 6 months ago while following the CIS benchmarks and hasn't looked at it since, thinking it's super secure because it's 'managed' by Google&quot;. Hopefully this collection of tips will help out those people!</p>
+<h2 id="1-a-secure-cluster-needs-a-secure-organization">1 - A secure cluster needs a secure organization</h2>
+<p>This tip might be the hardest to hear for often-introverted software folks. You can't achieve excellent security though technology alone; you also need to deal with <em>people</em>.</p>
+<p>I went through ISO-27001/27002 compliance at a previous company, and that standard is mainly devoted to organizational changes. Since the ISO standards are super-expensive PDFs, here are just a few fair-use points:</p>
+<ul>
+<li><strong>Establish and enforce policies:</strong> There are <a href="https://github.com/open-policy-agent/gatekeeper-library">open-source libraries</a> of Kubernetes-related policies, but your organization might need custom policies like &quot;Public-facing Ingresses require a security review&quot; or &quot;Access to (some sensitive namespace) requires approval&quot;. And what do you do if someone violates the policy? Termination? Now you have to talk to HR. This stuff might even need to be someone's (or a team's) full-time job.</li>
+<li><strong>Implement segregation of duties:</strong> If there's valuable data in your cluster, you don't want to have a person with unfettered, un-audited access to a shared cluster-admin token (which is common).</li>
+<li><strong>Everyone needs security training:</strong> Multiple days need to be set aside to <em>actually</em> learn about security. Not just your team, but also the dev team, PMs, and managers. No, reading this blog post does not count, but good question!</li>
+<li><strong>Periodically review everything:</strong> If you don't <a href="https://www.theregister.com/2020/08/26/former_cisco_engineer_aws_webex_teams/">this can happen</a>.</li>
+<li><strong>Have an incident management plan:</strong> Preferably one that doesn't take <a href="https://www.theregister.com/2022/05/04/heroku_security_communication_dubbed_complete/">three weeks</a>.</li>
+</ul>
+<p>All of these points indicate that running Kubernetes clusters securely is absolutely not something you can &quot;set and forget&quot;. You have to be constantly monitoring, patching, educating, documenting, and improving your security posture just to stay afloat.</p>
+<h2 id="2-the-kubernetes-api-has-undocumented-verbs-and-subresources">2 - The Kubernetes API has undocumented verbs and subresources</h2>
+<p>Access to the Kubernetes API is very sensitive, but hard to do right. Roles and ClusterRoles are used to list which &quot;resources&quot; and &quot;verbs&quot; that someone/something can perform. Like <code>The serviceaccount named 'runner' can 'create' (verb) 'pods' (resource)</code>.</p>
+<p>But <em>there is no complete list of verbs or subresources anywhere</em>. As a result, using a wildcard (<code>*</code>) in a Role is essentially undefined behavior: you could be granting users the ability to use these undocumented verbs/subresources.</p>
+<p>One example is the <code>escalate</code> verb on Roles. Accidentally granting this to a user allows them to create new Roles for themselves with more privileges than their existing Role. You might as well have just given them full admin access!</p>
+<p>Another example is the <code>pods/debug</code> subresource and how it interacts with <a href="https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/">ValidatingWebhooks</a>. The <code>pods/debug</code> subresource allows users to create <a href="https://kubernetes.io/docs/concepts/workloads/pods/ephemeral-containers/">Ephemeral Containers</a> inside existing pods, but this new subresource could allow you to bypass ValidatingWebhooks that are designed to stop you from running privileged pods. At one point in time, Gatekeeper, Kyverno, and OpenShift SCCs were all vulnerable to this issue. OpenShift SCCs still are, so make sure no one has access to <code>pods/debug</code> (the default).</p>
+<p>To sum up: pay very close attention to your Roles/ClusterRoles, avoid using wildcards, and watch out for new subresources/verbs in the patch notes. Kubernetes RBAC is a good-but-flawed system that is easy to mess up, and the tooling in this area is still quite immature.</p>
+<h2 id="3-remember-that-kubernetes-is-essentially-remote-code-execution-as-a-service">3 - Remember that Kubernetes is essentially remote-code-execution-as-a-service</h2>
+<p>Let's say I create an API where anything you POSTed in the request body would be <code>eval</code>'d server-side. That's how you should be thinking of Kubernetes, as &quot;remote code execution as a service&quot; (RCEaaS). Once you accept that, many important conclusions can be drawn:</p>
+<ul>
+<li><strong>I need to take authentication extremely seriously.</strong> Using ServiceAccount tokens is not enough to secure RCEaaS. I need to tie into a proper identity provider, maybe using <a href="https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens">OIDC</a>, maybe with 2FA.</li>
+<li><strong>I really need some kind of intrusion detection system.</strong> It's very difficult to get proper &quot;defense in depth&quot; for Kubernetes since one slip-up is game over (the attacker gains remote code execution). As a result, you at least need to know when you've been breached. <a href="https://falco.org/">Falco</a> is one example of a Kubernetes-native IDS.</li>
+<li><strong>Maybe I shouldn't put all my eggs in one basket.</strong> If one little mistake can lead to RCE, then running multiple clusters may help reduce the blast radius. But be careful: multi-cluster tooling can be complex, so make sure the added complexity isn't just increasing the attack surface for no reason.</li>
+</ul>
+<p>With the popularity of Kubernetes and the backing of big companies with huge security teams, it's easy to be lulled into a false sense of security. Having the right mindset can help motivate you to take Kubernetes security as seriously as its RCE-aaS design demands.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>The goal of this post is to spread awareness of the depth that Kubernetes security can reach sometimes. As professionals, it's our duty to communicate the scope of new projects, including the security risks and the work required to mitigate them. All too often, I see this duty being neglected or offloaded to flashy security tools that don't solve the real issues. Because the real issue are often too organization-specific (section 1), too cutting-edge (section 2), or too abstract (section 3) to be documented anywhere.</p>
+
+    </div>
+</article>
+
+        </main>
+        
+        <footer>
+            
+    <div class="border"></div>
+    <div class="footer">
+        
+        <div>
+            <a href="/">Home</a>
+        </div>
+    </div>
+
+        </footer>
+    
+        </div>
+    </body>
+</html>
