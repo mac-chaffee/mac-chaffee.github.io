@@ -7,9 +7,9 @@ Securing Kubernetes is complex, so there are quite a few guides out there:
 * [CIS Benchmarks for Kubernetes](https://workbench.cisecurity.org/benchmarks/6083) (free account login required)
 * [NSA/CISA Kubernetes Hardening Guidance](https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/2716980/nsa-cisa-release-kubernetes-hardening-guidance/)
 * [Kubernetes Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
-* [Various](https://cheatsheetseries.owasp.org/cheatsheets/Kubernetes_Security_Cheat_Sheet.html) [other](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/) [sources](https://www.aquasec.com/cloud-native-academy/kubernetes-in-production/kubernetes-security-best-practices-10-steps-to-securing-k8s/)
+* [Various](https://cheatsheetseries.owasp.org/cheatsheets/Kubernetes_Security_Cheat_Sheet.html), [other](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/), [sources](https://www.aquasec.com/cloud-native-academy/kubernetes-in-production/kubernetes-security-best-practices-10-steps-to-securing-k8s/)
 
-I hate to break it to you, but following all those guides and patching every CVE still might not be enough. There are some security practices which kinda don't fit into these guides, don't get reported as CVEs, and just exist in the minds of expensive consultants.
+Unfortunately, following all those guides and patching every CVE still might not be enough. There are some security practices which kinda don't fit into these guides, don't get reported as CVEs, and just exist in the minds of expensive consultants.
 
 The fast proliferation of Kubernetes has meant that many more organizations are running Kubernetes without the personnel or the money to secure it properly. And yes, that includes you, "person who is primarily a developer, but deployed an GKE cluster 6 months ago while following the CIS benchmarks and hasn't looked at it since, thinking it's super secure because it's 'managed' by Google". Hopefully this collection of tips will help out those people!
 
