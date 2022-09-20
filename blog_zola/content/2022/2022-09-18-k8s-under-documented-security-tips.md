@@ -1,5 +1,5 @@
 +++
-title = "Undocumented Kubernetes Security Tips"
+title = "Under-documented Kubernetes Security Tips"
 +++
 
 Securing Kubernetes is complex, so there are quite a few guides out there:
@@ -11,7 +11,7 @@ Securing Kubernetes is complex, so there are quite a few guides out there:
 
 Unfortunately, following all those guides and patching every CVE still might not be enough. There are some security practices which kinda don't fit into these guides, don't get reported as CVEs, and just exist in the minds of expensive consultants.
 
-The fast proliferation of Kubernetes has meant that many more organizations are running Kubernetes without the personnel or the money to secure it properly. And yes, that includes you, "person who is primarily a developer, but deployed an GKE cluster 6 months ago while following the CIS benchmarks and hasn't looked at it since, thinking it's super secure because it's 'managed' by Google". Hopefully this collection of tips will help out those people!
+The fast proliferation of Kubernetes has meant that many more organizations are running Kubernetes without the personnel or the money to secure it properly. And yes, that includes you, "person who is primarily a developer, but deployed an GKE cluster 6 months ago while following the CIS benchmarks and hasn't looked at it since, thinking it's super secure because it's 'managed' by Google". Hopefully this collection of tips will help you out!
 
 ## 1 - A secure cluster needs a secure organization
 
@@ -35,7 +35,7 @@ But *there is no complete list of verbs or subresources anywhere*. As a result, 
 
 One example is the `escalate` verb on Roles. Accidentally granting this to a user allows them to create new Roles for themselves with more privileges than their existing Role. You might as well have just given them full admin access!
 
-Another example is the `pods/debug` subresource and how it interacts with [ValidatingWebhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/). The `pods/debug` subresource allows users to create [Ephemeral Containers](https://kubernetes.io/docs/concepts/workloads/pods/ephemeral-containers/) inside existing pods, but this new subresource could allow you to bypass ValidatingWebhooks that are designed to stop you from running privileged pods. At one point in time, Gatekeeper, Kyverno, and OpenShift SCCs were all vulnerable to this issue. OpenShift SCCs still are, so make sure no one has access to `pods/debug` (the default).
+Another example is the `pods/ephemeralcontainers` subresource and how it interacts with [ValidatingWebhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/). The `pods/ephemeralcontainers` subresource allows users to create [Ephemeral Containers](https://kubernetes.io/docs/concepts/workloads/pods/ephemeral-containers/) inside existing pods, but this new subresource could allow you to bypass ValidatingWebhooks that are designed to stop you from running privileged pods. At one point in time, Gatekeeper, Kyverno, and OpenShift SCCs were all vulnerable to this issue. OpenShift SCCs still are, so make sure no one has access to `pods/ephemeralcontainers` (the default).
 
 To sum up: pay very close attention to your Roles/ClusterRoles, avoid using wildcards, and watch out for new subresources/verbs in the patch notes. Kubernetes RBAC is a good-but-flawed system that is easy to mess up, and the tooling in this area is still quite immature.
 

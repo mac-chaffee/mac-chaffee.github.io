@@ -17,7 +17,7 @@
 <meta name="theme-color" content="#ECEBF3">
 <link rel="shortcut icon" href="/static/favicon.png" type="image/png">
 
-<meta property="og:title" content="Undocumented Kubernetes Security Tips">
+<meta property="og:title" content="Under-documented Kubernetes Security Tips">
 
 <meta property="og:description" content="Mac Chaffee&#x27;s tech blog">
 
@@ -117,7 +117,7 @@ blockquote {
             
 <article itemscope itemtype="http://schema.org/BlogPosting">
     <div itemprop="headline">
-        <h1>Undocumented Kubernetes Security Tips</h1>
+        <h1>Under-documented Kubernetes Security Tips</h1>
         <div class="border"></div>
         <time datetime="2022-09-18" class="date" itemprop="datePublished">
             18 Sep 2022
@@ -132,7 +132,7 @@ blockquote {
 <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Kubernetes_Security_Cheat_Sheet.html">Various</a>, <a href="https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/">other</a>, <a href="https://www.aquasec.com/cloud-native-academy/kubernetes-in-production/kubernetes-security-best-practices-10-steps-to-securing-k8s/">sources</a></li>
 </ul>
 <p>Unfortunately, following all those guides and patching every CVE still might not be enough. There are some security practices which kinda don't fit into these guides, don't get reported as CVEs, and just exist in the minds of expensive consultants.</p>
-<p>The fast proliferation of Kubernetes has meant that many more organizations are running Kubernetes without the personnel or the money to secure it properly. And yes, that includes you, &quot;person who is primarily a developer, but deployed an GKE cluster 6 months ago while following the CIS benchmarks and hasn't looked at it since, thinking it's super secure because it's 'managed' by Google&quot;. Hopefully this collection of tips will help out those people!</p>
+<p>The fast proliferation of Kubernetes has meant that many more organizations are running Kubernetes without the personnel or the money to secure it properly. And yes, that includes you, &quot;person who is primarily a developer, but deployed an GKE cluster 6 months ago while following the CIS benchmarks and hasn't looked at it since, thinking it's super secure because it's 'managed' by Google&quot;. Hopefully this collection of tips will help you out!</p>
 <h2 id="1-a-secure-cluster-needs-a-secure-organization">1 - A secure cluster needs a secure organization</h2>
 <p>This tip might be the hardest to hear for often-introverted software folks. You can't achieve excellent security though technology alone; you also need to deal with <em>people</em>.</p>
 <p>I went through ISO-27001/27002 compliance at a previous company, and that standard is mainly devoted to organizational changes. Since the ISO standards are super-expensive PDFs, here are just a few fair-use points:</p>
@@ -148,7 +148,7 @@ blockquote {
 <p>Access to the Kubernetes API is very sensitive, but hard to do right. Roles and ClusterRoles are used to list which &quot;resources&quot; and &quot;verbs&quot; that someone/something can perform. Like <code>The serviceaccount named 'runner' can 'create' (verb) 'pods' (resource)</code>.</p>
 <p>But <em>there is no complete list of verbs or subresources anywhere</em>. As a result, using a wildcard (<code>*</code>) in a Role is essentially undefined behavior: you could be granting users the ability to use these undocumented verbs/subresources.</p>
 <p>One example is the <code>escalate</code> verb on Roles. Accidentally granting this to a user allows them to create new Roles for themselves with more privileges than their existing Role. You might as well have just given them full admin access!</p>
-<p>Another example is the <code>pods/debug</code> subresource and how it interacts with <a href="https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/">ValidatingWebhooks</a>. The <code>pods/debug</code> subresource allows users to create <a href="https://kubernetes.io/docs/concepts/workloads/pods/ephemeral-containers/">Ephemeral Containers</a> inside existing pods, but this new subresource could allow you to bypass ValidatingWebhooks that are designed to stop you from running privileged pods. At one point in time, Gatekeeper, Kyverno, and OpenShift SCCs were all vulnerable to this issue. OpenShift SCCs still are, so make sure no one has access to <code>pods/debug</code> (the default).</p>
+<p>Another example is the <code>pods/ephemeralcontainers</code> subresource and how it interacts with <a href="https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/">ValidatingWebhooks</a>. The <code>pods/ephemeralcontainers</code> subresource allows users to create <a href="https://kubernetes.io/docs/concepts/workloads/pods/ephemeral-containers/">Ephemeral Containers</a> inside existing pods, but this new subresource could allow you to bypass ValidatingWebhooks that are designed to stop you from running privileged pods. At one point in time, Gatekeeper, Kyverno, and OpenShift SCCs were all vulnerable to this issue. OpenShift SCCs still are, so make sure no one has access to <code>pods/ephemeralcontainers</code> (the default).</p>
 <p>To sum up: pay very close attention to your Roles/ClusterRoles, avoid using wildcards, and watch out for new subresources/verbs in the patch notes. Kubernetes RBAC is a good-but-flawed system that is easy to mess up, and the tooling in this area is still quite immature.</p>
 <h2 id="3-remember-that-kubernetes-is-essentially-remote-code-execution-as-a-service">3 - Remember that Kubernetes is essentially remote-code-execution-as-a-service</h2>
 <p>Let's say I create an API where anything you POSTed in the request body would be <code>eval</code>'d server-side. That's how you should be thinking of Kubernetes, as &quot;remote code execution as a service&quot; (RCEaaS). Once you accept that, many important conclusions can be drawn:</p>
