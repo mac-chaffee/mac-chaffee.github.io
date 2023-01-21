@@ -1,5 +1,6 @@
 +++
 title = "Under-documented Kubernetes Security Tips"
+date = 2022-09-18
 +++
 
 Securing Kubernetes is complex, so there are quite a few guides out there:

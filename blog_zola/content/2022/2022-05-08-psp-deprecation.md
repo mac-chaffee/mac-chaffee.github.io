@@ -1,5 +1,6 @@
 +++
 title = "The Fumbled Deprecation of PodSecurityPolicies"
+date = 2022-05-08
 +++
 
 In [2016](https://github.com/kubernetes/kubernetes/pull/7893), Kubernetes v1.3 was released which included a new API type: PodSecurityPolicies (PSPs). The original [design proposal](https://github.com/kubernetes/design-proposals-archive/blob/main/auth/pod-security-policy.md) had the lofty goal of allowing cluster admins to restrict various Linux privileges to some Pods while still allowing other Pods to use them. PSPs filled an important security hole where having the ability to run pods could let you bypass every other security control in the cluster.

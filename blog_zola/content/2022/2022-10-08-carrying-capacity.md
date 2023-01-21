@@ -1,5 +1,6 @@
 +++
 title = "Know your carrying capacity"
+date = 2022-10-08
 +++
 
 Take a second to think through all the "stuff" you have to personally maintain at your job. Here are a few ideas:
