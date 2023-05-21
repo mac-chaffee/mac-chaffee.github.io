@@ -4,6 +4,9 @@
 <script defer type="text/javascript" src="{{ get_url(path=" elasticlunr.min.js") }}"></script>
 <script defer type="text/javascript" src="{{ get_url(path=" search_index.en.js") }}"></script>
 {% endif %}
+{% block rss %}
+<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
+{% endblock %}
 <meta name="image" content="https://www.macchaffee.com/static/favicon.png">
 <meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
 <meta name="theme-color" content="#ECEBF3">

