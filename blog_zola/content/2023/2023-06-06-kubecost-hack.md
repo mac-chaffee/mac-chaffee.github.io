@@ -31,7 +31,7 @@ The cluster name included mentions of gig economy workers so presumably an attac
 
 ## Disclosure
 
-Now that I had a handy Google search link that shows the gravity of the KubeCost bug (exposing environment variables), that made writing my KubeCost disclosure easy. I didn't mention company in my KubeCost disclosure, of course. The fix was implemented after about 2 months (delayed due to KubeCon).
+Now that I had a handy Google search link that shows the gravity of the KubeCost bug (exposing environment variables), that made writing my KubeCost disclosure easy. I didn't mention the company in my KubeCost disclosure, of course. The fix was implemented after about 2 months (delayed due to KubeCon).
 
 The company has a private bounty program on BugCrowd, where I also filed a report. The affected KubeCost instance was taken down within 3 days and they began rotating API keys.
 
