@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="description" content="Mac Chaffee&#x27;s tech blog">
+        
+
+        <title>Mac Chaffee</title>
+
+        
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="/blog/atom.xml">
+
+<meta name="image" content="https://www.macchaffee.com/static/favicon.png">
+<meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
+<meta name="theme-color" content="#ECEBF3">
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+
+<meta property="og:title" content="Obtaining database passwords from a billion-dollar company">
+
+<meta property="og:description" content="Mac Chaffee&#x27;s tech blog">
+
+<link rel="stylesheet" href="/blog/theme.css">
+<style>
+body {
+    font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #dbe0ea;
+}
+h1 {
+    font-size: 47px;
+}
+ul {
+    list-style: disc outside;
+    padding-left: 1.5em;
+}
+code {
+    font-family: monospace;
+    font-size: 18px;
+}
+.search-box {
+    background-color: #101a20;
+    border: 2px solid #36596c;
+    font-size: 20px;
+    line-height: 2;
+    color: #c0c5ce;
+    margin-top: 10px;
+}
+/* Overrides */
+p {
+  text-align: left;
+}
+p > code {
+  font-weight: normal;
+  padding: 1px 5px;
+  color: #a7adba;
+  background-color: #101a20;
+}
+h2 {
+    font-size: 24px;
+    border-bottom:1px solid #99c794;
+}
+blockquote {
+    color: #a7adba;
+    font-style: italic;
+}
+</style>
+
+        
+    </head>
+    <body>
+        <div class="content">
+        
+        
+            <header>
+                <div class="header-left">
+                    <a href="&#x2F;blog" class="logo">Mac Chaffee</a>
+                </div>
+                <div class="header-right">
+                    <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                        
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2023/">
+                                    <span itemprop="name">2023</span>
+                                </a>
+                            </li>
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2022/">
+                                    <span itemprop="name">2022</span>
+                                </a>
+                            </li>
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2021/">
+                                    <span itemprop="name">2021</span>
+                                </a>
+                            </li>
+                        
+                            
+                            <li class="nav">
+                                <a itemprop="url" href="/blog/2020/">
+                                    <span itemprop="name">2020</span>
+                                </a>
+                            </li>
+                        
+                        
+                        <li class="nav">
+                            <a itemprop="url" href="https://github.com/mac-chaffee">
+                                <img class="icon" src="&#x2F;blog/icons/github.svg" alt="Github">
+                            </a>
+                        </li>
+                        
+                        
+                    </nav>
+                </div>
+            </header>
+        
+        
+        <main>
+            
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <div itemprop="headline">
+        <h1>Obtaining database passwords from a billion-dollar company</h1>
+        <div class="border"></div>
+        <time datetime="2023-06-06" class="date" itemprop="datePublished">
+            06 Jun 2023
+        </time>
+    </div>
+    <div itemprop="articleBody">
+        <p>This is a story about how in 2021, I discovered a vulnerability affecting an unnamed billion-dollar company and disclosed it to them, earning my largest bug bounty ever!</p>
+<h2 id="accidental-discovery">Accidental Discovery</h2>
+<p>At first, I was just doing some work on <a href="https://www.kubecost.com/">kubecost</a>, a Kubernetes tool which estimates costs for running pods. The first thing that caught my security eye was that by default, when you install kubecost, it captures your <a href="https://github.com/kubecost/cost-analyzer-helm-chart/blob/0ef0b20adabfa29b80ab0604a3b51d836eae169b/cost-analyzer/templates/cost-analyzer-deployment-template.yaml#L576">HELM_VALUES</a> in an environment variable which they use to help their enterprise users debug problems. This set off alarm bells since Helm values are typically how secrets are passed into applications, such as API keys for Kubecost itself and Grafana passwords.</p>
+<p>I immediately disabled HELM_VALUES for my own kubecost instance, but now I had my security hat on. While doing unrelated work with my dev tools open, I saw kubecost perform an API request for <code>/api/allPods</code>, which happened to be running a little slow (as you can imagine with ~500+ pods). Investigating the response, I saw that it returned ALL of the information about pods, including their environment variables! And this API is callable by unauthenticated users.</p>
+<p>It's bad practice to directly use Pod environment variables for secrets (you should use Secrets, <a href="/blog/2022/k8s-secrets/">which are secure enough</a>). But since the HELM_VALUES environment variable exists, this <code>/api/allPods</code> API can be used to obtain at least one or two secrets from KubeCost itself.</p>
+<p>At this point, I began writing up a report about the issue to the KubeCost team.</p>
+<h2 id="thinking-like-an-attacker">Thinking like an attacker</h2>
+<p>While writing the report, I wanted to make sure they would understand the severity of exposing environment variables. Alas, the users of the cluster I administrate are smart and none of them had any secrets in environment variables :)</p>
+<p>I remembered a lesson from my security class in college about &quot;<a href="https://resources.infosecinstitute.com/topic/google-hacking-overview/">google hacking</a>&quot;, or just searching for specific strings in Google to find vulnerable servers.</p>
+<p>(Un)fortunately, KubeCost's splash page includes enough unique text that I could locate exposed KubeCost instances with a simple Google search. Also (un)fortunately, KubeCost's splash page tells you right away the total estimated monthly cost for a given cluster, which lets you pick a nice juicy target that's burning $20k/month or more of cloud credits.</p>
+<p>Only one of the clusters had an identifiable owner, and it happened to be the biggest one, owned by a company with a multi-billion-dollar market cap. I opened up the exposed KubeCost page and went straight to <code>/api/allPods</code> and my adrenaline immediately spiked. There were more than 200 passwords (including RDS, Twilio, Google, and Huawei keys) sitting right in front of me, two clicks away from the Google search results.</p>
+<p>(here's where I'd put the redacted screenshot if security researchers had legal immunity for responsible disclosure, which we should have)</p>
+<p>The cluster name included mentions of gig economy workers so presumably an attacker could have used those keys to steal data from their ~2 million workers.</p>
+<h2 id="disclosure">Disclosure</h2>
+<p>Now that I had a handy Google search link that shows the gravity of the KubeCost bug (exposing environment variables), that made writing my KubeCost disclosure easy. I didn't mention company in my KubeCost disclosure, of course. The fix was implemented after about 2 months (delayed due to KubeCon).</p>
+<p>The company has a private bounty program on BugCrowd, where I also filed a report. The affected KubeCost instance was taken down within 3 days and they began rotating API keys.</p>
+<p>For my troubles, the KubeCost folks sent me not one but TWO free t-shirts and the billion-dollar company gave me nothing. This has been my biggest bounty so far! Even larger than my other payout of ONE free t-shirt, which I'll write about later. They are good t-shirts to be fair.</p>
+<p>The company ghosted me when I requested disclosure, so I'm not mentioning the company name due to <a href="https://www.bugcrowd.com/resources/essentials/standard-disclosure-terms/">BugCrowd rules</a> that may or may not be legally enforceable. Couldn't even afford to be paid in exposure I guess :)</p>
+<h2 id="takeaways">Takeaways</h2>
+<ul>
+<li>Don't store Kubernetes secrets in environment variables. <a href="/blog/2022/k8s-secrets/">Use Secrets</a>, which generally have tighter RBAC rules around them.</li>
+<li>Don't capture Helm values at install time, they frequently contain secrets.</li>
+<li>Let's all stop selling products that are free, but they don't provide authentication unless you pay. Security should be the default, not an upgrade.</li>
+<li>Be very careful about sites that could possibly by indexed by a search engine, due to the risk of &quot;Google Hacking&quot;</li>
+<li>Responsible disclosure is good for victims, and public disclosure is good for future victims.</li>
+</ul>
+
+    </div>
+</article>
+
+        </main>
+        
+        <footer>
+            
+    <div class="border"></div>
+    <div class="footer">
+        
+        <div>
+            <a href="/">Home</a>
+        </div>
+    </div>
+
+        </footer>
+    
+        </div>
+    </body>
+</html>
