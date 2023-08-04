@@ -21,20 +21,20 @@ Much time and energy has been poured into security practices that restrict, bloc
 
 A good example is a Web Application Firewall (WAF), which runs thousands of regexes on every HTTP request to block requests that like look like they contain SQL queries or shell commands. As you can imagine, they aren't good at their job, causing many false positives, slowing down websites, and still being easily circumventable by attackers. That doesn't stop infosec teams from requiring you to use WAFs, unfortunately. A WAF gives you robustness, not resilience.
 
-Resilience would involve securing your websites "by design", like using static analysis to prevent passing user-controlled input into SQL queries or shell commands. Choosing resilience would also mean taking all that time you save in chasing down false-positives and investing it planning for the eventuality that an attacker bypasses your defenses anyway. That could mean doing drills, double-checking backup procedures, and monitoring/learning from past incidents.
+Resilience would involve securing your websites "by design", like using static analysis to prevent passing user-controlled input into shell commands or to enforce the use of prepared statements. Choosing resilience would also mean taking all that time you save in chasing down false-positives and investing it planning for the eventuality that an attacker bypasses your defenses anyway. That could mean doing drills, double-checking backup procedures, and monitoring/learning from past incidents.
 
 ## Point 2: Your security team should be more like platform engineers
 
-To state the obvious, securing a server, laptop, or a piece of software is hard. It requires a unique skill-set that not everyone in your organization possess. Why then do we expect them to know as much, care as much, and do as much about security as a CISO?
+To state the obvious, securing a server, laptop, or a piece of software is hard. It requires a unique skill-set that not everyone in your organization possesses. Why then do we expect them to know as much, care as much, and do as much about security as a CISO?
 
-Platform engineering grew out of a parallel problem: that software has become so complex to deploy and operate that it requires a dedicated subfield. But merely creating separate "dev" and "ops" teams creates bad outcomes, since "ops" tend to gatekeep the "devs" and neither team is motivated to cooperate with each other. Platform engineering re-balances the power held by "ops" by forcing it to serve the interests of the "devs". Devs are the customer for whom the "platform" is the product being sold. No one will buy a hard-to-use, featureless, unstable product (well unless you have name recognition...). Thus the platform engineering team has to create tools and libraries that the devs will *want* to use.
+Platform engineering grew out of a parallel problem: that software has become so complex to deploy and operate that it requires a dedicated subfield. But merely creating separate "dev" and "ops" teams creates bad outcomes, since "ops" tends to gatekeep the "devs" and neither team is motivated to cooperate with each other. Platform engineering re-balances the power held by "ops" by forcing it to serve the interests of the "devs". Devs are the customers for whom the "platform" is the product being sold. No one will buy a hard-to-use, featureless, unstable product (well unless you have name recognition...). Thus the platform engineering team has to create tools and libraries that the devs will *want* to use.
 
 Likewise, *SCE* extols the benefits of applying those same principles to your security team. Rather than letting them be the disinterested gatekeepers that they typically are, make them serve the organization by running them like a platform engineering team. They should be building and choosing security tools that the organization will *want* to use, rather than taking some twisted pleasure in forcing through increasingly onerous policies.
 
 Without that drive to serve the organization, security teams often build up a hostile relationship with their own organizations (which itself is a security risk!).
 
 <figure>
-  <img src="/2023/cisa_pizza_party.png" alt="A picture of CISA's Cybersecurity Checklist which encourages scheduling a pizza party to improve relationships between your security team and your operations teams."/>
+  <img src="/blog/2023/cisa_pizza_party.png" alt="A picture of CISA's Cybersecurity Checklist which encourages scheduling a pizza party to improve relationships between your security team and your operations teams."/>
   <figcaption><em>As if pizza can solve a deep-seated structural issue such as this...</em></figcaption>
 </figure>
 
