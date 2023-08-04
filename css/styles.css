@@ -9,8 +9,9 @@ body {
 
 h1 {
   font-family: monospace;
-  color: #6D7275;
+  color: #000000;
   margin-bottom: 30px;
+  max-width: 40em;
   text-align: center;
 }
 @media(max-width: 550px) {
