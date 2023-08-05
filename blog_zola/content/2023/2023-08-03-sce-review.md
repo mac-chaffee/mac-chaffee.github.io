@@ -1,6 +1,6 @@
 +++
 title = "Book Review: Security Chaos Engineering"
-date = 2023-06-06
+date = 2023-08-03
 +++
 
 I recently picked up a few books to read, and *[Security Chaos Engineering](https://www.securitychaoseng.com)* engrossed me so significantly that it 1) made me read the whole thing and 2) made me want to write about it too!
