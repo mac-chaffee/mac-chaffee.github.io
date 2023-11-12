@@ -5,7 +5,7 @@ $font-mono: monospace;
 $padding: 8px;
 
 body {
-    font: 100% $font;
+    font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
     background: $black;
     color: $white;
 }
@@ -169,4 +169,19 @@ p > code {
 
 img {
     max-width: 100%;
+}
+
+table {
+    border-bottom: 1px solid #dbe0ea;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    border-collapse: collapse;
+}
+
+tbody tr:first-child {
+    border-top: 1px solid #dbe0ea;
+}
+
+td {
+    padding: 1rem;
 }

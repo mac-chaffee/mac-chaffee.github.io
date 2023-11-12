@@ -39,7 +39,7 @@ ul {
 }
 code {
     font-family: monospace;
-    font-size: 18px;
+    font-size: 16px;
 }
 .search-box {
     background-color: #101a20;
@@ -81,44 +81,13 @@ blockquote {
                 </div>
                 <div class="header-right">
                     <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
-                        
-                        
-                            
-                            <li class="nav">
-                                <a itemprop="url" href="/blog/2023/">
-                                    <span itemprop="name">2023</span>
-                                </a>
-                            </li>
-                        
-                            
-                            <li class="nav">
-                                <a itemprop="url" href="/blog/2022/">
-                                    <span itemprop="name">2022</span>
-                                </a>
-                            </li>
-                        
-                            
-                            <li class="nav">
-                                <a itemprop="url" href="/blog/2021/">
-                                    <span itemprop="name">2021</span>
-                                </a>
-                            </li>
-                        
-                            
-                            <li class="nav">
-                                <a itemprop="url" href="/blog/2020/">
-                                    <span itemprop="name">2020</span>
-                                </a>
-                            </li>
-                        
-                        
+                      <ul>
                         <li class="nav">
-                            <a itemprop="url" href="https://github.com/mac-chaffee">
-                                <img class="icon" src="&#x2F;blog/icons/github.svg" alt="Github">
+                            <a itemprop="url" href="&#x2F;blog/atom.xml">
+                                <img class="icon" src="&#x2F;blog/icons/rss.svg" alt="RSS Feed">
                             </a>
                         </li>
-                        
-                        
+                      </ul>
                     </nav>
                 </div>
             </header>
@@ -143,7 +112,7 @@ blockquote {
 <h2 id="point-1-resilience-over-robustness">Point 1: Resilience over robustness</h2>
 <p>Much time and energy has been poured into security practices that restrict, block, and control. This has largely been viewed as a necessary evil of security, but it's not nearly as necessary as many security people would lead you to believe.</p>
 <p><em>SCE</em> explains this by making a distinction between resilience (adapting around attacks) and robustness (trying to stop attacks). The classic example from Aesop's fable is how a robust oak tree stands in proud resistance against the wind, but it ultimately falls while the resilient reeds flex and bend.</p>
-<p>A good example is a Web Application Firewall (WAF), which runs thousands of regexes on every HTTP request to block requests that like look like they contain SQL queries or shell commands. As you can imagine, they aren't good at their job, causing many false positives, slowing down websites, and still being easily circumventable by attackers. That doesn't stop infosec teams from requiring you to use WAFs, unfortunately. A WAF gives you robustness, not resilience.</p>
+<p>A good example is a Web Application Firewall (WAF), which runs thousands of regexes on every HTTP request to block requests that like look like they contain SQL queries or shell commands. As you can imagine, <a href="/blog/2023/sce-review/./2023-11-11-wafs.md">they aren't good at their job</a>, causing many false positives, slowing down websites, and still being easily circumventable by attackers. That doesn't stop infosec teams from requiring you to use WAFs, unfortunately. A WAF gives you robustness, not resilience.</p>
 <p>Resilience would involve securing your websites &quot;by design&quot;, like using static analysis to prevent passing user-controlled input into shell commands or to enforce the use of prepared statements. Choosing resilience would also mean taking all that time you save in chasing down false-positives and investing it planning for the eventuality that an attacker bypasses your defenses anyway. That could mean doing drills, double-checking backup procedures, and monitoring/learning from past incidents.</p>
 <h2 id="point-2-your-security-team-should-be-more-like-platform-engineers">Point 2: Your security team should be more like platform engineers</h2>
 <p>To state the obvious, securing a server, laptop, or a piece of software is hard. It requires a unique skill-set that not everyone in your organization possesses. Why then do we expect them to know as much, care as much, and do as much about security as a CISO?</p>

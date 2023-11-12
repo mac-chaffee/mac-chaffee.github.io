@@ -59,4 +59,8 @@
         <loc>/blog/2023/solarwinds-hack-lessons-learned/</loc>
         <lastmod>2023-05-21</lastmod>
     </url>
+    <url>
+        <loc>/blog/2023/wafs/</loc>
+        <lastmod>2023-11-11</lastmod>
+    </url>
 </urlset>

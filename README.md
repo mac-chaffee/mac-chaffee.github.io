@@ -26,7 +26,7 @@ You can run `cd blog_zola && zola serve -O` to view the site live.
 ## Deployment
 
 ```
-cd blog_zola && zola build -o ../blog && cd -
+cd blog_zola && zola build -o ../blog --force && cd -
 git commit
 git push
 ```

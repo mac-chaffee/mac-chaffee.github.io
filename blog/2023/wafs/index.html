@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="description" content="Mac Chaffee&#x27;s tech blog">
+        
+
+        <title>Mac Chaffee</title>
+
+        
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="/blog/atom.xml">
+
+<meta name="image" content="https://www.macchaffee.com/static/favicon.png">
+<meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
+<meta name="theme-color" content="#ECEBF3">
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+
+<meta property="og:title" content="Stop deploying web application firewalls">
+
+<meta property="og:description" content="Mac Chaffee&#x27;s tech blog">
+
+<link rel="stylesheet" href="/blog/theme.css">
+<style>
+body {
+    font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #dbe0ea;
+}
+h1 {
+    font-size: 47px;
+}
+ul {
+    list-style: disc outside;
+    padding-left: 1.5em;
+}
+code {
+    font-family: monospace;
+    font-size: 16px;
+}
+.search-box {
+    background-color: #101a20;
+    border: 2px solid #36596c;
+    font-size: 20px;
+    line-height: 2;
+    color: #c0c5ce;
+    margin-top: 10px;
+}
+/* Overrides */
+p {
+  text-align: left;
+}
+p > code {
+  font-weight: normal;
+  padding: 1px 5px;
+  color: #a7adba;
+  background-color: #101a20;
+}
+h2 {
+    font-size: 24px;
+    border-bottom:1px solid #99c794;
+}
+blockquote {
+    color: #a7adba;
+    font-style: italic;
+}
+</style>
+
+        
+    </head>
+    <body>
+        <div class="content">
+        
+        
+            <header>
+                <div class="header-left">
+                    <a href="&#x2F;blog" class="logo">Mac Chaffee</a>
+                </div>
+                <div class="header-right">
+                    <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                      <ul>
+                        <li class="nav">
+                            <a itemprop="url" href="&#x2F;blog/atom.xml">
+                                <img class="icon" src="&#x2F;blog/icons/rss.svg" alt="RSS Feed">
+                            </a>
+                        </li>
+                      </ul>
+                    </nav>
+                </div>
+            </header>
+        
+        
+        <main>
+            
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <div itemprop="headline">
+        <h1>Stop deploying web application firewalls</h1>
+        <div class="border"></div>
+        <time datetime="2023-11-11" class="date" itemprop="datePublished">
+            11 Nov 2023
+        </time>
+    </div>
+    <div itemprop="articleBody">
+        <p>Web Application Firewalls (WAFs) were created early in the Internet's history, especially popularized by the <a href="https://en.wikipedia.org/wiki/ModSecurity">ModSecurity project in 2002</a>. WAFs work by intercepting every single HTTP request (and sometimes responses too) and evaluating several hundred regular expressions over the URI, headers, and body, sometimes aided by machine learning. If the request kinda looks like SQL, shell code, etc., the server may block your request.</p>
+<p>In the infancy of the cybersecurity field, WAFs seemed like a good idea. HTTP requests were tiny, infrequent, and mostly contained mundane form data. Today, I posit that WAFs are absolutely not a good idea, despite still being recommended or even required for compliance. I think they're one of the worst offenders of &quot;bolt-on&quot; security as opposed to &quot;built-in&quot; security. There are better techniques you can use that make even the most advanced WAFs entirely obsolete.</p>
+<h2 id="1-horrible-performance">1 - Horrible Performance</h2>
+<p>Since WAFs run hundreds of regular expressions on every request, you may ask, &quot;isn't that super inefficient?&quot; Yes, very.</p>
+<table><thead><tr><th></th><th>WAF</th><th>No WAF</th></tr></thead><tbody>
+<tr><td>Average time taken to upload 9,462 text files</td><td>7.36</td><td>4.55</td></tr>
+<tr><td>Average requests per second</td><td>1285</td><td>2079</td></tr>
+<tr><td>Number of requests blocked erroneously</td><td>5</td><td>0</td></tr>
+<tr><td>Peak nginx CPU during trial</td><td>73%</td><td>8%</td></tr>
+</tbody></table>
+<details>
+<summary>
+<em>Specifics about the benchmark</em>
+</summary>
+<hr/>
+The easiest way I know to get modsecurity + CoreRuleSet installed is through [ingress-nginx](https://kubernetes.github.io/ingress-nginx/user-guide/third-party-addons/modsecurity/), which I've installed in a [Kind cluster](https://kind.sigs.k8s.io/docs/user/quick-start/).
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">cat </span><span>&lt;&lt;</span><span style="color:#b48ead;">EOF </span><span>| </span><span style="color:#bf616a;">kind</span><span> create cluster</span><span style="color:#bf616a;"> --config</span><span>=-
+</span><span style="color:#a3be8c;">kind: Cluster
+</span><span style="color:#a3be8c;">apiVersion: kind.x-k8s.io/v1alpha4
+</span><span style="color:#a3be8c;">nodes:
+</span><span style="color:#a3be8c;">- role: control-plane
+</span><span style="color:#a3be8c;">  extraPortMappings:
+</span><span style="color:#a3be8c;">  - containerPort: 32080
+</span><span style="color:#a3be8c;">    hostPort: 32080
+</span><span style="color:#a3be8c;">    protocol: TCP
+</span><span style="color:#a3be8c;">  - containerPort: 32443
+</span><span style="color:#a3be8c;">    hostPort: 32443
+</span><span style="color:#a3be8c;">    protocol: TCP
+</span><span style="color:#b48ead;">EOF
+</span><span style="color:#bf616a;">helm</span><span> upgrade</span><span style="color:#bf616a;"> --install</span><span> ingress-nginx ingress-nginx \
+</span><span style="color:#bf616a;">  --repo</span><span> https://kubernetes.github.io/ingress-nginx \
+</span><span style="color:#bf616a;">  --namespace</span><span> ingress-nginx</span><span style="color:#bf616a;"> --create-namespace </span><span>\
+</span><span style="color:#bf616a;">  --set</span><span> controller.service.type=NodePort \
+</span><span style="color:#bf616a;">  --set</span><span> controller.service.nodePorts.https=32443 \
+</span><span style="color:#bf616a;">  --set</span><span> controller.service.nodePorts.http=32080 \
+</span><span style="color:#bf616a;">  --set</span><span> controller.ingressClassResource.default=true \
+</span><span style="color:#bf616a;">  --set</span><span> controller.allowSnippetAnnotations=true
+</span></code></pre>
+<p>For the test, I'll be uploading files to MinIO using these values:</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">replicas</span><span>: </span><span style="color:#d08770;">1
+</span><span style="color:#bf616a;">mode</span><span>: </span><span style="color:#a3be8c;">standalone
+</span><span style="color:#bf616a;">resources</span><span>:
+</span><span>  </span><span style="color:#bf616a;">requests</span><span>:
+</span><span>    </span><span style="color:#bf616a;">memory</span><span>: </span><span style="color:#a3be8c;">512Mi
+</span><span style="color:#bf616a;">persistence</span><span>:
+</span><span>  </span><span style="color:#bf616a;">enabled</span><span>: </span><span style="color:#d08770;">false
+</span><span style="color:#bf616a;">rootUser</span><span>: </span><span style="color:#a3be8c;">rootuser
+</span><span style="color:#bf616a;">rootPassword</span><span>: </span><span style="color:#a3be8c;">rootpass123
+</span><span style="color:#bf616a;">buckets</span><span>:
+</span><span>  - </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">bucket1
+</span><span>    </span><span style="color:#bf616a;">policy</span><span>: </span><span style="color:#a3be8c;">none
+</span><span>    </span><span style="color:#bf616a;">purge</span><span>: </span><span style="color:#d08770;">false
+</span><span style="color:#bf616a;">ingress</span><span>:
+</span><span>  </span><span style="color:#bf616a;">enabled</span><span>: </span><span style="color:#d08770;">true
+</span><span>  </span><span style="color:#bf616a;">hosts</span><span>: [</span><span style="color:#a3be8c;">minio-waf.localhost</span><span>]
+</span><span>  </span><span style="color:#bf616a;">annotations</span><span>:
+</span><span>    </span><span style="color:#bf616a;">nginx.ingress.kubernetes.io/enable-modsecurity</span><span>: &quot;</span><span style="color:#a3be8c;">true</span><span>&quot;
+</span><span>    </span><span style="color:#bf616a;">nginx.ingress.kubernetes.io/enable-owasp-core-rules</span><span>: &quot;</span><span style="color:#a3be8c;">true</span><span>&quot;
+</span><span>    </span><span style="color:#bf616a;">nginx.ingress.kubernetes.io/modsecurity-snippet</span><span>: </span><span style="color:#b48ead;">|
+</span><span style="color:#a3be8c;">      Include /etc/nginx/owasp-modsecurity-crs/nginx-modsecurity.conf
+</span><span style="color:#a3be8c;">      SecRuleEngine On
+</span><span style="color:#a3be8c;">      # Even the core rules are ridiculous, blocking PUT requests, certain content-types, or any body with &quot;options&quot; in it
+</span><span style="color:#a3be8c;">      SecRuleRemoveById 911100 920420 921110
+</span></code></pre>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">helm</span><span> upgrade</span><span style="color:#bf616a;"> --install</span><span> minio minio/minio</span><span style="color:#bf616a;"> -f</span><span> values.yaml</span><span style="color:#bf616a;"> -n</span><span> minio</span><span style="color:#bf616a;"> --create-namespace
+</span><span style="color:#bf616a;">helm</span><span> upgrade</span><span style="color:#bf616a;"> --install</span><span> minio-waf minio/minio</span><span style="color:#bf616a;"> -f</span><span> values-waf.yaml</span><span style="color:#bf616a;"> -n</span><span> minio-waf</span><span style="color:#bf616a;"> --create-namespace
+</span><span style="color:#65737e;"># Verify the WAF is working (should get a 403)
+</span><span style="color:#bf616a;">curl </span><span>&#39;</span><span style="color:#a3be8c;">http://minio-waf.localhost:32080/?q=../../etc/passwd</span><span>&#39;
+</span></code></pre>
+<p>We'll be uploading just the &quot;Documentation&quot; folder of the v6.6 Linux Kernel, which contains 9462 files for a total of 65MB.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">curl -LO</span><span> https://github.com/torvalds/linux/archive/refs/tags/v6.6.zip
+</span><span style="color:#bf616a;">unzip</span><span> v6.6.zip &#39;</span><span style="color:#a3be8c;">linux-6.6/Documentation/*</span><span>&#39;
+</span></code></pre>
+<p>Configure the minio client:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#65737e;"># You may need to add these hosts to /etc/hosts
+</span><span style="color:#b48ead;">export </span><span style="color:#bf616a;">MC_HOST_nowaf</span><span>=&#39;</span><span style="color:#a3be8c;">http://rootuser:rootpass123@minio.localhost:32080</span><span>&#39;
+</span><span style="color:#b48ead;">export </span><span style="color:#bf616a;">MC_HOST_waf</span><span>=&#39;</span><span style="color:#a3be8c;">http://rootuser:rootpass123@minio-waf.localhost:32080</span><span>&#39;
+</span></code></pre>
+<p>Run the benchmark (5 times each):</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">time</span><span> mc cp</span><span style="color:#bf616a;"> -r</span><span> linux-6.6/Documentation/ waf/bucket1/
+</span><span style="color:#bf616a;">time</span><span> mc cp</span><span style="color:#bf616a;"> -r</span><span> linux-6.6/Documentation/ nowaf/bucket1/
+</span></code></pre>
+<hr/>
+</details>
+<p>In addition to slowing down every request, you also need significant additional RAM for buffering requests. Since not a single byte in the buffer can be flushed to the backend server until the WAF completes its analysis, you need several gigabytes of RAM to store request bodies. Servers like nginx buffer requests by default, but enough large concurrent requests (like pushing a container image) can make a buffering web server run out of RAM. When using a WAF, every server becomes a buffering web server, which is simply incompatible with many types of applications.</p>
+<p>I know computers are fast and hardware is cheap, but we shouldn't be spending that kind of CPU and RAM on WAFs unless they're a really effective security tool. But they aren't, as you'll see next.</p>
+<h2 id="2-easily-bypassed">2 - Easily Bypassed</h2>
+<p>WAF vendors and attackers are in a constant arms race, and but seems <a href="https://github.com/0xInfection/Awesome-WAF#evasion-techniques">attackers are much better armed</a>. How could they not be? Many of the attacks that a WAF purports to block involve complex grammars like SQL, shell code, and entire programming languages. They often include comments, character escaping, encoding issues, and more oddities. These oddities mean that attackers always have a significant advantage and can typically bypass WAFs rules if they are clever enough.</p>
+<p>For example, you might think <a href="https://en.wikipedia.org/wiki/Log4Shell">Log4shell</a> is pretty easy to catch: just check for <code>${jndi</code>, right? Unfortunately, Log4J supports nested &quot;<a href="https://logging.apache.org/log4j/2.x/manual/lookups.html">lookups</a>&quot;, including ones that convert letters to upper/lower case like <code>${lower:J}</code></p>
+<p>That means an attacker can insert an arbitrary number of nested lookups around each letter and still perform the attack, like this: <code>${${lower:J}ndi:...</code>. This lead CloudFlare to say <a href="https://blog.cloudflare.com/exploitation-of-cve-2021-44228-before-public-disclosure-and-evolution-of-waf-evasion-patterns/">&quot;WAF vendors need to be looking at any occurrence of <code>${</code> and treating it as suspicious&quot;</a>, which is just another hilarious example of how WAFs can never live up to the expectations placed on them.</p>
+<p>I just discussed the fairly simple grammar that is Log4J Lookups, but you can imagine how many more evasion tactics you could use in a language as complex as SQL or PHP, especially when considering encoding tricks. For an in-depth description of specific WAF bypass techniques, check out this awesome post: https://habr.com/en/companies/dsec/articles/454592/</p>
+<p>Another way to bypass a WAF involves just padding your attack string to appear <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-oversize-request-components.html">&gt;8KB or so</a> into the request body. Like I mentioned in the section on performance, request bodies must be buffered into RAM for analysis, so WAFs must choose some cut-off point to avoid spending infinite CPU and RAM on a single request. For some WAFs like AWS's, that cutoff point is around 8KB. So if you just put 8192 innocuous characters before your Log4Shell attack string, you've rendered the WAF worthless.</p>
+<h2 id="3-wafs-are-an-attack-vector">3 - WAFs are an Attack Vector</h2>
+<p>In 2019, CapitalOne experienced a breach of 100 million credit applications that was <a href="https://krebsonsecurity.com/2019/08/what-we-can-learn-from-the-capital-one-hack/">allegedly caused by a WAF misconfiguration</a>. The attacker allegedly tricked the WAF into sending requests to the EC2 Metadata Service, which handed out a credential that allowed reading sensitive files from S3.</p>
+<p>While this is just one example, it illustrates the curious fact that WAFs actually have a large attack surface.</p>
+<p>Most WAFs are giant, complex codebases that are usually closed-source and written in memory-unsafe languages. Since they're expensive &quot;enterprise&quot; products, companies stuff them full of unnecessary features to make them stand out more than competitors. All of this adds up to make WAFs yet another example of a dangerous &quot;security&quot; tool, <a href="/blog/2023/wafs/./2023-05-21-solarwinds-hack-lessons-learned.md">just like SolarWinds</a>.</p>
+<p>No security officer would approve taking such a risky piece of software, putting it directly on the internet, making it parse mountains of untrusted input, and giving it access to all your backend servers, logging infra, SIEM, alerting systems, <a href="https://docs.fastly.com/en/ngwaf/jira">and even JIRA for some reason</a> UNLESS it's covered in security buzzwords and costs 5-6 figures per year.</p>
+<p>Somehow, companies that sell security products have gotten a pass on implementing foundational security principles like secure by default, secure by design, attack surface reduction, and the principle of least privilege. Don't let them keep getting away with that.</p>
+<h2 id="4-high-false-positive-rate">4 - High False Positive Rate</h2>
+<p>Over the last twenty years, open-source WAF rulesets have expanded considerably to detect more-recent types of attack. Apparently all those proprietary WAFs are doing the same. That means there are more and more possible strings that could trigger a WAF to block your request. If you want to write a comment on an article discussing Log4shell, you might be blocked for including the string <code>${jndi</code> in your comment. So naturally the false positive rate continues to rise with every new rule, and it's already quite high based on my experience maintaining a giant list of ModSecurity rule exceptions.</p>
+<p>So-called &quot;next-generation&quot; WAFs claim to solve this problem by <a href="https://docs.fastly.com/en/ngwaf/about-next-gen-waf">looking at multiple requests</a> or by using <a href="https://docs.fastly.com/en/ngwaf/about-the-architecture#about-the-collection-and-analysis-system">IP reputation systems</a>. While these can improve false positive rates, they can never truly solve the problem. In some ways, less false positives can increase the impact of particular false positives since neither user nor support teams have no clear procedure for fixing it. CloudFlare's algorithm can randomly decide to block you and <a href="https://www.ctrl.blog/entry/cloudflare-ip-blockade.html">you will have no recourse</a>. Imagine that happening to someone less tech-savvy.</p>
+<p>This is the classic problem with using an outdated security tool like a WAF: defenders have to configure the tool absolutely perfectly to be safe and avoid false positives, but attackers just need to find a single weakness. Those are horrible odds. You should use alternatives that don't require perfection from imperfect humans.</p>
+<h2 id="alternatives-to-wafs">Alternatives to WAFs</h2>
+<p>Since WAFs are resource-hungry, inneffective, unsafe, and noisy, how do I convince an auditor to not make me use one? The technical term would be to use &quot;compensating controls&quot;, but that sounds like such a weak term to describe the seriously powerful and simple alternatives to WAFs I'm about to describe:</p>
+<ul>
+<li><strong>Isolation:</strong> Isolation involves ensuring that a breach in one component can not affect the rest of the system, and there are many technologies that provide isolation.
+<ul>
+<li>Browsers do this by executing all code inside special sandboxed processes that don't have carte blanch access to cookies, saved passwords, other tabs, etc. Imagine how slow the web would be if every piece of JavaScript needed to be analyzed by hundreds of regexes before being executed!</li>
+<li>Microservices are designed with isolation in mind, but you can also do it in a monolith with a variety of <a href="https://github.com/dckc/awesome-ocap#libraries-and-frameworks">libraries and languages</a>.</li>
+</ul>
+</li>
+<li><strong>Immutability:</strong> Entire classes of attack can be eliminated by removing a few assumptions, like having a <a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/">readOnlyRootFilesystem</a>, a <a href="https://thenewstack.io/3-immutable-operating-systems-bottlerocket-flatcar-and-talos-linux/">package manager that requires rebooting</a>, or append-only/<a href="https://www.rsync.net/resources/faq.html#9a">immutable backups</a>.</li>
+<li><strong>Static Analysis:</strong> SQL injection has a miracle cure called &quot;prepared statements&quot;. The problem is that devs forget to use them. Static analysis checks in a CI pipeline can all but ensure that zero SQL injection vulnerabilities are in your codebase, at which point there is no need for any SQL injection WAF rules. No, &quot;defense in depth&quot; is not a valid excuse to use a WAF anyway, because it provides no real defense! Like surrounding Fort Knox with an army of guard guinea pigs.</li>
+<li><strong>Capability-based security:</strong> Not every API endpoint needs to have unrestricted read/write access to your entire database and file system, but that is the normal way people build APIs today. By using capabilities, you can express exactly that &quot;GET /api/v1/books&quot; only needs read access to the &quot;books&quot; table. Or that &quot;POST /api/v1/imageupload&quot; needs write access to a specific folder, but doesn't need the ability to spawn processes.</li>
+</ul>
+<p>These secure-by-design strategies are the way that the security industry needs to be heading. Unfortunately, it's a lot harder for the security industry to profit off of design-based techniques, so don't hold your breath.</p>
+
+    </div>
+</article>
+
+        </main>
+        
+        <footer>
+            
+    <div class="border"></div>
+    <div class="footer">
+        
+        <div>
+            <a href="/">Home</a>
+        </div>
+    </div>
+
+        </footer>
+    
+        </div>
+    </body>
+</html>

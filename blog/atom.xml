@@ -1,19 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-	<title>Mac Chaffee</title>
-	<subtitle>Mac Chaffee&#x27;s tech blog</subtitle>
-	<link href="/blog/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="/blog"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2023-08-03T00:00:00+00:00</updated>
-	<id>/blog/atom.xml</id>
-	<entry xml:lang="en">
-		<title>Book Review: Security Chaos Engineering</title>
-		<published>2023-08-03T00:00:00+00:00</published>
-		<updated>2023-08-03T00:00:00+00:00</updated>
-		<link rel="alternate" href="/blog/2023/sce-review/" type="text/html"/>
-		<id>/blog/2023/sce-review/</id>
-		<content type="html">&lt;p&gt;I recently picked up a few books to read, and &lt;em&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.securitychaoseng.com&quot;&gt;Security Chaos Engineering&lt;&#x2F;a&gt;&lt;&#x2F;em&gt; engrossed me so significantly that it 1) made me read the whole thing and 2) made me want to write about it too!&lt;&#x2F;p&gt;
+    <title>Mac Chaffee</title>
+    <subtitle>Mac Chaffee&#x27;s tech blog</subtitle>
+    <link href="/blog/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="/blog"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-11-11T00:00:00+00:00</updated>
+    <id>/blog/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Stop deploying web application firewalls</title>
+        <published>2023-11-11T00:00:00+00:00</published>
+        <updated>2023-11-11T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2023/wafs/" type="text/html"/>
+        <id>/blog/2023/wafs/</id>
+        
+        <content type="html">&lt;p&gt;Web Application Firewalls (WAFs) were created early in the Internet&#x27;s history, especially popularized by the &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;ModSecurity&quot;&gt;ModSecurity project in 2002&lt;&#x2F;a&gt;. WAFs work by intercepting every single HTTP request (and sometimes responses too) and evaluating several hundred regular expressions over the URI, headers, and body, sometimes aided by machine learning. If the request kinda looks like SQL, shell code, etc., the server may block your request.&lt;&#x2F;p&gt;
+&lt;p&gt;In the infancy of the cybersecurity field, WAFs seemed like a good idea. HTTP requests were tiny, infrequent, and mostly contained mundane form data. Today, I posit that WAFs are absolutely not a good idea, despite still being recommended or even required for compliance. I think they&#x27;re one of the worst offenders of &amp;quot;bolt-on&amp;quot; security as opposed to &amp;quot;built-in&amp;quot; security. There are better techniques you can use that make even the most advanced WAFs entirely obsolete.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-horrible-performance&quot;&gt;1 - Horrible Performance&lt;&#x2F;h2&gt;
+&lt;p&gt;Since WAFs run hundreds of regular expressions on every request, you may ask, &amp;quot;isn&#x27;t that super inefficient?&amp;quot; Yes, very.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;&lt;&#x2F;th&gt;&lt;th&gt;WAF&lt;&#x2F;th&gt;&lt;th&gt;No WAF&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Average time taken to upload 9,462 text files&lt;&#x2F;td&gt;&lt;td&gt;7.36&lt;&#x2F;td&gt;&lt;td&gt;4.55&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Average requests per second&lt;&#x2F;td&gt;&lt;td&gt;1285&lt;&#x2F;td&gt;&lt;td&gt;2079&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Number of requests blocked erroneously&lt;&#x2F;td&gt;&lt;td&gt;5&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Peak nginx CPU during trial&lt;&#x2F;td&gt;&lt;td&gt;73%&lt;&#x2F;td&gt;&lt;td&gt;8%&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;em&gt;Specifics about the benchmark&lt;&#x2F;em&gt;
+&lt;&#x2F;summary&gt;
+&lt;hr&#x2F;&gt;
+The easiest way I know to get modsecurity + CoreRuleSet installed is through [ingress-nginx](https:&#x2F;&#x2F;kubernetes.github.io&#x2F;ingress-nginx&#x2F;user-guide&#x2F;third-party-addons&#x2F;modsecurity&#x2F;), which I&#x27;ve installed in a [Kind cluster](https:&#x2F;&#x2F;kind.sigs.k8s.io&#x2F;docs&#x2F;user&#x2F;quick-start&#x2F;).
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;cat &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;EOF &lt;&#x2F;span&gt;&lt;span&gt;| &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;kind&lt;&#x2F;span&gt;&lt;span&gt; create cluster&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --config&lt;&#x2F;span&gt;&lt;span&gt;=-
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;kind: Cluster
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;apiVersion: kind.x-k8s.io&#x2F;v1alpha4
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;nodes:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;- role: control-plane
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;  extraPortMappings:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;  - containerPort: 32080
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;    hostPort: 32080
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;    protocol: TCP
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;  - containerPort: 32443
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;    hostPort: 32443
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;    protocol: TCP
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;EOF
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;helm&lt;&#x2F;span&gt;&lt;span&gt; upgrade&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --install&lt;&#x2F;span&gt;&lt;span&gt; ingress-nginx ingress-nginx \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --repo&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;kubernetes.github.io&#x2F;ingress-nginx \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --namespace&lt;&#x2F;span&gt;&lt;span&gt; ingress-nginx&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --create-namespace &lt;&#x2F;span&gt;&lt;span&gt;\
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --set&lt;&#x2F;span&gt;&lt;span&gt; controller.service.type=NodePort \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --set&lt;&#x2F;span&gt;&lt;span&gt; controller.service.nodePorts.https=32443 \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --set&lt;&#x2F;span&gt;&lt;span&gt; controller.service.nodePorts.http=32080 \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --set&lt;&#x2F;span&gt;&lt;span&gt; controller.ingressClassResource.default=true \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --set&lt;&#x2F;span&gt;&lt;span&gt; controller.allowSnippetAnnotations=true
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;For the test, I&#x27;ll be uploading files to MinIO using these values:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;yaml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-yaml &quot;&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;replicas&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;mode&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;standalone
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;resources&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;requests&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;memory&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;512Mi
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;persistence&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;enabled&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rootUser&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;rootuser
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rootPassword&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;rootpass123
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;buckets&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;bucket1
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;policy&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;none
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;purge&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ingress&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;enabled&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;true
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;hosts&lt;&#x2F;span&gt;&lt;span&gt;: [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;minio-waf.localhost&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;annotations&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;nginx.ingress.kubernetes.io&#x2F;enable-modsecurity&lt;&#x2F;span&gt;&lt;span&gt;: &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;nginx.ingress.kubernetes.io&#x2F;enable-owasp-core-rules&lt;&#x2F;span&gt;&lt;span&gt;: &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;nginx.ingress.kubernetes.io&#x2F;modsecurity-snippet&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;|
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;      Include &#x2F;etc&#x2F;nginx&#x2F;owasp-modsecurity-crs&#x2F;nginx-modsecurity.conf
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;      SecRuleEngine On
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;      # Even the core rules are ridiculous, blocking PUT requests, certain content-types, or any body with &amp;quot;options&amp;quot; in it
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;      SecRuleRemoveById 911100 920420 921110
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;helm&lt;&#x2F;span&gt;&lt;span&gt; upgrade&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --install&lt;&#x2F;span&gt;&lt;span&gt; minio minio&#x2F;minio&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -f&lt;&#x2F;span&gt;&lt;span&gt; values.yaml&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -n&lt;&#x2F;span&gt;&lt;span&gt; minio&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --create-namespace
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;helm&lt;&#x2F;span&gt;&lt;span&gt; upgrade&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --install&lt;&#x2F;span&gt;&lt;span&gt; minio-waf minio&#x2F;minio&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -f&lt;&#x2F;span&gt;&lt;span&gt; values-waf.yaml&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -n&lt;&#x2F;span&gt;&lt;span&gt; minio-waf&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --create-namespace
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Verify the WAF is working (should get a 403)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;curl &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;minio-waf.localhost:32080&#x2F;?q=..&#x2F;..&#x2F;etc&#x2F;passwd&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;We&#x27;ll be uploading just the &amp;quot;Documentation&amp;quot; folder of the v6.6 Linux Kernel, which contains 9462 files for a total of 65MB.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;curl -LO&lt;&#x2F;span&gt;&lt;span&gt; https:&#x2F;&#x2F;github.com&#x2F;torvalds&#x2F;linux&#x2F;archive&#x2F;refs&#x2F;tags&#x2F;v6.6.zip
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;unzip&lt;&#x2F;span&gt;&lt;span&gt; v6.6.zip &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;linux-6.6&#x2F;Documentation&#x2F;*&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Configure the minio client:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# You may need to add these hosts to &#x2F;etc&#x2F;hosts
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;export &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;MC_HOST_nowaf&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;rootuser:rootpass123@minio.localhost:32080&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;export &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;MC_HOST_waf&lt;&#x2F;span&gt;&lt;span&gt;=&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;rootuser:rootpass123@minio-waf.localhost:32080&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Run the benchmark (5 times each):&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;time&lt;&#x2F;span&gt;&lt;span&gt; mc cp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -r&lt;&#x2F;span&gt;&lt;span&gt; linux-6.6&#x2F;Documentation&#x2F; waf&#x2F;bucket1&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;time&lt;&#x2F;span&gt;&lt;span&gt; mc cp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -r&lt;&#x2F;span&gt;&lt;span&gt; linux-6.6&#x2F;Documentation&#x2F; nowaf&#x2F;bucket1&#x2F;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;hr&#x2F;&gt;
+&lt;&#x2F;details&gt;
+&lt;p&gt;In addition to slowing down every request, you also need significant additional RAM for buffering requests. Since not a single byte in the buffer can be flushed to the backend server until the WAF completes its analysis, you need several gigabytes of RAM to store request bodies. Servers like nginx buffer requests by default, but enough large concurrent requests (like pushing a container image) can make a buffering web server run out of RAM. When using a WAF, every server becomes a buffering web server, which is simply incompatible with many types of applications.&lt;&#x2F;p&gt;
+&lt;p&gt;I know computers are fast and hardware is cheap, but we shouldn&#x27;t be spending that kind of CPU and RAM on WAFs unless they&#x27;re a really effective security tool. But they aren&#x27;t, as you&#x27;ll see next.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-easily-bypassed&quot;&gt;2 - Easily Bypassed&lt;&#x2F;h2&gt;
+&lt;p&gt;WAF vendors and attackers are in a constant arms race, and but seems &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;0xInfection&#x2F;Awesome-WAF#evasion-techniques&quot;&gt;attackers are much better armed&lt;&#x2F;a&gt;. How could they not be? Many of the attacks that a WAF purports to block involve complex grammars like SQL, shell code, and entire programming languages. They often include comments, character escaping, encoding issues, and more oddities. These oddities mean that attackers always have a significant advantage and can typically bypass WAFs rules if they are clever enough.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, you might think &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Log4Shell&quot;&gt;Log4shell&lt;&#x2F;a&gt; is pretty easy to catch: just check for &lt;code&gt;${jndi&lt;&#x2F;code&gt;, right? Unfortunately, Log4J supports nested &amp;quot;&lt;a href=&quot;https:&#x2F;&#x2F;logging.apache.org&#x2F;log4j&#x2F;2.x&#x2F;manual&#x2F;lookups.html&quot;&gt;lookups&lt;&#x2F;a&gt;&amp;quot;, including ones that convert letters to upper&#x2F;lower case like &lt;code&gt;${lower:J}&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;That means an attacker can insert an arbitrary number of nested lookups around each letter and still perform the attack, like this: &lt;code&gt;${${lower:J}ndi:...&lt;&#x2F;code&gt;. This lead CloudFlare to say &lt;a href=&quot;https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;exploitation-of-cve-2021-44228-before-public-disclosure-and-evolution-of-waf-evasion-patterns&#x2F;&quot;&gt;&amp;quot;WAF vendors need to be looking at any occurrence of &lt;code&gt;${&lt;&#x2F;code&gt; and treating it as suspicious&amp;quot;&lt;&#x2F;a&gt;, which is just another hilarious example of how WAFs can never live up to the expectations placed on them.&lt;&#x2F;p&gt;
+&lt;p&gt;I just discussed the fairly simple grammar that is Log4J Lookups, but you can imagine how many more evasion tactics you could use in a language as complex as SQL or PHP, especially when considering encoding tricks. For an in-depth description of specific WAF bypass techniques, check out this awesome post: https:&#x2F;&#x2F;habr.com&#x2F;en&#x2F;companies&#x2F;dsec&#x2F;articles&#x2F;454592&#x2F;&lt;&#x2F;p&gt;
+&lt;p&gt;Another way to bypass a WAF involves just padding your attack string to appear &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;waf&#x2F;latest&#x2F;developerguide&#x2F;waf-oversize-request-components.html&quot;&gt;&amp;gt;8KB or so&lt;&#x2F;a&gt; into the request body. Like I mentioned in the section on performance, request bodies must be buffered into RAM for analysis, so WAFs must choose some cut-off point to avoid spending infinite CPU and RAM on a single request. For some WAFs like AWS&#x27;s, that cutoff point is around 8KB. So if you just put 8192 innocuous characters before your Log4Shell attack string, you&#x27;ve rendered the WAF worthless.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-wafs-are-an-attack-vector&quot;&gt;3 - WAFs are an Attack Vector&lt;&#x2F;h2&gt;
+&lt;p&gt;In 2019, CapitalOne experienced a breach of 100 million credit applications that was &lt;a href=&quot;https:&#x2F;&#x2F;krebsonsecurity.com&#x2F;2019&#x2F;08&#x2F;what-we-can-learn-from-the-capital-one-hack&#x2F;&quot;&gt;allegedly caused by a WAF misconfiguration&lt;&#x2F;a&gt;. The attacker allegedly tricked the WAF into sending requests to the EC2 Metadata Service, which handed out a credential that allowed reading sensitive files from S3.&lt;&#x2F;p&gt;
+&lt;p&gt;While this is just one example, it illustrates the curious fact that WAFs actually have a large attack surface.&lt;&#x2F;p&gt;
+&lt;p&gt;Most WAFs are giant, complex codebases that are usually closed-source and written in memory-unsafe languages. Since they&#x27;re expensive &amp;quot;enterprise&amp;quot; products, companies stuff them full of unnecessary features to make them stand out more than competitors. All of this adds up to make WAFs yet another example of a dangerous &amp;quot;security&amp;quot; tool, &lt;a href=&quot;&#x2F;blog&#x2F;2023&#x2F;wafs&#x2F;.&#x2F;2023-05-21-solarwinds-hack-lessons-learned.md&quot;&gt;just like SolarWinds&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;No security officer would approve taking such a risky piece of software, putting it directly on the internet, making it parse mountains of untrusted input, and giving it access to all your backend servers, logging infra, SIEM, alerting systems, &lt;a href=&quot;https:&#x2F;&#x2F;docs.fastly.com&#x2F;en&#x2F;ngwaf&#x2F;jira&quot;&gt;and even JIRA for some reason&lt;&#x2F;a&gt; UNLESS it&#x27;s covered in security buzzwords and costs 5-6 figures per year.&lt;&#x2F;p&gt;
+&lt;p&gt;Somehow, companies that sell security products have gotten a pass on implementing foundational security principles like secure by default, secure by design, attack surface reduction, and the principle of least privilege. Don&#x27;t let them keep getting away with that.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;4-high-false-positive-rate&quot;&gt;4 - High False Positive Rate&lt;&#x2F;h2&gt;
+&lt;p&gt;Over the last twenty years, open-source WAF rulesets have expanded considerably to detect more-recent types of attack. Apparently all those proprietary WAFs are doing the same. That means there are more and more possible strings that could trigger a WAF to block your request. If you want to write a comment on an article discussing Log4shell, you might be blocked for including the string &lt;code&gt;${jndi&lt;&#x2F;code&gt; in your comment. So naturally the false positive rate continues to rise with every new rule, and it&#x27;s already quite high based on my experience maintaining a giant list of ModSecurity rule exceptions.&lt;&#x2F;p&gt;
+&lt;p&gt;So-called &amp;quot;next-generation&amp;quot; WAFs claim to solve this problem by &lt;a href=&quot;https:&#x2F;&#x2F;docs.fastly.com&#x2F;en&#x2F;ngwaf&#x2F;about-next-gen-waf&quot;&gt;looking at multiple requests&lt;&#x2F;a&gt; or by using &lt;a href=&quot;https:&#x2F;&#x2F;docs.fastly.com&#x2F;en&#x2F;ngwaf&#x2F;about-the-architecture#about-the-collection-and-analysis-system&quot;&gt;IP reputation systems&lt;&#x2F;a&gt;. While these can improve false positive rates, they can never truly solve the problem. In some ways, less false positives can increase the impact of particular false positives since neither user nor support teams have no clear procedure for fixing it. CloudFlare&#x27;s algorithm can randomly decide to block you and &lt;a href=&quot;https:&#x2F;&#x2F;www.ctrl.blog&#x2F;entry&#x2F;cloudflare-ip-blockade.html&quot;&gt;you will have no recourse&lt;&#x2F;a&gt;. Imagine that happening to someone less tech-savvy.&lt;&#x2F;p&gt;
+&lt;p&gt;This is the classic problem with using an outdated security tool like a WAF: defenders have to configure the tool absolutely perfectly to be safe and avoid false positives, but attackers just need to find a single weakness. Those are horrible odds. You should use alternatives that don&#x27;t require perfection from imperfect humans.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;alternatives-to-wafs&quot;&gt;Alternatives to WAFs&lt;&#x2F;h2&gt;
+&lt;p&gt;Since WAFs are resource-hungry, inneffective, unsafe, and noisy, how do I convince an auditor to not make me use one? The technical term would be to use &amp;quot;compensating controls&amp;quot;, but that sounds like such a weak term to describe the seriously powerful and simple alternatives to WAFs I&#x27;m about to describe:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Isolation:&lt;&#x2F;strong&gt; Isolation involves ensuring that a breach in one component can not affect the rest of the system, and there are many technologies that provide isolation.
+&lt;ul&gt;
+&lt;li&gt;Browsers do this by executing all code inside special sandboxed processes that don&#x27;t have carte blanch access to cookies, saved passwords, other tabs, etc. Imagine how slow the web would be if every piece of JavaScript needed to be analyzed by hundreds of regexes before being executed!&lt;&#x2F;li&gt;
+&lt;li&gt;Microservices are designed with isolation in mind, but you can also do it in a monolith with a variety of &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;dckc&#x2F;awesome-ocap#libraries-and-frameworks&quot;&gt;libraries and languages&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Immutability:&lt;&#x2F;strong&gt; Entire classes of attack can be eliminated by removing a few assumptions, like having a &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;docs&#x2F;tasks&#x2F;configure-pod-container&#x2F;security-context&#x2F;&quot;&gt;readOnlyRootFilesystem&lt;&#x2F;a&gt;, a &lt;a href=&quot;https:&#x2F;&#x2F;thenewstack.io&#x2F;3-immutable-operating-systems-bottlerocket-flatcar-and-talos-linux&#x2F;&quot;&gt;package manager that requires rebooting&lt;&#x2F;a&gt;, or append-only&#x2F;&lt;a href=&quot;https:&#x2F;&#x2F;www.rsync.net&#x2F;resources&#x2F;faq.html#9a&quot;&gt;immutable backups&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Static Analysis:&lt;&#x2F;strong&gt; SQL injection has a miracle cure called &amp;quot;prepared statements&amp;quot;. The problem is that devs forget to use them. Static analysis checks in a CI pipeline can all but ensure that zero SQL injection vulnerabilities are in your codebase, at which point there is no need for any SQL injection WAF rules. No, &amp;quot;defense in depth&amp;quot; is not a valid excuse to use a WAF anyway, because it provides no real defense! Like surrounding Fort Knox with an army of guard guinea pigs.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Capability-based security:&lt;&#x2F;strong&gt; Not every API endpoint needs to have unrestricted read&#x2F;write access to your entire database and file system, but that is the normal way people build APIs today. By using capabilities, you can express exactly that &amp;quot;GET &#x2F;api&#x2F;v1&#x2F;books&amp;quot; only needs read access to the &amp;quot;books&amp;quot; table. Or that &amp;quot;POST &#x2F;api&#x2F;v1&#x2F;imageupload&amp;quot; needs write access to a specific folder, but doesn&#x27;t need the ability to spawn processes.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;These secure-by-design strategies are the way that the security industry needs to be heading. Unfortunately, it&#x27;s a lot harder for the security industry to profit off of design-based techniques, so don&#x27;t hold your breath.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Book Review: Security Chaos Engineering</title>
+        <published>2023-08-03T00:00:00+00:00</published>
+        <updated>2023-08-03T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2023/sce-review/" type="text/html"/>
+        <id>/blog/2023/sce-review/</id>
+        
+        <content type="html">&lt;p&gt;I recently picked up a few books to read, and &lt;em&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.securitychaoseng.com&quot;&gt;Security Chaos Engineering&lt;&#x2F;a&gt;&lt;&#x2F;em&gt; engrossed me so significantly that it 1) made me read the whole thing and 2) made me want to write about it too!&lt;&#x2F;p&gt;
 &lt;p&gt;If you just want a taste of the book, check out the primary author &lt;a href=&quot;https:&#x2F;&#x2F;www.kellyshortridge.com&#x2F;&quot;&gt;Kelly Shortridge&#x27;s blog&lt;&#x2F;a&gt;. Her unique writing style is quite fun to read.&lt;&#x2F;p&gt;
 &lt;p&gt;My interpretation of the book was that it is the InfoSec world&#x27;s equivalent of the &lt;em&gt;Ninety-five Theses&lt;&#x2F;em&gt;, pointing out the various ways that the security practices of the past and present have failed us all. Since these failures are so normalized, it&#x27;s impressive seeing Shortridge traverse the entire org chart and tech stack, pointing out all the pain points I&#x27;ve always felt, but never thought too much about. The chaos engineering stuff plays a minor role, more just a natural conclusion from the radical idea (&#x2F;s) that we should not just assume things about the security of our systems; we should test them.&lt;&#x2F;p&gt;
 &lt;p&gt;The way I interpreted the book is informed by my own background in tech, which I would describe as &amp;quot;software engineer turned DevOps person, with a healthy interest in security&amp;quot;. That &amp;quot;healthy interest in security&amp;quot; is the dangerous part, because I know just enough to be frustrated at the state of the security industry, but not enough to personally do anything about it. A book like &lt;em&gt;SCE&lt;&#x2F;em&gt; makes me start to think that maybe that frustration isn&#x27;t unfounded.&lt;&#x2F;p&gt;
@@ -21,7 +154,7 @@
 &lt;h2 id=&quot;point-1-resilience-over-robustness&quot;&gt;Point 1: Resilience over robustness&lt;&#x2F;h2&gt;
 &lt;p&gt;Much time and energy has been poured into security practices that restrict, block, and control. This has largely been viewed as a necessary evil of security, but it&#x27;s not nearly as necessary as many security people would lead you to believe.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;em&gt;SCE&lt;&#x2F;em&gt; explains this by making a distinction between resilience (adapting around attacks) and robustness (trying to stop attacks). The classic example from Aesop&#x27;s fable is how a robust oak tree stands in proud resistance against the wind, but it ultimately falls while the resilient reeds flex and bend.&lt;&#x2F;p&gt;
-&lt;p&gt;A good example is a Web Application Firewall (WAF), which runs thousands of regexes on every HTTP request to block requests that like look like they contain SQL queries or shell commands. As you can imagine, they aren&#x27;t good at their job, causing many false positives, slowing down websites, and still being easily circumventable by attackers. That doesn&#x27;t stop infosec teams from requiring you to use WAFs, unfortunately. A WAF gives you robustness, not resilience.&lt;&#x2F;p&gt;
+&lt;p&gt;A good example is a Web Application Firewall (WAF), which runs thousands of regexes on every HTTP request to block requests that like look like they contain SQL queries or shell commands. As you can imagine, &lt;a href=&quot;&#x2F;blog&#x2F;2023&#x2F;sce-review&#x2F;.&#x2F;2023-11-11-wafs.md&quot;&gt;they aren&#x27;t good at their job&lt;&#x2F;a&gt;, causing many false positives, slowing down websites, and still being easily circumventable by attackers. That doesn&#x27;t stop infosec teams from requiring you to use WAFs, unfortunately. A WAF gives you robustness, not resilience.&lt;&#x2F;p&gt;
 &lt;p&gt;Resilience would involve securing your websites &amp;quot;by design&amp;quot;, like using static analysis to prevent passing user-controlled input into shell commands or to enforce the use of prepared statements. Choosing resilience would also mean taking all that time you save in chasing down false-positives and investing it planning for the eventuality that an attacker bypasses your defenses anyway. That could mean doing drills, double-checking backup procedures, and monitoring&#x2F;learning from past incidents.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;point-2-your-security-team-should-be-more-like-platform-engineers&quot;&gt;Point 2: Your security team should be more like platform engineers&lt;&#x2F;h2&gt;
 &lt;p&gt;To state the obvious, securing a server, laptop, or a piece of software is hard. It requires a unique skill-set that not everyone in your organization possesses. Why then do we expect them to know as much, care as much, and do as much about security as a CISO?&lt;&#x2F;p&gt;
@@ -38,14 +171,19 @@
 &lt;p&gt;My one complaint with the book is that it feels a bit more aspirational than practical. But damn if it doesn&#x27;t sound like an amazingly promising aspiration: a security industry that achieves &lt;em&gt;real&lt;&#x2F;em&gt; security, and they actually help you get there.&lt;&#x2F;p&gt;
 &lt;p&gt;Seeing the book point out all the obvious (in hindsight) ways that the security status quo is ineffective almost makes me fear working in the cybersecurity field. How come all the people in power in the cybersecurity field can&#x27;t see this mess they&#x27;ve created? If I joined them, would I be forced to keep propping up this status quo? I hope one day soon that the cybersecurity industry starts doing the one thing they can&#x27;t stand: change.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Obtaining database passwords from a billion-dollar company</title>
-		<published>2023-06-06T00:00:00+00:00</published>
-		<updated>2023-06-06T00:00:00+00:00</updated>
-		<link rel="alternate" href="/blog/2023/kubecost-hack/" type="text/html"/>
-		<id>/blog/2023/kubecost-hack/</id>
-		<content type="html">&lt;p&gt;This is a story about how in 2021, I discovered a vulnerability affecting an unnamed billion-dollar company and disclosed it to them, earning my largest bug bounty ever!&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Obtaining database passwords from a billion-dollar company</title>
+        <published>2023-06-06T00:00:00+00:00</published>
+        <updated>2023-06-06T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2023/kubecost-hack/" type="text/html"/>
+        <id>/blog/2023/kubecost-hack/</id>
+        
+        <content type="html">&lt;p&gt;This is a story about how in 2021, I discovered a vulnerability affecting an unnamed billion-dollar company and disclosed it to them, earning my largest bug bounty ever!&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;accidental-discovery&quot;&gt;Accidental Discovery&lt;&#x2F;h2&gt;
 &lt;p&gt;At first, I was just doing some work on &lt;a href=&quot;https:&#x2F;&#x2F;www.kubecost.com&#x2F;&quot;&gt;kubecost&lt;&#x2F;a&gt;, a Kubernetes tool which estimates costs for running pods. The first thing that caught my security eye was that by default, when you install kubecost, it captures your &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubecost&#x2F;cost-analyzer-helm-chart&#x2F;blob&#x2F;0ef0b20adabfa29b80ab0604a3b51d836eae169b&#x2F;cost-analyzer&#x2F;templates&#x2F;cost-analyzer-deployment-template.yaml#L576&quot;&gt;HELM_VALUES&lt;&#x2F;a&gt; in an environment variable which they use to help their enterprise users debug problems. This set off alarm bells since Helm values are typically how secrets are passed into applications, such as API keys for Kubecost itself and Grafana passwords.&lt;&#x2F;p&gt;
 &lt;p&gt;I immediately disabled HELM_VALUES for my own kubecost instance, but now I had my security hat on. While doing unrelated work with my dev tools open, I saw kubecost perform an API request for &lt;code&gt;&#x2F;api&#x2F;allPods&lt;&#x2F;code&gt;, which happened to be running a little slow (as you can imagine with ~500+ pods). Investigating the response, I saw that it returned ALL of the information about pods, including their environment variables! And this API is callable by unauthenticated users.&lt;&#x2F;p&gt;
@@ -72,14 +210,19 @@
 &lt;li&gt;Responsible disclosure is good for victims, and public disclosure is good for future victims.&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>We&#x27;ve learned nothing from the SolarWinds hack</title>
-		<published>2023-05-21T00:00:00+00:00</published>
-		<updated>2023-05-21T00:00:00+00:00</updated>
-		<link rel="alternate" href="/blog/2023/solarwinds-hack-lessons-learned/" type="text/html"/>
-		<id>/blog/2023/solarwinds-hack-lessons-learned/</id>
-		<content type="html">&lt;p&gt;Back in 2020, A Russian state-sponsored group got into SolarWinds&#x27; build system and inserted  command and control (c2) code into a routine software update for a network monitoring tool called Orion (&lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;2020_United_States_federal_government_data_breach&quot;&gt;wiki link&lt;&#x2F;a&gt;). It was all over the news, and for good reason given the extent of the breach (into particularly sensitive parts of the US government) and the lengthy recovery process &lt;a href=&quot;https:&#x2F;&#x2F;www.businessinsider.com&#x2F;russia-hack-may-take-years-undo-bossert-2020-12&quot;&gt;which will likely take years&lt;&#x2F;a&gt;. Given its high profile, I&#x27;m shocked to report that I feel very little has been learned from that attack.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>We&#x27;ve learned nothing from the SolarWinds hack</title>
+        <published>2023-05-21T00:00:00+00:00</published>
+        <updated>2023-05-21T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2023/solarwinds-hack-lessons-learned/" type="text/html"/>
+        <id>/blog/2023/solarwinds-hack-lessons-learned/</id>
+        
+        <content type="html">&lt;p&gt;Back in 2020, A Russian state-sponsored group got into SolarWinds&#x27; build system and inserted  command and control (c2) code into a routine software update for a network monitoring tool called Orion (&lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;2020_United_States_federal_government_data_breach&quot;&gt;wiki link&lt;&#x2F;a&gt;). It was all over the news, and for good reason given the extent of the breach (into particularly sensitive parts of the US government) and the lengthy recovery process &lt;a href=&quot;https:&#x2F;&#x2F;www.businessinsider.com&#x2F;russia-hack-may-take-years-undo-bossert-2020-12&quot;&gt;which will likely take years&lt;&#x2F;a&gt;. Given its high profile, I&#x27;m shocked to report that I feel very little has been learned from that attack.&lt;&#x2F;p&gt;
 &lt;p&gt;To me, the hack was a wake-up call about how the way we install and run software is insecure by design and needs a rework, maybe using &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Capability-based_security&quot;&gt;capabilities-based security&lt;&#x2F;a&gt;. But all I hear about is a bunch of solutions that kinda miss the point. Let&#x27;s go over all of those first.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;we-should-sign-and-verify-all-our-dependencies&quot;&gt;&amp;quot;We should sign and verify all our dependencies&amp;quot;&lt;&#x2F;h2&gt;
 &lt;p&gt;In the wake of the SolarWinds hack, interest in &amp;quot;securing the software supply chain&amp;quot; grew considerably, including &lt;a href=&quot;https:&#x2F;&#x2F;www.nist.gov&#x2F;itl&#x2F;executive-order-14028-improving-nations-cybersecurity&quot;&gt;a May 2021 executive order&lt;&#x2F;a&gt; telling NIST&#x2F;CISA to develop some guidelines about the subject. The &lt;a href=&quot;https:&#x2F;&#x2F;slsa.dev&#x2F;&quot;&gt;Supply-chain Levels for Software Artifacts (SLSA)&lt;&#x2F;a&gt; framework also launched that same year and has been steadily growing in popularity.&lt;&#x2F;p&gt;
@@ -118,16 +261,21 @@ timeliness and completeness of system patching operations&amp;quot;, as mentione
 &lt;h2 id=&quot;back-to-reality&quot;&gt;Back to reality&lt;&#x2F;h2&gt;
 &lt;p&gt;We&#x27;re still talking about something that&#x27;s probably a decade away or more, but given the benefits and the constant string of high-profile hacks like the SolarWinds hack, I&#x27;m just upset the ball &lt;em&gt;still&lt;&#x2F;em&gt; isn&#x27;t rolling in the right direction 3 years later.&lt;&#x2F;p&gt;
 &lt;p&gt;But history shows it&#x27;s not impossible, at least not if you&#x27;re the &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;List_of_public_corporations_by_market_capitalization&quot;&gt;richest company on the planet&lt;&#x2F;a&gt;. Over time (particularly since &lt;a href=&quot;https:&#x2F;&#x2F;www.cultofmac.com&#x2F;173128&#x2F;new-ios-6-privacy-settings-limit-access-to-photos-contact-calendars-and-more&#x2F;&quot;&gt;iOS 6&lt;&#x2F;a&gt;), less and less permissions have been granted to iOS apps by default, instead requiring apps to request those permissions from users explicitly. It&#x27;s still not perfect (like access to contacts still being a binary &amp;quot;yes&#x2F;no&amp;quot;), but every permission clawed back from the default set required breaking backwards compatibility, a phrase rarely uttered in regard to the Linux and Windows kernels.&lt;&#x2F;p&gt;
-&lt;p&gt;If you have been an iOS developer since 2012, I&#x27;m sorry you had to go through that, but your extra work has been profoundly important to the privacy and security of mobile OSes. I&#x27;d like to see that same &lt;a href=&quot;.&#x2F;2023-05-20-ethics-self-attestation.md&quot;&gt;principled&lt;&#x2F;a&gt; energy brought to desktop and server OSes. If we don&#x27;t, the next SolarWinds-like hack is just around the corner.&lt;&#x2F;p&gt;
+&lt;p&gt;If you have been an iOS developer since 2012, I&#x27;m sorry you had to go through that, but your extra work has been profoundly important to the privacy and security of mobile OSes. I&#x27;d like to see that same &lt;a href=&quot;&#x2F;blog&#x2F;2023&#x2F;solarwinds-hack-lessons-learned&#x2F;.&#x2F;2023-05-20-ethics-self-attestation.md&quot;&gt;principled&lt;&#x2F;a&gt; energy brought to desktop and server OSes. If we don&#x27;t, the next SolarWinds-like hack is just around the corner.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Self-attesting to a code of ethics</title>
-		<published>2023-05-20T00:00:00+00:00</published>
-		<updated>2023-05-20T00:00:00+00:00</updated>
-		<link rel="alternate" href="/blog/2023/ethics-self-attestation/" type="text/html"/>
-		<id>/blog/2023/ethics-self-attestation/</id>
-		<content type="html">&lt;p&gt;Unlike many other industries like doctors, real estate agents, lawyers, social workers, etc. the tech world doesn&#x27;t have to abide by any particular code of ethics. We can argue all we want about if such a thing should be required or what should be in it, but I think clearly &lt;em&gt;something&lt;&#x2F;em&gt; is better than the &lt;em&gt;nothing&lt;&#x2F;em&gt; we have today.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Self-attesting to a code of ethics</title>
+        <published>2023-05-20T00:00:00+00:00</published>
+        <updated>2023-05-20T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2023/ethics-self-attestation/" type="text/html"/>
+        <id>/blog/2023/ethics-self-attestation/</id>
+        
+        <content type="html">&lt;p&gt;Unlike many other industries like doctors, real estate agents, lawyers, social workers, etc. the tech world doesn&#x27;t have to abide by any particular code of ethics. We can argue all we want about if such a thing should be required or what should be in it, but I think clearly &lt;em&gt;something&lt;&#x2F;em&gt; is better than the &lt;em&gt;nothing&lt;&#x2F;em&gt; we have today.&lt;&#x2F;p&gt;
 &lt;p&gt;In most of the US at least, those professions I mentioned have state-recognized organizations which are legally empowered to regulate members of that profession, and they typically mandate a code of ethics. Examples:&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.ncrec.gov&#x2F;Commission&#x2F;AboutUs&quot;&gt;North Carolina Real Estate Commission&lt;&#x2F;a&gt;
@@ -149,14 +297,19 @@ timeliness and completeness of system patching operations&amp;quot;, as mentione
 &lt;p&gt;As a result of saying that, you now have power over me. I have no license to be revoked, but if I wrong you, you can hold me to my word. Like a service level agreement for interacting with me professionally. This one-way power dynamic feels kinda weird, right? Well, you can fix that by also self-attesting to a professional code of ethics. Doesn&#x27;t matter which one.&lt;&#x2F;p&gt;
 &lt;p&gt;What more do you want, a badge to put in your READMEs? God no.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Hacking myself to prove a point</title>
-		<published>2023-01-21T00:00:00+00:00</published>
-		<updated>2023-01-21T00:00:00+00:00</updated>
-		<link rel="alternate" href="/blog/2023/hacking-myself/" type="text/html"/>
-		<id>/blog/2023/hacking-myself/</id>
-		<content type="html">&lt;p&gt;If you didn&#x27;t hear, &lt;a href=&quot;https:&#x2F;&#x2F;circleci.com&#x2F;blog&#x2F;jan-4-2023-incident-report&#x2F;&quot;&gt;CircleCI recently released their report on a December 2022 security incident&lt;&#x2F;a&gt;. What stood out to me is that CircleCI seems to be doing all the &amp;quot;normal&amp;quot; security things: SSO with 2FA, endpoint protection, auditing&#x2F;logging, encryption at rest, etc. But they still got breached. I think this speaks to the unfortunate state of the modern-day security industry. It&#x27;s a thousand times easier to sell some pithy software tool that checks a compliance box than it is to sell a real security transformation.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Hacking myself to prove a point</title>
+        <published>2023-01-21T00:00:00+00:00</published>
+        <updated>2023-01-21T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2023/hacking-myself/" type="text/html"/>
+        <id>/blog/2023/hacking-myself/</id>
+        
+        <content type="html">&lt;p&gt;If you didn&#x27;t hear, &lt;a href=&quot;https:&#x2F;&#x2F;circleci.com&#x2F;blog&#x2F;jan-4-2023-incident-report&#x2F;&quot;&gt;CircleCI recently released their report on a December 2022 security incident&lt;&#x2F;a&gt;. What stood out to me is that CircleCI seems to be doing all the &amp;quot;normal&amp;quot; security things: SSO with 2FA, endpoint protection, auditing&#x2F;logging, encryption at rest, etc. But they still got breached. I think this speaks to the unfortunate state of the modern-day security industry. It&#x27;s a thousand times easier to sell some pithy software tool that checks a compliance box than it is to sell a real security transformation.&lt;&#x2F;p&gt;
 &lt;p&gt;To me, one of the central security weaknesses companies have is ignoring local malware, which is exactly how the CircleCI hack started. People consider local malware to be &amp;quot;game over&amp;quot; and just give up on &amp;quot;defense in depth&amp;quot;. Both &lt;a href=&quot;https:&#x2F;&#x2F;developer.hashicorp.com&#x2F;vault&#x2F;docs&#x2F;internals&#x2F;security&quot;&gt;Hashicorp Vault&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;groups.google.com&#x2F;a&#x2F;chromium.org&#x2F;g&#x2F;blink-dev&#x2F;c&#x2F;OkdLUyYmY1E&#x2F;m&#x2F;NkUxgF27DAAJ&quot;&gt;Google Chrome&lt;&#x2F;a&gt; have essentially stated they don&#x27;t care about protecting from local malware.&lt;&#x2F;p&gt;
 &lt;p&gt;I believe that this mindset of ignoring local malware 1) underestimates how easy it is to do, and 2) prevents the whole security industry from focusing on this problem. To prove this, I&#x27;ll try to hack myself like I&#x27;m that poor CircleCI engineer whose laptop was exploited as the first step in the attack.&lt;&#x2F;p&gt;
 &lt;blockquote&gt;
@@ -352,14 +505,19 @@ timeliness and completeness of system patching operations&amp;quot;, as mentione
 &lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;&#x2F;h2&gt;
 &lt;p&gt;Local malware &lt;em&gt;sucks&lt;&#x2F;em&gt;. It&#x27;s too easy to get infected and too easy for attackers to avoid detection, even though local malware has basically been around about as long as computers have existed. I&#x27;m disappointed in the software security industry for spending decades chasing flashy, profitable products instead of actually improving security. You know what? I&#x27;m starting to suspect this whole idea of a society dedicated to profit-seeking above all else is not such a good idea...&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Know your carrying capacity</title>
-		<published>2022-10-08T00:00:00+00:00</published>
-		<updated>2022-10-08T00:00:00+00:00</updated>
-		<link rel="alternate" href="/blog/2022/carrying-capacity/" type="text/html"/>
-		<id>/blog/2022/carrying-capacity/</id>
-		<content type="html">&lt;p&gt;Take a second to think through all the &amp;quot;stuff&amp;quot; you have to personally maintain at your job. Here are a few ideas:&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Know your carrying capacity</title>
+        <published>2022-10-08T00:00:00+00:00</published>
+        <updated>2022-10-08T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2022/carrying-capacity/" type="text/html"/>
+        <id>/blog/2022/carrying-capacity/</id>
+        
+        <content type="html">&lt;p&gt;Take a second to think through all the &amp;quot;stuff&amp;quot; you have to personally maintain at your job. Here are a few ideas:&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;Physical servers or virtual machines&lt;&#x2F;li&gt;
 &lt;li&gt;Internal libraries&lt;&#x2F;li&gt;
@@ -399,14 +557,19 @@ timeliness and completeness of system patching operations&amp;quot;, as mentione
 &lt;p&gt;All we can really do is to consciously think about our own carrying capacities whenever we take on a new task. Frequently re-visit that &amp;quot;list of things you have to personally maintain&amp;quot; in order to avoid blind spots. When you do this, you might be forced to jog your own memory by re-reading those docs or investigating that old VM. This has the (desireable) side-effect of taking up a lot of your time! If you are already responsible for so many things that you spend so much time re-checking them, you definitely can&#x27;t take on new things!&lt;&#x2F;p&gt;
 &lt;p&gt;All I ask is for just a little bit more conscientiousness when it comes to maintenance.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Under-documented Kubernetes Security Tips</title>
-		<published>2022-09-18T00:00:00+00:00</published>
-		<updated>2022-09-18T00:00:00+00:00</updated>
-		<link rel="alternate" href="/blog/2022/k8s-under-documented-security-tips/" type="text/html"/>
-		<id>/blog/2022/k8s-under-documented-security-tips/</id>
-		<content type="html">&lt;p&gt;Securing Kubernetes is complex, so there are quite a few guides out there:&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Under-documented Kubernetes Security Tips</title>
+        <published>2022-09-18T00:00:00+00:00</published>
+        <updated>2022-09-18T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2022/k8s-under-documented-security-tips/" type="text/html"/>
+        <id>/blog/2022/k8s-under-documented-security-tips/</id>
+        
+        <content type="html">&lt;p&gt;Securing Kubernetes is complex, so there are quite a few guides out there:&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;workbench.cisecurity.org&#x2F;benchmarks&#x2F;6083&quot;&gt;CIS Benchmarks for Kubernetes&lt;&#x2F;a&gt; (free account login required)&lt;&#x2F;li&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.nsa.gov&#x2F;Press-Room&#x2F;News-Highlights&#x2F;Article&#x2F;Article&#x2F;2716980&#x2F;nsa-cisa-release-kubernetes-hardening-guidance&#x2F;&quot;&gt;NSA&#x2F;CISA Kubernetes Hardening Guidance&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
@@ -443,14 +606,19 @@ timeliness and completeness of system patching operations&amp;quot;, as mentione
 &lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;&#x2F;h2&gt;
 &lt;p&gt;The goal of this post is to spread awareness of the depth that Kubernetes security can reach sometimes. As professionals, it&#x27;s our duty to communicate the scope of new projects, including the security risks and the work required to mitigate them. All too often, I see this duty being neglected or offloaded to flashy security tools that don&#x27;t solve the real issues. Because the real issue are often too organization-specific (section 1), too cutting-edge (section 2), or too abstract (section 3) to be documented anywhere.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>The Fumbled Deprecation of PodSecurityPolicies</title>
-		<published>2022-05-08T00:00:00+00:00</published>
-		<updated>2022-05-08T00:00:00+00:00</updated>
-		<link rel="alternate" href="/blog/2022/psp-deprecation/" type="text/html"/>
-		<id>/blog/2022/psp-deprecation/</id>
-		<content type="html">&lt;p&gt;In &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;pull&#x2F;7893&quot;&gt;2016&lt;&#x2F;a&gt;, Kubernetes v1.3 was released which included a new API type: PodSecurityPolicies (PSPs). The original &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;design-proposals-archive&#x2F;blob&#x2F;main&#x2F;auth&#x2F;pod-security-policy.md&quot;&gt;design proposal&lt;&#x2F;a&gt; had the lofty goal of allowing cluster admins to restrict various Linux privileges to some Pods while still allowing other Pods to use them. PSPs filled an important security hole where having the ability to run pods could let you bypass every other security control in the cluster.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>The Fumbled Deprecation of PodSecurityPolicies</title>
+        <published>2022-05-08T00:00:00+00:00</published>
+        <updated>2022-05-08T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2022/psp-deprecation/" type="text/html"/>
+        <id>/blog/2022/psp-deprecation/</id>
+        
+        <content type="html">&lt;p&gt;In &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;pull&#x2F;7893&quot;&gt;2016&lt;&#x2F;a&gt;, Kubernetes v1.3 was released which included a new API type: PodSecurityPolicies (PSPs). The original &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;design-proposals-archive&#x2F;blob&#x2F;main&#x2F;auth&#x2F;pod-security-policy.md&quot;&gt;design proposal&lt;&#x2F;a&gt; had the lofty goal of allowing cluster admins to restrict various Linux privileges to some Pods while still allowing other Pods to use them. PSPs filled an important security hole where having the ability to run pods could let you bypass every other security control in the cluster.&lt;&#x2F;p&gt;
 &lt;p&gt;But in 2021, after 5 years of PSPs still being considered &amp;quot;beta&amp;quot;, they were &lt;a href=&quot;https:&#x2F;&#x2F;kubernetes.io&#x2F;blog&#x2F;2021&#x2F;04&#x2F;06&#x2F;podsecuritypolicy-deprecation-past-present-and-future&#x2F;&quot;&gt;deprecated&lt;&#x2F;a&gt;. The maintainers had their &lt;a href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;SFtHRmPuhEw?t=963&quot;&gt;reasons&lt;&#x2F;a&gt;, but in the year since this deprecation, I believe it was mismanaged for a number of reasons.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;what-are-podsecuritypolicies-psps&quot;&gt;What are PodSecurityPolicies (PSPs)?&lt;&#x2F;h2&gt;
 &lt;details&gt;
@@ -522,14 +690,19 @@ timeliness and completeness of system patching operations&amp;quot;, as mentione
 &lt;li&gt;Learn from the success of the &amp;quot;Container * Interfaces&amp;quot;. They can prevent ecosystem fragmentation and compatibility issues.&lt;&#x2F;li&gt;
 &lt;&#x2F;ol&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Plain Kubernetes Secrets are fine</title>
-		<published>2022-04-30T00:00:00+00:00</published>
-		<updated>2022-04-30T00:00:00+00:00</updated>
-		<link rel="alternate" href="/blog/2022/k8s-secrets/" type="text/html"/>
-		<id>/blog/2022/k8s-secrets/</id>
-		<content type="html">&lt;p&gt;It&#x27;s no secret that Kubernetes Secrets are just base64-encoded strings stored in etcd alongside the rest of the cluster&#x27;s state. Ever since the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;pull&#x2F;4514&quot;&gt;introduction of Secrets in 2015&lt;&#x2F;a&gt;, armchair security experts have been scoffing at this decision and seeking alternatives. I think those people are missing the point.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Plain Kubernetes Secrets are fine</title>
+        <published>2022-04-30T00:00:00+00:00</published>
+        <updated>2022-04-30T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2022/k8s-secrets/" type="text/html"/>
+        <id>/blog/2022/k8s-secrets/</id>
+        
+        <content type="html">&lt;p&gt;It&#x27;s no secret that Kubernetes Secrets are just base64-encoded strings stored in etcd alongside the rest of the cluster&#x27;s state. Ever since the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;pull&#x2F;4514&quot;&gt;introduction of Secrets in 2015&lt;&#x2F;a&gt;, armchair security experts have been scoffing at this decision and seeking alternatives. I think those people are missing the point.&lt;&#x2F;p&gt;
 &lt;p&gt;The design of the Secrets API dates back to before Kubernetes v0.12. In &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;kubernetes&#x2F;kubernetes&#x2F;issues&#x2F;2030#issuecomment-61584588&quot;&gt;a thread the predates the original design document&lt;&#x2F;a&gt;, there&#x27;s a line that hints at why people might be confused by Secrets:&lt;&#x2F;p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Its hard to evaluate these alternatives without a threat model&lt;&#x2F;p&gt;
@@ -592,14 +765,19 @@ timeliness and completeness of system patching operations&amp;quot;, as mentione
 &lt;p&gt;For something as security-sensitive and difficult as storing secrets, start with a threat model. If multiple solutions have similar security according to the threat model, pick the simpler one to reduce the overall attack surface.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;em&gt;Edited to improve cohesiveness 2022-05-01&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Trust the Maintainers</title>
-		<published>2021-08-14T00:00:00+00:00</published>
-		<updated>2021-08-14T00:00:00+00:00</updated>
-		<link rel="alternate" href="/blog/2021/maintenance/" type="text/html"/>
-		<id>/blog/2021/maintenance/</id>
-		<content type="html">&lt;p&gt;Since &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Colonial_Pipeline_ransomware_attack&quot;&gt;cyber attacks&lt;&#x2F;a&gt;, a &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Surfside_condominium_collapse&quot;&gt;building collapse&lt;&#x2F;a&gt;, and an &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Infrastructure_Investment_and_Jobs_Act&quot;&gt;infrastructure bill&lt;&#x2F;a&gt; have been in the headlines recently, I think the time has come for us to re-assess our relationship with &lt;em&gt;maintenance&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Trust the Maintainers</title>
+        <published>2021-08-14T00:00:00+00:00</published>
+        <updated>2021-08-14T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2021/maintenance/" type="text/html"/>
+        <id>/blog/2021/maintenance/</id>
+        
+        <content type="html">&lt;p&gt;Since &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Colonial_Pipeline_ransomware_attack&quot;&gt;cyber attacks&lt;&#x2F;a&gt;, a &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Surfside_condominium_collapse&quot;&gt;building collapse&lt;&#x2F;a&gt;, and an &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Infrastructure_Investment_and_Jobs_Act&quot;&gt;infrastructure bill&lt;&#x2F;a&gt; have been in the headlines recently, I think the time has come for us to re-assess our relationship with &lt;em&gt;maintenance&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;While I work in the &amp;quot;tech&amp;quot; field, I don&#x27;t align myself with inventors, entrepreneurs, or green-field software engineers. I align myself with the whole spectrum of &amp;quot;maintainers&amp;quot;, like civil engineers, power plant operators, janitors, building inspectors, security compliance officers, mechanics, etc. These jobs are mostly all considered respectable, but a building inspector will never get the same prestige as someone who invents a new gadget, founds a new company, or develops a new popular app. Why is that?&lt;&#x2F;p&gt;
 &lt;p&gt;There&#x27;s an organization called &lt;a href=&quot;https:&#x2F;&#x2F;themaintainers.org&#x2F;why-do-people-neglect-maintenance&#x2F;&quot;&gt;The Maintainers&lt;&#x2F;a&gt; which has a comprehensive list of reasons why we don&#x27;t value maintenance, ranging from cognitive biases to historical reasons to financial incentives. But I&#x27;d like to focus on trust, and how mistrusting maintainers can lead to putting off maintenance.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;trust&quot;&gt;Trust&lt;&#x2F;h3&gt;
@@ -608,14 +786,19 @@ timeliness and completeness of system patching operations&amp;quot;, as mentione
 &lt;p&gt;I&#x27;d say usually this mistrust is unfounded (based on bias, misunderstanding, or otherwise). But it&#x27;s true there are some untrustworthy maintainers in our ranks. When kids get their first car, they&#x27;re often warned of crooked mechanics. Or in the software world, &amp;quot;&lt;a href=&quot;https:&#x2F;&#x2F;doi.org&#x2F;10.1109&#x2F;ICSE-SEIS52602.2021.00011&quot;&gt;resume-driven development&lt;&#x2F;a&gt;&amp;quot; is similarly a problem. Perhaps some kind of formal licensure could help build trust, like requiring adherence to the &lt;a href=&quot;https:&#x2F;&#x2F;ethics.acm.org&#x2F;code-of-ethics&#x2F;software-engineering-code&#x2F;&quot;&gt;ACM Software Engineering Code of Ethics&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;There&#x27;s no doubt that maintenance is necessary and that we can never seem to do enough of it. But setting aside the cognitive biases or financial incentives against it, consider how trusting subject-matter experts plays into it. Think of the last time an outsider completely butchered an explanation of your hobby or field of study; that&#x27;s how maintainers feel every time they get overruled by laymen.&lt;&#x2F;p&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Please make your advice more specific</title>
-		<published>2020-07-26T00:00:00+00:00</published>
-		<updated>2020-07-26T00:00:00+00:00</updated>
-		<link rel="alternate" href="/blog/2020/more-specifics/" type="text/html"/>
-		<id>/blog/2020/more-specifics/</id>
-		<content type="html">&lt;p&gt;To those of you who give advice on which languages, methodologies, architectures, or whatever else to use, I want to start by saying thank you. Your advice is vital to the growth of millions of people like me who are early in their careers.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Please make your advice more specific</title>
+        <published>2020-07-26T00:00:00+00:00</published>
+        <updated>2020-07-26T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="/blog/2020/more-specifics/" type="text/html"/>
+        <id>/blog/2020/more-specifics/</id>
+        
+        <content type="html">&lt;p&gt;To those of you who give advice on which languages, methodologies, architectures, or whatever else to use, I want to start by saying thank you. Your advice is vital to the growth of millions of people like me who are early in their careers.&lt;&#x2F;p&gt;
 &lt;p&gt;But I&#x27;ve noticed a pattern with software engineering advice that leads to over-engineering and unnecessary arguments. So I have a request:&lt;&#x2F;p&gt;
 &lt;p align=&quot;center&quot;&gt;&lt;em&gt;Please make your advice more specific&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;It&#x27;s too often overlooked that there isn&#x27;t just one type of &amp;quot;software&amp;quot;, thus it is rare for advice to be applicable to every situation. For example, advice for testing a small B2B web app might not work for embedded device firmware. But it might work for a large B2C web app. And since readers will rarely have experience in all of those situations, I think we should start being more explicit about the applicability of our advice.&lt;&#x2F;p&gt;
@@ -633,5 +816,6 @@ timeliness and completeness of system patching operations&amp;quot;, as mentione
 &lt;&#x2F;ul&gt;
 &lt;p&gt;Of course, it&#x27;s hard to find the right balance between hand-holding readers or just saying &amp;quot;buyer beware&amp;quot;. But hopefully spending time to add an extra subheading on &amp;quot;Applicability&amp;quot; to READMEs or blog posts will pay for itself in time spent over-engineering and arguing over minutiae.&lt;&#x2F;p&gt;
 </content>
-	</entry>
+        
+    </entry>
 </feed>
