@@ -1,6 +1,5 @@
 body {
   background-color: #ECEBF3;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,17 +13,32 @@ h1 {
   max-width: 40em;
   text-align: center;
 }
+
+h2 {
+  font-family: monospace;
+  font-weight: normal;
+  color: #000000;
+  margin-bottom: 30px;
+  max-width: 40em;
+  text-align: center;
+}
+
+
 @media(max-width: 550px) {
   h1 {
     font-size: 1.5em;
+  }
+  h2 {
+    font-size: 1.3em;
   }
   main {
     flex-wrap: wrap;
   }
   .picture-button {
-    width: 40vw !important;
+    width: 35vw !important;
   }
 }
+
 main {
   display: flex;
   flex-direction: row;
@@ -45,7 +59,7 @@ a {
 
 .picture-button {
   width: 100%;
-  max-width: 400px;
+  max-width: 250px;
   transition: box-shadow .2s;
 }
 
