@@ -1,7 +1,8 @@
 # The URL the site will be built for
 base_url = "/blog"
-title = "Mac Chaffee"
-description = "Mac Chaffee's tech blog"
+title = "Mac's tech blog"
+description = "Mac's tech blog"
+author = "Mac"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
@@ -20,5 +21,5 @@ highlight_code = true
 
 [extra]
 # Put all your custom variables here
-author = "Mac Chaffee"
+author = "Mac"
 github = "mac-chaffee"
