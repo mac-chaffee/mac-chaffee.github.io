@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-    <title>Mac&#x27;s tech blog</title>
-    <subtitle>Mac&#x27;s tech blog</subtitle>
+    <title>Mac&#x27;s Tech Blog</title>
+    <subtitle>Mac&#x27;s Tech Blog</subtitle>
     <link href="/blog/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="/blog"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
