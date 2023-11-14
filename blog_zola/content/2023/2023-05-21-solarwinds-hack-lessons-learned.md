@@ -42,7 +42,7 @@ One idea that could help is [capabilities-based security](https://en.wikipedia.o
 
 Capabilities-based security isn't easy to implement. Some weaknesses I've found in the wild include:
 
-* Making capabilities too course-grained, like having a general "write/edit" permission with no separate "create" or "append" permission, meaning your backup tool is still ripe for a ransomware attack.
+* Making capabilities too coarse-grained, like having a general "write/edit" permission with no separate "create" or "append" permission, meaning your backup tool is still ripe for a ransomware attack.
 * Making the default capabilities too permissive, like Docker's default seccomp rules which prioritized compatibility over security.
 * Making fine-grained capabilities that actually imply other capabilities, like [Deno's "--allow-run" permission being equal to "--allow-all"](https://github.com/denoland/deno/issues/2128). Or Kubernetes' ["create pod" permissions implying "get secret" permissions](https://kubernetes.io/docs/concepts/security/secrets-good-practices/#least-privilege-secrets).
 * Packaging software alongside the capabilities that constrain it, like RPMs with systemd units that include sandboxing. A supply chain attack could easily remove the sandboxing. You need something like what browser extensions do where new permissions require explicit approval from the user.
