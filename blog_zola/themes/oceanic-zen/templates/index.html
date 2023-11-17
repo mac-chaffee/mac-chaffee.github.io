@@ -9,7 +9,15 @@
         <meta name="description" content="{{ config.description }}">
         {% endif %}
 
-        <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+        <title>
+            {%- block title -%}
+            {%- if page.title -%}
+            {{- page.title -}}
+            {%- else -%}
+            {{- config.title -}}
+            {%- endif -%}
+            {%- endblock title -%}
+        </title>
 
         {% block css %}
             <link rel="stylesheet" href="{{ get_url(path="theme.css", trailing_slash=false) | safe }}">
