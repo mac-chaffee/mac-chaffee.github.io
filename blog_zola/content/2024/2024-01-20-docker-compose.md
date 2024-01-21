@@ -2,7 +2,7 @@
 title = "Is there room for Docker Compose in a Kubernetes world?"
 +++
 
-Last year I left [a comment on HN](https://news.ycombinator.com/item?id=35327743) about Docker Compose that seemed to get some traction. I was complaining about how both Docker Compose and Kubernetes are leakly abstractions over infrastructure. My general stance is that the Kubernetes API, despite its vast complexity, allows you to describe like 99.9% of modern applications. All attempts to simply that API surface (such as Docker Compose's simpler syntax) result in leakier abstractions that are more limiting. That's fine if you can squeeze all your applications into smaller standardized boxes, but that's a lot of work. Does this mean there's no room in this space for Docker Compose? No, I think it still can serve a niche.
+Last year I left [a comment on HN](https://news.ycombinator.com/item?id=35327743) about Docker Compose that seemed to get some traction. I was complaining about how both Docker Compose and Kubernetes are leaky abstractions over infrastructure. My general stance is that the Kubernetes API, despite its vast complexity, allows you to describe like 99.9% of modern applications. All attempts to simplify that API surface (such as Docker Compose's simpler syntax) result in leakier abstractions that are more limiting. That's fine if you can squeeze all your applications into smaller standardized boxes, but that's a lot of work. Does this mean there's no room in this space for Docker Compose? No, I think it still can serve a niche.
 
 My background is that I worked as a software engineer for 2 years before moving to DevOps for the last 3+ years. Now I'm kind of a platform engineer with a focus on security and site reliability. I also heavily use Kubernetes and I'm one of those weirdos that *wants* it to continue "eating the world", since I think it's good enough and it sure beats having to learn ten different container orchestrators. So my bias towards Kubernetes will definitely show through here.
 
@@ -16,7 +16,7 @@ When using Compose as a development environment, its strength is its simplicity 
 
 2. **Lack of dev/prod parity when deploying to Kubernetes.** For a non-trivial application, maintaining both a docker-compose file and a helm chart is a lot of work, with a high chance of missing bugs until they land in production. Like having different health probe logic, presence or absence of resource limits, different methods of service discovery, and no access to the Kubernetes API during development.
 
-3. **Leaks in the abstraction.** Kinda like I mentioned in my HN comment, as soon as you need to something non-trivial, you have to learn too much about Compose's inner workings. One example is anything that doesn't work in the default networking model. But this is just a super hard, unsolved problem across the entire industry.
+3. **Leaks in the abstraction.** Kinda like I mentioned in my HN comment, as soon as you need to do something non-trivial, you have to learn too much about Compose's inner workings. One example is anything that doesn't work in the default networking model. But this is just a super hard, unsolved problem across the entire industry.
 
 ### Docker Compose as a deployment method
 
@@ -26,7 +26,7 @@ When using Compose as a deployment method, again its strength is simplicity. Jus
 
 2. **Security issues.** Docker automatically punches holes in the local firewall, which is very convenient for users and hackers alike. Compose seems to be lacking some of the items you can specify in a Kubernetes securityContext that are now considered best-practice, like readOnlyRootFileSystem, seccomp profiles, and runAsUser. Also the docker socket badly needs more fine-grained permissions.
 
-3. **Limited functionality.** Without the abstractions that e.g. Kubernetes provides for ingress, storage classes, interaction with hardware like GPUs, and extensibility via CRDs, productions apps are left with limited ability to adapt to production pressures.
+3. **Limited functionality.** Without the abstractions that e.g. Kubernetes provides for ingress, storage classes, interaction with hardware like GPUs, and extensibility via CRDs, production apps are left with limited ability to adapt to production pressures.
 
 4. **Weaker ecosystem.** Every non-trivial production app needs a constellation of supporting services such as logging, monitoring, security tools, backup solutions, CI/CD tools, and more. In the Kubernetes ecosystem, there are cutting-edge FOSS solutions to each of those problems that can be installed with a single `helm install` or `kubectl apply` command.
 
