@@ -63,4 +63,11 @@
         <loc>/blog/2023/wafs/</loc>
         <lastmod>2023-11-11</lastmod>
     </url>
+    <url>
+        <loc>/blog/2024/</loc>
+    </url>
+    <url>
+        <loc>/blog/2024/docker-compose/</loc>
+        <lastmod>2024-01-20</lastmod>
+    </url>
 </urlset>
