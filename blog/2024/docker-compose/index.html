@@ -8,7 +8,7 @@
         <meta name="description" content="Mac&#x27;s Tech Blog">
         
 
-        <title>On Docker Compose as a Product</title>
+        <title>Is there room for Docker Compose in a Kubernetes world?</title>
 
         
 
@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#ECEBF3">
 <link rel="shortcut icon" href="/static/favicon.png" type="image/png">
 
-<meta property="og:title" content="On Docker Compose as a Product">
+<meta property="og:title" content="Is there room for Docker Compose in a Kubernetes world?">
 
 <meta property="og:description" content="Mac&#x27;s Tech Blog">
 
@@ -93,15 +93,14 @@ blockquote {
             
 <article itemscope itemtype="http://schema.org/BlogPosting">
     <div itemprop="headline">
-        <h1>On Docker Compose as a Product</h1>
+        <h1>Is there room for Docker Compose in a Kubernetes world?</h1>
         <div class="border"></div>
         <time datetime="2024-01-20" class="date" itemprop="datePublished">
             2024-01-20
         </time>
     </div>
     <div itemprop="articleBody">
-        <p>Last year I left <a href="https://news.ycombinator.com/item?id=35327743">a comment on HN</a> about Docker Compose that seemed to get some traction. I was complaining about how both Docker Compose and Kubernetes are leakly abstractions over infrastructure. My general stance is that the Kubernetes API, despite its vast complexity, allows you to describe like 99.9% of modern applications. All attempts to simply that API surface (such as Docker Compose's simpler syntax) results in leakier abstractions that are more limiting. That's fine if you can squeeze all your applications into smaller standardized boxes, but that's a lot of work. But does that mean there's no room in this space for Docker Compose? No, I think it still can serve a niche.</p>
-<p>Someone reached out to me via email about that comment to ask for my thoughts on Docker Compose as a product, and my response just got so long that I decided to write this post. I love giving my unsolicited, uninformed opinions, so I'm very happy to give my <em>solicited</em>, uninformed opinion for a change!</p>
+        <p>Last year I left <a href="https://news.ycombinator.com/item?id=35327743">a comment on HN</a> about Docker Compose that seemed to get some traction. I was complaining about how both Docker Compose and Kubernetes are leakly abstractions over infrastructure. My general stance is that the Kubernetes API, despite its vast complexity, allows you to describe like 99.9% of modern applications. All attempts to simply that API surface (such as Docker Compose's simpler syntax) result in leakier abstractions that are more limiting. That's fine if you can squeeze all your applications into smaller standardized boxes, but that's a lot of work. Does this mean there's no room in this space for Docker Compose? No, I think it still can serve a niche.</p>
 <p>My background is that I worked as a software engineer for 2 years before moving to DevOps for the last 3+ years. Now I'm kind of a platform engineer with a focus on security and site reliability. I also heavily use Kubernetes and I'm one of those weirdos that <em>wants</em> it to continue &quot;eating the world&quot;, since I think it's good enough and it sure beats having to learn ten different container orchestrators. So my bias towards Kubernetes will definitely show through here.</p>
 <p>I've used Compose in two places: as a development environment for multi-container apps (that run on Kubernetes in production), and as a deployment method on single VMs.</p>
 <h3 id="docker-compose-as-a-development-environment">Docker Compose as a development environment</h3>
@@ -133,7 +132,7 @@ blockquote {
 <p><strong>Weaker ecosystem.</strong> Every non-trivial production app needs a constellation of supporting services such as logging, monitoring, security tools, backup solutions, CI/CD tools, and more. In the Kubernetes ecosystem, there are cutting-edge FOSS solutions to each of those problems that can be installed with a single <code>helm install</code> or <code>kubectl apply</code> command.</p>
 </li>
 </ol>
-<h3 id="what-do-i-think-docker-compose-as-a-product-should-focus-on">What do I think Docker Compose (as a product) should focus on?</h3>
+<h3 id="what-do-i-think-docker-compose-as-a-product-should-focus-on-now">What do I think Docker Compose (as a product) should focus on now?</h3>
 <p>To me, Compose as a product seems stuck in this constant tug-of-war between needing to retain its simplicity while simultaneously being a good development environment AND being a good deployment method. Given all these pain points, I don't think it can succeed at all those goals since they are pretty much in conflict with one another, but I could see Compose choosing one of two paths at this crossroads.</p>
 <p>I could see Compose choosing to be &quot;a really good development environment&quot; by doing things like:</p>
 <ul>
@@ -143,7 +142,7 @@ blockquote {
 <li>A long shot but: maybe addressing the fact that docker-based development environments often &quot;rot&quot; since builds aren't fully reproducible. Taking some inspiration from Nix while retaining the simplicity Compose is known for would be a game changer.</li>
 </ul>
 <p>I could also see Compose choosing to be &quot;a really good deployment method&quot;, but not having a good multi-node solution and having to fight with Kubernetes for room in this space seems unwise to me. Also, being a really good deployment method is the least compatible with simplicity, which is Compose's most important differentiator IMO.</p>
-<p>Anyway, that concludes my scattered thoughts on Docker Compose and where it fits into the modern developer's tool belt. All I can say in conclusion is that I sure am glad I'm not a product manager! I've been reading <a href="https://www.mironov.com/">Rich Mironov's Product Bytes</a> and it sounds like <a href="https://www.mironov.com/pri-politics/">there's a method to the madness</a> of feature prioritization without succumbing to <a href="https://www.mironov.com/sprawl/">product sprawl</a>. But I'm a naturally indecisive person, so I'm very happy to stay in my lane and let the actual product managers make these tough calls for me!</p>
+<p>Anyway, that concludes my scattered thoughts on Docker Compose and where it fits into the modern developer's tool belt (a tool belt that is increasingly Kubernetes-branded). All I can say in conclusion is that I sure am glad I'm not a product manager! I've been reading <a href="https://www.mironov.com/">Rich Mironov's Product Bytes</a> and it sounds like <a href="https://www.mironov.com/pri-politics/">there's a method to the madness</a> of feature prioritization without succumbing to <a href="https://www.mironov.com/sprawl/">product sprawl</a>. But I'm a naturally indecisive person, so I should really stay in my lane and let the actual product managers make these tough calls for me!</p>
 
     </div>
 </article>
