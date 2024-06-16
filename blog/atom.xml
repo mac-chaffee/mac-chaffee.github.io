@@ -5,8 +5,42 @@
     <link href="/blog/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="/blog"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2024-01-20T00:00:00+00:00</updated>
+    <updated>2024-06-15T00:00:00+00:00</updated>
     <id>/blog/atom.xml</id>
+    <entry xml:lang="en">
+        <title>DDoS attacks can kill the independent Internet</title>
+        <published>2024-06-15T00:00:00+00:00</published>
+        <updated>2024-06-15T00:00:00+00:00</updated>
+        <author>
+          <name>Mac</name>
+        </author>
+        <link rel="alternate" href="/blog/2024/ddos-attacks/" type="text/html"/>
+        <id>/blog/2024/ddos-attacks/</id>
+        
+        <content type="html">&lt;p&gt;Back in January &lt;a href=&quot;https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=38959762&quot;&gt;SourceHut and Codeberg both experienced a distributed denial of service (DDoS) attack&lt;&#x2F;a&gt;. That attack made me worried about the future of the small, independent Internet: services like SourceHut and Codeberg which do not use the oligopoly of large hosting providers.&lt;&#x2F;p&gt;
+&lt;p&gt;DDoS attacks are where an attacker controls a bunch of computers (usually a botnet of hacked devices with residential IPs) and directs every computer to send traffic to a target set of servers, knocking the target offline. Attackers might use amplification methods or exploit vulnerable protocols (like &lt;a href=&quot;https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;technical-breakdown-http2-rapid-reset-ddos-attack&#x2F;&quot;&gt;Rapid Reset&lt;&#x2F;a&gt; in HTTP2), but let&#x27;s set those aside. I&#x27;m talking about the simplest case of a couple thousand IoT toasters sending millions of packets per second to your server.&lt;&#x2F;p&gt;
+&lt;p&gt;If you are at the receiving end of an attack like that, you can no longer participate in the small, independent Internet. You are forced to seek shelter behind a large enterprise with enough capital to afford the hardware and software to absorb the attack. Bigger attacks require using a bigger provider. Some providers have decent economies of scale to amortize the cost of DDoS protection (OVH), but others may charge you exorbitantly, much more than a single individual can afford.&lt;&#x2F;p&gt;
+&lt;p&gt;The heads of big cloud providers are not democratically elected. Their terms of service aren&#x27;t written by the people, for the people. There are no checks and balances for their actions. But the fact remains that the only real mitigation against a DDoS attack is to hide behind a big expensive server run by one of these providers.&lt;&#x2F;p&gt;
+&lt;p&gt;This is pretty scary to me. Lots of groups from home labbers to grassroots movements need the ability to put services on the Internet, but do not have the ongoing income to rent cloud servers plus associated DDoS protection. Others don&#x27;t even have the option of using cloud-based products due to the risks of de-anonymization (this is your daily reminder that &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;FBI%E2%80%93King_suicide_letter&quot;&gt;the FBI tried to get MLK killed&lt;&#x2F;a&gt;), export controls, or terms of service violations.&lt;&#x2F;p&gt;
+&lt;p&gt;Seems that participants of the small, independent Internet largely ignore the threat of a DDoS attack, until the moment one happens. A DDoS attack on an artist&#x27;s portfolio site is probably not useful, but if you instead target a Matrix instance used during a protest, or an informative site with stuff a despotic government doesn&#x27;t like, you can completely debilitate those. Like I said: pretty scary.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;why-not-just-use-cloudflare-akamai-fastly-lol&quot;&gt;Why not just use Cloudflare&#x2F;Akamai&#x2F;Fastly lol?&lt;&#x2F;h2&gt;
+&lt;p&gt;Let&#x27;s say you aren&#x27;t likely to be targeted by hostile government agencies and you have easy access to a credit card. Why not just use Cloudflare&#x2F;Akamai&#x2F;Fastly?&lt;&#x2F;p&gt;
+&lt;p&gt;These providers all work essentially the same way. They use a proprietary algorithm that allegedly does a good job of differentiating &amp;quot;good&amp;quot; traffic from &amp;quot;bad&amp;quot; traffic. Then they drop all the &amp;quot;bad&amp;quot; traffic and block the sender IPs for an unknown amount of time. But this approach has a considerable drawback that is never discussed in the breathlessly-positive blog posts that these companies pump out: false-positives are common, catastrophic, and negligently ignored.&lt;&#x2F;p&gt;
+&lt;p&gt;At the scale Cloudflare&#x2F;Akamai&#x2F;Fastly operate, &amp;quot;rare&amp;quot; events like a single-digit false-postive rate can affect thousands of people who have no recourse. Each of these companies serves so many websites that &lt;a href=&quot;https:&#x2F;&#x2F;www.ctrl.blog&#x2F;entry&#x2F;cloudflare-ip-blockade.html&quot;&gt;getting on their &amp;quot;naughty list&amp;quot; can have devestating consequences to your ability to use the internet, with no recourse&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;To make matters worse, we don&#x27;t even know the false-positive rates of these companies. It&#x27;s not even possible to know since there is no &amp;quot;ground truth&amp;quot; for whether a given blocked IP address was being used by a real person or a botnet node (or it could be both on the same NAT&#x27;d network). When a company blog post says they &amp;quot;mitigated&amp;quot; some super large DDoS attack, there is literally no way to know how many legitimate users or innocent bystanders were also blocked in the process.&lt;&#x2F;p&gt;
+&lt;p&gt;So choosing Cloudflare&#x2F;Akamai&#x2F;Fastly protects you from DDoS the same way that cranking up your AC protects you from climate change: you stay cool, your power company makes a killing, but others suffer. We need DDoS solutions that are not proprietary stochastic torture devices.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;then-what-do-we-do&quot;&gt;Then what do we do?&lt;&#x2F;h2&gt;
+&lt;p&gt;Here&#x27;s the part of my post where I&#x27;d normally point to some lesser-known but promising effort to solve the problem, but sadly I don&#x27;t see one for DDoS attacks. Usually the real solutions are easy to find: all the CDN providers and DDoS scrubbing services are certainly not interested in fully solving the problem, because they&#x27;d lose a lot of money. So usually there are community- or university-driven efforts that actually solve the problem. But I didn&#x27;t see much. Seems this problem&#x27;s a tough nut to crack.&lt;&#x2F;p&gt;
+&lt;p&gt;Two things do exist, but they&#x27;re not real solutions in my opinion:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Forcing clients to do proof-of-work stuff: Obviously not a solution since this is backwards-incompatible with every networking-enabled device on the planet.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;wiki.ietf.org&#x2F;group&#x2F;dots&quot;&gt;DDoS Open Threat Signaling&lt;&#x2F;a&gt; (DOTS): An IETF RFC which standardizes the architecture for how servers can share IP&#x2F;proto&#x2F;port block-lists. A nice thing to have so that every DDoS protection company doesn&#x27;t go invent their own proprietary thing, but doesn&#x27;t fundamentally solve the problem of DDoS attacks.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;If I had to think of a solution off-the-cuff, maybe an extension to DOTS that allows setting (and dynamically changing) max flow rates. Like &amp;quot;this IP:port is a tiny email server, so tell every ISP that if they see more than 10 different source IPs flowing to me in one second I&#x27;m probably being DDoS&#x27;d&amp;quot;. I dunno.&lt;&#x2F;p&gt;
+&lt;p&gt;Unfortunately I&#x27;m not seeing anything else. If you work in this space, please prove me wrong!&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Is there room for Docker Compose in a Kubernetes world?</title>
         <published>2024-01-20T00:00:00+00:00</published>

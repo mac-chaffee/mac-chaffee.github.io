@@ -67,6 +67,10 @@
         <loc>/blog/2024/</loc>
     </url>
     <url>
+        <loc>/blog/2024/ddos-attacks/</loc>
+        <lastmod>2024-06-15</lastmod>
+    </url>
+    <url>
         <loc>/blog/2024/docker-compose/</loc>
         <lastmod>2024-01-20</lastmod>
     </url>

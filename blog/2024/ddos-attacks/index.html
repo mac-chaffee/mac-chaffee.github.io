@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="description" content="Mac&#x27;s Tech Blog">
+        
+
+        <title>DDoS attacks can kill the independent Internet</title>
+
+        
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="/blog/atom.xml">
+
+<meta name="image" content="https://www.macchaffee.com/static/favicon.png">
+<meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
+<meta name="theme-color" content="#ECEBF3">
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+
+<meta property="og:title" content="DDoS attacks can kill the independent Internet">
+
+<meta property="og:description" content="Mac&#x27;s Tech Blog">
+
+<link rel="stylesheet" href="/blog/theme.css">
+<style>
+body {
+    font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #dbe0ea;
+}
+h1 {
+    font-size: 47px;
+}
+ul {
+    list-style: disc outside;
+    padding-left: 1.5em;
+}
+code {
+    font-family: monospace;
+    font-size: 16px;
+}
+.search-box {
+    background-color: #101a20;
+    border: 2px solid #36596c;
+    font-size: 20px;
+    line-height: 2;
+    color: #c0c5ce;
+    margin-top: 10px;
+}
+/* Overrides */
+p {
+  text-align: left;
+}
+p > code {
+  font-weight: normal;
+  padding: 1px 5px;
+  color: #a7adba;
+  background-color: #101a20;
+}
+h2 {
+    font-size: 24px;
+    border-bottom:1px solid #99c794;
+}
+blockquote {
+    color: #a7adba;
+    font-style: italic;
+}
+</style>
+
+        
+    </head>
+    <body>
+        <div class="content">
+        
+        
+            <header>
+                <div class="header-left">
+                    <a href="&#x2F;blog" class="logo">Mac&#x27;s Tech Blog</a>
+                </div>
+                <div class="header-right">
+                    <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                        <a itemprop="url" href="&#x2F;blog/atom.xml">
+                            <img class="icon" src="&#x2F;blog/icons/rss.svg" alt="RSS Feed">
+                        </a>
+                    </nav>
+                </div>
+            </header>
+        
+        
+        <main>
+            
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <div itemprop="headline">
+        <h1>DDoS attacks can kill the independent Internet</h1>
+        <div class="border"></div>
+        <time datetime="2024-06-15" class="date" itemprop="datePublished">
+            2024-06-15
+        </time>
+    </div>
+    <div itemprop="articleBody">
+        <p>Back in January <a href="https://news.ycombinator.com/item?id=38959762">SourceHut and Codeberg both experienced a distributed denial of service (DDoS) attack</a>. That attack made me worried about the future of the small, independent Internet: services like SourceHut and Codeberg which do not use the oligopoly of large hosting providers.</p>
+<p>DDoS attacks are where an attacker controls a bunch of computers (usually a botnet of hacked devices with residential IPs) and directs every computer to send traffic to a target set of servers, knocking the target offline. Attackers might use amplification methods or exploit vulnerable protocols (like <a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack/">Rapid Reset</a> in HTTP2), but let's set those aside. I'm talking about the simplest case of a couple thousand IoT toasters sending millions of packets per second to your server.</p>
+<p>If you are at the receiving end of an attack like that, you can no longer participate in the small, independent Internet. You are forced to seek shelter behind a large enterprise with enough capital to afford the hardware and software to absorb the attack. Bigger attacks require using a bigger provider. Some providers have decent economies of scale to amortize the cost of DDoS protection (OVH), but others may charge you exorbitantly, much more than a single individual can afford.</p>
+<p>The heads of big cloud providers are not democratically elected. Their terms of service aren't written by the people, for the people. There are no checks and balances for their actions. But the fact remains that the only real mitigation against a DDoS attack is to hide behind a big expensive server run by one of these providers.</p>
+<p>This is pretty scary to me. Lots of groups from home labbers to grassroots movements need the ability to put services on the Internet, but do not have the ongoing income to rent cloud servers plus associated DDoS protection. Others don't even have the option of using cloud-based products due to the risks of de-anonymization (this is your daily reminder that <a href="https://en.wikipedia.org/wiki/FBI%E2%80%93King_suicide_letter">the FBI tried to get MLK killed</a>), export controls, or terms of service violations.</p>
+<p>Seems that participants of the small, independent Internet largely ignore the threat of a DDoS attack, until the moment one happens. A DDoS attack on an artist's portfolio site is probably not useful, but if you instead target a Matrix instance used during a protest, or an informative site with stuff a despotic government doesn't like, you can completely debilitate those. Like I said: pretty scary.</p>
+<h2 id="why-not-just-use-cloudflare-akamai-fastly-lol">Why not just use Cloudflare/Akamai/Fastly lol?</h2>
+<p>Let's say you aren't likely to be targeted by hostile government agencies and you have easy access to a credit card. Why not just use Cloudflare/Akamai/Fastly?</p>
+<p>These providers all work essentially the same way. They use a proprietary algorithm that allegedly does a good job of differentiating &quot;good&quot; traffic from &quot;bad&quot; traffic. Then they drop all the &quot;bad&quot; traffic and block the sender IPs for an unknown amount of time. But this approach has a considerable drawback that is never discussed in the breathlessly-positive blog posts that these companies pump out: false-positives are common, catastrophic, and negligently ignored.</p>
+<p>At the scale Cloudflare/Akamai/Fastly operate, &quot;rare&quot; events like a single-digit false-postive rate can affect thousands of people who have no recourse. Each of these companies serves so many websites that <a href="https://www.ctrl.blog/entry/cloudflare-ip-blockade.html">getting on their &quot;naughty list&quot; can have devestating consequences to your ability to use the internet, with no recourse</a>.</p>
+<p>To make matters worse, we don't even know the false-positive rates of these companies. It's not even possible to know since there is no &quot;ground truth&quot; for whether a given blocked IP address was being used by a real person or a botnet node (or it could be both on the same NAT'd network). When a company blog post says they &quot;mitigated&quot; some super large DDoS attack, there is literally no way to know how many legitimate users or innocent bystanders were also blocked in the process.</p>
+<p>So choosing Cloudflare/Akamai/Fastly protects you from DDoS the same way that cranking up your AC protects you from climate change: you stay cool, your power company makes a killing, but others suffer. We need DDoS solutions that are not proprietary stochastic torture devices.</p>
+<h2 id="then-what-do-we-do">Then what do we do?</h2>
+<p>Here's the part of my post where I'd normally point to some lesser-known but promising effort to solve the problem, but sadly I don't see one for DDoS attacks. Usually the real solutions are easy to find: all the CDN providers and DDoS scrubbing services are certainly not interested in fully solving the problem, because they'd lose a lot of money. So usually there are community- or university-driven efforts that actually solve the problem. But I didn't see much. Seems this problem's a tough nut to crack.</p>
+<p>Two things do exist, but they're not real solutions in my opinion:</p>
+<ol>
+<li>Forcing clients to do proof-of-work stuff: Obviously not a solution since this is backwards-incompatible with every networking-enabled device on the planet.</li>
+<li><a href="https://wiki.ietf.org/group/dots">DDoS Open Threat Signaling</a> (DOTS): An IETF RFC which standardizes the architecture for how servers can share IP/proto/port block-lists. A nice thing to have so that every DDoS protection company doesn't go invent their own proprietary thing, but doesn't fundamentally solve the problem of DDoS attacks.</li>
+</ol>
+<p>If I had to think of a solution off-the-cuff, maybe an extension to DOTS that allows setting (and dynamically changing) max flow rates. Like &quot;this IP:port is a tiny email server, so tell every ISP that if they see more than 10 different source IPs flowing to me in one second I'm probably being DDoS'd&quot;. I dunno.</p>
+<p>Unfortunately I'm not seeing anything else. If you work in this space, please prove me wrong!</p>
+
+    </div>
+</article>
+
+        </main>
+        
+        <footer>
+            
+    <div class="border"></div>
+    <div class="footer">
+        
+        <div>
+            <a href="/">Home</a>
+        </div>
+    </div>
+
+        </footer>
+    
+        </div>
+    </body>
+</html>
