@@ -1,5 +1,5 @@
 +++
-title = "DDoS attacks can kill the independent Internet"
+title = "DDoS attacks can threaten the independent Internet"
 +++
 
 Back in January [SourceHut and Codeberg both experienced a distributed denial of service (DDoS) attack](https://news.ycombinator.com/item?id=38959762). That attack made me worried about the future of the small, independent Internet: services like SourceHut and Codeberg which do not use the oligopoly of large hosting providers.
@@ -16,15 +16,15 @@ Seems that participants of the small, independent Internet largely ignore the th
 
 ## Why not just use Cloudflare/Akamai/Fastly lol?
 
-Let's say you aren't likely to be targeted by hostile government agencies and you have easy access to a credit card. Why not just use Cloudflare/Akamai/Fastly?
+Let's say you aren't likely to be blackmailed by the FBI or kicked off the platform and you have easy access to a credit card. Why not just use Cloudflare/Akamai/Fastly?
 
-These providers all work essentially the same way. They use a proprietary algorithm that allegedly does a good job of differentiating "good" traffic from "bad" traffic. Then they drop all the "bad" traffic and block the sender IPs for an unknown amount of time. But this approach has a considerable drawback that is never discussed in the breathlessly-positive blog posts that these companies pump out: false-positives are common, catastrophic, and negligently ignored.
+These providers all work essentially the same way. They use a proprietary algorithm that allegedly does a good job of differentiating "good" traffic from "bad" traffic. Then they drop all the "bad" traffic and block the sender IPs (with a CAPTCHA) for an unknown amount of time. But this approach has a considerable drawback that is never discussed in the breathlessly-positive blog posts that these companies pump out: false-positives are common, catastrophic, and negligently ignored.
 
-At the scale Cloudflare/Akamai/Fastly operate, "rare" events like a single-digit false-postive rate can affect thousands of people who have no recourse. Each of these companies serves so many websites that [getting on their "naughty list" can have devestating consequences to your ability to use the internet, with no recourse](https://www.ctrl.blog/entry/cloudflare-ip-blockade.html).
+At the scale Cloudflare/Akamai/Fastly operate, "rare" events like a single-digit false-postive rate can affect thousands of people who have no recourse. Each of these companies serves so many websites that [getting on their "naughty list" can have devestating consequences to your ability to use the internet, with no recourse](https://www.ctrl.blog/entry/cloudflare-ip-blockade.html). Sure you can solve CAPTCHAs to get through, but many apps and websites make background HTTP requests which will simply fail if they receive a CAPTCHA page in the response body.
 
-To make matters worse, we don't even know the false-positive rates of these companies. It's not even possible to know since there is no "ground truth" for whether a given blocked IP address was being used by a real person or a botnet node (or it could be both on the same NAT'd network). When a company blog post says they "mitigated" some super large DDoS attack, there is literally no way to know how many legitimate users or innocent bystanders were also blocked in the process.
+To make matters worse, we don't even know the false-positive rates of these companies. It's not even possible to know since there is no "ground truth" for whether a given blocked IP address was being used by a real person or a botnet node (or it could be both on the same NAT'd network). When a company blog post says they "mitigated" some super large DDoS attack, there is literally no way to know how many innocent bystanders were also blocked in the process.
 
-So choosing Cloudflare/Akamai/Fastly protects you from DDoS the same way that cranking up your AC protects you from climate change: you stay cool, your power company makes a killing, but others suffer. We need DDoS solutions that are not proprietary stochastic torture devices.
+We need DDoS solutions that are not stochastic torture devices.
 
 ## Then what do we do?
 
