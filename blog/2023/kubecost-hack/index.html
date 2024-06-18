@@ -13,7 +13,7 @@
         
 
 
-<link rel="alternate" type="application/atom+xml" title="RSS" href="/blog/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://www.macchaffee.com/blog/atom.xml">
 
 <meta name="image" content="https://www.macchaffee.com/static/favicon.png">
 <meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
@@ -24,7 +24,7 @@
 
 <meta property="og:description" content="Mac&#x27;s Tech Blog">
 
-<link rel="stylesheet" href="/blog/theme.css">
+<link rel="stylesheet" href="https://www.macchaffee.com/blog/theme.css">
 <style>
 body {
     font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -77,12 +77,12 @@ blockquote {
         
             <header>
                 <div class="header-left">
-                    <a href="&#x2F;blog" class="logo">Mac&#x27;s Tech Blog</a>
+                    <a href="https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog" class="logo">Mac&#x27;s Tech Blog</a>
                 </div>
                 <div class="header-right">
                     <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
-                        <a itemprop="url" href="&#x2F;blog/atom.xml">
-                            <img class="icon" src="&#x2F;blog/icons/rss.svg" alt="RSS Feed">
+                        <a itemprop="url" href="https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog/atom.xml">
+                            <img class="icon" src="https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog/icons/rss.svg" alt="RSS Feed">
                         </a>
                     </nav>
                 </div>
@@ -104,7 +104,7 @@ blockquote {
 <h2 id="accidental-discovery">Accidental Discovery</h2>
 <p>At first, I was just doing some work on <a href="https://www.kubecost.com/">kubecost</a>, a Kubernetes tool which estimates costs for running pods. The first thing that caught my security eye was that by default, when you install kubecost, it captures your <a href="https://github.com/kubecost/cost-analyzer-helm-chart/blob/0ef0b20adabfa29b80ab0604a3b51d836eae169b/cost-analyzer/templates/cost-analyzer-deployment-template.yaml#L576">HELM_VALUES</a> in an environment variable which they use to help their enterprise users debug problems. This set off alarm bells since Helm values are typically how secrets are passed into applications, such as API keys for Kubecost itself and Grafana passwords.</p>
 <p>I immediately disabled HELM_VALUES for my own kubecost instance, but now I had my security hat on. While doing unrelated work with my dev tools open, I saw kubecost perform an API request for <code>/api/allPods</code>, which happened to be running a little slow (as you can imagine with ~500+ pods). Investigating the response, I saw that it returned ALL of the information about pods, including their environment variables! And this API is callable by unauthenticated users.</p>
-<p>It's bad practice to directly use Pod environment variables for secrets (you should use Secrets, <a href="/blog/2022/k8s-secrets/">which are secure enough</a>). But since the HELM_VALUES environment variable exists, this <code>/api/allPods</code> API can be used to obtain at least one or two secrets from KubeCost itself.</p>
+<p>It's bad practice to directly use Pod environment variables for secrets (you should use Secrets, <a href="https://www.macchaffee.com/blog/2022/k8s-secrets/">which are secure enough</a>). But since the HELM_VALUES environment variable exists, this <code>/api/allPods</code> API can be used to obtain at least one or two secrets from KubeCost itself.</p>
 <p>At this point, I began writing up a report about the issue to the KubeCost team.</p>
 <h2 id="thinking-like-an-attacker">Thinking like an attacker</h2>
 <p>While writing the report, I wanted to make sure they would understand the severity of exposing environment variables. Alas, the users of the cluster I administrate are smart and none of them had any secrets in environment variables :)</p>
@@ -120,7 +120,7 @@ blockquote {
 <p>The company ghosted me when I requested disclosure, so I'm not mentioning the company name due to <a href="https://www.bugcrowd.com/resources/essentials/standard-disclosure-terms/">BugCrowd rules</a> that may or may not be legally enforceable. Couldn't even afford to be paid in exposure I guess :)</p>
 <h2 id="takeaways">Takeaways</h2>
 <ul>
-<li>Don't store Kubernetes secrets in environment variables. <a href="/blog/2022/k8s-secrets/">Use Secrets</a>, which generally have tighter RBAC rules around them.</li>
+<li>Don't store Kubernetes secrets in environment variables. <a href="https://www.macchaffee.com/blog/2022/k8s-secrets/">Use Secrets</a>, which generally have tighter RBAC rules around them.</li>
 <li>Don't capture Helm values at install time, they frequently contain secrets.</li>
 <li>Let's all stop selling products that are free, but they don't provide authentication unless you pay. Security should be the default, not an upgrade.</li>
 <li>Be very careful about sites that could possibly by indexed by a search engine, due to the risk of &quot;Google Hacking&quot;</li>

@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "/blog"
+base_url = "https://www.macchaffee.com/blog"
 title = "Mac's Tech Blog"
 description = "Mac's Tech Blog"
 author = "Mac"

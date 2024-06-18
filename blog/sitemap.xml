@@ -1,77 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>/blog/</loc>
+        <loc>https://www.macchaffee.com/blog/</loc>
     </url>
     <url>
-        <loc>/blog/2020/</loc>
+        <loc>https://www.macchaffee.com/blog/2020/</loc>
     </url>
     <url>
-        <loc>/blog/2020/more-specifics/</loc>
+        <loc>https://www.macchaffee.com/blog/2020/more-specifics/</loc>
         <lastmod>2020-07-26</lastmod>
     </url>
     <url>
-        <loc>/blog/2021/</loc>
+        <loc>https://www.macchaffee.com/blog/2021/</loc>
     </url>
     <url>
-        <loc>/blog/2021/maintenance/</loc>
+        <loc>https://www.macchaffee.com/blog/2021/maintenance/</loc>
         <lastmod>2021-08-14</lastmod>
     </url>
     <url>
-        <loc>/blog/2022/</loc>
+        <loc>https://www.macchaffee.com/blog/2022/</loc>
     </url>
     <url>
-        <loc>/blog/2022/carrying-capacity/</loc>
+        <loc>https://www.macchaffee.com/blog/2022/carrying-capacity/</loc>
         <lastmod>2022-10-08</lastmod>
     </url>
     <url>
-        <loc>/blog/2022/k8s-secrets/</loc>
+        <loc>https://www.macchaffee.com/blog/2022/k8s-secrets/</loc>
         <lastmod>2022-04-30</lastmod>
     </url>
     <url>
-        <loc>/blog/2022/k8s-under-documented-security-tips/</loc>
+        <loc>https://www.macchaffee.com/blog/2022/k8s-under-documented-security-tips/</loc>
         <lastmod>2022-09-18</lastmod>
     </url>
     <url>
-        <loc>/blog/2022/psp-deprecation/</loc>
+        <loc>https://www.macchaffee.com/blog/2022/psp-deprecation/</loc>
         <lastmod>2022-05-08</lastmod>
     </url>
     <url>
-        <loc>/blog/2023/</loc>
+        <loc>https://www.macchaffee.com/blog/2023/</loc>
     </url>
     <url>
-        <loc>/blog/2023/ethics-self-attestation/</loc>
+        <loc>https://www.macchaffee.com/blog/2023/ethics-self-attestation/</loc>
         <lastmod>2023-05-20</lastmod>
     </url>
     <url>
-        <loc>/blog/2023/hacking-myself/</loc>
+        <loc>https://www.macchaffee.com/blog/2023/hacking-myself/</loc>
         <lastmod>2023-01-21</lastmod>
     </url>
     <url>
-        <loc>/blog/2023/kubecost-hack/</loc>
+        <loc>https://www.macchaffee.com/blog/2023/kubecost-hack/</loc>
         <lastmod>2023-06-06</lastmod>
     </url>
     <url>
-        <loc>/blog/2023/sce-review/</loc>
+        <loc>https://www.macchaffee.com/blog/2023/sce-review/</loc>
         <lastmod>2023-08-03</lastmod>
     </url>
     <url>
-        <loc>/blog/2023/solarwinds-hack-lessons-learned/</loc>
+        <loc>https://www.macchaffee.com/blog/2023/solarwinds-hack-lessons-learned/</loc>
         <lastmod>2023-05-21</lastmod>
     </url>
     <url>
-        <loc>/blog/2023/wafs/</loc>
+        <loc>https://www.macchaffee.com/blog/2023/wafs/</loc>
         <lastmod>2023-11-11</lastmod>
     </url>
     <url>
-        <loc>/blog/2024/</loc>
+        <loc>https://www.macchaffee.com/blog/2024/</loc>
     </url>
     <url>
-        <loc>/blog/2024/ddos-attacks/</loc>
+        <loc>https://www.macchaffee.com/blog/2024/ddos-attacks/</loc>
         <lastmod>2024-06-15</lastmod>
     </url>
     <url>
-        <loc>/blog/2024/docker-compose/</loc>
+        <loc>https://www.macchaffee.com/blog/2024/docker-compose/</loc>
         <lastmod>2024-01-20</lastmod>
     </url>
 </urlset>
