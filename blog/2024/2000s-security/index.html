@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="description" content="Mac&#x27;s Tech Blog">
+        
+
+        <title>Security in the 2000s</title>
+
+        
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://www.macchaffee.com/blog/atom.xml">
+
+<meta name="image" content="https://www.macchaffee.com/static/favicon.png">
+<meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
+<meta name="theme-color" content="#ECEBF3">
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+
+<meta property="og:title" content="Security in the 2000s">
+
+<meta property="og:description" content="Mac&#x27;s Tech Blog">
+
+<link rel="stylesheet" href="https://www.macchaffee.com/blog/theme.css">
+<style>
+body {
+    font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #dbe0ea;
+}
+h1 {
+    font-size: 47px;
+}
+ul {
+    list-style: disc outside;
+    padding-left: 1.5em;
+}
+code {
+    font-family: monospace;
+    font-size: 16px;
+}
+.search-box {
+    background-color: #101a20;
+    border: 2px solid #36596c;
+    font-size: 20px;
+    line-height: 2;
+    color: #c0c5ce;
+    margin-top: 10px;
+}
+/* Overrides */
+p {
+  text-align: left;
+}
+p > code {
+  font-weight: normal;
+  padding: 1px 5px;
+  color: #a7adba;
+  background-color: #101a20;
+}
+h2 {
+    font-size: 24px;
+    border-bottom:1px solid #99c794;
+}
+blockquote {
+    color: #a7adba;
+    font-style: italic;
+}
+</style>
+
+        
+    </head>
+    <body>
+        <div class="content">
+        
+        
+            <header>
+                <div class="header-left">
+                    <a href="https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog" class="logo">Mac&#x27;s Tech Blog</a>
+                </div>
+                <div class="header-right">
+                    <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                        <a itemprop="url" href="https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog/atom.xml">
+                            <img class="icon" src="https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog/icons/rss.svg" alt="RSS Feed">
+                        </a>
+                    </nav>
+                </div>
+            </header>
+        
+        
+        <main>
+            
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <div itemprop="headline">
+        <h1>Security in the 2000s</h1>
+        <div class="border"></div>
+        <time datetime="2024-06-19" class="date" itemprop="datePublished">
+            2024-06-19
+        </time>
+    </div>
+    <div itemprop="articleBody">
+        <p>Lately I've been obsessing over this <a href="https://www.propublica.org/article/microsoft-solarwinds-golden-saml-data-breach-russian-hackers">ProPublica article</a> which talks about Microsoft's involvement in the SolarWinds hacks, specifically due to a design weakness in Microsoft's <a href="https://en.wikipedia.org/wiki/Active_Directory_Federation_Services">Active Directory Federation Services (ADFS)</a>. It's a great article, highly recommended.</p>
+<p>Anyway, the wiki page for ADFS says it first appeared around 2003, which made me wonder: what did the cybersecurity field look like in the early 2000s? Since the field still sucks today, surely it must have been really bad then, right?</p>
+<p>Well I came across a document from 2003 called &quot;<a href="https://en.wikipedia.org/wiki/National_Strategy_to_Secure_Cyberspace">The National Strategy to Secure Cyberspace</a>&quot; which was the security strategy of the Bush administration. Despite its age, it's pretty... normal actually. When you fast-forward 20 years later to 2023 and read the Biden administration's &quot;<a href="https://www.whitehouse.gov/wp-content/uploads/2023/03/National-Cybersecurity-Strategy-2023.pdf">National Cybersecurity Strategy</a>&quot;, the technical differences are kinda minor. I'm happy to see &quot;secure by design&quot; mentioned a few times in 2003:</p>
+<blockquote>
+<p>The Nation must seek to ensure that future components of the cyber infrastructure are built to be inherently secure and dependable for their users.</p>
+</blockquote>
+<blockquote>
+<p>Some new technologies introduce security weaknesses that are only corrected over time, with great difficulty, or sometimes not at all.</p>
+</blockquote>
+<p>But there is one major difference: One was written by a presidential administration that <a href="https://en.wikipedia.org/wiki/United_States_v._Microsoft_Corp."><em>dropped</em> anti-trust charges against Big Tech</a>, and one was written by a presidential administration that is <a href="https://en.wikipedia.org/wiki/United_States_v._Google_LLC_(2020)"><em>leading</em> anti-trust charges against Big Tech</a>.</p>
+<p>Here are two illustrative quotes of the difference in regulatory philosophy:</p>
+<blockquote>
+<p>(2003) Federal regulation will not become a primary means of securing cyberspace. Broad regulations mandating how all corporations must configure their information systems could divert more successful efforts by creating a lowest-common- denominator approach to cybersecurity, which evolving technology would quickly marginalize. Even worse, such an approach could result in less secure and more homogeneous security architectures than we have now. By law, some federal regulatory agencies already include cybersecurity considerations in their oversight activity. However, the market itself is expected to provide the major impetus to improve cybersecurity.</p>
+</blockquote>
+<blockquote>
+<p>(2023) While voluntary approaches to critical infrastructure cybersecurity have produced meaningful improvements, the lack of mandatory requirements has resulted in inadequate and inconsistent outcomes. Today’s marketplace insufficiently rewards—and often disadvantages—the owners and operators of critical infrastructure who invest in proactive measures to prevent or mitigate the effects of cyber incidents. Regulation can level the playing field, enabling healthy competition without sacrificing cybersecurity or operational resilience. Our strategic environment requires modern and nimble regulatory frameworks for cybersecurity tailored for each sector’s risk profile, harmonized to reduce duplication, complementary to public-private collaboration, and cognizant of the cost of implementation.</p>
+</blockquote>
+<p>Now go back to the <a href="https://www.propublica.org/article/microsoft-solarwinds-golden-saml-data-breach-russian-hackers">ProPublica article</a>. It's a story about Microsoft prioritizing greed over security, leading to one of the biggest hacks to ever affect the US government—a government that turned a blind eye to their growing unaccountable power for almost two decades.</p>
+<p>Another point was that the 2003 document wanted to use the government procurement process to incentivize security:</p>
+<blockquote>
+<p>(2003) With respect to investment in cyberspace security, government can lead by example by fostering a marketplace for more secure technologies through large procurements of advanced information assurance technologies.</p>
+</blockquote>
+<p>And look where that strategy got us:</p>
+<blockquote>
+<p>(2024) The federal government was preparing to make a massive investment in cloud computing, and Microsoft wanted the business. Acknowledging this security flaw could jeopardize the company’s chances, Harris recalled one product leader telling him. The financial consequences were enormous. Not only could Microsoft lose a multibillion-dollar deal, but it could also lose the race to dominate the market for cloud computing.</p>
+</blockquote>
+<hr />
+<p>Halfway through writing this article, I saw someone who is much more qualified already wrote a much more thorough analysis of presidential cybersecurity stratigies over the years, which I highly recommend: <a href="https://www.lawfaremedia.org/article/twenty-five-years-of-white-house-cyber-policies">https://www.lawfaremedia.org/article/twenty-five-years-of-white-house-cyber-policies</a></p>
+<p>I struggle to conclude articles, so I'll just quote that one:</p>
+<blockquote>
+<p>The authors of those earliest strategies never expected success to take more than 25 years ([the Clinton administration] called for success &quot;no later than five years from today&quot;), yet here we are.</p>
+</blockquote>
+<blockquote>
+<p>With the important changes in the 2023 National Cybersecurity Strategy—and the implementation plan currently being drafted in the Office of the National Cyber Director—hopefully, success won’t take another 25 years.</p>
+</blockquote>
+
+    </div>
+</article>
+
+        </main>
+        
+        <footer>
+            
+    <div class="border"></div>
+    <div class="footer">
+        <div>
+            <a href="/">Home</a>
+        </div>
+        <p xmlns:cc="http://creativecommons.org/ns#">This work is licensed under <a
+                href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"
+                rel="license noopener noreferrer">CC BY-SA 4.0</a></p>
+    </div>
+
+        </footer>
+    
+        </div>
+    </body>
+</html>

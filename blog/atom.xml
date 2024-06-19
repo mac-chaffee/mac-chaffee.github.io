@@ -5,8 +5,62 @@
     <link rel="self" type="application/atom+xml" href="https://www.macchaffee.com/blog/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://www.macchaffee.com/blog"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2024-06-15T00:00:00+00:00</updated>
+    <updated>2024-06-19T00:00:00+00:00</updated>
     <id>https://www.macchaffee.com/blog/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Security in the 2000s</title>
+        <published>2024-06-19T00:00:00+00:00</published>
+        <updated>2024-06-19T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/blog/2024/2000s-security/"/>
+        <id>https://www.macchaffee.com/blog/2024/2000s-security/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/blog/2024/2000s-security/">&lt;p&gt;Lately I&#x27;ve been obsessing over this &lt;a href=&quot;https:&#x2F;&#x2F;www.propublica.org&#x2F;article&#x2F;microsoft-solarwinds-golden-saml-data-breach-russian-hackers&quot;&gt;ProPublica article&lt;&#x2F;a&gt; which talks about Microsoft&#x27;s involvement in the SolarWinds hacks, specifically due to a design weakness in Microsoft&#x27;s &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Active_Directory_Federation_Services&quot;&gt;Active Directory Federation Services (ADFS)&lt;&#x2F;a&gt;. It&#x27;s a great article, highly recommended.&lt;&#x2F;p&gt;
+&lt;p&gt;Anyway, the wiki page for ADFS says it first appeared around 2003, which made me wonder: what did the cybersecurity field look like in the early 2000s? Since the field still sucks today, surely it must have been really bad then, right?&lt;&#x2F;p&gt;
+&lt;p&gt;Well I came across a document from 2003 called &amp;quot;&lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;National_Strategy_to_Secure_Cyberspace&quot;&gt;The National Strategy to Secure Cyberspace&lt;&#x2F;a&gt;&amp;quot; which was the security strategy of the Bush administration. Despite its age, it&#x27;s pretty... normal actually. When you fast-forward 20 years later to 2023 and read the Biden administration&#x27;s &amp;quot;&lt;a href=&quot;https:&#x2F;&#x2F;www.whitehouse.gov&#x2F;wp-content&#x2F;uploads&#x2F;2023&#x2F;03&#x2F;National-Cybersecurity-Strategy-2023.pdf&quot;&gt;National Cybersecurity Strategy&lt;&#x2F;a&gt;&amp;quot;, the technical differences are kinda minor. I&#x27;m happy to see &amp;quot;secure by design&amp;quot; mentioned a few times in 2003:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Nation must seek to ensure that future components of the cyber infrastructure are built to be inherently secure and dependable for their users.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Some new technologies introduce security weaknesses that are only corrected over time, with great difficulty, or sometimes not at all.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;But there is one major difference: One was written by a presidential administration that &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;United_States_v._Microsoft_Corp.&quot;&gt;&lt;em&gt;dropped&lt;&#x2F;em&gt; anti-trust charges against Big Tech&lt;&#x2F;a&gt;, and one was written by a presidential administration that is &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;United_States_v._Google_LLC_(2020)&quot;&gt;&lt;em&gt;leading&lt;&#x2F;em&gt; anti-trust charges against Big Tech&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Here are two illustrative quotes of the difference in regulatory philosophy:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(2003) Federal regulation will not become a primary means of securing cyberspace. Broad regulations mandating how all corporations must configure their information systems could divert more successful efforts by creating a lowest-common- denominator approach to cybersecurity, which evolving technology would quickly marginalize. Even worse, such an approach could result in less secure and more homogeneous security architectures than we have now. By law, some federal regulatory agencies already include cybersecurity considerations in their oversight activity. However, the market itself is expected to provide the major impetus to improve cybersecurity.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(2023) While voluntary approaches to critical infrastructure cybersecurity have produced meaningful improvements, the lack of mandatory requirements has resulted in inadequate and inconsistent outcomes. Today’s marketplace insufficiently rewards—and often disadvantages—the owners and operators of critical infrastructure who invest in proactive measures to prevent or mitigate the effects of cyber incidents. Regulation can level the playing field, enabling healthy competition without sacrificing cybersecurity or operational resilience. Our strategic environment requires modern and nimble regulatory frameworks for cybersecurity tailored for each sector’s risk profile, harmonized to reduce duplication, complementary to public-private collaboration, and cognizant of the cost of implementation.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Now go back to the &lt;a href=&quot;https:&#x2F;&#x2F;www.propublica.org&#x2F;article&#x2F;microsoft-solarwinds-golden-saml-data-breach-russian-hackers&quot;&gt;ProPublica article&lt;&#x2F;a&gt;. It&#x27;s a story about Microsoft prioritizing greed over security, leading to one of the biggest hacks to ever affect the US government—a government that turned a blind eye to their growing unaccountable power for almost two decades.&lt;&#x2F;p&gt;
+&lt;p&gt;Another point was that the 2003 document wanted to use the government procurement process to incentivize security:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(2003) With respect to investment in cyberspace security, government can lead by example by fostering a marketplace for more secure technologies through large procurements of advanced information assurance technologies.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;And look where that strategy got us:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(2024) The federal government was preparing to make a massive investment in cloud computing, and Microsoft wanted the business. Acknowledging this security flaw could jeopardize the company’s chances, Harris recalled one product leader telling him. The financial consequences were enormous. Not only could Microsoft lose a multibillion-dollar deal, but it could also lose the race to dominate the market for cloud computing.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;Halfway through writing this article, I saw someone who is much more qualified already wrote a much more thorough analysis of presidential cybersecurity stratigies over the years, which I highly recommend: &lt;a href=&quot;https:&#x2F;&#x2F;www.lawfaremedia.org&#x2F;article&#x2F;twenty-five-years-of-white-house-cyber-policies&quot;&gt;https:&#x2F;&#x2F;www.lawfaremedia.org&#x2F;article&#x2F;twenty-five-years-of-white-house-cyber-policies&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I struggle to conclude articles, so I&#x27;ll just quote that one:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The authors of those earliest strategies never expected success to take more than 25 years ([the Clinton administration] called for success &amp;quot;no later than five years from today&amp;quot;), yet here we are.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;With the important changes in the 2023 National Cybersecurity Strategy—and the implementation plan currently being drafted in the Office of the National Cyber Director—hopefully, success won’t take another 25 years.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>DDoS attacks can threaten the independent Internet</title>
         <published>2024-06-15T00:00:00+00:00</published>
