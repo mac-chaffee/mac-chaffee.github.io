@@ -95,6 +95,8 @@
 &lt;&#x2F;ol&gt;
 &lt;p&gt;If I had to think of a solution off-the-cuff, maybe an extension to DOTS that allows setting (and dynamically changing) max flow rates. Like &amp;quot;this IP:port is a tiny email server, so tell every ISP that if they see more than 10 different source IPs flowing to me in one second I&#x27;m probably being DDoS&#x27;d&amp;quot;. I dunno.&lt;&#x2F;p&gt;
 &lt;p&gt;Unfortunately I&#x27;m not seeing anything else. If you work in this space, please prove me wrong!&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;&lt;em&gt;EDIT 2024-06-19:&lt;&#x2F;em&gt; &lt;a href=&quot;https:&#x2F;&#x2F;lobste.rs&#x2F;s&#x2F;usnqdc&#x2F;ddos_attacks_can_threaten_independent#c_llrfqj&quot;&gt;zimbatm&lt;&#x2F;a&gt; kindly provided some smaller alternative anti-DDoS companies: &lt;a href=&quot;https:&#x2F;&#x2F;www.voxility.com&#x2F;&quot;&gt;Voxility&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;path.net&#x2F;&quot;&gt;Path.net&lt;&#x2F;a&gt;, and &lt;a href=&quot;https:&#x2F;&#x2F;www.reblaze.com&#x2F;&quot;&gt;Reblaze&lt;&#x2F;a&gt;. I also found &lt;a href=&quot;https:&#x2F;&#x2F;deflect.ca&#x2F;&quot;&gt;Deflect&lt;&#x2F;a&gt;. They also mentioned &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;SCION_(Internet_architecture)&quot;&gt;SCION&lt;&#x2F;a&gt; as a project that includes DDoS mitigation in its design. Another victory for &lt;a href=&quot;https:&#x2F;&#x2F;meta.wikimedia.org&#x2F;wiki&#x2F;Cunningham%27s_Law&quot;&gt;Cunningham&#x27;s Law&lt;&#x2F;a&gt;!&lt;&#x2F;p&gt;
 </content>
         
     </entry>

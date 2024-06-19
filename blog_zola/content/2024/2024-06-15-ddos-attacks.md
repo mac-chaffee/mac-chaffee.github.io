@@ -38,3 +38,7 @@ Two things do exist, but they're not real solutions in my opinion:
 If I had to think of a solution off-the-cuff, maybe an extension to DOTS that allows setting (and dynamically changing) max flow rates. Like "this IP:port is a tiny email server, so tell every ISP that if they see more than 10 different source IPs flowing to me in one second I'm probably being DDoS'd". I dunno.
 
 Unfortunately I'm not seeing anything else. If you work in this space, please prove me wrong!
+
+---
+
+*EDIT 2024-06-19:* [zimbatm](https://lobste.rs/s/usnqdc/ddos_attacks_can_threaten_independent#c_llrfqj) kindly provided some smaller alternative anti-DDoS companies: [Voxility](https://www.voxility.com/), [Path.net](https://path.net/), and [Reblaze](https://www.reblaze.com/). I also found [Deflect](https://deflect.ca/). They also mentioned [SCION](https://en.wikipedia.org/wiki/SCION_(Internet_architecture)) as a project that includes DDoS mitigation in its design. Another victory for [Cunningham's Law](https://meta.wikimedia.org/wiki/Cunningham%27s_Law)!
