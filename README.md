@@ -9,7 +9,7 @@ Vanilla JS, CSS, and [Zola](https://www.getzola.org/).
 
 **Back-End**
 
-Github Pages.
+GitHub Pages.
 
 ## Development Environment
 
@@ -18,8 +18,6 @@ Install Zola: <https://www.getzola.org/documentation/getting-started/installatio
 ```
 brew install zola
 ```
-
-Make sure the oceanic-zen submodule is cloned into the `blog_zola/themes` directory.
 
 You can run `cd blog_zola && zola serve -O` to view the site live.
 
