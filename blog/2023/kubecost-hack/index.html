@@ -108,7 +108,7 @@ blockquote {
 <p>At this point, I began writing up a report about the issue to the KubeCost team.</p>
 <h2 id="thinking-like-an-attacker">Thinking like an attacker</h2>
 <p>While writing the report, I wanted to make sure they would understand the severity of exposing environment variables. Alas, the users of the cluster I administrate are smart and none of them had any secrets in environment variables :)</p>
-<p>I remembered a lesson from my security class in college about &quot;<a href="https://resources.infosecinstitute.com/topic/google-hacking-overview/">google hacking</a>&quot;, or just searching for specific strings in Google to find vulnerable servers.</p>
+<p>I remembered a lesson from my security class in college about "<a href="https://resources.infosecinstitute.com/topic/google-hacking-overview/">google hacking</a>", or just searching for specific strings in Google to find vulnerable servers.</p>
 <p>(Un)fortunately, KubeCost's splash page includes enough unique text that I could locate exposed KubeCost instances with a simple Google search. Also (un)fortunately, KubeCost's splash page tells you right away the total estimated monthly cost for a given cluster, which lets you pick a nice juicy target that's burning $20k/month or more of cloud credits.</p>
 <p>Only one of the clusters had an identifiable owner, and it happened to be the biggest one, owned by a company with a multi-billion-dollar market cap. I opened up the exposed KubeCost page and went straight to <code>/api/allPods</code> and my adrenaline immediately spiked. There were more than 200 passwords (including RDS, Twilio, Google, and Huawei keys) sitting right in front of me, two clicks away from the Google search results.</p>
 <p>(here's where I'd put the redacted screenshot if security researchers had legal immunity for responsible disclosure, which we should have)</p>
@@ -123,7 +123,7 @@ blockquote {
 <li>Don't store Kubernetes secrets in environment variables. <a href="https://www.macchaffee.com/blog/2022/k8s-secrets/">Use Secrets</a>, which generally have tighter RBAC rules around them.</li>
 <li>Don't capture Helm values at install time, they frequently contain secrets.</li>
 <li>Let's all stop selling products that are free, but they don't provide authentication unless you pay. Security should be the default, not an upgrade.</li>
-<li>Be very careful about sites that could possibly by indexed by a search engine, due to the risk of &quot;Google Hacking&quot;</li>
+<li>Be very careful about sites that could possibly by indexed by a search engine, due to the risk of "Google Hacking"</li>
 <li>Responsible disclosure is good for victims, and public disclosure is good for future victims.</li>
 </ul>
 
