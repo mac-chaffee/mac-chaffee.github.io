@@ -18,13 +18,13 @@
     <span itemprop="ratingValue">{{ page.extra.rating | safe }}</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">
     {%- if page.extra.rating >= 8 -%}
     🤩
-    {%- elif page.extra.rating == 7 -%}
+    {%- elif page.extra.rating >= 7 -%}
     😀
-    {%- elif page.extra.rating == 6 -%}
+    {%- elif page.extra.rating >= 6 -%}
     🙂
-    {%- elif page.extra.rating == 5 -%}
+    {%- elif page.extra.rating >= 5 -%}
     🫤
-    {%- elif page.extra.rating == 4 -%}
+    {%- elif page.extra.rating >= 4 -%}
     ☹️
     {%- else -%}
     😱

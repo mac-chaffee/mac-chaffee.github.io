@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Mac&#x27;s Movie Reviews</title>
+    <subtitle>Mac&#x27;s Movie Reviews</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://www.macchaffee.com/movies/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-08-08T00:00:00+00:00</updated>
+    <id>https://www.macchaffee.com/movies/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Captain America: The First Avenger</title>
+        <published>2023-08-08T00:00:00+00:00</published>
+        <updated>2023-08-08T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/captain-america-first-avenger/"/>
+        <id>https://www.macchaffee.com/movies/captain-america-first-avenger/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/captain-america-first-avenger/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Jujutsu Kaisen 0</title>
+        <published>2023-08-07T00:00:00+00:00</published>
+        <updated>2023-08-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/jujutsu-kaisen-0/"/>
+        <id>https://www.macchaffee.com/movies/jujutsu-kaisen-0/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/jujutsu-kaisen-0/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Haunted Mansion</title>
+        <published>2023-08-06T00:00:00+00:00</published>
+        <updated>2023-08-06T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/haunted-mansion/"/>
+        <id>https://www.macchaffee.com/movies/haunted-mansion/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/haunted-mansion/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Erin Brockovich (2000)</title>
+        <published>2023-07-30T00:00:00+00:00</published>
+        <updated>2023-07-30T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/erin-brockovich/"/>
+        <id>https://www.macchaffee.com/movies/erin-brockovich/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/erin-brockovich/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Barbie</title>
+        <published>2023-07-21T00:00:00+00:00</published>
+        <updated>2023-07-21T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/barbie/"/>
+        <id>https://www.macchaffee.com/movies/barbie/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/barbie/">&lt;p&gt;I heard this movie was re-written over and over again throughout the years. I think it shows, in a good way. It was able to navigate the fraught waters that Barbie exists in.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Oppenheimer</title>
+        <published>2023-07-21T00:00:00+00:00</published>
+        <updated>2023-07-21T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/oppenheimer/"/>
+        <id>https://www.macchaffee.com/movies/oppenheimer/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/oppenheimer/">&lt;p&gt;We watched this at 10:30AM, then Barbie at 4:30PM. Happy to have particiated in an unhinged internet meme.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Ruby Gillman, Teenage Kraken</title>
+        <published>2023-07-05T00:00:00+00:00</published>
+        <updated>2023-07-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/ruby-gillman/"/>
+        <id>https://www.macchaffee.com/movies/ruby-gillman/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/ruby-gillman/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Indiana Jones And The Dial of Destiny</title>
+        <published>2023-07-02T00:00:00+00:00</published>
+        <updated>2023-07-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/indiana-jones-dial-of-destiny/"/>
+        <id>https://www.macchaffee.com/movies/indiana-jones-dial-of-destiny/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/indiana-jones-dial-of-destiny/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>No Hard Feelings</title>
+        <published>2023-06-24T00:00:00+00:00</published>
+        <updated>2023-06-24T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/no-hard-feelings/"/>
+        <id>https://www.macchaffee.com/movies/no-hard-feelings/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/no-hard-feelings/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Elemental</title>
+        <published>2023-06-17T00:00:00+00:00</published>
+        <updated>2023-06-17T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/elemental/"/>
+        <id>https://www.macchaffee.com/movies/elemental/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/elemental/">&lt;p&gt;I&#x27;ll come back to this one, this requires a lot of writing to justify.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Transformers: Rise of the Beasts</title>
+        <published>2023-06-11T00:00:00+00:00</published>
+        <updated>2023-06-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/transformers-rise-of-the-beasts/"/>
+        <id>https://www.macchaffee.com/movies/transformers-rise-of-the-beasts/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/transformers-rise-of-the-beasts/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title></title>
+        <published>2023-06-04T00:00:00+00:00</published>
+        <updated>2023-06-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/spiderverse-2/"/>
+        <id>https://www.macchaffee.com/movies/spiderverse-2/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/spiderverse-2/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Spiderman: Into the Spider-Verse (2018)</title>
+        <published>2023-06-03T00:00:00+00:00</published>
+        <updated>2023-06-03T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/spiderverse-1/"/>
+        <id>https://www.macchaffee.com/movies/spiderverse-1/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/spiderverse-1/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>The Little Mermaid (2023)</title>
+        <published>2023-05-30T00:00:00+00:00</published>
+        <updated>2023-05-30T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/little-mermaid/"/>
+        <id>https://www.macchaffee.com/movies/little-mermaid/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/little-mermaid/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>About My Father</title>
+        <published>2023-05-28T00:00:00+00:00</published>
+        <updated>2023-05-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/about-my-father/"/>
+        <id>https://www.macchaffee.com/movies/about-my-father/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/about-my-father/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Blackberry</title>
+        <published>2023-05-22T00:00:00+00:00</published>
+        <updated>2023-05-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/blackberry/"/>
+        <id>https://www.macchaffee.com/movies/blackberry/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/blackberry/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Guardians of the Galaxy Vol. 3</title>
+        <published>2023-05-14T00:00:00+00:00</published>
+        <updated>2023-05-14T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/guardians-of-the-galaxy-3/"/>
+        <id>https://www.macchaffee.com/movies/guardians-of-the-galaxy-3/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/guardians-of-the-galaxy-3/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Book Club: The Next Chapter</title>
+        <published>2023-05-11T00:00:00+00:00</published>
+        <updated>2023-05-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/book-club-next-chapter/"/>
+        <id>https://www.macchaffee.com/movies/book-club-next-chapter/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/book-club-next-chapter/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Big George Foreman</title>
+        <published>2023-05-05T00:00:00+00:00</published>
+        <updated>2023-05-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/big-george-foreman/"/>
+        <id>https://www.macchaffee.com/movies/big-george-foreman/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/big-george-foreman/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Are you there God? It&#x27;s me, Margaret</title>
+        <published>2023-04-27T00:00:00+00:00</published>
+        <updated>2023-04-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/are-you-there-god-margaret/"/>
+        <id>https://www.macchaffee.com/movies/are-you-there-god-margaret/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/are-you-there-god-margaret/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Polite Society</title>
+        <published>2023-04-22T00:00:00+00:00</published>
+        <updated>2023-04-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/polite-society/"/>
+        <id>https://www.macchaffee.com/movies/polite-society/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/polite-society/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>The Parent Trap (1998)</title>
+        <published>2023-04-21T00:00:00+00:00</published>
+        <updated>2023-04-21T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/parent-trap/"/>
+        <id>https://www.macchaffee.com/movies/parent-trap/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/parent-trap/">&lt;p&gt;I think I&#x27;ve definitely got a soft spot for 90&#x27;s-00&#x27;s movies, and &lt;em&gt;The Parent Trap&lt;&#x2F;em&gt; is an exemplar, which earns its high score from me.&lt;&#x2F;p&gt;
+&lt;p&gt;I can&#x27;t remember exactly why I knocked off half of a point, possibly it was the fake British accent (Lindsay Lohan did her best).&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Suzume</title>
+        <published>2023-04-19T00:00:00+00:00</published>
+        <updated>2023-04-19T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/suzume/"/>
+        <id>https://www.macchaffee.com/movies/suzume/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/suzume/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>The Super Mario Bros. Movie</title>
+        <published>2023-04-07T00:00:00+00:00</published>
+        <updated>2023-04-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/super-mario-bros/"/>
+        <id>https://www.macchaffee.com/movies/super-mario-bros/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/super-mario-bros/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Air</title>
+        <published>2023-04-05T00:00:00+00:00</published>
+        <updated>2023-04-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/air/"/>
+        <id>https://www.macchaffee.com/movies/air/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/air/">&lt;p&gt;Initial discussion around this movie decried it as a cash-grab, since it&#x27;s &quot;just&quot; people talking in an office building. Easy to shoot, easy to light, no need to deal with weather, no stunts, no CGI, etc.&lt;&#x2F;p&gt;
+&lt;p&gt;That&#x27;s all true, but another way to think of it is that the script and the actors can&#x27;t hide behind anything. I watch a lot of competition shows, and every time a contestant says &quot;I&#x27;m going for something simple&quot;, the judges always say &quot;alright, but it better be absolutely perfect&quot;. &lt;em&gt;Air&lt;&#x2F;em&gt; does just that.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Everything Everwhere All at Once</title>
+        <published>2023-03-20T00:00:00+00:00</published>
+        <updated>2023-03-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/everything-everywhere/"/>
+        <id>https://www.macchaffee.com/movies/everything-everywhere/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/everything-everywhere/">&lt;p&gt;I don&#x27;t think I need to write much to justify giving a perfect score to probably the greatest independent film to come out this decade.&lt;&#x2F;p&gt;
+&lt;p&gt;My scoring system gives a lot of weight to &quot;missed opportunities&quot;, and this film doesn&#x27;t miss. Amazing story, characters, acting, message, visuals, and everything else I can think of.&lt;&#x2F;p&gt;
+&lt;p&gt;The other part of my scoring system is more feeling-based. How I see it, movies either show a fake, fantastical world where the good guys always win, or they show the real, messy world that has no rhyme or reason. By embracing absurdism and approaching it honestly, the movie manages to do what I thought was impossible: present a unique message that rings true, while also managing to be uplifting.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Moving On</title>
+        <published>2023-03-19T00:00:00+00:00</published>
+        <updated>2023-03-19T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/moving-on/"/>
+        <id>https://www.macchaffee.com/movies/moving-on/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/moving-on/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Jesus Revolution</title>
+        <published>2023-03-07T00:00:00+00:00</published>
+        <updated>2023-03-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/jesus-revolution/"/>
+        <id>https://www.macchaffee.com/movies/jesus-revolution/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/jesus-revolution/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Magic Mike: Last Dance</title>
+        <published>2023-03-05T00:00:00+00:00</published>
+        <updated>2023-03-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/magic-mike-last-dance/"/>
+        <id>https://www.macchaffee.com/movies/magic-mike-last-dance/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/magic-mike-last-dance/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Demon Slayer: To the Swordsmith Village</title>
+        <published>2023-03-03T00:00:00+00:00</published>
+        <updated>2023-03-03T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/demon-slayer-swordsmith-village/"/>
+        <id>https://www.macchaffee.com/movies/demon-slayer-swordsmith-village/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/demon-slayer-swordsmith-village/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Spider Man: No Way Home (2021)</title>
+        <published>2023-02-26T00:00:00+00:00</published>
+        <updated>2023-02-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/spide-man-no-way-home/"/>
+        <id>https://www.macchaffee.com/movies/spide-man-no-way-home/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/spide-man-no-way-home/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Ant Man: Quantumania</title>
+        <published>2023-02-25T00:00:00+00:00</published>
+        <updated>2023-02-25T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/ant-man-quantumania/"/>
+        <id>https://www.macchaffee.com/movies/ant-man-quantumania/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/ant-man-quantumania/"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>80 for Brady</title>
+        <published>2023-02-10T00:00:00+00:00</published>
+        <updated>2023-02-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/80-for-brady/"/>
+        <id>https://www.macchaffee.com/movies/80-for-brady/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/80-for-brady/">&lt;p&gt;We ended up rewatching this one about a year later, and it does seem to hold up as any other classic feel-good comedy.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Puss in Boots 2</title>
+        <published>2023-02-02T00:00:00+00:00</published>
+        <updated>2023-02-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/puss-in-boots-2/"/>
+        <id>https://www.macchaffee.com/movies/puss-in-boots-2/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/puss-in-boots-2/">&lt;p&gt;This was our first movie since we started tracking movie scores. In a way, it inspired us to start keeping track and to sign up for a movie theater subscription!&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

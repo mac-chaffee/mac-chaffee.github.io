@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Allow: /
+Sitemap: https://www.macchaffee.com/movies/sitemap.xml
