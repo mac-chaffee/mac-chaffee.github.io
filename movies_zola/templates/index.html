@@ -1,0 +1,27 @@
+{% extends "en-why-tee/templates/index.html" %}
+{% block css %}
+{% if config.build_search_index %}
+<script defer type="text/javascript" src="{{ get_url(path=" elasticlunr.min.js") }}"></script>
+<script defer type="text/javascript" src="{{ get_url(path=" search_index.en.js") }}"></script>
+{% endif %}
+{% block rss %}
+<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
+{% endblock %}
+<meta name="image" content="https://www.macchaffee.com/static/favicon.png">
+<meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+{% if page.title %}
+<meta property="og:title" content="{{ page.title }}">
+{% endif %}
+{% if config.description -%}
+<meta property="og:description" content="{{ config.description }}">
+{% endif %}
+<link rel="stylesheet" href="{{ get_url(path="theme.css", trailing_slash=false) | safe }}">
+<style>
+/* Overrides */
+blockquote {
+    color: #727272;
+    font-style: italic;
+}
+</style>
+{% endblock css %}

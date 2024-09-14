@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+
+{% block main %}
+<article itemprop="review" itemscope itemtype="https://schema.org/Review">
+  <div itemprop="name">
+    <h1>{{ page.title }}</h1>
+  </div>
+  <div class="border"></div>
+  <time datetime="{{ page.date | date(format="%Y-%m-%d") }}" class="date" itemprop="datePublished">
+    {{ page.date | date(format="%Y-%m-%d") }}
+  </time>
+  <div itemprop="reviewBody">
+    {{ page.content | safe }}
+  </div>
+  <div class="final-rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+    Rating:
+    <meta itemprop="worstRating" content="1">
+    <span itemprop="ratingValue">{{ page.extra.rating | safe }}</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">
+    {%- if page.extra.rating >= 8 -%}
+    🤩
+    {%- elif page.extra.rating == 7 -%}
+    😀
+    {%- elif page.extra.rating == 6 -%}
+    🙂
+    {%- elif page.extra.rating == 5 -%}
+    🫤
+    {%- elif page.extra.rating == 4 -%}
+    ☹️
+    {%- else -%}
+    😱
+    {%- endif -%}
+    </span>
+  </div>
+</article>
+{% endblock main %}

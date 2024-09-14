@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {% if config.description -%}
+        <meta name="description" content="{{ config.description }}">
+        {% endif %}
+
+        <title>
+            {%- block title -%}
+            {%- if page.title -%}
+            {{- page.title -}}
+            {%- else -%}
+            {{- config.title -}}
+            {%- endif -%}
+            {%- endblock title -%}
+        </title>
+
+        {% block css %}
+            <link rel="stylesheet" href="{{ get_url(path="theme.css", trailing_slash=false) | safe }}">
+        {% endblock css %}
+        {% endblock head %}
+    </head>
+    <body>
+      {% block header %}
+        <header>
+            <div class="header-left"></div>
+            <div class="header-center">
+              <a href="/movies/">
+                <img class="logo" src="{{ config.base_url }}/icons/top-logo.svg" alt="Mac's Movie Reviews">
+              </a>
+            </div>
+            <div class="header-right">
+                <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                    <a itemprop="url" href="{{ config.base_url }}/atom.xml">
+                        <img class="icon" src="{{ config.base_url }}/icons/rss.svg" alt="RSS Feed">
+                    </a>
+                </nav>
+            </div>
+        </header>
+      {% endblock header %}
+      <div class="content">
+        {% block body%}
+
+        {% block content %}
+        <main>
+            {% block main %}
+            <h1>Latest Reviews</h1>
+            <div class="border"></div>
+                {% set index = get_section(path="_index.md") %}
+                {% if index.pages %}
+                  <ol class="article-link-list" aria-live="off">
+                    {% for page in index.pages %}
+                      {% if loop.index0 % 6 == 3 %}
+                      <div class="horizontal-links">
+                      {% endif %}
+                        <li class="article-link">
+                          <a class="article-title" href="{{ page.permalink | safe}}">
+                            <h3 class="article-title">{{ page.title }}</h3>
+                          </a>
+                          <p class="article-description">{{ page.description }}</p>
+                          <p class="article-date">{{ page.date }}</p>
+                        </li>
+                      {% if loop.index0 % 6 == 5 %}
+                      </div>
+                      {% endif %}
+                    {% endfor %}
+                  </ol>
+                {% endif %}
+            {% endblock main %}
+        </main>
+        {% endblock content %}
+        <footer>
+        {% block footer %}
+          <div class="border"></div>
+          <div class="footer">
+              <div></div>
+              <p xmlns:cc="http://creativecommons.org/ns#">This work is licensed under <a
+                      href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"
+                      rel="license noopener noreferrer">CC BY-SA 4.0</a></p>
+          </div>
+        {% endblock footer %}
+        </footer>
+    {% endblock body%}
+        </div>
+    </body>
+</html>
