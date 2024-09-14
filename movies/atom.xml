@@ -5,8 +5,111 @@
     <link rel="self" type="application/atom+xml" href="https://www.macchaffee.com/movies/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2023-08-08T00:00:00+00:00</updated>
+    <updated>2023-11-03T00:00:00+00:00</updated>
     <id>https://www.macchaffee.com/movies/atom.xml</id>
+    <entry xml:lang="en">
+        <title>What Happens Later</title>
+        <published>2023-11-03T00:00:00+00:00</published>
+        <updated>2023-11-03T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/what-happens-later/"/>
+        <id>https://www.macchaffee.com/movies/what-happens-later/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/what-happens-later/">
+          &lt;p&gt;As of 2024, this movie has the lowest score of any movie I&#x27;ve watched, and for good reason. This is the only movie that was so bad I walked out of the theater.&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s a movie of inexplicable contraditions. The characters feel flat and rigid despite their loose attempts at ad-libbing. The comic relief is inserted very intentionally by an airport announcer voice, but it seems no intentionality was expended on the writing of these jokes. The story is bizarre and unique but somehow utterly boring. The conversational topics are so relatable that they become banal (phones are bad, people age, weather exists).&lt;&#x2F;p&gt;
+&lt;p&gt;The strange technique of revealing major pieces of information in the middle of unrelated conversations became an inside joke for me and my wife. Nobody talks like that, which makes it funny but also breaks the illusion. Suddenly you&#x27;re not experiencing a story, you&#x27;re sitting in a theater watching a movie with a shoe-string budget that has nothing compelling other than this artificial drip-drip of backstory.&lt;&#x2F;p&gt;
+
+          <hr/>
+          <p>It's just one long boring conversation. 1.5 out of 10
+            <span class="emoji-rating">😱</span>
+          </p>
+        </content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Inspector Sun</title>
+        <published>2023-10-28T00:00:00+00:00</published>
+        <updated>2023-10-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/inspector-sun/"/>
+        <id>https://www.macchaffee.com/movies/inspector-sun/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/inspector-sun/">
+          
+          <hr/>
+          <p>A trope-y movie that is also just bad. 2 out of 10
+            <span class="emoji-rating">😱</span>
+          </p>
+        </content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Homeward Bound (1993)</title>
+        <published>2023-09-15T00:00:00+00:00</published>
+        <updated>2023-09-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/homeward-bound/"/>
+        <id>https://www.macchaffee.com/movies/homeward-bound/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/homeward-bound/">
+          
+          <hr/>
+          <p>A bit spooky but otherwise an alright movie 6.5 out of 10
+            <span class="emoji-rating">🙂</span>
+          </p>
+        </content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Blue Beetle</title>
+        <published>2023-08-31T00:00:00+00:00</published>
+        <updated>2023-08-31T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/blue-beetle/"/>
+        <id>https://www.macchaffee.com/movies/blue-beetle/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/blue-beetle/">
+          
+          <hr/>
+          <p>I like the jokes, but not the writing. 5 out of 10
+            <span class="emoji-rating">🫤</span>
+          </p>
+        </content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Captain America: The First Avenger</title>
         <published>2023-08-08T00:00:00+00:00</published>
@@ -780,10 +883,10 @@
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/spide-man-no-way-home/"/>
-        <id>https://www.macchaffee.com/movies/spide-man-no-way-home/</id>
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/spider-man-no-way-home/"/>
+        <id>https://www.macchaffee.com/movies/spider-man-no-way-home/</id>
         
-        <content type="html" xml:base="https://www.macchaffee.com/movies/spide-man-no-way-home/">
+        <content type="html" xml:base="https://www.macchaffee.com/movies/spider-man-no-way-home/">
           
           <hr/>
           <p>It may be fun Marvel fanservice, but the death was silly and the moral message was bankrupt. 6 out of 10

@@ -36,6 +36,10 @@
         <lastmod>2023-05-22</lastmod>
     </url>
     <url>
+        <loc>https://www.macchaffee.com/movies/blue-beetle/</loc>
+        <lastmod>2023-08-31</lastmod>
+    </url>
+    <url>
         <loc>https://www.macchaffee.com/movies/book-club-next-chapter/</loc>
         <lastmod>2023-05-11</lastmod>
     </url>
@@ -68,8 +72,16 @@
         <lastmod>2023-08-06</lastmod>
     </url>
     <url>
+        <loc>https://www.macchaffee.com/movies/homeward-bound/</loc>
+        <lastmod>2023-09-15</lastmod>
+    </url>
+    <url>
         <loc>https://www.macchaffee.com/movies/indiana-jones-dial-of-destiny/</loc>
         <lastmod>2023-07-02</lastmod>
+    </url>
+    <url>
+        <loc>https://www.macchaffee.com/movies/inspector-sun/</loc>
+        <lastmod>2023-10-28</lastmod>
     </url>
     <url>
         <loc>https://www.macchaffee.com/movies/jesus-revolution/</loc>
@@ -116,7 +128,7 @@
         <lastmod>2023-07-05</lastmod>
     </url>
     <url>
-        <loc>https://www.macchaffee.com/movies/spide-man-no-way-home/</loc>
+        <loc>https://www.macchaffee.com/movies/spider-man-no-way-home/</loc>
         <lastmod>2023-02-26</lastmod>
     </url>
     <url>
@@ -138,5 +150,9 @@
     <url>
         <loc>https://www.macchaffee.com/movies/transformers-rise-of-the-beasts/</loc>
         <lastmod>2023-06-11</lastmod>
+    </url>
+    <url>
+        <loc>https://www.macchaffee.com/movies/what-happens-later/</loc>
+        <lastmod>2023-11-03</lastmod>
     </url>
 </urlset>

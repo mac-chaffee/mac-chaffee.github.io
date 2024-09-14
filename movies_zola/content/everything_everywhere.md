@@ -4,6 +4,7 @@ date = "2023-03-20"
 description = "Entrancing, impressive, and oddly reassuring."
 [extra]
 rating = 10
+featured = true
 +++
 
 I don't think I need to write much to justify giving a perfect score to probably the greatest independent film to come out this decade.

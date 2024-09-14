@@ -58,6 +58,7 @@
                       <div class="horizontal-links">
                       {% endif %}
                         <li class="article-link">
+                          {% if page.extra.featured %}<p class="article-featured">FEATURED</p>{%- endif -%}
                           <a class="article-title" href="{{ page.permalink | safe}}">
                             <h3 class="article-title">{{ page.title }}</h3>
                           </a>

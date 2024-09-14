@@ -4,6 +4,7 @@ date = "2023-04-05"
 description = "Funny, emotional, compelling, and Viola Davis absolutely did it to 'em."
 [extra]
 rating = 10
+featured = true
 +++
 
 Initial discussion around this movie decried it as a cash-grab, since it's "just" people talking in an office building. Easy to shoot, easy to light, no need to deal with weather, no stunts, no CGI, etc.
