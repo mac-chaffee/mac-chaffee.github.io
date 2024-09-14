@@ -25,11 +25,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/captain-america-first-avenger/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            So goofy, but somehow still a little endearing.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">7</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😀</span>
-          </div>
+          <hr/>
+          <p>So goofy, but somehow still a little endearing. 7 out of 10
+            <span class="emoji-rating">😀</span>
+          </p>
         </content>
         
     </entry>
@@ -51,11 +50,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/jujutsu-kaisen-0/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Good arc and good action, but didn&#x27;t like the vibes (not &quot;movie&quot; enough).
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">8</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>Good arc and good action, but didn't like the vibes (not "movie" enough). 8 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -77,11 +75,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/haunted-mansion/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Surprisingly fun and well-written.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">9</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>Surprisingly fun and well-written. 9 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -103,11 +100,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/erin-brockovich/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            &quot;I like lawyer, it make me cry, environmentalism&quot;.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">7.5</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😀</span>
-          </div>
+          <hr/>
+          <p>"I like lawyer, it make me cry, environmentalism". 7.5 out of 10
+            <span class="emoji-rating">😀</span>
+          </p>
         </content>
         
     </entry>
@@ -130,11 +126,10 @@
         <content type="html" xml:base="https://www.macchaffee.com/movies/barbie/">
           &lt;p&gt;I heard this movie was re-written over and over again throughout the years. I think it shows, in a good way. It was able to navigate the fraught waters that Barbie exists in.&lt;&#x2F;p&gt;
 
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Funny, smart, and topical without being cringy.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">8.5</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>Funny, smart, and topical without being cringy. 8.5 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -157,11 +152,10 @@
         <content type="html" xml:base="https://www.macchaffee.com/movies/oppenheimer/">
           &lt;p&gt;We watched this at 10:30AM, then Barbie at 4:30PM. Happy to have particiated in an unhinged internet meme.&lt;&#x2F;p&gt;
 
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            More like a History Channel special than a movie.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">7</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😀</span>
-          </div>
+          <hr/>
+          <p>More like a History Channel special than a movie. 7 out of 10
+            <span class="emoji-rating">😀</span>
+          </p>
         </content>
         
     </entry>
@@ -183,11 +177,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/ruby-gillman/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Enjoyable, but a little ugly and unoriginal.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">7</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😀</span>
-          </div>
+          <hr/>
+          <p>Enjoyable, but a little ugly and unoriginal. 7 out of 10
+            <span class="emoji-rating">😀</span>
+          </p>
         </content>
         
     </entry>
@@ -209,11 +202,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/indiana-jones-dial-of-destiny/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            One long tropey chase scene with plot holes.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">4</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">☹️</span>
-          </div>
+          <hr/>
+          <p>One long tropey chase scene with plot holes. 4 out of 10
+            <span class="emoji-rating">☹️</span>
+          </p>
         </content>
         
     </entry>
@@ -235,11 +227,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/no-hard-feelings/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Hilarious and well-acted.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">9</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>Hilarious and well-acted. 9 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -262,11 +253,10 @@
         <content type="html" xml:base="https://www.macchaffee.com/movies/elemental/">
           &lt;p&gt;I&#x27;ll come back to this one, this requires a lot of writing to justify.&lt;&#x2F;p&gt;
 
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Well animated, but extremely tone-deaf.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">3</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😱</span>
-          </div>
+          <hr/>
+          <p>Well animated, but extremely tone-deaf. 3 out of 10
+            <span class="emoji-rating">😱</span>
+          </p>
         </content>
         
     </entry>
@@ -288,11 +278,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/transformers-rise-of-the-beasts/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Does what it says on the tin.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">6</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🙂</span>
-          </div>
+          <hr/>
+          <p>Does what it says on the tin. 6 out of 10
+            <span class="emoji-rating">🙂</span>
+          </p>
         </content>
         
     </entry>
@@ -314,11 +303,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/spiderverse-2/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            The better animation and the cool reveal made the cliffhanger tolerable.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">9</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>The better animation and the cool reveal made the cliffhanger tolerable. 9 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -340,11 +328,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/spiderverse-1/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Beautifully animated, sharp script, and just plain fun.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">8</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>Beautifully animated, sharp script, and just plain fun. 8 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -366,11 +353,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/little-mermaid/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Everything&#x27;s better down where it&#x27;s wetter, but I still give it a C.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">4</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">☹️</span>
-          </div>
+          <hr/>
+          <p>Everything's better down where it's wetter, but I still give it a C. 4 out of 10
+            <span class="emoji-rating">☹️</span>
+          </p>
         </content>
         
     </entry>
@@ -392,11 +378,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/about-my-father/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            A whole lotta fun the whole way through. RIP Sgt. Feathers.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">9</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>A whole lotta fun the whole way through. RIP Sgt. Feathers. 9 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -418,11 +403,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/blackberry/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            An absurdist movie which ended up being just kinda sad.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">6</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🙂</span>
-          </div>
+          <hr/>
+          <p>An absurdist movie which ended up being just kinda sad. 6 out of 10
+            <span class="emoji-rating">🙂</span>
+          </p>
         </content>
         
     </entry>
@@ -444,11 +428,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/guardians-of-the-galaxy-3/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            An excellent conclusion to Marvel&#x27;s best series.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">9</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>An excellent conclusion to Marvel's best series. 9 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -470,11 +453,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/book-club-next-chapter/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            A disappointing sequel filled with cringy jokes.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">3</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😱</span>
-          </div>
+          <hr/>
+          <p>A disappointing sequel filled with cringy jokes. 3 out of 10
+            <span class="emoji-rating">😱</span>
+          </p>
         </content>
         
     </entry>
@@ -496,11 +478,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/big-george-foreman/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            An ambitious film with an abrupt ending.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">6</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🙂</span>
-          </div>
+          <hr/>
+          <p>An ambitious film with an abrupt ending. 6 out of 10
+            <span class="emoji-rating">🙂</span>
+          </p>
         </content>
         
     </entry>
@@ -522,11 +503,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/are-you-there-god-margaret/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Yes there&#x27;s cringe, but there&#x27;s also humor, heart, and a great B-plot.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">9.5</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>Yes there's cringe, but there's also humor, heart, and a great B-plot. 9.5 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -548,11 +528,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/polite-society/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Unique, funny, and action-packed, just an abrupt ending.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">7</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😀</span>
-          </div>
+          <hr/>
+          <p>Unique, funny, and action-packed, just an abrupt ending. 7 out of 10
+            <span class="emoji-rating">😀</span>
+          </p>
         </content>
         
     </entry>
@@ -576,11 +555,10 @@
           &lt;p&gt;I think I&#x27;ve definitely got a soft spot for 90&#x27;s-00&#x27;s movies, and &lt;em&gt;The Parent Trap&lt;&#x2F;em&gt; is an exemplar, which earns its high score from me.&lt;&#x2F;p&gt;
 &lt;p&gt;I can&#x27;t remember exactly why I knocked off half of a point, possibly it was the fake British accent (Lindsay Lohan did her best).&lt;&#x2F;p&gt;
 
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Funny, heart-felt, and easily rewatchable.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">9.5</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>Funny, heart-felt, and easily rewatchable. 9.5 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -602,11 +580,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/suzume/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            A pointless romance and an ugly worm in an otherwise beautifully-animated, intriguing movie.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">7</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😀</span>
-          </div>
+          <hr/>
+          <p>A pointless romance and an ugly worm in an otherwise beautifully-animated, intriguing movie. 7 out of 10
+            <span class="emoji-rating">😀</span>
+          </p>
         </content>
         
     </entry>
@@ -628,11 +605,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/super-mario-bros/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Even worse than you would expect from a soulless cash grab.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">3</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😱</span>
-          </div>
+          <hr/>
+          <p>Even worse than you would expect from a soulless cash grab. 3 out of 10
+            <span class="emoji-rating">😱</span>
+          </p>
         </content>
         
     </entry>
@@ -656,11 +632,10 @@
           &lt;p&gt;Initial discussion around this movie decried it as a cash-grab, since it&#x27;s &quot;just&quot; people talking in an office building. Easy to shoot, easy to light, no need to deal with weather, no stunts, no CGI, etc.&lt;&#x2F;p&gt;
 &lt;p&gt;That&#x27;s all true, but another way to think of it is that the script and the actors can&#x27;t hide behind anything. I watch a lot of competition shows, and every time a contestant says &quot;I&#x27;m going for something simple&quot;, the judges always say &quot;alright, but it better be absolutely perfect&quot;. &lt;em&gt;Air&lt;&#x2F;em&gt; does just that.&lt;&#x2F;p&gt;
 
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Funny, emotional, compelling, and Viola Davis absolutely did it to &#x27;em.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">10</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>Funny, emotional, compelling, and Viola Davis absolutely did it to 'em. 10 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -685,11 +660,10 @@
 &lt;p&gt;My scoring system gives a lot of weight to &quot;missed opportunities&quot;, and this film doesn&#x27;t miss. Amazing story, characters, acting, message, visuals, and everything else I can think of.&lt;&#x2F;p&gt;
 &lt;p&gt;The other part of my scoring system is more feeling-based. How I see it, movies either show a fake, fantastical world where the good guys always win, or they show the real, messy world that has no rhyme or reason. By embracing absurdism and approaching it honestly, the movie manages to do what I thought was impossible: present a unique message that rings true, while also managing to be uplifting.&lt;&#x2F;p&gt;
 
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Entrancing, impressive, and oddly reassuring.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">10</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>Entrancing, impressive, and oddly reassuring. 10 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -711,11 +685,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/moving-on/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            An excellent successor to EGBOK, just needed to tie up a few loose ends.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">8</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>An excellent successor to EGBOK, just needed to tie up a few loose ends. 8 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>
@@ -737,11 +710,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/jesus-revolution/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Surprisingly deep characters, but made shallow by reality.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">6</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🙂</span>
-          </div>
+          <hr/>
+          <p>Surprisingly deep characters, but made shallow by reality. 6 out of 10
+            <span class="emoji-rating">🙂</span>
+          </p>
         </content>
         
     </entry>
@@ -763,11 +735,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/magic-mike-last-dance/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            It draws much comedic effect from Channing Tatum standing out in every scene, but it could take itself a tad less seriously.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">7</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😀</span>
-          </div>
+          <hr/>
+          <p>It draws much comedic effect from Channing Tatum standing out in every scene, but it could take itself a tad less seriously. 7 out of 10
+            <span class="emoji-rating">😀</span>
+          </p>
         </content>
         
     </entry>
@@ -789,11 +760,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/demon-slayer-swordsmith-village/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Is 20 minutes of good anime worth suffering through 1.5 hours of copy&#x2F;pasted content?
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">3</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😱</span>
-          </div>
+          <hr/>
+          <p>Is 20 minutes of good anime worth suffering through 1.5 hours of copy/pasted content? 3 out of 10
+            <span class="emoji-rating">😱</span>
+          </p>
         </content>
         
     </entry>
@@ -815,11 +785,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/spide-man-no-way-home/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            It may be fun Marvel fanservice, but the death was silly and the moral message was bankrupt.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">6</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🙂</span>
-          </div>
+          <hr/>
+          <p>It may be fun Marvel fanservice, but the death was silly and the moral message was bankrupt. 6 out of 10
+            <span class="emoji-rating">🙂</span>
+          </p>
         </content>
         
     </entry>
@@ -841,11 +810,10 @@
         
         <content type="html" xml:base="https://www.macchaffee.com/movies/ant-man-quantumania/">
           
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Immersive setting, and important in the MCU, but struggles with storytelling (and some awkward acting).
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">7</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😀</span>
-          </div>
+          <hr/>
+          <p>Immersive setting, and important in the MCU, but struggles with storytelling (and some awkward acting). 7 out of 10
+            <span class="emoji-rating">😀</span>
+          </p>
         </content>
         
     </entry>
@@ -868,11 +836,10 @@
         <content type="html" xml:base="https://www.macchaffee.com/movies/80-for-brady/">
           &lt;p&gt;We ended up rewatching this one about a year later, and it does seem to hold up as any other classic feel-good comedy.&lt;&#x2F;p&gt;
 
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Enjoyable, but didn&#x27;t live up to its comedic potential.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">7</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">😀</span>
-          </div>
+          <hr/>
+          <p>Enjoyable, but didn't live up to its comedic potential. 7 out of 10
+            <span class="emoji-rating">😀</span>
+          </p>
         </content>
         
     </entry>
@@ -895,11 +862,10 @@
         <content type="html" xml:base="https://www.macchaffee.com/movies/puss-in-boots-2/">
           &lt;p&gt;This was our first movie since we started tracking movie scores. In a way, it inspired us to start keeping track and to sign up for a movie theater subscription!&lt;&#x2F;p&gt;
 
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            Great characters, a clear plot, and punchlines that hit, unlike the musical numbers.
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">8</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">🤩</span>
-          </div>
+          <hr/>
+          <p>Great characters, a clear plot, and punchlines that hit, unlike the musical numbers. 8 out of 10
+            <span class="emoji-rating">🤩</span>
+          </p>
         </content>
         
     </entry>

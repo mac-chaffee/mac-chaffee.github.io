@@ -48,25 +48,24 @@
         {% else %}
         <content type="html" xml:base="{{ page.permalink | escape_xml | safe }}">
           {{ page.content }}
-          <div class="final-rating" itemprop="reviewRating" itemscope="" itemtype="https://schema.org/Rating">
-            {{ page.description }}
-            <meta itemprop="worstRating" content="1"/>
-            <span itemprop="ratingValue">{{ page.extra.rating | safe }}</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">
-            {%- if page.extra.rating >= 8 -%}
-            🤩
-            {%- elif page.extra.rating >= 7 -%}
-            😀
-            {%- elif page.extra.rating >= 6 -%}
-            🙂
-            {%- elif page.extra.rating >= 5 -%}
-            🫤
-            {%- elif page.extra.rating >= 4 -%}
-            ☹️
-            {%- else -%}
-            😱
-            {%- endif -%}
+          <hr/>
+          <p>{{ page.description | safe }} {{ page.extra.rating | safe }} out of 10
+            <span class="emoji-rating">
+              {%- if page.extra.rating >= 8 -%}
+              🤩
+              {%- elif page.extra.rating >= 7 -%}
+              😀
+              {%- elif page.extra.rating >= 6 -%}
+              🙂
+              {%- elif page.extra.rating >= 5 -%}
+              🫤
+              {%- elif page.extra.rating >= 4 -%}
+              ☹️
+              {%- else -%}
+              😱
+              {%- endif -%}
             </span>
-          </div>
+          </p>
         </content>
         {% endif %}
     </entry>
