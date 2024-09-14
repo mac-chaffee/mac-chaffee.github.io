@@ -13,8 +13,8 @@
     {{ page.content | safe }}
   </div>
   <div class="final-rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-    Rating:
-    <meta itemprop="worstRating" content="1">
+    {{ page.description }}
+    <meta itemprop="worstRating" content="1"/>
     <span itemprop="ratingValue">{{ page.extra.rating | safe }}</span> out of <span itemprop="bestRating">10</span> <span class="emoji-rating">
     {%- if page.extra.rating >= 8 -%}
     🤩
