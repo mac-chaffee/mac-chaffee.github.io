@@ -48,7 +48,7 @@
         {% else %}
         <content type="html" xml:base="{{ page.permalink | escape_xml | safe }}">
           {{ page.content }}
-          <hr/>
+          <hr>
           <p>{{ page.description | safe }} {{ page.extra.rating | safe }} out of 10
             <span class="emoji-rating">
               {%- if page.extra.rating >= 8 -%}
