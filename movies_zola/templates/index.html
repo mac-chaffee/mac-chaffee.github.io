@@ -7,9 +7,9 @@
 {% block rss %}
 <link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
 {% endblock %}
-<meta name="image" content="https://www.macchaffee.com/static/favicon.png">
-<meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
-<link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+<meta name="image" content="{{ get_url(path="favicon.png", trailing_slash=false) }}">
+<meta property="og:image" content="{{ get_url(path="favicon.png", trailing_slash=false) }}">
+<link rel="shortcut icon" href="{{ get_url(path="favicon.png", trailing_slash=false) }}" type="image/png">
 {% if page.title %}
 <meta property="og:title" content="{{ page.title }}">
 {% endif %}
