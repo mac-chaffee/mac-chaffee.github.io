@@ -3,6 +3,7 @@
 My personal website.
 
 ## Tech Stack
+
 **Front-End**
 
 Vanilla JS, CSS, and [Zola](https://www.getzola.org/).
@@ -19,12 +20,24 @@ Install Zola: <https://www.getzola.org/documentation/getting-started/installatio
 brew install zola
 ```
 
-You can run `cd blog_zola && zola serve -O` to view the site live.
+You can run `zola -r ./blog serve -O` to view the site live.
 
 ## Deployment
 
+Set up this pre-commit hook:
+
+```bash
+cat > .git/hooks/pre-commit << EOF
+#!/usr/bin/env bash
+set -Eeuo pipefail
+cd \$(git rev-parse --show-toplevel)
+zola -r ./blog_zola build -o ./blog --force &
+zola -r ./movies_zola build -o ./movies --force &
+wait
+git add ./blog ./movies
+EOF
+
+chmod +x .git/hooks/pre-commit
 ```
-cd blog_zola && zola build -o ../blog --force && cd -
-git commit
-git push
-```
+
+Then the blog will be rebuilt automatically every time you run `git commit`.
