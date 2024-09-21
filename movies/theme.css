@@ -29,6 +29,13 @@ main {
 p {
   text-align: left;
 }
+blockquote {
+  color: #727272;
+  font-style: italic;
+  margin-left: 0;
+  padding: 0 0.5em;
+  border-left: 0.25em solid #d1d9e0;
+}
 footer {
   padding: 0 8px 8px 8px;
   grid-area: footer;

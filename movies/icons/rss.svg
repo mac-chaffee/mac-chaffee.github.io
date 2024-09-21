@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" id="RSSicon" viewBox="0 0 8 8" width="256" height="256">
   <title>RSS feed icon</title>
   <style type="text/css">
-    .button {stroke: none; fill: #dfdfdf;}
+    .button {stroke: none; fill: #ffffff;}
     .symbol {stroke: none; fill: #121212;}
   </style>
   <rect class="button" width="8" height="8" rx="1.5" />
