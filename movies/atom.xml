@@ -5,8 +5,34 @@
     <link rel="self" type="application/atom+xml" href="https://www.macchaffee.com/movies/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2024-09-18T00:00:00+00:00</updated>
+    <updated>2024-09-29T00:00:00+00:00</updated>
     <id>https://www.macchaffee.com/movies/atom.xml</id>
+    <entry xml:lang="en">
+        <title>The Wild Robot</title>
+        <published>2024-09-29T00:00:00+00:00</published>
+        <updated>2024-09-29T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/the-wild-robot/"/>
+        <id>https://www.macchaffee.com/movies/the-wild-robot/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/the-wild-robot/">
+          &lt;p&gt;&lt;em&gt;The Wild Robot&lt;&#x2F;em&gt; is a beautiful film that strikes a great balance between kid-friendliness while also having mature themes that appeal to parents. Between the heart-wrenching (in a good way) scenes of love and loss, there&#x27;s even good comic relief that the whole theater enjoyed. My one complaint is the incoherent moral message with regard to animals.&lt;&#x2F;p&gt;
+&lt;p&gt;Popular media with talking animals usually treats the main characters like humans, then overlays the familiar &lt;a href=&quot;https:&#x2F;&#x2F;www.animal-ethics.org&#x2F;speciesism&#x2F;&quot;&gt;speciesism&lt;&#x2F;a&gt; on top. If a main character suffers or dies, it&#x27;s treated seriously, but there may be &quot;lesser&quot; animals whose suffering is unaddressed or even treated as a joke (&lt;em&gt;Shark Tale&lt;&#x2F;em&gt; comes to mind). &lt;em&gt;The Wild Robot&lt;&#x2F;em&gt; falls into the same trap despite trying to avoid it. The first two kinds of animals we see are cute otters that are protected from harm and crabs (&quot;lesser&quot; animals) that are killed and eaten as a joke several times in the movie. The crabs are not given the ability to talk to further reinforce this hierarchy.&lt;&#x2F;p&gt;
+&lt;p&gt;Additionally, I saw one review praising the movie for not shying away from showing dead animals to kids. I hate that kind of intentional desensitization of kids. Sometimes, the inconsistencies of our &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Carnism&quot;&gt;carnist&lt;&#x2F;a&gt; society are so clear that even kids pick up on them, like being taught to help an injured bird while also being taught to &quot;get used to&quot; slaughtering chickens for food. &lt;em&gt;The Wild Robot&lt;&#x2F;em&gt; does at times try to tell us that an overwhelming amount of animal suffering is &quot;just the way things go&quot;, which is exactly that kind of desensitization I dislike (while also being &lt;a href=&quot;https:&#x2F;&#x2F;veganstrategist.org&#x2F;2016&#x2F;06&#x2F;01&#x2F;the-extremely-inconvenient-truth-of-wild-animal-suffering&#x2F;?doing_wp_cron=1727750443.3923718929290771484375&quot;&gt;untrue&lt;&#x2F;a&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;But overall, given that no major motion picture I&#x27;ve seen has ever intelligently addressed the concept of animal suffering, my rating is only minorly affected by this oversight. It really is the only flaw I could find in an otherwise amazing movie. Imagine if I subtracted several points every time a movie did something else that was wildly common like including establishing shots...&lt;&#x2F;p&gt;
+
+          This movie really soars, despite a few bugs in the system. 9.5 out of 10.
+        </content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Beetlejuice Beetlejuice</title>
         <published>2024-09-18T00:00:00+00:00</published>
