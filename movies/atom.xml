@@ -5,8 +5,30 @@
     <link rel="self" type="application/atom+xml" href="https://www.macchaffee.com/movies/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2024-09-29T00:00:00+00:00</updated>
+    <updated>2024-10-01T00:00:00+00:00</updated>
     <id>https://www.macchaffee.com/movies/atom.xml</id>
+    <entry xml:lang="en">
+        <title>My Old Ass</title>
+        <published>2024-10-01T00:00:00+00:00</published>
+        <updated>2024-10-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/movies/my-old-ass/"/>
+        <id>https://www.macchaffee.com/movies/my-old-ass/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/movies/my-old-ass/">
+          
+          Exceeds expectations and is a model for good queer representation. 9.5 out of 10.
+        </content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>The Wild Robot</title>
         <published>2024-09-29T00:00:00+00:00</published>
