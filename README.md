@@ -20,7 +20,7 @@ Install Zola: <https://www.getzola.org/documentation/getting-started/installatio
 brew install zola
 ```
 
-You can run `zola -r ./blog serve -O` to view the site live.
+You can run `zola -r ./blog_zola serve -O` to view the site live.
 
 ## Deployment
 
