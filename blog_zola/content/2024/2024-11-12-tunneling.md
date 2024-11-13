@@ -1,5 +1,5 @@
 +++
-title = "Flaunting the Internet Protocols with Tunnels"
+title = "Flouting the Internet Protocols with Tunnels"
 +++
 
 Recently at work I've learned about [Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/), which has increased my interest in tunneling technologies in general.
