@@ -5,8 +5,72 @@
     <link rel="self" type="application/atom+xml" href="https://www.macchaffee.com/blog/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://www.macchaffee.com/blog"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2024-08-24T00:00:00+00:00</updated>
+    <updated>2024-11-12T00:00:00+00:00</updated>
     <id>https://www.macchaffee.com/blog/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Flaunting the Internet Protocols with Tunnels</title>
+        <published>2024-11-12T00:00:00+00:00</published>
+        <updated>2024-11-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/blog/2024/tunneling/"/>
+        <id>https://www.macchaffee.com/blog/2024/tunneling/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/blog/2024/tunneling/">&lt;p&gt;Recently at work I&#x27;ve learned about &lt;a href=&quot;https:&#x2F;&#x2F;developers.cloudflare.com&#x2F;cloudflare-one&#x2F;connections&#x2F;connect-networks&#x2F;&quot;&gt;Cloudflare Tunnels&lt;&#x2F;a&gt;, which has increased my interest in tunneling technologies in general.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Tunneling_protocol&quot;&gt;Tunneling&lt;&#x2F;a&gt; is a generic networking term, but in the web-dominated world it usually refers to software that you can run on any computer with outbound network access to serve a website. The tunneling software has a another component running in the cloud that configures DNS, terminates TLS, and handles the networking magic to send the packets to your computer.&lt;&#x2F;p&gt;
+&lt;p&gt;My main interest is using tunneling for serving websites on my home server. While I&#x27;m fortunate to have a fairly static IP address, I don&#x27;t want to risk having to update my DNS records after a power outage, and I don&#x27;t like having to port-forward. I say &quot;sites&quot; plural, but I really just have one site, which is an instance of the open-source recipe site &lt;a href=&quot;https:&#x2F;&#x2F;mealie.io&#x2F;&quot;&gt;Mealie&lt;&#x2F;a&gt; at &lt;code&gt;recipes.macchaffee.com&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;I feel like by using tunnels, the authors of various internet protocols are rolling in their graves (wait, are they mostly still alive?), but hey I&#x27;ve got websites that need to be deployed and my ISP won&#x27;t help me do it.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;choosing-the-right-tunnel&quot;&gt;Choosing the right tunnel&lt;&#x2F;h2&gt;
+&lt;p&gt;After skimming through the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;anderspitman&#x2F;awesome-tunneling&quot;&gt;awesome-tunneling&lt;&#x2F;a&gt; list, I struggle to find a better solution than Cloudflare Tunnels, much to my chagrin as someone who fears &lt;a href=&quot;https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog&#x2F;2024&#x2F;ddos-attacks&#x2F;&quot;&gt;the centralization of the Internet&lt;&#x2F;a&gt;. My ideal features include:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Designed for production use, not just development.&lt;&#x2F;li&gt;
+&lt;li&gt;Good protocol choice for the tunnel itself, such as WireGuard or HTTP&#x2F;3.&lt;&#x2F;li&gt;
+&lt;li&gt;Multi-regional, including integration with a CDN for caching (why not make the most of the extra network hop?).&lt;&#x2F;li&gt;
+&lt;li&gt;Written in a performant, memory-safe language.&lt;&#x2F;li&gt;
+&lt;li&gt;Extra server-side features like metrics, authentication, and everything else you&#x27;d expect from a modern load balancer.&lt;&#x2F;li&gt;
+&lt;li&gt;Open-source.&lt;&#x2F;li&gt;
+&lt;li&gt;Not a Cloudflare product.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;So to any older CDN providers looking to capture a piece of the modern stack, there&#x27;s your next idea!&lt;&#x2F;p&gt;
+&lt;p&gt;With Cloudflare Tunnels out of the picture, I ended up compromising on #2, #3, and #5 on my wishlist and settled on &lt;a href=&quot;https:&#x2F;&#x2F;pico.sh&#x2F;tuns&quot;&gt;tuns&lt;&#x2F;a&gt;. They also offer &lt;a href=&quot;https:&#x2F;&#x2F;pico.sh&#x2F;pgs&quot;&gt;static site hosting&lt;&#x2F;a&gt; with features I wanted, so I took the bundle deal and got both.&lt;&#x2F;p&gt;
+&lt;p&gt;The client-side part of tuns is just &lt;code&gt;ssh -R&lt;&#x2F;code&gt;, which makes it very easy to get started. There&#x27;s also &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;picosh&#x2F;tunmgr&quot;&gt;tunmgr&lt;&#x2F;a&gt; which is less than 1k lines of Go code, mainly just wrapping the &lt;code&gt;ssh -R&lt;&#x2F;code&gt; equivalent from Golang&#x27;s standard library, plus some optional Docker integration.&lt;&#x2F;p&gt;
+&lt;p&gt;With my choice of tunneling software made, I moved on to the fun part: deploying tuns to serve traffic to my recipe site hosted on my home server.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;deploying&quot;&gt;Deploying&lt;&#x2F;h2&gt;
+&lt;p&gt;First, a short summary of my homelab setup: It&#x27;s an Intel NUC minicomputer running &lt;a href=&quot;https:&#x2F;&#x2F;nixos.org&#x2F;&quot;&gt;NixOS&lt;&#x2F;a&gt; which is running &lt;a href=&quot;https:&#x2F;&#x2F;docs.k3s.io&#x2F;&quot;&gt;k3s&lt;&#x2F;a&gt; (a minimal Kubernetes distribution). Everything&#x27;s deployed from a git repo using &lt;a href=&quot;https:&#x2F;&#x2F;fluxcd.io&#x2F;&quot;&gt;FluxCD&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;So since tunmgr doesn&#x27;t provide a Kubernetes installation mechanism, I made it myself (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;picosh&#x2F;tunmgr&#x2F;pull&#x2F;2&quot;&gt;and contributed it&lt;&#x2F;a&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;The steps remaining were:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Generate a new SSH key.&lt;&#x2F;li&gt;
+&lt;li&gt;Add it to my Pico account.&lt;&#x2F;li&gt;
+&lt;li&gt;Also add it as a &lt;a href=&quot;https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog&#x2F;2022&#x2F;k8s-secrets&#x2F;&quot;&gt;Kubernetes Secret&lt;&#x2F;a&gt; (encrypted in git with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;getsops&#x2F;sops&quot;&gt;SOPS&lt;&#x2F;a&gt;) to my cluster.&lt;&#x2F;li&gt;
+&lt;li&gt;Deploy tunmgr (a single Deployment, with locked-down permissions and even an egress NetworkPolicy to ensure it only talks to the &lt;code&gt;tuns.sh&lt;&#x2F;code&gt; server).&lt;&#x2F;li&gt;
+&lt;li&gt;Configure tunmgr to direct all traffic for &lt;code&gt;recipes.macchaffee.com&lt;&#x2F;code&gt; to &lt;a href=&quot;https:&#x2F;&#x2F;doc.traefik.io&#x2F;traefik&#x2F;&quot;&gt;Traefik&lt;&#x2F;a&gt; (this is needed to obtain normal load balancer features like metrics and IP allow-listing, which will come into play later).&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;After configuring my DNS and waiting a short delay for the TLS cert to be provisioned, my recipes site was up and running! No port-forwarding required! Here&#x27;s what it looks like:&lt;&#x2F;p&gt;
+&lt;figure&gt;
+  &lt;img src=&quot;&#x2F;blog&#x2F;2024&#x2F;tuns-diagram.png&quot; alt=&quot;A diagram showing traffic flowing from the tuns server, into a box representing my home server. Inside the home server box, the traffic first hits tunmgr, then traefik, then mealie.&quot;&#x2F;&gt;
+  &lt;figcaption&gt;&lt;em&gt;Not pictured: hundreds of lines of YAML&lt;&#x2F;em&gt;&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;p&gt;But then tragedy struck. As soon as the hostname &lt;code&gt;recipes.macchaffee.com&lt;&#x2F;code&gt; landed in the &lt;a href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;Security&#x2F;Certificate_Transparency&quot;&gt;Certificate Transparency&lt;&#x2F;a&gt; logs, I was reminded that the internet is a hostile place since I immediately received requests from scanners searching for vulnerabilities or sensitive files (a &lt;a href=&quot;https:&#x2F;&#x2F;blog.apnic.net&#x2F;2023&#x2F;08&#x2F;30&#x2F;certifiably-vulnerable-using-certificate-transparency-logs-for-target-reconnaissance&#x2F;&quot;&gt;common occurance&lt;&#x2F;a&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;I constantly struggle with the balance between hosting &quot;public&quot; sites that aren&#x27;t &lt;em&gt;too&lt;&#x2F;em&gt; public, including this blog. My recipe site is the same. I want to be able to access it from outside my house, and I want my friends and family to be able to access it too without having to set up a VPN client or keep track of a password. But I don&#x27;t want random scanners to eventually find a vulnerability in Mealie and automatically deploy some malware straight out of a scifi horror movie on my home network.&lt;&#x2F;p&gt;
+&lt;p&gt;So I needed to build the Internet equivalent of a &quot;No tresspassing&quot; sign, which I call &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mac-chaffee&#x2F;ip-pass&quot;&gt;&lt;code&gt;ip-pass&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-creation-of-ip-pass&quot;&gt;The creation of ip-pass&lt;&#x2F;h1&gt;
+&lt;p&gt;My software engineer skills have been collecting dust ever since I moved into DevOps and started &quot;coding&quot; in YAML, but I dusted them off and started up &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mac-chaffee&#x2F;ip-pass&quot;&gt;a new Golang project&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;This was also a good excuse to practice AI-assisted coding, since I&#x27;ve read a lot more Golang than I&#x27;ve written as a result of spending years debugging issues in various &lt;a href=&quot;https:&#x2F;&#x2F;www.cncf.io&#x2F;&quot;&gt;CNCF&lt;&#x2F;a&gt; projects. I just used &lt;a href=&quot;https:&#x2F;&#x2F;claude.ai&#x2F;&quot;&gt;Claude&lt;&#x2F;a&gt; for some things instead of scrolling through GitHub to find an example to copy&#x2F;paste. The only interesting thing that happened is Claude generated a test case with the IP address &lt;code&gt;203.0.113.333&lt;&#x2F;code&gt; which is invalid. Thankfully the test failed and caught it, because I didn&#x27;t notice. I think this is a lesson that &quot;just have a human check the AI&#x27;s output&quot; will never work because AI easily generates more output than humans have attention. You need strict automated checks (like a compiler) for this kind of thing.&lt;&#x2F;p&gt;
+&lt;p&gt;The project is one giant &lt;code&gt;main.go&lt;&#x2F;code&gt; file which starts an HTTP server which reads the user&#x27;s IP address and uses the Kubernetes &lt;code&gt;client-go&lt;&#x2F;code&gt; to add the IP to an allow list. Since I&#x27;m using Traefik, ip-pass updates a &lt;a href=&quot;https:&#x2F;&#x2F;doc.traefik.io&#x2F;traefik&#x2F;middlewares&#x2F;http&#x2F;ipallowlist&#x2F;&quot;&gt;Traefik Middleware&lt;&#x2F;a&gt; that contains the allow-list.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s a web interface too, which I&#x27;ve deployed to &lt;code&gt;access.macchaffee.com&lt;&#x2F;code&gt; (also via &lt;code&gt;tuns&lt;&#x2F;code&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;When you go to &lt;code&gt;access.macchaffee.com&lt;&#x2F;code&gt;, you click a big green &quot;Gain Access&quot; button which allow-lists your IP address and redirects you to &lt;code&gt;recipes.macchaffee.com&lt;&#x2F;code&gt;. Since the recipes site blocks all IPs not on the allow-list, bots are thwarted, but anyone with a brain and a browser can still get in with minimal hassle.&lt;&#x2F;p&gt;
+&lt;p&gt;Obviously this has no &lt;em&gt;real&lt;&#x2F;em&gt; security benefits because it&#x27;s just security by obscurity. It&#x27;s like changing your default SSH port to something other than port 22. But I think it hits a sweet spot on the &lt;a href=&quot;https:&#x2F;&#x2F;blog.c3l-security.com&#x2F;2019&#x2F;06&#x2F;balancing-functionality-usability-and.html&quot;&gt;security, usability, functionality triangle&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Non-compete clauses won&#x27;t go away unless we act</title>
         <published>2024-08-24T00:00:00+00:00</published>

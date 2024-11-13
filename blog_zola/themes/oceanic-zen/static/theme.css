@@ -145,3 +145,9 @@ tbody tr:first-child {
 td {
   padding: 1rem;
 }
+
+figure {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
