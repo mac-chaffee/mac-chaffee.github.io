@@ -20,4 +20,4 @@ A standard config format, a deployment method, an overlay network, service disco
 
 _Addressed to,_
 
-_Those who did not want to build a Kubernetes._
+_Those who did not want to use Kubernetes._
