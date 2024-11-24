@@ -5,8 +5,37 @@
     <link rel="self" type="application/atom+xml" href="https://www.macchaffee.com/blog/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://www.macchaffee.com/blog"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2024-11-12T00:00:00+00:00</updated>
+    <updated>2024-11-23T00:00:00+00:00</updated>
     <id>https://www.macchaffee.com/blog/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Dear friend, you have built a Kubernetes</title>
+        <published>2024-11-23T00:00:00+00:00</published>
+        <updated>2024-11-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/blog/2024/you-have-built-a-kubernetes/"/>
+        <id>https://www.macchaffee.com/blog/2024/you-have-built-a-kubernetes/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/blog/2024/you-have-built-a-kubernetes/">&lt;p&gt;&lt;em&gt;This post will make more sense if you first read &lt;a href=&quot;https:&#x2F;&#x2F;rachit.pl&#x2F;post&#x2F;you-have-built-a-compiler&#x2F;&quot;&gt;Dear Sir, You Have Built a Compiler&lt;&#x2F;a&gt;.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Dear friend,&lt;&#x2F;p&gt;
+&lt;p&gt;I am afraid to inform you that you have built a Kubernetes. I know you wanted to &quot;choose boring tech&quot; to just run some containers. You said that &quot;Kubernetes is overkill&quot; and &quot;it&#x27;s just way too complex for a simple task&quot; and yet, six months later, you have pile of shell scripts that do not work—breaking every time there&#x27;s a slight shift in the winds of production.&lt;&#x2F;p&gt;
+&lt;p&gt;Surely, switching to Docker Compose will be the end of your woes; at least that way, someone else maintains a standard config file format for you to use. But wait, Compose is still &lt;a href=&quot;https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog&#x2F;2024&#x2F;docker-compose&#x2F;&quot;&gt;not a holistic solution&lt;&#x2F;a&gt;. &quot;Do I really need a separate solution for deployment, rolling updates, rollbacks, and scaling?&quot; you ask yourself? Surely not. Your app is so simple; a backend, a reverse proxy, postgres, and a job runner. So you march on, and add another few sections to your &lt;code&gt;deploy.sh&lt;&#x2F;code&gt; script, certain, that this will be the last of what you need to do to maintain this pile of hacks.&lt;&#x2F;p&gt;
+&lt;p&gt;Ah, but wait! Inevitably, you find a reason to expand to a second server. While it&#x27;s true &lt;a href=&quot;https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=41340751&quot;&gt;a single server can go a long way&lt;&#x2F;a&gt; many things can force this decision, such as the need for special hardware, high availability, or the speed of light. Tired, you parameterize your deploy script and configure firewall rules, distracted from the crucial features you should be working on and shipping. One of your team members suggests connecting the servers with Tailscale: an overlay network with service discovery. After that you will know, yes know, that there is no tougher complexity hurdle to clear than the networking.&lt;&#x2F;p&gt;
+&lt;p&gt;Except if you quit or go on vacation, who will maintain this custom pile of shell scripts? The untested tarball handling? The inscrutable iptables rules? Who will know about those undocumented sysctl edits you made on the VM? So you add everything to Ansible, so that you may treat your VM as immutable and version-controlled. Certain, of course, that because you’re not using Kubernetes, it is going to be way easier to maintain than a Kubernetes cluster. What glorious engineering, you say to yourself.&lt;&#x2F;p&gt;
+&lt;p&gt;In the last leg of your journey to avoid building a Kubernetes, your manager tells you that your app needs to programmatically spawn other containers. Spawning containers, of course, requires you to mount the Docker socket in your web app, which is wildly insecure. Not my problem, your manager says. So you write a separate service that exposes a safe subset of the Docker API to your web app. Done at last, you say to yourself, without having to build a Kubernetes.&lt;&#x2F;p&gt;
+&lt;p&gt;A standard config format, a deployment method, an overlay network, service discovery, immutable nodes, and an API server. Dear friend, you have built a Kubernetes.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Addressed to,&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Those who did not want to build a Kubernetes.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Flouting the Internet Protocols with Tunnels</title>
         <published>2024-11-12T00:00:00+00:00</published>
