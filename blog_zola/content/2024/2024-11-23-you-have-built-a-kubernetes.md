@@ -20,4 +20,8 @@ A standard config format, a deployment method, an overlay network, service disco
 
 _Addressed to,_
 
-_Those who did not want to use Kubernetes._
+_Those who wanted to avoid Kubernetes._
+
+---
+
+_PS: I don't mean to imply that you can never roll your own deployment method that fits your needs better than Kubernetes, or that nothing will ever be better than Kubernetes. I just want to caution you, my friend, to make sure you understand the problems Kubernetes solves before dismissing it as overly-complex._

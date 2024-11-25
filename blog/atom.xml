@@ -32,7 +32,9 @@
 &lt;p&gt;In the last leg of your journey to avoid building a Kubernetes, your manager tells you that your app needs to programmatically spawn other containers. Spawning containers, of course, requires you to mount the Docker socket in your web app, which is wildly insecure. Not my problem, your manager says. So you write a separate service that exposes a safe subset of the Docker API to your web app. Done at last, you say to yourself, without having to build a Kubernetes.&lt;&#x2F;p&gt;
 &lt;p&gt;A standard config format, a deployment method, an overlay network, service discovery, immutable nodes, and an API server. Dear friend, you have built a Kubernetes.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;em&gt;Addressed to,&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;em&gt;Those who did not want to use Kubernetes.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Those who wanted to avoid Kubernetes.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;&lt;em&gt;PS: I don&#x27;t mean to imply that you can never roll your own deployment method that fits your needs better than Kubernetes, or that nothing will ever be better than Kubernetes. I just want to caution you, my friend, to make sure you understand the problems Kubernetes solves before dismissing it as overly-complex.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
 </content>
         
     </entry>
