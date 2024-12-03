@@ -54,7 +54,7 @@ With these lists in my mind, I've been exploring the landscape of possible conte
 
 This is the idea of running everything on one or two big bare-metal servers, usually from budget providers like Hetzner. Not sure if there's a name for this, so I'm calling it PaleoOps. Similar to how the [paleo diet](https://en.wikipedia.org/wiki/Paleolithic_diet) developed in response to the rapid expansion of processed foods and their health risks, there's some good and bad reasoning used to justify PaleoOps. Applications got super complex super quick and a whole generation of developers got burned, leading to embracing the simpler infrastructure of the past, which [has been successful](http://rachelbythebay.com/w/2022/01/27/scale/) in some cases.
 
-But sometimes uncritically embracing older things results in [suffering from the same problems](@/2024/2024-11-23-you-have-built-a-kubernetes.md) that lead to the rise of the modern replacement in the first place. Notable issues include the increased exposure to hardware failure, the lack of edge support, the security risks of non-segmented applications, and huge amount of features you'd have to develop yourself. So I don't think this will become "the next platform" but it will always serve a niche where the benefits of a fully automated platform are not needed.
+But sometimes uncritically embracing older things results in [suffering from the same problems](@/2024/2024-11-23-you-have-built-a-kubernetes.md) that lead to the rise of the modern replacement in the first place. Notable issues include the increased exposure to hardware failure, the lack of edge support, the security risks of non-segmented applications, and the huge amount of features you'd have to develop yourself. So I don't think this will become "the next platform" but it will always serve a niche where the benefits of a fully automated platform are not needed.
 
 ### Honorable mention: Erlang, Darklang
 
@@ -84,7 +84,7 @@ Given this is an AWS service, setting up a simple Lambda requires IAM roles, API
 
 One notable achievement was that [Lambda was likely used for the successful launch of covidtests.gov in 2022](https://adhoc.team/2022/01/18/covidtests-usps-aws-managed-services/). This is in stark contrast to the [disastrous launch of healthcare.gov in 2013](https://en.wikipedia.org/wiki/HealthCare.gov) which used traditional deployment methods and couldn't withstand more than 1,100 of the 250,000 concurrent users trying to access it.
 
-Overall, I think of Lambda as the beta release of "the next platform". It has proven some core ideas like serverless computing are possible, but it has all the rough edges of a first-mover.
+Overall, I think of Lambda as the beta release of "the next platform". It has proven some core ideas like serverless computing are possible, but it has all the rough edges of an early mover.
 
 ### V8 Isolates
 
