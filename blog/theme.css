@@ -1,4 +1,4 @@
-﻿body {
+body {
   font:
     400 18px/1.6 "Helvetica Neue",
     Helvetica,
@@ -11,6 +11,8 @@ body {
   display: grid;
   grid-template-columns: auto;
   grid-template-areas: "header" "main" "footer";
+  font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #dbe0ea;
 }
 header {
   padding: 8px 8px 0 8px;
@@ -24,7 +26,7 @@ main {
   grid-area: main;
 }
 p {
-  text-align: justify;
+  text-align: left;
 }
 footer {
   color: #a7adba;
@@ -46,6 +48,8 @@ ul {
   list-style: none inside none;
   list-style-type: "·";
   padding: 0;
+  list-style: disc outside;
+  padding-left: 1.5em;
 }
 li::marker {
   color: #99c794;
@@ -59,13 +63,14 @@ a {
   text-decoration: none;
 }
 h1 {
-  font-size: 24px;
+  font-size: 47px;
   margin: 5px 0;
   font-weight: bold;
 }
 h2 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
+  border-bottom: 1px solid #99c794;
 }
 h3 {
   font-size: 20px;
@@ -91,9 +96,12 @@ pre {
 code {
   font: 16px monospace;
 }
-p > code {
-  font-weight: bold;
-  color: #65737e;
+p > code, li > code {
+  font-weight: normal;
+  padding: 1px 5px;
+  color: #c0c5ce;
+  background-color: #656c7633;
+  border-radius: 4px;
 }
 .logo {
   font-size: 26px;
@@ -130,6 +138,14 @@ p > code {
     min-width: 200px;
   }
 }
+.search-box {
+    background-color: #101a20;
+    border: 2px solid #36596c;
+    font-size: 20px;
+    line-height: 2;
+    color: #c0c5ce;
+    margin-top: 10px;
+}
 img {
   max-width: 100%;
 }
@@ -145,9 +161,12 @@ tbody tr:first-child {
 td {
   padding: 1rem;
 }
-
 figure {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+blockquote {
+  color: #a7adba;
+  font-style: italic;
 }
