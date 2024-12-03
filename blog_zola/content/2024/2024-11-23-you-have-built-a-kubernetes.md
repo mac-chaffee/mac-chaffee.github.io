@@ -6,7 +6,7 @@ _This post will make more sense if you first read [Dear Sir, You Have Built a Co
 
 Dear friend,
 
-I am afraid to inform you that you have built a Kubernetes. I know you wanted to "choose boring tech" to just run some containers. You said that "Kubernetes is overkill" and "it's just way too complex for a simple task" and yet, six months later, you have pile of shell scripts that do not work—breaking every time there's a slight shift in the winds of production.
+I am afraid to inform you that you have built a Kubernetes. I know you wanted to "choose boring tech" to just run some containers. You said that "Kubernetes is overkill" and "it's just way too complex for a simple task" and yet, six months later, you have a pile of shell scripts that do not work—breaking every time there's a slight shift in the winds of production.
 
 Surely, switching to Docker Compose will be the end of your woes; at least that way, someone else maintains a standard config file format for you to use. But wait, Compose is still [not a holistic solution](@/2024/2024-01-20-docker-compose.md). "Do I really need a separate solution for deployment, rolling updates, rollbacks, and scaling?" you ask yourself? Surely not. Your app is so simple; a backend, a reverse proxy, postgres, and a job runner. So you march on, and add another few sections to your `deploy.sh` script, certain, that this will be the last of what you need to do to maintain this pile of hacks.
 

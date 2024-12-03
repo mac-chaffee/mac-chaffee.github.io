@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta name="description" content="Mac&#x27;s Tech Blog">
+        
+
+        <title>The next platform</title>
+
+        
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://www.macchaffee.com/blog/atom.xml">
+
+<meta name="image" content="https://www.macchaffee.com/static/favicon.png">
+<meta property="og:image" content="https://www.macchaffee.com/static/favicon.png">
+<meta name="theme-color" content="#1b2b34">
+<link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+
+<meta property="og:title" content="The next platform">
+
+<meta property="og:description" content="Mac&#x27;s Tech Blog">
+
+<link rel="stylesheet" href="https://www.macchaffee.com/blog/theme.css">
+<style>
+body {
+    font: 400 18px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #dbe0ea;
+}
+h1 {
+    font-size: 47px;
+}
+ul {
+    list-style: disc outside;
+    padding-left: 1.5em;
+}
+code {
+    font-family: monospace;
+    font-size: 16px;
+}
+.search-box {
+    background-color: #101a20;
+    border: 2px solid #36596c;
+    font-size: 20px;
+    line-height: 2;
+    color: #c0c5ce;
+    margin-top: 10px;
+}
+/* Overrides */
+p {
+  text-align: left;
+}
+p > code {
+  font-weight: normal;
+  padding: 1px 5px;
+  color: #a7adba;
+  background-color: #101a20;
+}
+h2 {
+    font-size: 24px;
+    border-bottom:1px solid #99c794;
+}
+blockquote {
+    color: #a7adba;
+    font-style: italic;
+}
+</style>
+
+        
+    </head>
+    <body>
+        <div class="content">
+        
+        
+            <header>
+                <div class="header-left">
+                    <a href="https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog" class="logo">Mac&#x27;s Tech Blog</a>
+                </div>
+                <div class="header-right">
+                    <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                        <a itemprop="url" href="https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog/atom.xml">
+                            <img class="icon" src="https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog/icons/rss.svg" alt="RSS Feed">
+                        </a>
+                    </nav>
+                </div>
+            </header>
+        
+        
+        <main>
+            
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <div itemprop="headline">
+        <h1>The next platform</h1>
+        <div class="border"></div>
+        <time datetime="2024-12-02" class="date" itemprop="datePublished">
+            2024-12-02
+        </time>
+    </div>
+    <div itemprop="articleBody">
+        <p>As someone who has built a career on Kubernetes, I'm always thinking about what "the next platform" is (for job security purposes). By "platform", I mean the kind that platform engineers like myself build for internal dev teams on which to run their applications. Kubernetes has been the star platform for quite a few years now (or maybe that's just my internet bubble), but will that last forever?</p>
+<p>Despite the fact that I stan Kubernetes on this blog, I understand more than most that it can be quite painful, so I've been on a search for "the next platform" lately. Let's start with a rough list of problems with Kubernetes-based platforms and a list of requirements for "the next platform".</p>
+<h2 id="problems-with-kubernetes-based-platforms">Problems with Kubernetes-based platforms</h2>
+<p>You could train a large language model on Kubernetes complaints alone, but I'll just list some common ones:</p>
+<ul>
+<li>Steep learning curve.</li>
+<li>Lots of moving parts.</li>
+<li>Requires a dozen other CNCF projects to do useful work.</li>
+<li>Helm templating was a mistake but it's too popular now.</li>
+<li>Everything has to be containerized, which complicates dev environments and slows down CI/CD.</li>
+</ul>
+<p>And some of my hot takes:</p>
+<ul>
+<li>Kubernetes workloads are insecure by default. Too many CNCF projects simply don't work with safe <code>securityContext</code> settings or least-privilege RBAC, and these insecure defaults are footguns for devs.</li>
+<li>Manually tuning CPU/RAM <code>requests</code> and <code>limits</code> should go the way of the rotary phone. They should be automatically tuned at runtime.</li>
+<li>Kubernetes' killer feature is self-healing, but too many apps are simply not designed with resilience in mind.</li>
+</ul>
+<p>Needless to say, there's a lot of room for improvement. But we have to make sure "the next platform" checks all the boxes.</p>
+<h2 id="list-of-requirements-for-the-next-platform">List of requirements for "the next platform"</h2>
+<p>This is not an exhaustive list either, but we should probably have things like:</p>
+<ul>
+<li>Ability to accept HTTP requests from the Internet.</li>
+<li>Ability to store state somewhere that is highly-available, secure, and backed up.</li>
+<li>Ability to manage app configuration and secrets.</li>
+<li>Ability to collect logs, metrics, and other debugging info from your app.</li>
+<li>Ability to easily deploy new versions of your app.</li>
+</ul>
+<p>From that list, most platform-as-a-service (PaaS) providers such as Heroku already do all those things and have existed for a long time. But why isn't everyone using a PaaS provider? I think there are some other requirements that preclude the use of many current PaaS providers:</p>
+<ul>
+<li>Affordability at scale. Even small-to-medium companies may be spending over $100k per month on their cloud bill these days. Adding the PaaS markup on top would be too much.</li>
+<li>Ability to run on-premise.</li>
+<li>Custom hardware like GPUs, NVMe drives, HSMs, etc.</li>
+<li>Custom networking like peering with on-premise infrastructure.</li>
+<li>Custom security requirements.</li>
+<li>Edge connectivity.</li>
+<li>Compatibility with legacy apps.</li>
+</ul>
+<p>If you are a CTO who is trying to roll out a "platform" and you have those requirements, then a Kubernetes-based platform may be more compelling because of the extra flexibility. I believe every app that runs on Linux can technically run on Kubernetes (even resorting to <a href="https://kubevirt.io/">KubeVirt</a> if necessary), but a PaaS provider could easily say "we don't support that".</p>
+<h2 id="possible-contenders">Possible contenders</h2>
+<p>With these lists in my mind, I've been exploring the landscape of possible contenders for "the next platform". Like all kinds of future-prediction, this is very subjective and very likely to age poorly, so let's forge ahead regardless.</p>
+<h3 id="paleoops">PaleoOps</h3>
+<p>This is the idea of running everything on one or two big bare-metal servers, usually from budget providers like Hetzner. Not sure if there's a name for this, so I'm calling it PaleoOps. Similar to how the <a href="https://en.wikipedia.org/wiki/Paleolithic_diet">paleo diet</a> developed in response to the rapid expansion of processed foods and their health risks, there's some good and bad reasoning used to justify PaleoOps. Applications got super complex super quick and a whole generation of developers got burned, leading to embracing the simpler infrastructure of the past, which <a href="http://rachelbythebay.com/w/2022/01/27/scale/">has been successful</a> in some cases.</p>
+<p>But sometimes uncritically embracing older things results in <a href="https://www.macchaffee.com/blog/2024/you-have-built-a-kubernetes/">suffering from the same problems</a> that lead to the rise of the modern replacement in the first place. Notable issues include the increased exposure to hardware failure, the lack of edge support, the security risks of non-segmented applications, and huge amount of features you'd have to develop yourself. So I don't think this will become "the next platform" but it will always serve a niche where the benefits of a fully automated platform are not needed.</p>
+<h3 id="honorable-mention-erlang-darklang">Honorable mention: Erlang, Darklang</h3>
+<p>Language-based distributed programming models have always been fascinating to me. <a href="https://vereis.com/posts/you_built_an_erlang">Erlang/Elixir and other BEAM languages</a> were early movers, apparently powering vast distributed systems at <a href="https://en.wikipedia.org/wiki/Erlang_(programming_language)#History">Ericsson</a>. There was also a time when I thought <a href="https://en.wikipedia.org/wiki/Akka_(toolkit)">Akka</a> and actor-based programming would take over the world. Notably those both gloss over the deployment/DevOps work, sometimes just relying on Docker or Kubernetes (a la <a href="https://github.com/bitwalker/libcluster">libcluster</a>). <a href="https://darklang.com/">Darklang</a> is another group building something like "the next platform", all from a single programming language.</p>
+<p>But all of these are a bit of a moonshot in my opinion since way too much existing code is written in JavaScript, Python, etc. You could compile apps to run on the BEAM, but you can't simply add OTP semantics to existing apps.</p>
+<h3 id="fly-io">Fly.io</h3>
+<p>I've never used Fly.io personally, so consider my opinion on this subject to be more uninformed than my usual opinions.</p>
+<p>Fly.io was originally developed as a next-generation PaaS that solved one main deficiency of previous-generation PaaSes: Edge support. Their choice of <a href="https://firecracker-microvm.github.io/">Firecracker</a> as the hypervisor means they can spin VMs up and down rapidly and pack lots of VMs on a single physical server, keeping costs low. Using VMs means broad support for existing applications that container-based PaaSes may struggle to match.</p>
+<p>I think Fly.io's reliance on bare-metal servers and VMs is an issue. They recently had to <a href="https://fly.io/blog/machine-migrations/">re-invent the wheel of VM migrations</a> with much difficulty. This is something existing hypervisors have had decades to perfect (<a href="https://virtualizationreview.com/articles/2016/09/14/evolution-of-vmware-vmotion.aspx">vMotion has existed since 2003</a>).</p>
+<p>Additionally, you can bet that major cloud providers don't just slide servers into racks and hope they don't break. They almost certainly have fancy methods of capacity planning, redundancy, lifecycle analysis, and failure analysis to reduce the chances your pet VM randomly dies due to a bad memory stick.</p>
+<p>But hardware failure will always be a problem for any application that runs on a single server (unless that server is an <a href="https://arstechnica.com/information-technology/2023/07/the-ibm-mainframe-how-it-runs-and-why-it-survives/">IBM mainframes with full hardware redundancy</a>). Because hardware failure is rare and often hidden from users, this can be a sneaky footgun that devs consider too unlikely to matter until it happens. I believe "the next platform" should disarm this footgun.</p>
+<h3 id="serverless-aws-lambda">Serverless - AWS Lambda</h3>
+<p>Launched in 2014, AWS Lambda allows you to upload a file containing a function that can process HTTP requests. It uses Firecracker to spawn these VMs rapidly and provide secure multi-tenancy. Lambda promised to revolutionize deployment and really popularized the concept of "<a href="https://en.wikipedia.org/wiki/Serverless_computing">serverless</a>" apps that do not know or care about the server(s) running the app.</p>
+<p>But I believe Lambda was a bit ahead of its time. Web frameworks like Django were quite popular, but you couldn't just run Django on Lambda without a tool like <a href="https://github.com/zappa/Zappa">Zappa</a> to magically make it "serverless", which wouldn't come out for another 2-3 years. You'd also want a serverless database like Aurora Serverless which wouldn't come out <a href="https://aws.amazon.com/blogs/aws/aurora-serverless-ga/">until 2018</a> (or <a href="https://aws.amazon.com/blogs/aws/amazon-aurora-postgresql-limitless-database-is-now-generally-available/">2024 if you use postgres</a>).</p>
+<p>Given this is an AWS service, setting up a simple Lambda requires IAM roles, API gateway, and maybe some KMS config which can get quite complicated. There were also problems with cold-start times of <a href="https://aws.amazon.com/blogs/compute/operating-lambda-performance-optimization-part-1/">100-1000ms</a> that didn't have great workarounds until later. And perhaps the loudest problem of all was unexpectedly huge bills when Lambdas got DoS'd or <a href="https://news.ycombinator.com/item?id=31907374">invoked by infinite loops</a>.</p>
+<p>One notable achievement was that <a href="https://adhoc.team/2022/01/18/covidtests-usps-aws-managed-services/">Lambda was likely used for the successful launch of covidtests.gov in 2022</a>. This is in stark contrast to the <a href="https://en.wikipedia.org/wiki/HealthCare.gov">disastrous launch of healthcare.gov in 2013</a> which used traditional deployment methods and couldn't withstand more than 1,100 of the 250,000 concurrent users trying to access it.</p>
+<p>Overall, I think of Lambda as the beta release of "the next platform". It has proven some core ideas like serverless computing are possible, but it has all the rough edges of a first-mover.</p>
+<h3 id="v8-isolates">V8 Isolates</h3>
+<p>I've never been a big fan of Cloudflare's market dominance, but I must say that the more I read about <a href="https://developers.cloudflare.com/workers/platform/storage-options/">Cloudflare's serverless products</a>, the more I start shaking in my platform engineering boots. I also haven't used any of these products, so perhaps they sound better than they really are. <a href="https://deno.com/deploy">Deno Deploy</a> is also built on V8 isolates and serves as a compelling competitor to Cloudflare, but I know even less about their offerings.</p>
+<p>The core product is Cloudflare Workers, which is their version of AWS Lambda. The key difference is they use <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates">V8 isolates</a> instead of Firecracker VMs, which are essentially using the same tech that isolates Chrome tabs from each other (apparently Chrome uses separate processes <em>and</em> isolates, but Cloudflare runs all the isolates in the same process, which <a href="https://blog.cloudflare.com/mitigating-spectre-and-other-security-threats-the-cloudflare-workers-security-model/">they claim is still safe</a>). This eliminates the cold-start problem and drastically reduces the overhead for running each isolate. V8 isolates primarily support JavaScript (including some JS web frameworks), but they also support Rust and Python <a href="https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/">by compiling to WebAssembly</a>.</p>
+<p>Things get even more interesting when you look at all the <a href="https://developers.cloudflare.com/workers/platform/storage-options/">other compatible offerings</a>, like Workers KV (distributed key-value store), R2 (S3-like object storage), D1 (managed relational databases), and even <a href="https://developers.cloudflare.com/workers/ci-cd/">CI/CD</a>. Deno has also been rolling out a similarly impressive list of compatible products. These all seem like compelling replacements for many common bits of infrastructure.</p>
+<p>But the devil is in the details. Workers have some quite-restrictive <a href="https://developers.cloudflare.com/workers/platform/limits/">limits</a> like a max 30 seconds of CPU time, a max 128MB of memory, and just barely enough POSIX support to be usable-but-painful. They haven't really solved the problem of huge bills from runaway Workers either. And while you are fantasizing about the long list of complex infra you could replace with these products, you are like a fish being lured in by an angler fish's glow, only to be swallowed whole by the jaws of vendor lock-in.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Despite all the downsides, I'm starting to feel like we're getting close to "the next platform". Perhaps Workers is like a 1.0 release of something that only really gets good at version 2.0. Maybe V8 isolates will make it to 2.0, or maybe they'll be replaced by unikernels (like <a href="https://nanovms.com/">NanoVMs</a>) or <a href="https://opensource.microsoft.com/blog/2024/11/07/introducing-hyperlight-virtual-machine-based-security-for-functions-at-scale/">this Hyperlight thing that Microsoft is making</a>. To me, the last remaining pieces of the "next platform" puzzle are things like:</p>
+<ul>
+<li>Radically solving the pricing problem, where the cost of using the platform is just a slight markup on EC2 prices.</li>
+<li>Fully open-source, including the ability to deploy it yourself (like Kubernetes).</li>
+<li>Strikes the right balance between "compatible with existing apps" and "stopping people from deploying the same bloated/unreliable/insecure garbage we've been building for decades".</li>
+</ul>
+<p>At this point, we have one leg in the past and one leg in the future. The past is pet servers and VMs. The present is clusters of containers that still have many of the same pain points. When the future comes, I just hope it's not another chore.</p>
+
+    </div>
+</article>
+
+        </main>
+        
+        <footer>
+            
+    <div class="border"></div>
+    <div class="footer">
+        <div>
+            <a href="/">Home</a>
+        </div>
+        <p xmlns:cc="http://creativecommons.org/ns#">This work is licensed under <a
+                href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"
+                rel="license noopener noreferrer">CC BY-SA 4.0</a></p>
+    </div>
+
+        </footer>
+    
+        </div>
+    </body>
+</html>
