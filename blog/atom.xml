@@ -5,8 +5,47 @@
     <link rel="self" type="application/atom+xml" href="https://www.macchaffee.com/blog/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://www.macchaffee.com/blog"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2025-02-25T00:00:00+00:00</updated>
+    <updated>2025-02-28T00:00:00+00:00</updated>
     <id>https://www.macchaffee.com/blog/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Deno shows us there&#x27;s a better way</title>
+        <published>2025-02-28T00:00:00+00:00</published>
+        <updated>2025-02-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/blog/2025/deno/"/>
+        <id>https://www.macchaffee.com/blog/2025/deno/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/blog/2025/deno/">&lt;p&gt;Recently, I completed a full rewrite of &lt;a href=&quot;https:&#x2F;&#x2F;gitlab.com&#x2F;mac-chaffee&#x2F;ncsu-menu-notifier&quot;&gt;my first personal project&lt;&#x2F;a&gt;, which was a Django project running on Heroku. Now it&#x27;s a Deno project running on Deno Deploy. The experience has really gotten me thinking about the amount of pain we put up with to deploy simple stuff these days, especially with containers. Deno shows us that it doesn&#x27;t have to be that way.&lt;&#x2F;p&gt;
+&lt;p&gt;I know what you&#x27;re thinking, &quot;we already had a great setup: rsyncing PHP files&quot;. Unfortunately, rsyncing PHP files still lacks many critical features needed for more complicated projects. Collaboration, continuous integration, dependency management, multi-region support, scalability, preview environments, runtime security are just some of the features you&#x27;d have to build yourself. That&#x27;s part of why containerization (and its ecosystem) has taken off, since it provides a well-trodden path for each of those features (&quot;just a few more CNCF projects and we can really get this thing poppin&#x27;&quot;)&lt;&#x2F;p&gt;
+&lt;p&gt;But people have been saying for a long time that containers are painful to work with. Historically I&#x27;ve been a bit dismissive of those people because, like all technology, containers make tradeoffs. You have to tolerate the slow build times, bloated images, and YAML hell in order to get the language agnosticism, dependency bundling, immutability, and access to Kubernetes and other projects that give your app superpowers as long as it&#x27;s containerized. At least, that&#x27;s what I used to believe.&lt;&#x2F;p&gt;
+&lt;p&gt;Deno seems to take a holistic approach, where the development environment, deployment method, and infrastructure are all self-contained within the &lt;code&gt;deno&lt;&#x2F;code&gt; CLI. Maybe some of this comes from Golang&#x27;s decision to bundle the package manager and the formatter&#x2F;linter directly into the language, which Deno does as well.&lt;&#x2F;p&gt;
+&lt;p&gt;I think this is a smart move. The more mature platforms I see have more tight integration with the application code itself. Normally this is a set of config files (terraform or k8s manifests), but there have been efforts to replace config files will full languages such as &lt;a href=&quot;https:&#x2F;&#x2F;www.pulumi.com&#x2F;&quot;&gt;Pulumi&lt;&#x2F;a&gt;. Even before that, there were libraries like &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Netflix&#x2F;Hystrix&quot;&gt;Netflix&#x27;s Hysterix&lt;&#x2F;a&gt; which bakes a service mesh into application code (before service meshes even existed). I think these threads of history tie into Deno&#x27;s all-in-one approach to produce a nice developer experience with just a git repo and a CLI tool.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-rewrite&quot;&gt;The rewrite&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;gitlab.com&#x2F;mac-chaffee&#x2F;ncsu-menu-notifier&quot;&gt;The Django project&lt;&#x2F;a&gt; that I rewrote in Deno is your typical 3-tier web app. I&#x27;d classify it as a non-trivial application that took me maybe 30 eight-hour working days to build originally (which translates to years of weekend coding). I was able to rewrite it in a week of evenings, about 4 work days. And this was my first experience writing TypeScript&#x2F;Deno, so I had to look up a bunch of simple questions like how to do loops or create maps!&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The development environment setup is easy, just a &lt;code&gt;curl | bash&lt;&#x2F;code&gt; to get the Deno CLI. The language server can be installed easily into Zed or VS Code. No messing around with JDKs or system Python version.&lt;&#x2F;li&gt;
+&lt;li&gt;Packages are cached globally but tracked&#x2F;locked in your git repo, so no giant &lt;code&gt;node_modules&lt;&#x2F;code&gt; folder and no Python virtual environments.&lt;&#x2F;li&gt;
+&lt;li&gt;Everything you need to develop—including data storage via Deno KV—is included in the CLI, so no need for Docker.&lt;&#x2F;li&gt;
+&lt;li&gt;Package install times are so fast that I wasn&#x27;t bothered by the fact that Deno&#x27;s caching&#x2F;vendoring was broken when I tried to set up Gitlab CI.&lt;&#x2F;li&gt;
+&lt;li&gt;Compile&#x2F;run&#x2F;test times seem nearly instantaneous (it is a small project with only a single dependency), so I was able to run tests as a pre-commit hook without even noticing a delay.&lt;&#x2F;li&gt;
+&lt;li&gt;Deployment to multiple regions with a highly available database only takes a single command which runs several times quicker than the Heroku deployments I was doing before.&lt;&#x2F;li&gt;
+&lt;li&gt;Deno has capabilities-based security, where it doesn&#x27;t get the ability to spawn arbitrary processes, read environment variables, or read&#x2F;write any file in your home folder.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The beautiful thing is that (no offense) I don&#x27;t think any of these are revolutionary ideas on their own. I don&#x27;t even think it&#x27;d be too hard to add these features to existing languages. Just seems like nobody else seems keen on bringing all of these elements together.&lt;&#x2F;p&gt;
+&lt;p&gt;There were some rough edges, and I know Deno has a lot of beta-quality things, but they&#x27;ve been in beta for a while. The metrics and logs are a lacking, I had some issues with the API docs, some error messages were unclear, and I hit the classic React issue where some content refers to old Deno features&#x2F;techniques that don&#x27;t exist anymore. One big missing feature was that I can&#x27;t imagine running a Deno Deploy site without a caching&#x2F;rate-limiting CDN in front to control costs, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;denoland&#x2F;deploy_feedback&#x2F;issues&#x2F;814&quot;&gt;which is such an easy feature Deno could include&lt;&#x2F;a&gt;. Without that, kinda defeats the whole purpose of running at the edge.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h2&gt;
+&lt;p&gt;Computers are so ridiculously powerful these days that it&#x27;s so weird we still have CI&#x2F;CD pipelines that take tens of minutes. &lt;a href=&quot;https:&#x2F;&#x2F;www.sqlite.org&#x2F;testing.html&quot;&gt;SQLite runs 300k test cases in &quot;only a few minutes&quot; on every commit&lt;&#x2F;a&gt;. We also have huge servers with huge disks where you could store the top 99% of every library, package, binary, etc., completely eliminating the need for CI&#x2F;CD caching. We have advanced compilers that can do incremental compilation. We have an enormous pool of seasoned software engineers who could bring all these things together, and an enormous tech industry itching to pay for it. Maybe if everyone wasn&#x27;t busy building ad tech and chat bots, we&#x27;d get somewhere.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Tech and the climate crisis</title>
         <published>2025-02-25T00:00:00+00:00</published>
