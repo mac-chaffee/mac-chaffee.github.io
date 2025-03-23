@@ -5,8 +5,41 @@
     <link rel="self" type="application/atom+xml" href="https://www.macchaffee.com/blog/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://www.macchaffee.com/blog"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2025-02-28T00:00:00+00:00</updated>
+    <updated>2025-03-23T00:00:00+00:00</updated>
     <id>https://www.macchaffee.com/blog/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Avoid building a security treadmill</title>
+        <published>2025-03-23T00:00:00+00:00</published>
+        <updated>2025-03-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Mac
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://www.macchaffee.com/blog/2025/security-treadmill/"/>
+        <id>https://www.macchaffee.com/blog/2025/security-treadmill/</id>
+        
+        <content type="html" xml:base="https://www.macchaffee.com/blog/2025/security-treadmill/">&lt;p&gt;Recently, a ticket came across my desk asking for help with stopping people from using a free GPU service to mine cryptocurrencies. The tool they requested to do this was &lt;a href=&quot;https:&#x2F;&#x2F;falco.org&#x2F;docs&#x2F;&quot;&gt;Falco&lt;&#x2F;a&gt;, an eBPF-powered agent that runs in a Kubernetes cluster, watching for suspicious syscalls using a set of rules. To detect cryptomining, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;falcosecurity&#x2F;rules&#x2F;blob&#x2F;371e43167e1b70ef0600d8fd30c8a338663ccb56&#x2F;rules&#x2F;falco-sandbox_rules.yaml#L1481&quot;&gt;the default rules can detect outbound network connections to common miner pools&lt;&#x2F;a&gt; by watching the syscalls &lt;code&gt;sendto&lt;&#x2F;code&gt;, &lt;code&gt;sendmsg&lt;&#x2F;code&gt;, and &lt;code&gt;connect&lt;&#x2F;code&gt;. So I dutifully deployed Falco itself, plus &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;falcosecurity&#x2F;falcosidekick&quot;&gt;falcosidekick&lt;&#x2F;a&gt; which ingests all the Falco alerts, sends them to a Kafka cluster, then a Kafka consumer processes the events and kills the offending Kubernetes Pod.&lt;&#x2F;p&gt;
+&lt;p&gt;The eye-watering complexity of this solution isn&#x27;t even my main issue with it (it&#x27;s not bad for a modern platform team). My issue is that it&#x27;s a &quot;security treadmill&quot;.&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s the oldest trick in the blogosphere book: giving a catchy name like &quot;security treadmill&quot; to a common phenomenon. A security treadmill&lt;sup id=&quot;back-1&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog&#x2F;2025&#x2F;security-treadmill&#x2F;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; is a piece of software that, due to a weakness of design, requires constant patching to keep it secure. Isn&#x27;t that just all software? Honestly... kinda, yeah, but a true treadmill is self-inflicted. You bought it, assembled it, and put it in your spare bedroom; a device specifically designed to let you walk&#x2F;run forever without making forward progress.&lt;&#x2F;p&gt;
+&lt;p&gt;When someone brought up the issue of people abusing the free GPUs to mine cryptocurrencies, the first question someone asked was: couldn&#x27;t we just charge people for the GPUs? This could have been our first exit off the security treadmill. People don&#x27;t mine cryptocurrencies because they like to run up your electric bill or embarrass your security team. They do it because it&#x27;s profitable. If you charge people slightly more than the profit, they will just stop, no complicated infrastructure required. Tech-y people often forget that not every solution can be solved with more tech.&lt;&#x2F;p&gt;
+&lt;p&gt;Anyway, the idea of removing the free service was abandoned for reasons I wasn&#x27;t privy to, so we pressed ahead and deployed Falco. The demo worked, everyone seems happy for now, but I feel the ground moving ever so slowly backwards underneath me.&lt;&#x2F;p&gt;
+&lt;p&gt;The problem should be apparent at this point to anyone who has tried to bypass an internet filter at school or work. There are countless ways to send network traffic to a particular host without needing to &lt;code&gt;connect&lt;&#x2F;code&gt; to its IP directly (the only way Falco can detect it). The security treadmill is now moving underneath us. To avoid falling off the back of it, we have to constantly update the Falco rules to catch new techniques, including such cutting-edge techniques like &quot;using a VPN or proxy&quot;.&lt;&#x2F;p&gt;
+&lt;p&gt;The failure mode that creates security treadmills is a failure to implement &quot;secure by design&quot; principles. The legacy of computing that we&#x27;ve all inherited is one built in the high-trust environment of collaborating universities in the 70&#x27;s and 80&#x27;s, where tools and protocols were not designed with security as a major factor. We have to shake off this mindset as we build new tools and protocols.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, the ability for nearly every application to have full, unfettered access to the entire Internet is a deeply-held and rarely-challenged assumption. Cryptocurrencies generally cannot be mined without a constant internet connection since you need to receive information about the latest &quot;blocks&quot;. Denying all outbound network traffic except for a few allow-listed hosts would be one non-treadmill solution, with the added bonus of thwarting exfiltration attacks, 2-stage malware attacks, and command-and-control servers.&lt;&#x2F;p&gt;
+&lt;p&gt;Another rarely-challenged assumption is that every application needs a full POSIX environment (like what a Docker container gives you): a read&#x2F;write file system, ability to spawn other processes, ability to execute arbitrary code, &lt;a href=&quot;https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;diving-into-proc-pid-mem&#x2F;#access-checks&quot;&gt;ability to read the memory of other processes&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;developer.chrome.com&#x2F;blog&#x2F;meltdown-spectre&#x2F;#high-resolution_timers&quot;&gt;access to clocks with microsecond precision&lt;&#x2F;a&gt;, etc. Perhaps free-tier users of these GPUs could have been restricted to running specific demos, or restrictive timeouts for GPU processing times, or denying disk write access to prevent downloading miners, or denying the ability to execute files outside of a read-only area.&lt;&#x2F;p&gt;
+&lt;p&gt;Given all these options, there are still lots of legacy applications that simply cannot be sandboxed and cannot be made sandboxable. But we can at least stop building new ones that require a never-ending security treadmill to keep them secured.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;aside&gt;
+&lt;p&gt;&lt;span id=&quot;1&quot;&gt;1&lt;span&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.macchaffee.com&#x2F;blog&#x2F;2025&#x2F;security-treadmill&#x2F;#back-1&quot;&gt;⤴&lt;&#x2F;a&gt;: Maybe a similar term could be a &quot;security arms race&quot;, but security people have got to stop LARPing as if they in a war where everything is life or death. &lt;a href=&quot;https:&#x2F;&#x2F;kellyshortridge.com&#x2F;blog&#x2F;posts&#x2F;sun-tzu-wouldnt-like-the-cybersecurity-industry&#x2F;&quot;&gt;Sun Tzu wouldn&#x27;t like the cybersecurity industry&lt;&#x2F;a&gt; anyway.&lt;&#x2F;p&gt;
+&lt;&#x2F;aside&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Deno shows us there&#x27;s a better way</title>
         <published>2025-02-28T00:00:00+00:00</published>
