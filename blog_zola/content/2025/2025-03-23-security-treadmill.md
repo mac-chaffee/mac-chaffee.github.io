@@ -26,6 +26,6 @@ Given all these options, there are still lots of legacy applications that simply
 
 <aside>
 
-<span id="1">1<span>[⤴](#back-1): Maybe a similar term could be a "security arms race", but security people have got to stop LARPing as if they in a war where everything is life or death. [Sun Tzu wouldn't like the cybersecurity industry](https://kellyshortridge.com/blog/posts/sun-tzu-wouldnt-like-the-cybersecurity-industry/) anyway.
+<span id="1">1<span>[⤴](#back-1): Maybe a similar term could be a "security arms race", but security people have got to stop LARPing like they're in a war where everything is life or death. [Sun Tzu wouldn't like the cybersecurity industry](https://kellyshortridge.com/blog/posts/sun-tzu-wouldnt-like-the-cybersecurity-industry/) anyway.
 
 </aside>
