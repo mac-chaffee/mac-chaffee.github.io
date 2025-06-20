@@ -1,9 +1,10 @@
 +++
 title = "Fantastic Mr. Fox (2009)"
-date = "2025-06-10"
+date = "2025-06-19"
 description = "It really transports you into a strange but highly entertaining world."
 [extra]
 rating = 8.5
+featured = true
 +++
 
 Walking into my first Wes Anderson film without any context is maybe not the smartest move, but it turned out well, all things considered. You don't need context to marvel at the intricate details of the hand-made sets and characters. You don't need context to laugh at the sharp and witty dialogue. And you don't need context to enjoy a damn good story about never feeling satisfied.
